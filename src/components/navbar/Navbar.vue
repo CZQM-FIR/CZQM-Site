@@ -3,7 +3,7 @@
         <ul class="navitems">
             <!-- CZQM Logo Element -->
             <li class="navitem czqm-logo">
-                <img src="../../assets/images/CZQM - White.png" alt="CZQM Logo" class="logo">
+                <img src="../../assets/images/CZQM-White.png" alt="CZQM Logo" class="logo">
             </li>
 
             <!-- Normal Nav Elements -->
