@@ -1,7 +1,15 @@
-# Vue 3 + Vite
+# CZQM FIR New Site Project
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Use `npm run dev` to run a hot swapable dev server on `localhost:3000`
 
-## Recommended IDE Setup
+Use `npm run build` to compile to production files.
 
-- [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
+## Info
+
+Built using HTML5, CSS, Vue (w/ Vite)
+
+All internal links **MUST** be router-links
+
+All commits must use [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
+
+Use NPM only, not Yarn. For consistancy
