@@ -111,7 +111,7 @@
     background-color: #c9c1c1;
     color: white; 
     padding: 0.5rem;
-    border-radius: 10px;
+    border-radius: 9px;
 }
 
 .logo {
