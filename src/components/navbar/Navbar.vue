@@ -21,13 +21,13 @@
             </li>
 
              <li class="navitem">
-                <router-link to="/about">
+                <router-link to="/events">
                 <span class="navitem-text">EVENTS</span>
                 </router-link>
             </li>
 
              <li class="navitem">
-                <router-link to="/about">
+                <router-link to="/forums">
                 <span class="navitem-text">FORUMS</span>
                 </router-link>
             </li>
