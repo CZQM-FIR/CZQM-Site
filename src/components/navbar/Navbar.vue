@@ -20,6 +20,18 @@
                 </router-link>
             </li>
 
+             <li class="navitem">
+                <router-link to="/about">
+                <span class="navitem-text">EVENTS</span>
+                </router-link>
+            </li>
+
+             <li class="navitem">
+                <router-link to="/about">
+                <span class="navitem-text">FORUMS</span>
+                </router-link>
+            </li>
+
             <!-- Login MUST BE LAST!!! -->
 
             <li class="navitem">
@@ -62,6 +74,7 @@
     height: 100%;
 }
 
+
 .navitem {
     width: auto;
     height: 100%;
@@ -85,7 +98,7 @@
 }
 
 .navitem-text {
-    color: #8b8b8b;
+    color: #c9c1c1;
     font-size: 1.5rem;
     margin-left: 1rem;
     font-family: 'Raleway', sans-serif;
