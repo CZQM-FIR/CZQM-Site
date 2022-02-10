@@ -26,7 +26,7 @@
   padding-top: 1rem;
   margin: 3rem;
   margin-top: 5rem;
-  text-align: justify;
+  text-align: center;
   text-justify: auto;
 }
 </style>
