@@ -108,8 +108,8 @@
 }
 
 .navitem-text:hover {
-    background-color: #c9c1c1;
-    color: white; 
+    background-color: white;
+    color: #333; 
     padding: 0.5rem;
     border-radius: 9px;
 }
