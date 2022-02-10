@@ -60,7 +60,7 @@
     height: 5rem;
     width: 100vw;
     position: fixed;
-    background: #292929;
+    background: rgb(39, 39, 39);
 }
 
 .navitems {
