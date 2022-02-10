@@ -83,6 +83,9 @@
     padding-left: 1rem;
 }
 
+
+
+
 .navitem a {
     text-decoration: none;
 }
@@ -102,6 +105,13 @@
     font-size: 1.5rem;
     margin-left: 1rem;
     font-family: 'Raleway', sans-serif;
+}
+
+.navitem-text:hover {
+    background-color: #c9c1c1;
+    color: white; 
+    padding: 0.5rem;
+    border-radius: 10px;
 }
 
 .logo {

@@ -16,7 +16,7 @@
 
 <style scoped>
 .home-page {
-    font-size: 1.5rem;
+    font-size: 1rem;
 }
 
 .main-header {
