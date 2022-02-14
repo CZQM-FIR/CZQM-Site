@@ -1,31 +1,29 @@
 <template>
-<div class="app">
-    <Navbar/>
-    <router-view class="main"/>
-</div>
+<Navbar/>
+    <router-view class="main dynamicHeight"/>
+    <Footer/>
 </template>
 
 <script>
   import Navbar from './components/navbar/Navbar.vue'
+  import Footer from './components/Footer.vue'
 
   export default {
     name: 'App',
     components: {
-      Navbar
+      Navbar,
+      Footer
     }
   }
 </script>
 
 <style>
-.app {
-  padding: 0;
-  margin: 0;
-}
+@import 'assets/styles/global.css';
 
 .main {
   padding-top: 1rem;
   margin: 3rem;
-  margin-top: 5rem;
+  margin-top: var(--nav-size);
   text-align: center;
   text-justify: auto;
 }

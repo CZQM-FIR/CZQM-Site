@@ -1,0 +1,9 @@
+:root {
+    --nav-size: 3rem;
+    --nav-colour: rgb(39, 39, 39)
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
