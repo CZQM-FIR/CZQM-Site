@@ -88,7 +88,6 @@
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
 @import "../../assets/styles/global.css";
 
 .navbar {
