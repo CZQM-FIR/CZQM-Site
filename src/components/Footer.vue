@@ -63,7 +63,8 @@
     left: 0;
     margin: 0;
     width:auto;
-    min-height: var(--nav-size);
+    /* min-height: var(--nav-size); */
+    height: 11rem;
     background:var(--nav-colour);
     /* padding: .5rem 3rem .5rem 3rem; */
 
