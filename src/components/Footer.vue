@@ -27,6 +27,7 @@
                         <li><a href="https://twitter.com/czqm_fir" class="footerLink">Twitter</a></li>
                         <li><a href="https://www.facebook.com/CZQMFIR/" class="footerLink">FaceBook</a></li>
                         <li><a href="https://www.youtube.com/channel/UCS5H_U3h6edXWashMjQpuAg" class="footerLink">Youtube</a></li>
+                        <li><a href="https://forums.vatcan.ca/" class="footerLink">Forums</a></li>
                     </ul>
                 </span>
             </div>
