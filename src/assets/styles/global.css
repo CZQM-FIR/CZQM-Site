@@ -1,12 +1,70 @@
 /* Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap'); /* Raleway */
 
+/* Variables */
 :root {
     --nav-size: 3rem;
-    --nav-colour: rgb(39, 39, 39)
+    --nav-colour: rgb(39, 39, 39);
+    --overlay-colour: rgba(0, 0, 0, 0.473);
+    --width-ideal: 70%;
+    --width-max: 100rem;
+    --footer-min-height: 10rem;
 }
 
-body {
+/* Global Styles */
+body, html {
     margin: 0;
     padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Utility Classes */
+.text-formatting {
+    font-family: 'Raleway', sans-serif;
+}
+
+.container {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+}
+
+.content {
+    margin: 0;
+    padding: 0; 
+    width: var(--width-ideal);
+    max-width: var(--width-max);
+    height: 100%;
+}
+
+.cta, .cta-secondary {
+    text-decoration: none;
+    display: inline-block;
+    background-color: #1680e0;
+    border-radius: 4px;
+    padding: 0.5em 2em;
+    color: white;
+    transition: 0.2s ease;
+}
+
+.cta:hover {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    filter: brightness(90%);
+}
+
+.cta-secondary:hover {
+    filter: brightness(90%);
+}
+
+.cta-secondary {
+    background-color: unset;
+}
+
+.cta-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
 }

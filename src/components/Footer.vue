@@ -1,6 +1,6 @@
 <template>
-    <footer class="footer">
-        <div class="footerContent">
+    <footer class="footer container">
+        <div class="footerContent content">
             <div class="footerColumn">
                 <h3 class="footerHeader">Moncton / Gander FIR</h3>
                 <span class="footerText">
@@ -59,20 +59,16 @@
 
 <style scoped>
 .footer {
+    min-height: var(--footer-min-height);
+    width: 100%;
     position:relative;
     bottom:0;
     left: 0;
-    margin: 0;
-    width:auto;
-    /* min-height: var(--nav-size); */
-    height: 11rem;
     background:var(--nav-colour);
-    /* padding: .5rem 3rem .5rem 3rem; */
-
 }
 
 .footerContent {
-    padding: 1rem 3rem 1rem 3rem;
+    padding: 1rem 0rem 1rem 0rem;
     display: grid;
     grid-template-columns: 3fr 2fr  1.5fr 1fr 1fr;
 }

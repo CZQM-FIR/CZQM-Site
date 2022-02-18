@@ -1,72 +1,57 @@
 <template>
 <main class="home-page">
-<div class="grid">
-    <div class="welcome tile">
-    <span class="header">Moncton / Gander FIR</span>
-    <br>
-    <span class="text">
-        The Moncton/Gander FIR provides professional, courteous and realistic Air Traffic Control services for the Virtual Moncton & Gander Flight Information Region on the VATSIM Network.
-        <br><br>
-        Our airspace includes all of New Brunswick, Nova Scotia, Prince Edward Island, Newfoundland and Labrador, as well as Eastern Québec.
-        <br><br>
-        All virtual pilots are invited to fly the friendly skies of Moncton/Gander FIR!
-    </span>
-    <br><br>
-    <img src="../assets/images/CZQM.png" alt="CZQM Logo" class="czqmLogo">
-    </div>
-</div>
+    <section class="hero container">
+        <div class="hero-content content text-formatting">
+            <div class="hero-text">
+                <h1>Canada's Gateway to the East Coast</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis perferendis rerum natus quia, iure ad debitis. Magnam pariatur voluptatibus illo?</p>
+                <div class="cta-row">
+                    <a href="#" class="cta">See More</a>
+                    <a href="#" class="cta-secondary">Join Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
 </main>
 </template>
 
 <script>
     export default {
     name: "Home",
-    data: () => {
-        
-    }
 }
 </script>
 
 <style scoped>
-.home-page {
-    font-size: 1rem;
-    font-family: 'Raleway', sans-serif;
+template {
+    height: 100%;
 }
 
-.tile {
-    padding: 1rem;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
-    border-radius: 5px;
-    font-size: 1rem;
-    text-align: justify;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.grid {
-    display: grid;
-    text-align: justify;
-    gap: 1rem;
-    grid-template-columns: repeat(auto-fit, 22.5rem);
-    grid-auto-rows: minmax(22.5rem, 1fr);
-}
-
-.header {
-    font-size: 1.5rem;
-    text-align: center;
-}
-
-.text {
-    font-size: .9rem;
-}
-
-.czqmLogo {
-    width: 10rem;
-    height: auto;
-    padding: 0;
+.hero {
+    /* width: 100%; */
+    height: 80vh;
+    background: linear-gradient(var(--overlay-colour), var(--overlay-colour)), url('../assets/images/hero-bg.jpg') no-repeat center / cover;
+    color: white;
     margin: 0;
-    margin-top: -2rem;
+    padding: 0;
 }
 
+.hero-content {
+    height: 100%;
+    text-align: left;
+}
+
+.hero-text h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.hero-text h2 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.hero-text p {
+    font-size: 1.2rem;
+    max-width: 60%;
+}
 </style>
