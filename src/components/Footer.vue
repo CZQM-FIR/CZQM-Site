@@ -71,6 +71,7 @@
     padding: 1rem 0rem 1rem 0rem;
     display: grid;
     grid-template-columns: 3fr 2fr  1.5fr 1fr 1fr;
+    grid-gap: 1rem;
 }
 
 .footerHeader {
@@ -92,7 +93,6 @@
 
 .footerColumn {
     list-style: none;
-    margin: 0 1rem 0 1rem;
 }
 
 ul, li {
