@@ -39,7 +39,7 @@ body, html {
     height: 100%;
 }
 
-.cta, .cta-secondary {
+.cta {
     text-decoration: none;
     display: inline-block;
     background-color: #1680e0;
@@ -47,24 +47,38 @@ body, html {
     padding: 0.5em 2em;
     color: white;
     transition: 0.2s ease;
-}
 
-.cta:hover {
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    filter: brightness(90%);
-}
+    &:hover {
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        filter: brightness(90%);
+    }
 
-.cta-secondary:hover {
-    filter: brightness(90%);
+    &-secondary {
+        background-color: unset;
+    }
+
+    &-secondary:hover {
+        filter: brightness(90%);
+    }
+
+    &-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: left;
+        align-items: center; 
+    }
 }
 
 .cta-secondary {
     background-color: unset;
-}
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 4px;
+    padding: 0.5em 2em;
+    color: white;
+    transition: 0.2s ease;
 
-.cta-row {
-    display: flex;
-    flex-direction: row;
-    justify-content: left;
-    align-items: center;
+    &:hover {
+        filter: brightness(90%);
+    }
 }

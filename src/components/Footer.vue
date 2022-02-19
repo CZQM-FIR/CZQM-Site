@@ -57,7 +57,7 @@
     }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .footer {
     min-height: var(--footer-min-height);
     width: 100%;

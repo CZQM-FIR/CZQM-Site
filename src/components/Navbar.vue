@@ -5,7 +5,7 @@
                 <!-- CZQM Logo Element -->
                 <li class="navitem czqm-logo">
                     <router-link to="/">
-                        <img src="../../assets/images/CZQM-White.png" alt="CZQM Logo" class="logo" />
+                        <img src="../assets/images/CZQM-White.png" alt="CZQM Logo" class="logo" />
                     </router-link>
                 </li>
 
@@ -83,8 +83,8 @@ export default {
 }
 </script>
 
-<style scoped>
-@import "../../assets/styles/global.css";
+<style lang="scss" scoped>
+@import "../assets/styles/global.scss";
 
 .navbar-wrapper {
     width: 100vw;

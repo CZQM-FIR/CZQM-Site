@@ -5,7 +5,7 @@
 </template>
 
 <script>
-  import Navbar from './components/navbar/Navbar.vue'
+  import Navbar from './components/Navbar.vue'
   import Footer from './components/Footer.vue'
 
   export default {
@@ -17,8 +17,8 @@
   }
 </script>
 
-<style>
-@import 'assets/styles/global.css';
+<style lang="scss">
+@import 'assets/styles/global.scss';
 
 .main {
   /* padding-top: 1rem;

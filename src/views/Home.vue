@@ -12,6 +12,9 @@
             </div>
         </div>
     </section>
+    <section class="info">
+        
+    </section>
 </main>
 </template>
 
@@ -21,7 +24,7 @@
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 template {
     height: 100%;
 }
@@ -33,25 +36,25 @@ template {
     color: white;
     margin: 0;
     padding: 0;
-}
 
-.hero-content {
-    height: 100%;
-    text-align: left;
-}
+    &-content {
+        height: 100%;
+        text-align: left;
+    }
 
-.hero-text h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-}
+    &-text h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
 
-.hero-text h2 {
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
-}
+    &-text h2 {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+    }
 
-.hero-text p {
-    font-size: 1.2rem;
-    max-width: 60%;
+    &-text p {
+        font-size: 1.2rem;
+        max-width: 60%;
+    }
 }
 </style>
