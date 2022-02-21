@@ -6,14 +6,52 @@
                 <h1>Canada's Gateway to the East Coast</h1>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis perferendis rerum natus quia, iure ad debitis. Magnam pariatur voluptatibus illo?</p>
                 <div class="cta-row">
-                    <a href="#" class="cta">See More</a>
+                    <a href="#info" class="cta">See More</a>
                     <a href="#" class="cta-secondary">Join Us</a>
                 </div>
             </div>
         </div>
     </section>
-    <section class="info">
-        
+    <section id="info" class="info container">
+        <div class="info-wrapper content text-formatting">
+            <div class="info-card">
+                <span class="info-header">Online Controllers</span>
+                <span class="info-text">
+                </span>
+                <router-link to="/roster" class="cta">Roster</router-link>
+            </div>
+            <div class="info-card">
+                <span class="info-header">About</span>
+                <span class="info-text">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet distinctio optio nam? Molestias voluptatem, animi fugiat nisi iusto aperiam deserunt consequuntur exercitationem illum culpa, excepturi earum ad explicabo impedit autem ipsam totam tempora quos harum quis? Ipsam voluptatibus maxime exercitationem. Ipsam praesentium suscipit minus rerum saepe tenetur, maxime aliquid quia.
+                </span>
+                <router-link to="/staff" class="cta">Staff</router-link>
+            </div>
+            <div class="info-card">
+                <span class="info-header">Weather</span>
+                <span class="info-text">
+                    
+                </span>
+                <a href="#" class="cta">Lorem, ipsum</a>
+            </div>
+            <div class="info-card">
+                <span class="info-header">News</span>
+                <span class="info-text">
+                </span>
+                <router-link to="/news" class="cta">See More</router-link>
+            </div>
+            <div class="info-card">
+                <span class="info-header">Slideshow</span>
+                <span class="info-text">
+                </span>
+            </div>
+            <div class="info-card">
+                <span class="info-header">Events</span>
+                <span class="info-text">
+                </span>
+                <router-link to="/events" class="cta">See More</router-link>
+            </div>
+        </div>
     </section>
 </main>
 </template>
@@ -31,7 +69,7 @@ template {
 
 .hero {
     /* width: 100%; */
-    height: 80vh;
+    height: calc(100vh - var(--nav-size));
     background: linear-gradient(var(--overlay-colour), var(--overlay-colour)), url('../assets/images/hero-bg.jpg') no-repeat center / cover;
     color: white;
     margin: 0;
@@ -40,6 +78,10 @@ template {
     &-content {
         height: 100%;
         text-align: left;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        transform: translate(0, -15%);
     }
 
     &-text h1 {
@@ -56,5 +98,51 @@ template {
         font-size: 1.2rem;
         max-width: 60%;
     }
+}
+
+.info {
+    padding: 0;
+    padding-top: var(--nav-size);
+    padding-bottom: var(--nav-size);
+    margin: 0;
+
+    &-card {
+        padding: 1rem;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+        border-radius: 5px;
+        font-size: 1rem;
+        text-align: justify;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-width: 300px;
+        width: 30%;
+    }
+
+    
+
+    &-wrapper {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}
+
+.info-header {
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.info-text {
+    font-size: .9rem;
+}
+
+#info {
+    scroll-margin-top: calc(var(--nav-size));
+}
+
+.cta {
+    align-self: flex-start;
+    margin-top: 1rem;
 }
 </style>

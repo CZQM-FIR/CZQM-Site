@@ -4,6 +4,7 @@ import Events from '../views/Events.vue';
 import Login from '../views/Login.vue';
 import Privacy from '../views/Privacy.vue';
 import Branding from '../views/Branding.vue';
+import Staff from '../views/Staff.vue';
 
 const routes = [
     {
@@ -30,6 +31,11 @@ const routes = [
         path: '/branding',
         name: 'Branding Guidelines',
         component: Branding,
+    },
+    {
+        path: '/staff',
+        name: 'Staff',
+        component: Staff,
     }
 ];
 

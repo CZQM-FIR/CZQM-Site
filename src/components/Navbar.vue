@@ -93,6 +93,7 @@ export default {
     left: 0;
     position: fixed;
     background: var(--nav-colour);
+    z-index: 100;
 }
 
 .navitems {
