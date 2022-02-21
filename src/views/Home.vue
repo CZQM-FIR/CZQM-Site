@@ -135,6 +135,7 @@ template {
 
 .info-text {
     font-size: .9rem;
+    margin-bottom: 1rem;
 }
 
 #info {
@@ -143,6 +144,6 @@ template {
 
 .cta {
     align-self: flex-start;
-    margin-top: 1rem;
+    margin-top: auto;
 }
 </style>
