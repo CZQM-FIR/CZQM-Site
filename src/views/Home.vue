@@ -29,10 +29,11 @@
             </div>
             <div class="info-card">
                 <span class="info-header">Weather</span>
-                <span class="info-text">
-                    
-                </span>
-                <a href="#" class="cta">Lorem, ipsum</a>
+            <div v-for="airport in airports" :key="airport.id">
+                <h1 class="weather-header text-formatting">{{ airport.icao }} - {{ airport.name }}</h1>
+                <span class="weather-text">{{ airport.metar }}</span>
+            </div>
+                <a href="#" class="cta cta-weather">Lorem, ipsum</a>
             </div>
             <div class="info-card">
                 <span class="info-header">News</span>
@@ -40,9 +41,9 @@
                 </span>
                 <router-link to="/news" class="cta">See More</router-link>
             </div>
-            <div class="info-card">
-                <span class="info-header">Slideshow</span>
+            <div class="info-card slideshow">
                 <span class="info-text">
+                    (insert slideshow here)
                 </span>
             </div>
             <div class="info-card">
@@ -57,8 +58,35 @@
 </template>
 
 <script>
+    import axios from 'axios';
+    import { ref, unref } from '@vue/reactivity';
+    const avwx_token = 'MkzJZ67U9lJorvexGqfWjOmBLFE22UCMmqgBkRl60A8'
+
     export default {
     name: "Home",
+    data: () => {
+        return {
+            avwx_token,
+        }
+    },
+    setup: () => {
+        const airportList = ['CYHZ', 'CYQM', 'CYQX', 'CYYT']; // You can change the airports here, everything else will update automatically
+
+            let airports = ref([])
+
+            airportList.forEach(async (airport) => {
+                let station = (await axios.get(`https://avwx.rest/api/station/${airport}?options=&token=${avwx_token}`)).data
+                let metar = (await axios.get(`https://avwx.rest/api/metar/${airport}?options=&token=${avwx_token}`)).data
+
+                airports.value.push({
+                    icao: airport,
+                    name: station.name,
+                    metar: metar.raw,
+                })
+            });
+
+            return {airports}
+    },
 }
 </script>
 
@@ -103,7 +131,7 @@ template {
 .info {
     padding: 0;
     padding-top: var(--nav-size);
-    padding-bottom: var(--nav-size);
+    padding-bottom: calc(var(--nav-size) - 1.5rem);
     margin: 0;
 
     &-card {
@@ -117,20 +145,21 @@ template {
         align-items: center;
         min-width: 300px;
         width: 30%;
+        margin-bottom: 1.5rem;
     }
-
-    
 
     &-wrapper {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
+        justify-content: space-evenly;
     }
 }
 
 .info-header {
     font-size: 1.5rem;
     text-align: center;
+    margin-bottom: .5rem;
 }
 
 .info-text {
@@ -145,5 +174,30 @@ template {
 .cta {
     align-self: flex-start;
     margin-top: auto;
+
+    &-weather {
+        align-self: flex-start;
+        margin-top: 1rem;
+    }
+}
+
+.weather-header {
+    font-size: 1rem;
+    margin: .75rem 0 .25rem 0;
+    padding: 0;
+    font-weight: normal;
+    font-family: 'Raleway', sans-serif;
+}
+
+.weather-text {
+    font-size: 0.9rem;
+    align-self: flex-start;
+    font-family: 'Roboto Mono', monospace;
+    margin: 0;
+    padding: 0;
+}
+
+.slideshow {
+    aspect-ratio: 16 / 9;
 }
 </style>
