@@ -75,13 +75,13 @@
             let airports = ref([])
 
             airportList.forEach(async (airport) => {
-                let station = (await axios.get(`https://avwx.rest/api/station/${airport}?options=&token=${avwx_token}`)).data
-                let metar = (await axios.get(`https://avwx.rest/api/metar/${airport}?options=&token=${avwx_token}`)).data
+                let station = (await axios.get(`/api/station/${airport}`)).data.data
+                let metar = (await axios.get(`/api/metar/${airport}`)).data.data
 
                 airports.value.push({
                     icao: airport,
                     name: station.name,
-                    metar: metar.raw,
+                    metar: metar,
                 })
             });
 
@@ -133,6 +133,7 @@ template {
     padding-top: var(--nav-size);
     padding-bottom: calc(var(--nav-size) - 1.5rem);
     margin: 0;
+    min-height: calc(100vh - var(--nav-size));
 
     &-card {
         padding: 1rem;

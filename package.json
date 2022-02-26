@@ -1,21 +1,37 @@
 {
   "name": "czqm-site",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "The new CZQM Website",
+  "main": "server.js",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "dev-server": "nodemon server.js --ignore 'client/'",
+    "server": "node server.js --ignore 'client/'",
+    "dev-client": "npm run dev --prefix client",
+    "dev": "concurrently \"npm run dev-server\" \"npm run dev-client\"",
+    "build": "npm run build --prefix client"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GoldenXLence/CZQM-Site.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/GoldenXLence/CZQM-Site/issues"
+  },
+  "homepage": "https://github.com/GoldenXLence/CZQM-Site#readme",
   "dependencies": {
-    "vue": "^3.2.25",
-    "vue-router": "^4.0.12"
+    "axios": "^0.26.0",
+    "body-parser": "^1.19.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "mongoose": "^6.2.3",
+    "morgan": "^1.10.0"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^2.0.0",
-    "axios": "^0.26.0",
-    "node-sass": "^7.0.1",
-    "sass": "^1.49.8",
-    "sass-loader": "^12.6.0",
-    "vite": "^2.7.2"
+    "concurrently": "^7.0.0",
+    "nodemon": "^2.0.15"
   }
 }
