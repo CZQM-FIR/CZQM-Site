@@ -7,6 +7,7 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const metarRoute = require('./routes/api/metar');
 const stationRoute = require('./routes/api/station');
+const controllersRoute = require('./routes/api/controllers');
 
 app.use(cors());
 app.use(morgan('tiny'));
@@ -22,5 +23,10 @@ mongoose
 
 app.use('/api/metar', metarRoute);
 app.use('/api/station', stationRoute);
+app.use('/api/controllers', controllersRoute);
+
+app.all('/api', (req, res) => {
+    res.status(204).send()
+})
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));

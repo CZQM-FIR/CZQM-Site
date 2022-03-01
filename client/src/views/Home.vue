@@ -16,16 +16,23 @@
         <div class="info-wrapper content text-formatting">
             <div class="info-card">
                 <span class="info-header">Online Controllers</span>
-                <span class="info-text">
+                <div v-for="controller in controllers" :key="controller.id">
+            <div class="controller">
+                <div class="controller-info">
+                    <span class="callsign">{{controller.callsign}}</span>
+                    <span class="name">{{controller.name}}</span>
+                </div>
+                <span class="controller-time">
+                    {{controller.time}}
                 </span>
-                <router-link to="/roster" class="cta">Roster</router-link>
+            </div>
+                </div>
             </div>
             <div class="info-card">
                 <span class="info-header">About</span>
                 <span class="info-text">
                     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet distinctio optio nam? Molestias voluptatem, animi fugiat nisi iusto aperiam deserunt consequuntur exercitationem illum culpa, excepturi earum ad explicabo impedit autem ipsam totam tempora quos harum quis? Ipsam voluptatibus maxime exercitationem. Ipsam praesentium suscipit minus rerum saepe tenetur, maxime aliquid quia.
                 </span>
-                <router-link to="/staff" class="cta">Staff</router-link>
             </div>
             <div class="info-card">
                 <span class="info-header">Weather</span>
@@ -33,18 +40,12 @@
                 <h1 class="weather-header text-formatting">{{ airport.icao }} - {{ airport.name }}</h1>
                 <span class="weather-text">{{ airport.metar }}</span>
             </div>
-                <a href="#" class="cta cta-weather">Lorem, ipsum</a>
             </div>
             <div class="info-card">
                 <span class="info-header">News</span>
                 <span class="info-text">
                 </span>
                 <router-link to="/news" class="cta">See More</router-link>
-            </div>
-            <div class="info-card slideshow">
-                <span class="info-text">
-                    (insert slideshow here)
-                </span>
             </div>
             <div class="info-card">
                 <span class="info-header">Events</span>
@@ -59,17 +60,19 @@
 
 <script>
     import axios from 'axios';
-    import { ref, unref } from '@vue/reactivity';
-    const avwx_token = 'MkzJZ67U9lJorvexGqfWjOmBLFE22UCMmqgBkRl60A8'
+    import { ref, unref } from 'vue';
 
     export default {
     name: "Home",
     data: () => {
         return {
-            avwx_token,
-        }
+
+    }
     },
     setup: () => {
+
+        // Weather
+
         const airportList = ['CYHZ', 'CYQM', 'CYQX', 'CYYT']; // You can change the airports here, everything else will update automatically
 
             let airports = ref([])
@@ -85,8 +88,38 @@
                 })
             });
 
-            return {airports}
+            // Online Controllers
+
+            let controllers = ref([]);
+            
+            const getOnlineControllers = async () => {
+            let controllersData = await (await axios.get("/api/controllers")).data.data;
+
+            controllersData.forEach(controller => {
+                let timeStamp = new Date(Date.now() - Date.parse(controller.logon_time))
+                let time = `${timeStamp.getMinutes()}:${timeStamp.getSeconds()}`
+
+                controllers.value.push({
+                    cid: controller.cid,
+                    callsign: controller.callsign,
+                    name: controller.name,
+                    time,
+                    rating: controller.rating,
+                });
+            });
+
+            }
+
+            getOnlineControllers();
+
+            return {
+                airports,
+                controllers
+            }
     },
+    }
+    components: {
+
 }
 </script>
 
