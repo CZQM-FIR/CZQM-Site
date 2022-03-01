@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
         let controllers = await (await axios.get('https://data.vatsim.net/v3/vatsim-data.json')).data.controllers
 
         let data = [];
-        let callsigns = ['CZQM', 'CYQM', 'CYHZ', 'TOR', 'CYYZ'];
+        let callsigns = ['CZQM', 'CZQX', 'CYQM', 'CYHZ'];
 
         callsigns.forEach(callsign => {
             let filteredControllers = controllers.filter(c => c.callsign.startsWith(callsign));
