@@ -4,12 +4,18 @@ import Events from '../views/Events.vue';
 import Privacy from '../views/Privacy.vue';
 import Branding from '../views/Branding.vue';
 import Staff from '../views/Staff.vue';
+import Auth from '../views/Auth.vue';
 
 const routes = [
     {
         path: '/',
         name: 'Home',
         component: Home,
+    },
+    {
+        path: '/auth',
+        name: 'Authentication',
+        component: Auth,
     },
     {
         path: '/events',

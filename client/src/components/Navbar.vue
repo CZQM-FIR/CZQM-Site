@@ -68,9 +68,16 @@
                 <!-- Login MUST BE LAST!!! -->
 
                 <li class="navitem">
-                    <router-link to="/login">
-                        <span class="navitem-text">Login</span>
-                    </router-link>
+                    <div v-if="loggedIn">
+                        <router-link to="/profile">
+                        <span class="navitem-text">{controller name}</span>
+                        </router-link>
+                    </div>
+                    <div v-else>
+                        <a :href="connectEndpoint">
+                            <span class="navitem-text">Login</span>
+                        </a>
+                    </div>
                 </li>
             </ul>
         </nav>
@@ -79,7 +86,15 @@
 
 <script>
 export default {
-    name: 'Navbar'
+    name: 'Navbar',
+    computed: {
+        loggedIn() {
+            return localStorage.loggedIn === 'true' ? true : false
+        },
+        connectEndpoint() {
+            return `https://auth-dev.vatsim.net/oauth/authorize?client_id=316&redirect_uri=http://localhost:3000/auth&response_type=code&scode=full_name+email+vatsim_details+country`
+        }
+    }
 }
 </script>
 

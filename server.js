@@ -8,6 +8,7 @@ const bodyParser = require('body-parser');
 const metarRoute = require('./routes/api/metar');
 const stationRoute = require('./routes/api/station');
 const controllersRoute = require('./routes/api/controllers');
+const authRoute = require('./routes/api/auth');
 
 // dotenv
 require('dotenv').config();
@@ -27,6 +28,7 @@ mongoose
 app.use('/api/metar', metarRoute);
 app.use('/api/station', stationRoute);
 app.use('/api/controllers', controllersRoute);
+app.use('/api/auth', authRoute);
 
 app.all('/api', (req, res) => {
     res.status(204).send()
