@@ -17,10 +17,7 @@ router.get('/', async (req, res) => {
             data.push(...filteredControllers);
         });
 
-        res.status(200).json({
-            status: 200,
-            data
-        });
+        res.status(200).json(data);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
