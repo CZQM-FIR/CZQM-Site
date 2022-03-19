@@ -92,7 +92,7 @@ export default {
             return localStorage.loggedIn === 'true' ? true : false
         },
         connectEndpoint() {
-            return `https://auth-dev.vatsim.net/oauth/authorize?client_id=316&redirect_uri=http://localhost:3000/auth&response_type=code&scode=full_name+email+vatsim_details+country`
+            return `https://auth-dev.vatsim.net/oauth/authorize?client_id=316&redirect_uri=http://localhost:3000/auth&response_type=code&scope=full_name+email+vatsim_details+country`
         }
     }
 }
