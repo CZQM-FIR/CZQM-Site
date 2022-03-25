@@ -17,8 +17,6 @@ router.get('/', async (req, res) => {
             data.push(...filteredControllers);
         });
 
-        console.log(data)
-
         res.status(200).json({
             status: 200,
             data
