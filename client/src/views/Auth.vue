@@ -12,13 +12,9 @@
             let urlParams = new URLSearchParams(window.location.search);
             let code = urlParams.get('code');
 
-            axios.get(`/api/auth/${code}`).then((res, err) => {
-                localStorage.setItem('loggedIn', true);
-                localStorage.setItem('access_token', res.data.access_token);
-                localStorage.setItem('refresh_token', res.data.refresh_token);
-                localStorage.setItem('expire', res.data.expires_in + Date.now());
+            axios.post(`/api/auth/${code}`, { withCredentials: true }).then((res, err) => {
+                window.location.href = '/';
 
-                window.location.href = 'http://localhost:3000';
             })
         }
     }

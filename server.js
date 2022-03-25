@@ -9,6 +9,7 @@ const metarRoute = require('./routes/api/metar');
 const stationRoute = require('./routes/api/station');
 const controllersRoute = require('./routes/api/controllers');
 const authRoute = require('./routes/api/auth');
+const cookieParser = require('cookie-parser');
 
 // dotenv
 require('dotenv').config();
@@ -16,6 +17,7 @@ require('dotenv').config();
 app.use(cors());
 app.use(morgan('tiny'));
 app.use(bodyParser.json())
+app.use(cookieParser());
 
 mongoose
     .connect(mongoUri, {
