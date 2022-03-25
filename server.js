@@ -8,7 +8,7 @@ const bodyParser = require('body-parser');
 const metarRoute = require('./routes/api/metar');
 const stationRoute = require('./routes/api/station');
 const controllersRoute = require('./routes/api/controllers');
-const authRoute = require('./routes/api/auth');
+const authRoute = require('./routes/api/login');
 const cookieParser = require('cookie-parser');
 
 // dotenv
