@@ -103,6 +103,7 @@
 <script>
 import axios from 'axios'
 import { ref, unref } from 'vue';
+import {getUser} from '../scripts/getUser'
 
 export default {
     name: 'Navbar',
@@ -112,45 +113,12 @@ export default {
         },
     },
     setup: async () => {
-        const getUser = async () => {
-            let user = {loggedIn: false};
-
-            if (!getCookie('jwt')) {
-                return user;
-            }
-
-            const userData = await axios.get(`/api/user/${getCookie('jwt')}`);
-
-            user.personal = userData.data.personal;
-            user.vatsim = userData.data.vatsim;
-            user.cid = userData.data.cid;
-            user.loggedIn = true;
-
-            return user;
-        }
-
-        let user = ref(await getUser())
+       let user = ref(await getUser())
 
         return {
             user
         }
     }
-}
-
-function getCookie(cname) {
-  let name = cname + "=";
-  let decodedCookie = decodeURIComponent(document.cookie);
-  let ca = decodedCookie.split(';');
-  for(let i = 0; i <ca.length; i++) {
-    let c = ca[i];
-    while (c.charAt(0) == ' ') {
-      c = c.substring(1);
-    }
-    if (c.indexOf(name) == 0) {
-      return c.substring(name.length, c.length);
-    }
-  }
-  return;
 }
 </script>
 
