@@ -82,8 +82,11 @@
             let airports = ref([])
 
             airportList.forEach(async (airport) => {
-                let station = (await axios.get(`/api/station/${airport}`, { withCredentials: true })).data.data
-                let metar = (await axios.get(`/api/metar/${airport}`, { withCredentials: true })).data.data
+                let station = await axios.get(`/api/station/${airport}`, { withCredentials: true })
+                let metar = await axios.get(`/api/metar/${airport}`, { withCredentials: true })
+
+                station = station.data
+                metar = metar.data
 
                 airports.value.push({
                     icao: airport,
@@ -97,7 +100,9 @@
             let controllers = ref([]);
             
             const getOnlineControllers = async () => {
-            let controllersData = await (await axios.get("/api/controllers", { withCredentials: true })).data.data;
+            let controllersData = await axios.get("/api/controllers", { withCredentials: true });
+            
+            controllersData = controllersData.data;
 
             controllersData.forEach(controller => {
                 let msPerMin = 60 * 1000;
