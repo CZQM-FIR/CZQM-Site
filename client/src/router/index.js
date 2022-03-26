@@ -6,12 +6,29 @@ import Branding from '../views/Branding.vue';
 import Staff from '../views/Staff.vue';
 import Auth from '../views/Auth.vue';
 import Logout from '../views/Logout.vue';
+import ControllerPortal from '../views/ControllerPortal.vue';
+import getCookie from '../scripts/getCookie';
 
 const routes = [
     {
         path: '/',
         name: 'Home',
         component: Home,
+        beforeEnter: (to, from) => {
+            if (getCookie('jwt')) {
+                return { path: '/portal' };
+            }
+        }
+    },
+    {
+        path: '/portal',
+        name: 'Controller Portal',
+        component: ControllerPortal,
+        beforeEnter: (to, from) => {
+            if (!getCookie('jwt')) {
+                return { path: '/' };
+            }
+        }
     },
     {
         path: '/auth',
@@ -42,7 +59,12 @@ const routes = [
         path: '/logout',
         name: 'Logout',
         component: Logout,
-    }
+        beforeEnter: (to, from) => {
+            if (!getCookie('jwt')) {
+                return { path: '/' };
+            }
+        }
+    },
 ];
 
 const router = createRouter({
