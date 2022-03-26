@@ -1,20 +1,5 @@
 import axios from 'axios'
-
-const getCookie = (cname) => {
-    let name = cname + "=";
-    let decodedCookie = decodeURIComponent(document.cookie);
-    let ca = decodedCookie.split(';');
-    for (let i = 0; i < ca.length; i++) {
-        let c = ca[i];
-        while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-        }
-    }
-    return;
-}
+import getCookie from './getCookie'
 
 const getUser = async () => {
     let user = { loggedIn: false };
@@ -34,8 +19,3 @@ const getUser = async () => {
 }
 
 export default getUser
-
-export {
-    getCookie,
-    getUser,
-}

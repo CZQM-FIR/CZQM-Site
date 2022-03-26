@@ -103,7 +103,7 @@
 <script>
 import axios from 'axios'
 import { ref, unref } from 'vue';
-import {getUser} from '../scripts/getUser'
+import getUser from '../scripts/getUser'
 
 export default {
     name: 'Navbar',
