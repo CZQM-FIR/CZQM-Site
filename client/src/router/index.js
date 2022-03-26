@@ -1,10 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from '../views/Home.vue';
 import Events from '../views/Events.vue';
-import Login from '../views/Login.vue';
 import Privacy from '../views/Privacy.vue';
 import Branding from '../views/Branding.vue';
 import Staff from '../views/Staff.vue';
+import Auth from '../views/Auth.vue';
+import Logout from '../views/Logout.vue';
 
 const routes = [
     {
@@ -13,14 +14,14 @@ const routes = [
         component: Home,
     },
     {
+        path: '/auth',
+        name: 'Authentication',
+        component: Auth,
+    },
+    {
         path: '/events',
         name: 'Events',
         component: Events,
-    },
-    {
-        path: '/login',
-        name: 'Login',
-        component: Login,
     },
     {
         path: '/privacy',
@@ -36,6 +37,11 @@ const routes = [
         path: '/staff',
         name: 'Staff',
         component: Staff,
+    },
+    {
+        path: '/logout',
+        name: 'Logout',
+        component: Logout,
     }
 ];
 

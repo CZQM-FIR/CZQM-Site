@@ -68,9 +68,32 @@
                 <!-- Login MUST BE LAST!!! -->
 
                 <li class="navitem">
-                    <router-link to="/login">
+                    <div v-if="user.loggedIn">
+
+                    <div class="dropdown">
+                    <span class="navitem-text">{{user.personal.name_full}} ({{user.cid}})</span>
+
+                    <ul class="dropdown-content">
+                        <li class="dropdown-text">
+                            <div class="dropdown-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M160 416H96c-17.67 0-32-14.33-32-32V128c0-17.67 14.33-32 32-32h64c17.67 0 32-14.33 32-32S177.7 32 160 32H96C42.98 32 0 74.98 0 128v256c0 53.02 42.98 96 96 96h64c17.67 0 32-14.33 32-32S177.7 416 160 416zM502.6 233.4l-128-128c-12.51-12.51-32.76-12.49-45.25 0c-12.5 12.5-12.5 32.75 0 45.25L402.8 224H192C174.3 224 160 238.3 160 256s14.31 32 32 32h210.8l-73.38 73.38c-12.5 12.5-12.5 32.75 0 45.25s32.75 12.5 45.25 0l128-128C515.1 266.1 515.1 245.9 502.6 233.4z"/></svg>
+                            </div>
+                            <router-link to="/logout">Logout</router-link>
+                        </li>
+                        <li class="dropdown-text">
+                            <div class="dropdown-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M224 256c70.7 0 128-57.31 128-128s-57.3-128-128-128C153.3 0 96 57.31 96 128S153.3 256 224 256zM274.7 304H173.3C77.61 304 0 381.6 0 477.3c0 19.14 15.52 34.67 34.66 34.67h378.7C432.5 512 448 496.5 448 477.3C448 381.6 370.4 304 274.7 304z"/></svg>
+                            </div>
+                            <router-link to="/profile">Profile</router-link>
+                        </li>
+                    </ul>
+                </div>
+                    </div>
+                    <div v-else>
+                        <a :href="connectEndpoint">
                         <span class="navitem-text">Login</span>
-                    </router-link>
+                        </a>
+                    </div>
                 </li>
             </ul>
         </nav>
@@ -78,8 +101,56 @@
 </template>
 
 <script>
+import axios from 'axios'
+import { ref, unref } from 'vue';
+
 export default {
-    name: 'Navbar'
+    name: 'Navbar',
+    computed: {
+        connectEndpoint() {
+            return `https://auth-dev.vatsim.net/oauth/authorize?client_id=316&redirect_uri=http://localhost:3000/auth&response_type=code&scope=full_name+email+vatsim_details+country`
+        },
+    },
+    setup: async () => {
+        const getUser = async () => {
+            let user = {loggedIn: false};
+
+            if (!getCookie('jwt')) {
+                return user;
+            }
+
+            const userData = await axios.get(`/api/user/${getCookie('jwt')}`);
+
+            user.personal = userData.data.personal;
+            user.vatsim = userData.data.vatsim;
+            user.cid = userData.data.cid;
+            user.loggedIn = true;
+
+            return user;
+        }
+
+        let user = ref(await getUser())
+
+        return {
+            user
+        }
+    }
+}
+
+function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for(let i = 0; i <ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return;
 }
 </script>
 
@@ -184,5 +255,9 @@ export default {
     /* opacity: 1; */
     visibility: visible;
     transition: 1s ease;
+}
+
+.dropdown a {
+  color: black;
 }
 </style>
