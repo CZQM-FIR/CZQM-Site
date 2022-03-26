@@ -19,7 +19,7 @@
                 <span v-if="controllers.length == 0" >No controllers online</span>
                 <div v-else v-for="controller in controllers" :key="controller.id" class="controller">
                     <div class="controller-info">
-                    <span class="controller-callsign">{{controller.callsign}}</span>
+                    <span class="controller-callsign">{{controller.callsign}} ({{Number(controller.frequency)}})</span>
                     <span v-if="controller.name == controller.cid" class="controller-name">{{controller.name}}</span>
                     <span v-else class="controller-name"> {{controller.name}} - {{controller.cid}}</span>
                 </div>
@@ -122,6 +122,7 @@
                     name: controller.name,
                     time,
                     rating: controller.rating,
+                    frequency: controller.frequency,
                 });
             });
 
