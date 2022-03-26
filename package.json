@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/GoldenXLence/CZQM-Site#readme",
   "dependencies": {
-    "axios": "^0.26.0",
+    "axios": "^0.26.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.2",
     "cookie-parser": "^1.4.6",

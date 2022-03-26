@@ -5,6 +5,7 @@ import Privacy from '../views/Privacy.vue';
 import Branding from '../views/Branding.vue';
 import Staff from '../views/Staff.vue';
 import Auth from '../views/Auth.vue';
+import Logout from '../views/Logout.vue';
 
 const routes = [
     {
@@ -36,6 +37,11 @@ const routes = [
         path: '/staff',
         name: 'Staff',
         component: Staff,
+    },
+    {
+        path: '/logout',
+        name: 'Logout',
+        component: Logout,
     }
 ];
 

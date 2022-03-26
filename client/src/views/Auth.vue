@@ -6,15 +6,15 @@
 
 <script>
     import axios from 'axios';
+    import router from '../router/index'
 
     export default {
         setup: () => {
             let urlParams = new URLSearchParams(window.location.search);
             let code = urlParams.get('code');
 
-            axios.post(`/api/auth/${code}`, { withCredentials: true }).then((res, err) => {
+            axios.post(`/api/login/${code}`, { withCredentials: true }).then((res, err) => {
                 window.location.href = '/';
-
             })
         }
     }

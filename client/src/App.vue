@@ -1,7 +1,11 @@
 <template>
-<Navbar/>
-    <router-view class="main"/>
-    <Footer/>
+<Suspense>
+  <Navbar/>
+</Suspense>
+<Suspense>
+<router-view class="main"/>
+</Suspense>
+<Footer/>
 </template>
 
 <script>

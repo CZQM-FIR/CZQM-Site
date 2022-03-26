@@ -62,6 +62,7 @@
 <script>
     import axios from 'axios';
     import { ref, unref } from 'vue';
+    import {useRoute} from 'vue-router'
 
     export default {
     name: "Home",
@@ -71,6 +72,8 @@
     }
     },
     setup: () => {
+
+        const route = useRoute()
 
         // Weather
 

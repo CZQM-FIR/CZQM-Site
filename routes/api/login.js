@@ -29,7 +29,9 @@ router.post('/:code', async (req, res) => {
             cid,
             access_token: result.data.access_token,
             refresh_token: result.data.refresh_token,
-            expire: result.data.expires_in + Date.now()
+            expire: result.data.expires_in + Date.now(),
+            personal,
+            vatsim,
         },
         {
             new: true,
@@ -57,19 +59,6 @@ router.post('/:code', async (req, res) => {
         .json({
             message: 'Login Successful',
         })
-
-    // TODO: Build out login logic 
-    // no need for signup because of upsert
-
-    // check if user exists in db
-    // if not create user
-    // if exists, update user data
-
-    // if access_token is invalid, return error
-
-    // generate jwt
-    // use vatsim access token as jwt expirery
-    // return jwt
 
     // use jwt to fetch user data
     // save jwt as cookie

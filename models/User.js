@@ -10,6 +10,11 @@ const RequiredNumber = {
     required: true,
 }
 
+const RequiredObject = {
+    type: Object,
+    required: true,
+}
+
 const userSchema = new mongoose.Schema({
     cid: RequiredString,
     access_token: RequiredString,
@@ -18,6 +23,8 @@ const userSchema = new mongoose.Schema({
     jwt: {
         type: String,
     },
+    personal: RequiredObject,
+    vatsim: RequiredObject,
 })
 
 module.exports = mongoose.model('User', userSchema)
