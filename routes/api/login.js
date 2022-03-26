@@ -54,7 +54,7 @@ router.post('/:code', async (req, res) => {
     user.save()
 
     res
-        .cookie('jwt', token)
+        .cookie('jwt', token, { maxAge: result.data.expires_in })
         .status(200)
         .json({
             message: 'Login Successful',
