@@ -54,21 +54,11 @@ router.post('/:code', async (req, res) => {
     user.save()
 
     res
-        .cookie('jwt', token, { maxAge: result.data.expires_in })
+        .cookie('jwt', token, { maxAge: Math.round(Date.now() / 1000) + result.data.expires_in })
         .status(200)
         .json({
             message: 'Login Successful',
         })
-
-    // use jwt to fetch user data
-    // save jwt as cookie
-    // if jwt is invalid, run logout and direct to login page
-
-    // TODO: Build out logout logic
-
-    // invalidate jwt
-    // clear cookie
-    // redirect to main page
 
     // TODO: Build user management page
     // list of all users
