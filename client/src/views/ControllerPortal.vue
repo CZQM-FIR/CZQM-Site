@@ -1,6 +1,8 @@
 <template>
     <div class="container">
-        <h1 class="text-formatting content">Controller Portal</h1>
+        <div class="text-formatting content">
+            <h1 class="">Controller Portal</h1>
+        </div>
     </div>
 </template>
 

@@ -1,6 +1,8 @@
 <template>
     <div class="container">
-        <h1 class="text-formatting content">Authenticating...</h1>
+        <div class="text-formatting content">
+            <h1 class="">Authenticating...</h1>
+        </div>
     </div>
 </template>
 

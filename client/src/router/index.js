@@ -8,6 +8,7 @@ import Auth from '../views/Auth.vue';
 import Logout from '../views/Logout.vue';
 import ControllerPortal from '../views/ControllerPortal.vue';
 import getCookie from '../scripts/getCookie';
+import NotAuthorised from '../views/NotAuthorised.vue';
 
 const routes = [
     {
@@ -26,7 +27,7 @@ const routes = [
         component: ControllerPortal,
         beforeEnter: (to, from) => {
             if (!getCookie('jwt')) {
-                return { path: '/' };
+                return { path: '/noauth' };
             }
         }
     },
@@ -34,6 +35,11 @@ const routes = [
         path: '/auth',
         name: 'Authentication',
         component: Auth,
+        beforeEnter: (to, from) => {
+            if (getCookie('jwt')) {
+                return { path: '/noauth' };
+            }
+        }
     },
     {
         path: '/events',
@@ -61,10 +67,15 @@ const routes = [
         component: Logout,
         beforeEnter: (to, from) => {
             if (!getCookie('jwt')) {
-                return { path: '/' };
+                return { path: '/noauth' };
             }
         }
     },
+    {
+        path: '/noauth',
+        name: 'Not Authorized',
+        component: NotAuthorised,
+    }
 ];
 
 const router = createRouter({
