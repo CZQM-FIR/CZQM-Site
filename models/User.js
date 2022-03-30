@@ -25,6 +25,16 @@ const userSchema = new mongoose.Schema({
     },
     personal: RequiredObject,
     vatsim: RequiredObject,
+    role: {
+        id: {
+            type: Number,
+            default: 0,
+        },
+        name: {
+            type: String,
+            default: 'Guest',
+        }
+    }
 })
 
 module.exports = mongoose.model('User', userSchema)

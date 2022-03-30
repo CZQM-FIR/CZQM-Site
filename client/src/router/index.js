@@ -15,11 +15,6 @@ const routes = [
         path: '/',
         name: 'Home',
         component: Home,
-        beforeEnter: (to, from) => {
-            if (getCookie('jwt')) {
-                return { path: '/portal' };
-            }
-        }
     },
     {
         path: '/portal',

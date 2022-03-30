@@ -4,4 +4,4 @@ import router from './router'
 
 const app = createApp(VueApp)
     .use(router)
-    .mount('#app');
+    .mount('#app')

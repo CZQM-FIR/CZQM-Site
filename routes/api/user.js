@@ -15,6 +15,7 @@ router.get('/:jwt', async (req, res) => {
         personal: user.personal,
         vatsim: user.vatsim,
         cid: user.cid,
+        role: user.role,
     })
 });
 

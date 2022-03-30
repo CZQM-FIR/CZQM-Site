@@ -15,24 +15,26 @@
     export default {
         setup: () => {
             
-        const count = ref(5);
+            const count = ref(5);
 
-        setInterval(() => {
-            if (count.value == 0) {
-                router.push({name: 'Home'});
-            } else {
-                count.value--;
+            setInterval(() => {
+                if (count.value == 0) {
+                    router.push({name: 'Home'});
+                } else {
+                    count.value--;
+                }
+            }, 1000);
+
+            return {
+                count
             }
-        }, 1000);
-
-        return {
-        count
-    }
         }
     }
     
 </script>
 
 <style lang="scss" scoped>
-
+    .content {
+        min-height: calc(100vh - var(--nav-size));
+    }
 </style>

@@ -13,6 +13,7 @@ const getUser = async () => {
     user.personal = userData.data.personal;
     user.vatsim = userData.data.vatsim;
     user.cid = userData.data.cid;
+    user.role = userData.data.role;
     user.loggedIn = true;
 
     return user;
