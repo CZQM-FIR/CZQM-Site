@@ -14,7 +14,7 @@
 </template>
 
 <script>
-    import getUser from "../scripts/getUser";
+    import getUser from "../../scripts/getUser";
     import { ref } from "vue";
 
     export default {
