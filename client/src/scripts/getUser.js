@@ -10,11 +10,10 @@ const getUser = async () => {
 
     const userData = await axios.get(`/api/user/${getCookie('jwt')}`);
 
-    user.personal = userData.data.personal;
-    user.vatsim = userData.data.vatsim;
-    user.cid = userData.data.cid;
-    user.role = userData.data.role;
-    user.loggedIn = true;
+    user = {
+        loggedIn: true,
+        ...userData.data,
+    }
 
     return user;
 }
