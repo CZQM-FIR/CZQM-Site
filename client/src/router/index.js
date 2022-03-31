@@ -76,6 +76,10 @@ const routes = [
 const router = createRouter({
     history: createWebHistory(),
     routes,
+    scrollBehavior(to, from, savedPosition) {
+        // Scroll to the top left when navigating to a new page
+        return { top: 0, left: 0 };
+    },
 });
 
 export default router;
