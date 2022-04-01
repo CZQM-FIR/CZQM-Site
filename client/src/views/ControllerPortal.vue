@@ -14,7 +14,7 @@
 </template>
 
 <script>
-    import ControllerInformation from '../components/ControllerInformation.vue'
+    import ControllerInformation from '../components/ControllerPortal/ControllerInformation.vue'
 
     export default {
         components: {
