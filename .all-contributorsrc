@@ -1,0 +1,25 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "Jagardstrong",
+      "name": "Jagardstrong",
+      "avatar_url": "https://avatars.githubusercontent.com/u/99367993?v=4",
+      "profile": "https://github.com/Jagardstrong",
+      "contributions": [
+        "ideas",
+        "content"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "CZQM-Site",
+  "projectOwner": "CZQM-FIR",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
