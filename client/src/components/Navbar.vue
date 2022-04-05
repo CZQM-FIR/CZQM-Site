@@ -99,7 +99,8 @@
 <script>
 import axios from 'axios'
 import { ref, unref } from 'vue';
-import getUser from '../scripts/getUser'
+import getUser from '../scripts/getUser';
+import router from '../router';
 
 export default {
     name: 'Navbar',
@@ -109,9 +110,11 @@ export default {
         },
     },
     setup: async () => {
-       let user = ref(await getUser())
-
-        return {
+       const userData = await getUser()
+       
+       let user = ref(userData)
+       
+       return {
             user
         }
     }

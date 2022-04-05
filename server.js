@@ -12,6 +12,7 @@ const loginRoute = require('./routes/api/login');
 const cookieParser = require('cookie-parser');
 const userRoute = require('./routes/api/user');
 const logoutRoute = require('./routes/api/logout');
+const eventRoute = require('./routes/api/event');
 
 // dotenv
 require('dotenv').config();
@@ -35,6 +36,7 @@ app.use('/api/controllers', controllersRoute);
 app.use('/api/login', loginRoute);
 app.use('/api/user', userRoute);
 app.use('/api/logout', logoutRoute);
+app.use('/api/event', eventRoute);
 
 app.all('/api', (req, res) => {
     res.status(204).send()

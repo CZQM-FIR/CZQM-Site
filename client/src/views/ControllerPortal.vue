@@ -6,7 +6,13 @@
                     <ControllerInformation class="grid-item" />
                 </div>
                 <div class="grid-column">
-                    <span class="grid-item">This is a new box</span>
+                    <Events class="grid-item" />
+                    <div class="grid-item">
+                        <h2>
+                            <!-- TODO Add News -->
+                            <i class="fa-solid fa-newspaper"></i> News
+                        </h2>
+                    </div>
                 </div>
             </div>
         </div>
@@ -15,11 +21,13 @@
 
 <script>
     import ControllerInformation from '../components/ControllerPortal/ControllerInformation.vue'
+    import Events from '../components/ControllerPortal/Events.vue'
 
     export default {
         components: {
-            ControllerInformation
-        }
+    ControllerInformation,
+    Events
+}
     }
 </script>
 

@@ -27,6 +27,10 @@ body, html {
     font-family: 'Raleway', sans-serif;
 }
 
+.fit-height {
+    min-height: calc(100vh - var(--nav-size));
+}
+
 .container {
     display: flex;
     padding: 0;

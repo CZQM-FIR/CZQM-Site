@@ -210,9 +210,6 @@ template {
     min-height: calc(100vh - var(--nav-size));
 
     &-card {
-        padding: 1rem;
-        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
-        border-radius: 5px;
         font-size: 1rem;
         text-align: justify;
         display: flex;
@@ -221,6 +218,10 @@ template {
         min-width: 300px;
         width: 30%;
         margin-bottom: 1.5rem;
+
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        border-radius: 1rem;
+        padding: 1rem;
     }
 
     &-wrapper {
