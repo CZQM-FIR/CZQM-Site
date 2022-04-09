@@ -26,6 +26,23 @@
 - Use NPM only, not Yarn. For consistancy.
 
 - Any external API requests *should* go through the backend server and should have some form of caching.
+
+## Permissions
+
+Permissions are numbered starting at zero (0) through to five (5). Each permission level can be seen below.
+
+0. Anyone with a VATSIM account (No special access)
+
+1. Visiting Controller (Access to controller resources and signing up for events)
+
+1. Home Controller (Same permissions as visiting)
+
+1. Mentor
+
+1. Instructor
+
+1. FIR Staff (Full admin access)
+
 ## Contributors ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
