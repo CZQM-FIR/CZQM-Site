@@ -4,11 +4,12 @@
   "description": "The new CZQM Website",
   "main": "server.js",
   "scripts": {
-    "dev-server": "nodemon server.js --ignore 'client/'",
-    "server": "node server.js --ignore 'client/'",
-    "dev-client": "npm run dev --prefix client",
     "dev": "concurrently \"npm run dev-server\" \"npm run dev-client\"",
-    "build": "npm run build --prefix client"
+    "dev-server": "nodemon server.js --ignore 'client/'",
+    "dev-client": "npm run dev --prefix client",
+    "server": "node server.js --ignore 'client/'",
+    "build": "npm run build --prefix client",
+    "preview": "npm run build && concurrently \"node server.js --ignore client\" \"npm run preview --prefix client\""
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,11 @@
   },
   "homepage": "https://github.com/GoldenXLence/CZQM-Site#readme",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.1.1",
+    "@fortawesome/free-brands-svg-icons": "^6.1.1",
+    "@fortawesome/free-regular-svg-icons": "^6.1.1",
+    "@fortawesome/free-solid-svg-icons": "^6.1.1",
+    "@fortawesome/vue-fontawesome": "^3.0.0-5",
     "axios": "^0.26.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.2",
