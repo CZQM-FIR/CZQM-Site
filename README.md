@@ -37,7 +37,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://github.com/Jagardstrong"><img src="https://avatars.githubusercontent.com/u/99367993?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jagardstrong</b></sub></a><br /><a href="#ideas-Jagardstrong" title="Ideas, Planning, & Feedback">🤔</a> <a href="#content-Jagardstrong" title="Content">🖋</a></td>
     <td align="center"><a href="https://github.com/GoldenXLence"><img src="https://avatars.githubusercontent.com/u/65452167?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jack Koskie</b></sub></a><br /><a href="https://github.com/CZQM-FIR/CZQM-Site/commits?author=GoldenXLence" title="Code">💻</a> <a href="#content-GoldenXLence" title="Content">🖋</a> <a href="#design-GoldenXLence" title="Design">🎨</a> <a href="#ideas-GoldenXLence" title="Ideas, Planning, & Feedback">🤔</a></td>
-    <td align="center"><a href="https://renovatebot.com"><img src="https://avatars.githubusercontent.com/u/38656520?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Renovate Bot</b></sub></a><br /><a href="#tool-renovatebot" title="Tools">🔧</a></td>
+    <td align="center"><a href="https://renovatebot.com"><img src="https://avatars.githubusercontent.com/u/38656520?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Renovate Bot</b></sub></a><br /><a href="#tool-renovatebot" title="Tools">🔧</a> <a href="https://github.com/CZQM-FIR/CZQM-Site/issues?q=author%3Arenovatebot" title="Bug reports">🐛</a> <a href="#security-renovatebot" title="Security">🛡️</a></td>
   </tr>
 </table>
 
