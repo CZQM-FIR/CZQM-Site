@@ -1,6 +1,8 @@
 <template>
     <div>
-        <h2><i class="fa-solid fa-calendar-days"></i> Events</h2>
+        <div>
+            <router-link :to="{ query: { page: 'events-edit' }}" class="cta" style="color: white">New Event</router-link>
+        </div>
         <ul class="event-list">
             <div v-if="events.length == 0">
                 <li>No Events Scheduled</li>
@@ -10,7 +12,10 @@
                     <div class="event">
                         <span class="event-name">{{event.name}}</span>
                         <span class="event-time">{{getEventTime(event)}}</span>
-                        <span class="event-learn-more"><router-link :to="{ path: '/events', query: { _id: event._id}}">Learn More <i class="fa-solid fa-chevron-right"></i></router-link></span>
+                        <span class="event-edit">
+                            <router-link :to="{ query: { page: 'events-edit', _id: event._id}}"><i class="fa-solid fa-pen-to-square"></i></router-link>
+                            <router-link :to="{ query: { page: 'events-delete', _id: event._id}}"><i class="fa-solid fa-trash-can"></i></router-link>
+                        </span>
                     </div>
                 </li>
             </div>
@@ -43,19 +48,24 @@
 
                 
             }
+        },
+        computed: {
+            subpage() {
+                console.log(router.currentRoute.value.query.subage)
+                return router.currentRoute.value.query.subage;
+            }
         }
     }
 </script>
 
 <style lang="scss" scoped>
-
     .event {
         display: flex;
         flex-direction: row;
         gap: .5rem;
     }
 
-    .event-learn-more {
+    .event-edit {
         margin-left: auto;
     }
 

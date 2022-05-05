@@ -1,8 +1,8 @@
 <template>
     <div class="container">
         <div class="content text-formatting">
-            <h1 class="">Not Authorised</h1>
-            <h3 class="">You are not authorised to view this page</h3>
+            <h1 class="">Page Not Found</h1>
+            <h3 class="">This page could not be found.</h3>
             <p class=" ">Redirecting in {{count}}</p>
         </div>
     </div>

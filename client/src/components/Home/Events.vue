@@ -1,6 +1,5 @@
 <template>
     <div>
-        <h2><i class="fa-solid fa-calendar-days"></i> Events</h2>
         <ul class="event-list">
             <div v-if="events.length == 0">
                 <li>No Events Scheduled</li>
@@ -48,7 +47,6 @@
 </script>
 
 <style lang="scss" scoped>
-
     .event {
         display: flex;
         flex-direction: row;

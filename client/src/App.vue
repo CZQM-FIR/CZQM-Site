@@ -12,11 +12,15 @@
   import Navbar from './components/Navbar.vue'
   import Footer from './components/Footer.vue'
 
+  // Font Awesome
+  import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+
   export default {
     name: 'App',
     components: {
       Navbar,
-      Footer
+      Footer,
+      "font-awesome-icon": FontAwesomeIcon,
     }
   }
 </script>

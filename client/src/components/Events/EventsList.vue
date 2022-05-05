@@ -1,6 +1,6 @@
 <template>
     <div class="box">
-        <h2><i class="fa-solid fa-calendar-day"></i> Scheduled Events</h2>
+        <h2><i class="fa-solid fa-calendar-days"></i> Scheduled Events</h2>
         <ul class="event-list">
             <div v-if="events.length == 0">
                 <li>No Events Scheduled</li>
@@ -87,15 +87,5 @@
     a {
         text-decoration: none;
         color: inherit;
-    }
-
-    .box {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-        border-radius: 1rem;
-        padding: 1rem;
-        margin-top: 1rem;
     }
 </style>

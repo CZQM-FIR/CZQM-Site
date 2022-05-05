@@ -50,8 +50,7 @@
             </div>
             <div class="info-card">
                 <span class="info-header">Events</span>
-                <span class="info-text">
-                </span>
+                <Events />
                 <router-link to="/events" class="cta">See More</router-link>
             </div>
         </div>
@@ -63,64 +62,45 @@
     import axios from 'axios';
     import { ref, unref } from 'vue';
     import {useRoute} from 'vue-router'
+import Events from '../components/Home/Events.vue';
 
     export default {
     name: "Home",
     data: () => {
-        return {
-
-    }
+        return {};
     },
     setup: () => {
-
-        const route = useRoute()
-
+        const route = useRoute();
         // Weather
-
-        const airportList = ['CYHZ', 'CYQM', 'CYQX', 'CYYT']; // You can change the airports here, everything else will update automatically
-
-            let airports = ref([])
-
-            airportList.forEach(async (airport) => {
-                let station = await axios.get(`/api/station/${airport}`, { withCredentials: true })
-                let metar = await axios.get(`/api/metar/${airport}`, { withCredentials: true })
-
-                station = station.data
-                metar = metar.data
-
-                airports.value.push({
-                    icao: airport,
-                    name: station.name,
-                    metar: metar,
-                })
+        const airportList = ["CYHZ", "CYQM", "CYQX", "CYYT"]; // You can change the airports here, everything else will update automatically
+        let airports = ref([]);
+        airportList.forEach(async (airport) => {
+            let station = await axios.get(`/api/station/${airport}`, { withCredentials: true });
+            let metar = await axios.get(`/api/metar/${airport}`, { withCredentials: true });
+            station = station.data;
+            metar = metar.data;
+            airports.value.push({
+                icao: airport,
+                name: station.name,
+                metar: metar,
             });
-
-            // Online Controllers
-
-            let controllers = ref([]);
-            
-            const getOnlineControllers = async () => {
+        });
+        // Online Controllers
+        let controllers = ref([]);
+        const getOnlineControllers = async () => {
             let controllersData = await axios.get("/api/controllers", { withCredentials: true });
-            
             controllersData = controllersData.data;
-
             controllersData.forEach(controller => {
                 let msPerMin = 60 * 1000;
                 let msPerH = msPerMin * 60;
-
-                let elapsed = new Date(Date.now() - Date.parse(controller.logon_time))
-
-                let elapsedMinutes = (Math.round(elapsed/msPerMin) % 60).toLocaleString('en-US', {
-                      minimumIntegerDigits: 2,
-                      useGrouping: false
-                    });
-                    
-                let elapsedHours = Math.round(elapsed/msPerH)
-
-                let time = `${elapsedHours}:${elapsedMinutes}`
-
+                let elapsed = new Date(Date.now() - Date.parse(controller.logon_time));
+                let elapsedMinutes = (Math.round(elapsed / msPerMin) % 60).toLocaleString("en-US", {
+                    minimumIntegerDigits: 2,
+                    useGrouping: false
+                });
+                let elapsedHours = Math.round(elapsed / msPerH);
+                let time = `${elapsedHours}:${elapsedMinutes}`;
                 // let time = Date.parse(controller.logon_time)
-
                 controllers.value.push({
                     cid: controller.cid,
                     callsign: controller.callsign,
@@ -130,17 +110,15 @@
                     frequency: controller.frequency,
                 });
             });
-
-            }
-
-            getOnlineControllers();
-
-            return {
-                airports,
-                controllers
-            }
+        };
+        getOnlineControllers();
+        return {
+            airports,
+            controllers
+        };
     },
-    }
+    components: { Events }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -215,7 +193,7 @@ template {
         display: flex;
         flex-direction: column;
         align-items: center;
-        min-width: 300px;
+        min-width: 25rem;
         width: 30%;
         margin-bottom: 1.5rem;
 
@@ -263,6 +241,7 @@ template {
     padding: 0;
     font-weight: normal;
     font-family: 'Raleway', sans-serif;
+    text-align: left;
 }
 
 .weather-text {

@@ -23,6 +23,16 @@ body, html {
 }
 
 /* Utility Classes */
+.box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        border-radius: 1rem;
+        padding: 1rem;
+        margin-top: 1rem;
+    }
+
 .text-formatting {
     font-family: 'Raleway', sans-serif;
 }
@@ -90,4 +100,11 @@ body, html {
     &:hover {
         filter: brightness(90%);
     }
+}
+
+.cta-row {
+    display: flex;
+    justify-content: left;
+    gap: 1rem;
+    flex-wrap: wrap;
 }

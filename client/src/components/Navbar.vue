@@ -39,7 +39,7 @@
                             </div>
                             Roster
                         </li>
-                        <div v-if="user.loggedIn">
+                        <div v-if="user.loggedIn && user.role.id >= 1">
                             <li class="dropdown-text">
                             <div class="dropdown-icon">
                                 <i class="fa-solid fa-file-lines"></i>
@@ -75,6 +75,12 @@
                                 <i class="fa-solid fa-cloud"></i>
                             </div>
                             <router-link to="/portal">Portal</router-link>
+                        </li>
+                        <li class="dropdown-text" v-if="user.loggedIn && user.role.id == 5">
+                            <div class="dropdown-icon">
+                                <i class="fa-solid fa-bars-progress"></i>
+                            </div>
+                            <router-link to="/staff-portal">Staff Portal</router-link>
                         </li>
                         <li class="dropdown-text">
                             <div class="dropdown-icon">

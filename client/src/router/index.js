@@ -9,6 +9,8 @@ import Logout from '../views/Logout.vue';
 import ControllerPortal from '../views/ControllerPortal.vue';
 import getCookie from '../scripts/getCookie';
 import NotAuthorised from '../views/NotAuthorised.vue';
+import NotFound from '../views/NotFound.vue';
+import StaffPortal from '../views/StaffPortal.vue';
 
 const routes = [
     {
@@ -20,6 +22,16 @@ const routes = [
         path: '/portal',
         name: 'Controller Portal',
         component: ControllerPortal,
+        beforeEnter: (to, from) => {
+            if (!getCookie('jwt')) {
+                return { path: '/noauth' };
+            }
+        }
+    },
+    {
+        path: '/staff-portal',
+        name: 'Staff Portal',
+        component: StaffPortal,
         beforeEnter: (to, from) => {
             if (!getCookie('jwt')) {
                 return { path: '/noauth' };
@@ -66,10 +78,20 @@ const routes = [
             }
         }
     },
+    // Keep these last just for organisation
     {
         path: '/noauth',
         name: 'Not Authorized',
         component: NotAuthorised,
+    },
+    {
+        path: '/notfound',
+        name: 'Page Not Found',
+        component: NotFound,
+    },
+    {
+        path: '/:pathMatch(.*)*',
+        redirect: '/notfound',
     }
 ];
 

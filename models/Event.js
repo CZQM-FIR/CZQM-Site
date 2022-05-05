@@ -20,6 +20,7 @@ const eventSchema = new mongoose.Schema({
     description: String,
     start: RequiredNumber,
     end: RequiredNumber,
+    image: RequiredString
 })
 
 module.exports = mongoose.model('Event', eventSchema)
