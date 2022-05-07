@@ -43,9 +43,9 @@ Permissions are numbered starting at zero (0) through to five (5). Each permissi
 
 1. FIR Staff (Full admin access)
 
-## Contributors ✨
+## Contributors
 
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+Thank you to those who helped build this site: ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
