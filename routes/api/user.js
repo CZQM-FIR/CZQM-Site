@@ -7,6 +7,8 @@ const router = Router();
 router.get('/:jwt', async (req, res) => {
     let user = await User.findOne({ jwt: req.params.jwt });
 
+    if (!user) return res.status(404).clearCookie('jwt')
+
     switch (user.role.id) {
         case 0:
             if (user.role.name !== 'Guest') {

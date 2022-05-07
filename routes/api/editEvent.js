@@ -2,7 +2,7 @@ const { default: axios } = require("axios");
 const { Router } = require("express");
 const Event = require('../../models/Event');
 const multer  = require('multer')
-const upload = multer({ dest: 'eventImages/' })
+const upload = multer({ dest: 'eventImages' })
 const fs = require('fs');
 const binary = require('mongodb').Binary;
 

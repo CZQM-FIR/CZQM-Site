@@ -1,12 +1,12 @@
 <template>	
     <form class="event-form" @submit.prevent>
-		<h1 v-if="_id">Edit Event</h1>
+		<h1 v-if="id">Edit Event</h1>
 		<h1 v-else >New Event</h1>
 		
-		<div v-if="_id">
+		<div v-if="id">
 			<label class="">ID</label>
 			<div class="input">
-				<input type="text" v-model="_id" name="_id" disabled class="input-field">
+				<input type="text" v-model="id" name="_id" disabled class="input-field">
 			</div>
 		</div>
 
@@ -31,7 +31,15 @@
 		</div>
 
 		<div class="input">
-			<input type="file" class="input-field" required name="image" @change="updateImage">
+			<div v-if="!id">
+				<label>Image</label>
+				<input type="file" class="input-field" required name="image" @change="updateImage">
+			</div>
+
+			<div v-else>
+				<label>Image (Only upload to replace current)</label>
+				<input type="file" class="input-field" name="image" @change="updateImage">
+			</div>
 		</div>
 		
 		<br><span class="disclamer">Check for errors before saving.</span>
@@ -39,35 +47,87 @@
 		<div class="cta-row">
 			<button class="cta" @click="saveEvent()">Save Event</button>
 		</div>
+	<div v-if="!id">
+		<span>Note: Clicking the button will save the event, clicking it again will create a duplicate</span>
+	</div>
 	</form>
 
 </template>
 
 <script>
-
+	import { ref } from "vue";
 	import router from "../../router";
 	import axios from 'axios'
 
     export default {
-		computed: {
-            _id() {
-                return router.currentRoute.value.query._id;
-            }
-        },
         data() {
             return {
 				now: new Date(Date.now()).toISOString().substring(0, 16),
-                name: '',
-				description: '',
-				start: '',
-				end: '',
-				image: undefined,
+                // name: '',
+				// description: '',
+				// start: '',
+				// end: '',
+				// image: '',
             }
         },
+		setup: async () => {
+			let id = ref('');
+			let name = ref('');
+			let description = ref('');
+			let start = ref('');
+			let end = ref('');
+			let image = ref('');
+
+			id.value = router.currentRoute.value.query._id
+
+			console.log(1)
+			console.log('id', id.value);
+			console.log('name', name.value);
+			console.log('description', description.value);
+			console.log('start', start.value);
+			console.log('end', end.value);
+			console.log('image', image.value);
+
+			if (id.value) {
+				
+				let event = await axios.get(`/api/event/${id.value}`);
+
+				console.log(event)
+
+				if (!event) return;
+
+				name.value = event.data.name;
+				description.value = event.data.description;
+				image.value = event.data.image;
+				
+				let startDate = new Date(event.data.start);
+				let endDate = new Date(event.data.end);
+
+				start.value = startDate.toISOString().substring(0, 16);
+				end.value = endDate.toISOString().substring(0, 16);
+			}
+
+			console.log(2)
+			console.log('id', id.value);
+			console.log('name', name.value);
+			console.log('description', description.value);
+			console.log('start', start.value);
+			console.log('end', end.value);
+			console.log('image', image.value);
+
+			return {
+				id,
+				name,
+				description,
+				start,
+				end,
+				image
+			}
+		},
         methods: {
             saveEvent() {
 				
-				if (this.name == '' || this.description == '' || this.start == '' || this.end == '' || !this.image) return;
+				if (this.name == '' || this.description == '' || this.start == '' || this.end == '' || this.image == '') return;
 
                 console.log('saving event');
 
@@ -78,14 +138,16 @@
 				data.append('end', this.end);
 				data.append('image', this.image, this.image.name);
 
-				if (this._id) { // If the event already exists or is new
-					data.append('_id', this._id);
+				if (this.id) { // If the event already exists or is new
+					data.append('_id', this.id);
 				} 
 
 				axios.post(`/api/editevent`, data, {
 					headers: {
 						'Content-Type': 'multipart/form-data'
 					}
+				}).then(() => {
+					this.notice = 'Event saved!';
 				})
 
 				console.log('event saved')
