@@ -24,7 +24,7 @@
   "homepage": "https://github.com/GoldenXLence/CZQM-Site#readme",
   "dependencies": {
     "@formkit/vue": "^1.0.0-beta.7-c3de75f",
-    "axios": "^0.26.1",
+    "axios": "^0.27.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.0",
     "cookie-parser": "^1.4.6",
