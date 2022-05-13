@@ -1,15 +1,29 @@
 const { default: axios } = require("axios");
 const { Router } = require("express");
 const Event = require('../../models/Event');
-const multer  = require('multer')
-const upload = multer({ dest: 'eventImages' })
 const fs = require('fs');
-const binary = require('mongodb').Binary;
+const binary = require('mongodb').Binary
+const path = require('path');
+
+const multer = require('multer');
+let storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, path.join(__dirname, '../../uploads'))
+  },
+  filename: function (req, file, cb) {
+    let extArray = file.mimetype.split("/");
+    let extension = extArray[extArray.length - 1];
+
+    let origName = file.originalname.split(".")[0];
+    cb(null, origName + '-' + Date.now()+ '.' +extension)
+  }
+})
+let upload = multer({ storage: storage })
 
 const router = Router();
 
 router.post('/', upload.single('image'), async (req, res) => {
-    let file = {name: req.body.name, file: binary(req.file.data)}
+    let file = {name: req.body.name, file: req.file}
 
     let event;
 
@@ -21,14 +35,14 @@ router.post('/', upload.single('image'), async (req, res) => {
         event.description = req.body.description;
         event.start = new Date(req.body.start).getTime();
         event.end = new Date(req.body.end).getTime();
-        event.image = JSON.stringify(file);
+        event.image = file.file.filename;
     } else {
         event = await new Event({
             name: req.body.name,
             description: req.body.description,
             start: new Date(req.body.start).getTime(),
             end: new Date(req.body.end).getTime(),
-            image: JSON.stringify(file)
+            image: file.file.filename
         })
         await event.save()
         console.log('saved')

@@ -5,7 +5,7 @@ dist-ssr
 *.local
 .vscode
 
-eventImages
+uploads/*
 
 ngrok.bat
 ngrok.exe

@@ -13,6 +13,8 @@
                 <br>
                 <li>Start: {{getEventStartTime(event)}}</li>
                 <li>End: {{getEventEndTime(event)}}</li>
+                <br>
+                {{image}}
             </ul>
         </div>
     </div>
@@ -58,6 +60,9 @@
         computed: {
         _id() {
             return router.currentRoute.value.query._id;
+        },
+        image() {
+            return JSON.parse(this.event.image);
         }
     },
     }
