@@ -9,7 +9,8 @@
     "dev-client": "npm run dev --prefix client",
     "server": "node server.js --ignore 'client/'",
     "build": "npm run build --prefix client",
-    "preview": "npm run build && concurrently \"node server.js --ignore client\" \"npm run preview --prefix client\""
+    "preview": "npm run build && concurrently \"node server.js --ignore client\" \"npm run preview --prefix client\"",
+    "dependancies": "npm install && cd client && npm install"
   },
   "repository": {
     "type": "git",
