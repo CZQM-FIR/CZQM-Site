@@ -41,7 +41,7 @@
                 const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
                 // Format the time/date in DDDDD DD/MM HHMMz format
-                const startTime = `${days[start.getDate()/7]}, ${start.getDate().toLocaleString('en-US', {minimumIntegerDigits: 2})}/${(start.getMonth()+1).toLocaleString('en-US', {minimumIntegerDigits: 2})} ${start.getHours().toLocaleString('en-US', {minimumIntegerDigits: 2})}${start.getMinutes().toLocaleString('en-US', {minimumIntegerDigits: 2})}z`;
+                const startTime = `${days[start.getDay()]}, ${start.getDate().toLocaleString('en-US', {minimumIntegerDigits: 2})}/${(start.getMonth()+1).toLocaleString('en-US', {minimumIntegerDigits: 2})} ${start.getHours().toLocaleString('en-US', {minimumIntegerDigits: 2})}${start.getMinutes().toLocaleString('en-US', {minimumIntegerDigits: 2})}z`;
 
                 return startTime
 
@@ -51,7 +51,7 @@
                 const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
                 // Format the time/date in DDDDD DD/MM HHMMz format
-                const endTime = `${days[end.getDate()/7]}, ${end.getDate().toLocaleString('en-US', {minimumIntegerDigits: 2})}/${(end.getMonth()+1).toLocaleString('en-US', {minimumIntegerDigits: 2})} ${end.getHours().toLocaleString('en-US', {minimumIntegerDigits: 2})}${end.getMinutes().toLocaleString('en-US', {minimumIntegerDigits: 2})}z`;
+                const endTime = `${days[end.getDay()]}, ${end.getDate().toLocaleString('en-US', {minimumIntegerDigits: 2})}/${(end.getMonth()+1).toLocaleString('en-US', {minimumIntegerDigits: 2})} ${end.getHours().toLocaleString('en-US', {minimumIntegerDigits: 2})}${end.getMinutes().toLocaleString('en-US', {minimumIntegerDigits: 2})}z`;
 
                 return endTime
 
