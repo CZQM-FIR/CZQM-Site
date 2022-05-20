@@ -14,7 +14,9 @@
                 <li>Start: {{getEventStartTime(event)}}</li>
                 <li>End: {{getEventEndTime(event)}}</li>
                 <br>
-                <!-- {{image}} -->
+                <div class="image">
+                    <img :src="imageURL" alt="Event Banner">
+                </div>
             </ul>
         </div>
     </div>
@@ -61,8 +63,8 @@
         _id() {
             return router.currentRoute.value.query._id;
         },
-        image() {
-            return JSON.parse(this.event.image);
+        imageURL() {
+            return `/api/file/${this.event.image}`;
         }
     },
     }
@@ -77,5 +79,11 @@
 
     .event-info-list li:not(:last-child) { 
         margin-bottom: .5rem;  
+    }
+
+    .image {
+        margin-left: auto;
+        margin-right: auto;
+        width: 75%;
     }
 </style>

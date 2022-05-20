@@ -15,6 +15,7 @@ const userRoute = require('./routes/api/user');
 const logoutRoute = require('./routes/api/logout');
 const eventRoute = require('./routes/api/event');
 const editEventRoute = require('./routes/api/editEvent');
+const fileRoute = require('./routes/api/file');
 
 // dotenv
 require('dotenv').config();
@@ -40,6 +41,7 @@ app.use('/api/user', userRoute);
 app.use('/api/logout', logoutRoute);
 app.use('/api/event', eventRoute);
 app.use('/api/editevent', editEventRoute);
+app.use('/api/file', fileRoute);
 app.use(fileUpload)
 
 app.all('*', (req, res) => {})

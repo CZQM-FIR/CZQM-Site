@@ -23,8 +23,6 @@ let upload = multer({ storage: storage })
 const router = Router();
 
 router.post('/', upload.single('image'), async (req, res) => {
-    let file = {name: req.body.name, file: req.file}
-
     let event;
 
     if (req.body._id) {
@@ -35,14 +33,14 @@ router.post('/', upload.single('image'), async (req, res) => {
         event.description = req.body.description;
         event.start = new Date(req.body.start).getTime();
         event.end = new Date(req.body.end).getTime();
-        event.image = file.file.filename;
+        event.image = req.file.filename;
     } else {
         event = await new Event({
             name: req.body.name,
             description: req.body.description,
             start: new Date(req.body.start).getTime(),
             end: new Date(req.body.end).getTime(),
-            image: file.file.filename
+            image: req.file.filename
         })
         await event.save()
         console.log('saved')
