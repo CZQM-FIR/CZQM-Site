@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "axios": "0.27.2",
-    "@vitejs/plugin-vue": "2.3.2",
+    "@vitejs/plugin-vue": "2.3.3",
     "node-sass": "7.0.1",
     "sass": "1.51.0",
     "sass-loader": "12.6.0",
