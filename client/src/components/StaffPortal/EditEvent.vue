@@ -41,6 +41,8 @@
 				<input type="file" class="input-field" name="image" @change="updateImage">
 			</div>
 		</div>
+
+		{{notice}}
 		
 		<br><span class="disclamer">Check for errors before saving.</span>
 
@@ -63,6 +65,7 @@
         data() {
             return {
 				now: new Date(Date.now()).toISOString().substring(0, 16),
+				notice: ''
                 // name: '',
 				// description: '',
 				// start: '',

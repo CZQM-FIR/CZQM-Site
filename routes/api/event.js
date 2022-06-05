@@ -35,4 +35,17 @@ router.get('/:eventID', async (req, res) => {
     }
 });
 
+router.delete('/:eventID', async (req, res) => {
+    try {
+        await Event.deleteOne({_id: req.params.eventID});
+        res
+            .status(200)
+            .json({ message: 'Event deleted' });
+    } catch (err) {
+        res
+            .status(500)
+            .json({ message: err.message });
+    }
+})
+
 module.exports = router

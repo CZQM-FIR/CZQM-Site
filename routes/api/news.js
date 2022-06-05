@@ -35,4 +35,17 @@ router.get('/:newsID', async (req, res) => {
     }
 });
 
+router.delete('/:newsID', async (req, res) => {
+    try {
+        await News.deleteOne({_id: req.params.newsID});
+        res
+            .status(200)
+            .json({ message: 'Article deleted' });
+    } catch (err) {
+        res
+            .status(500)
+            .json({ message: err.message });
+    }
+})
+
 module.exports = router
