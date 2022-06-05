@@ -49,6 +49,25 @@ router.post('/', upload.single('image'), async (req, res) => {
             image: req.file.filename
         })
         await event.save()
+
+        try {
+            await axios.post('https://discord.com/api/webhooks/982999182711341176/ljflUw58vKKTCaH_IabGY4h0kq835zWfwvcnxN8cF8cfBYOOwoT9O6l-klo8YD3o2-pS?wait=true', {
+            "embeds": [
+		        {
+		        	"title": `New Event: ${req.body.name}`,
+		        	"description": `${req.body.description.substring(0, 50)}... [Read More](https://localhost:3000/events/${event._id})`,
+		        	"timestamp": `${new Date(Date.now()).toISOString()}`,
+		        	"author": {
+		        		"name": "CZQM FIR Event Feed",
+		        		"url": "https://czqm.ca/events"
+		        	}
+		        }
+	        ]
+            })
+        } catch (err) {
+            console.error(err);
+        }
+
         res
             .status(200)
             .json({

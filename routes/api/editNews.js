@@ -45,6 +45,25 @@ router.post('/', upload.none(), async (req, res) => {
             date: new Date(req.body.date).getTime(),
         })
         await article.save()
+
+        try {
+            await axios.post('https://discord.com/api/webhooks/982999182711341176/ljflUw58vKKTCaH_IabGY4h0kq835zWfwvcnxN8cF8cfBYOOwoT9O6l-klo8YD3o2-pS?wait=true', {
+            "embeds": [
+		        {
+		        	"title": `${req.body.name}`,
+		        	"description": `${req.body.text.substring(0, 50)}... [Read More](https://localhost:3000/news/${article._id})`,
+		        	"timestamp": `${new Date(Date.now()).toISOString()}`,
+		        	"author": {
+		        		"name": "CZQM FIR News Feed",
+		        		"url": "https://czqm.ca/news"
+		        	}
+		        }
+	        ]
+            })
+        } catch (err) {
+            console.error(err);
+        }
+
         res
             .status(200)
             .json({
