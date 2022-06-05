@@ -11,8 +11,8 @@
             <ul class="event-info-list">
                 <li>{{event.description}}</li>
                 <br>
-                <li>Start: {{getEventStartTime(event)}}</li>
-                <li>End: {{getEventEndTime(event)}}</li>
+                <li><i>Start: {{getEventStartTime(event)}}</i></li>
+                <li><i>End: {{getEventEndTime(event)}}</i></li>
                 <br>
                 <div class="image">
                     <img :src="imageURL" alt="Event Banner">

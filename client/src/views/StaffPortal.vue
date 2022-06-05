@@ -8,6 +8,8 @@
                 <div class="grid-column">
                     <Events v-if="page == 'events'" class="grid-item"/>
                     <EditEvent v-else-if="page == 'events-edit'" class="grid-item"/>
+                    <News v-else-if="page == 'news'" class="grid-item"/>
+                    <EditNews v-else-if="page == 'news-edit'" class="grid-item"/>
                     <span v-else class="grid-item">Select a function using the buttons to the left</span>
                 </div>
             </div>
@@ -20,6 +22,8 @@ import router from "../router"
 import Navigation from "../components/StaffPortal/Navigation.vue";
 import Events from "../components/StaffPortal/Events.vue";
 import EditEvent from "../components/StaffPortal/EditEvent.vue";
+import News from "../components/StaffPortal/News.vue";
+import EditNews from "../components/StaffPortal/EditNews.vue";
 
     export default {
         computed: {
@@ -27,7 +31,7 @@ import EditEvent from "../components/StaffPortal/EditEvent.vue";
                 return router.currentRoute.value.query.page;
             }
         },
-        components: { Navigation, Events, EditEvent }
+        components: { Navigation, Events, EditEvent, News, EditNews }
     }
 </script>
 

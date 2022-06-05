@@ -16,6 +16,8 @@ const logoutRoute = require('./routes/api/logout');
 const eventRoute = require('./routes/api/event');
 const editEventRoute = require('./routes/api/editEvent');
 const fileRoute = require('./routes/api/file');
+const newsRoute = require('./routes/api/news');
+const editNewsRoute = require('./routes/api/editNews');
 
 // dotenv
 require('dotenv').config();
@@ -42,6 +44,8 @@ app.use('/api/logout', logoutRoute);
 app.use('/api/event', eventRoute);
 app.use('/api/editevent', editEventRoute);
 app.use('/api/file', fileRoute);
+app.use('/api/news', newsRoute);
+app.use('/api/editnews', editNewsRoute);
 app.use(fileUpload)
 
 app.all('*', (req, res) => {})

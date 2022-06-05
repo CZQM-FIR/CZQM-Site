@@ -44,8 +44,7 @@
             </div>
             <div class="info-card">
                 <span class="info-header">News</span>
-                <span class="info-text">
-                </span>
+                <News />
                 <router-link to="/news" class="cta">See More</router-link>
             </div>
             <div class="info-card">
@@ -62,7 +61,8 @@
     import axios from 'axios';
     import { ref, unref } from 'vue';
     import {useRoute} from 'vue-router'
-import Events from '../components/Home/Events.vue';
+    import Events from '../components/Home/Events.vue';
+    import News from '../components/Home/News.vue';
 
     export default {
     name: "Home",
@@ -117,7 +117,10 @@ import Events from '../components/Home/Events.vue';
             controllers
         };
     },
-    components: { Events }
+    components: { 
+        Events,
+        News
+    }
 }
 </script>
 

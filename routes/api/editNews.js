@@ -1,6 +1,6 @@
 const { default: axios } = require("axios");
 const { Router } = require("express");
-const Event = require('../../models/Event');
+const News = require('../../models/News');
 const fs = require('fs');
 const binary = require('mongodb').Binary
 const path = require('path');
@@ -22,37 +22,33 @@ let upload = multer({ storage: storage })
 
 const router = Router();
 
-router.post('/', upload.single('image'), async (req, res) => {
-    let event;
+router.post('/', upload.none(), async (req, res) => {
+    let article;
 
     if (req.body._id) {
-        event = await Event.findOne({
+        article = await News.findOne({
             _id: req.body._id
         })
-        event.name = req.body.name;
-        event.description = req.body.description;
-        event.start = new Date(req.body.start).getTime();
-        event.end = new Date(req.body.end).getTime();
-        event.image = req.file.filename;
-        event.save()
+        article.name = req.body.name;
+        article.text = req.body.text;
+        article.date = new Date(req.body.date).getTime();
+        await article.save()
         res
             .status(200)
             .json({
-                message: 'Event Edited Successfully',
+                message: 'Article Edited Successfully',
             })
     } else {
-        event = await new Event({
+        article = await new News({
             name: req.body.name,
-            description: req.body.description,
-            start: new Date(req.body.start).getTime(),
-            end: new Date(req.body.end).getTime(),
-            image: req.file.filename
+            text: req.body.text,
+            date: new Date(req.body.date).getTime(),
         })
-        await event.save()
+        await article.save()
         res
             .status(200)
             .json({
-                message: 'Event Created Successfully',
+                message: 'Article Created Successfully',
             })
         console.log('saved')
     }

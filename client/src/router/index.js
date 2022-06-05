@@ -1,9 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from '../views/Home.vue';
 import Events from '../views/Events.vue';
-import Privacy from '../views/Privacy.vue';
-import Branding from '../views/Branding.vue';
-import Staff from '../views/Staff.vue';
 import Auth from '../views/Auth.vue';
 import Logout from '../views/Logout.vue';
 import ControllerPortal from '../views/ControllerPortal.vue';
@@ -11,6 +8,7 @@ import getCookie from '../scripts/getCookie';
 import NotAuthorised from '../views/NotAuthorised.vue';
 import NotFound from '../views/NotFound.vue';
 import StaffPortal from '../views/StaffPortal.vue';
+import News from '../views/News.vue';
 
 const routes = [
     {
@@ -54,21 +52,6 @@ const routes = [
         component: Events,
     },
     {
-        path: '/privacy',
-        name: 'Privacy Policy',
-        component: Privacy,
-    },
-    {
-        path: '/branding',
-        name: 'Branding Guidelines',
-        component: Branding,
-    },
-    {
-        path: '/staff',
-        name: 'Staff',
-        component: Staff,
-    },
-    {
         path: '/logout',
         name: 'Logout',
         component: Logout,
@@ -77,6 +60,11 @@ const routes = [
                 return { path: '/noauth' };
             }
         }
+    },
+    {
+        path: '/news',
+        name: 'News',
+        component: News,
     },
     // Keep these last just for organisation
     {
