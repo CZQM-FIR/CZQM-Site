@@ -55,7 +55,7 @@ router.post('/', upload.single('image'), async (req, res) => {
             "embeds": [
 		        {
 		        	"title": `New Event: ${req.body.name}`,
-		        	"description": `${req.body.description.substring(0, 50)}... [Read More](https://localhost:3000/events/${event._id})`,
+		        	"description": `${req.body.description.substring(0, 50)}... [Read More](https://localhost:3000/events?_id=${event._id})`,
 		        	"timestamp": `${new Date(Date.now()).toISOString()}`,
 		        	"author": {
 		        		"name": "CZQM FIR Event Feed",

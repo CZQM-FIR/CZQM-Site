@@ -51,7 +51,7 @@ router.post('/', upload.none(), async (req, res) => {
             "embeds": [
 		        {
 		        	"title": `${req.body.name}`,
-		        	"description": `${req.body.text.substring(0, 50)}... [Read More](https://localhost:3000/news/${article._id})`,
+		        	"description": `${req.body.text.substring(0, 50)}... [Read More](https://localhost:3000/news?_id=${article._id})`,
 		        	"timestamp": `${new Date(Date.now()).toISOString()}`,
 		        	"author": {
 		        		"name": "CZQM FIR News Feed",
