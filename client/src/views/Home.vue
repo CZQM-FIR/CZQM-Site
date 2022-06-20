@@ -88,7 +88,7 @@
         // Online Controllers
         let controllers = ref([]);
         const getOnlineControllers = async () => {
-            let controllersData = await axios.get("/api/controllers", { withCredentials: true });
+            let controllersData = await axios.get("/api/liveControllers", { withCredentials: true });
             controllersData = controllersData.data;
             controllersData.forEach(controller => {
                 let msPerMin = 60 * 1000;

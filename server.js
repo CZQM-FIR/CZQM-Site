@@ -8,7 +8,7 @@ const fileUpload = require('express-fileupload');
 const bodyParser = require('body-parser');
 const metarRoute = require('./routes/api/metar');
 const stationRoute = require('./routes/api/station');
-const controllersRoute = require('./routes/api/controllers');
+const liveControllersRoute = require('./routes/api/liveControllers');
 const loginRoute = require('./routes/api/login');
 const cookieParser = require('cookie-parser');
 const userRoute = require('./routes/api/user');
@@ -37,7 +37,7 @@ mongoose
 
 app.use('/api/metar', metarRoute);
 app.use('/api/station', stationRoute);
-app.use('/api/controllers', controllersRoute);
+app.use('/api/liveControllers', liveControllersRoute);
 app.use('/api/login', loginRoute);
 app.use('/api/user', userRoute);
 app.use('/api/logout', logoutRoute);
