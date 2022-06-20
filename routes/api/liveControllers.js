@@ -17,6 +17,11 @@ router.get('/', async (req, res) => {
             data.push(...filteredControllers);
         });
 
+        data.forEach(c => {
+            c.frequency = String(Number(c.frequency).toFixed(3));
+            console.log(c)
+        })
+
         res.status(200).json(data);
     } catch (error) {
         res.status(500).json({ message: error.message });
