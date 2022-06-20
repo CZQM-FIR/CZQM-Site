@@ -73,7 +73,6 @@ router.post('/', upload.single('image'), async (req, res) => {
             .json({
                 message: 'Event Created Successfully',
             })
-        console.log('saved')
     }
 })
 module.exports = router

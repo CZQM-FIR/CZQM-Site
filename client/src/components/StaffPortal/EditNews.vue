@@ -68,8 +68,6 @@ export default {
 
             let article = await axios.get(`/api/news/${id.value}`);
 
-            console.log(article)
-
             if (!article) return;
 
             name.value = article.data.name;
@@ -92,8 +90,6 @@ export default {
 
             if (this.name == '' || this.description == '' || this.start == '' || this.end == '' || this.image == '') return;
 
-            console.log('saving article');
-
             let data = new FormData();
             data.append('name', `${this.name}`);
             data.append('text', this.text);
@@ -110,8 +106,6 @@ export default {
             }).then(() => {
                 this.notice = 'Article saved!';
             })
-
-            console.log('article saved')
         }
     }
 }

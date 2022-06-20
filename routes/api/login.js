@@ -66,8 +66,6 @@ router.post('/:code', async (req, res) => {
     // set perms
     // solos
     //t
-
-    // console.log(vatsimUser.data.data.cid);
 })
 
 module.exports = router;

@@ -83,19 +83,9 @@
 
 			id.value = router.currentRoute.value.query._id
 
-			console.log(1)
-			console.log('id', id.value);
-			console.log('name', name.value);
-			console.log('description', description.value);
-			console.log('start', start.value);
-			console.log('end', end.value);
-			console.log('image', image.value);
-
 			if (id.value) {
 				
 				let event = await axios.get(`/api/event/${id.value}`);
-
-				console.log(event)
 
 				if (!event) return;
 
@@ -110,14 +100,6 @@
 				end.value = endDate.toISOString().substring(0, 16);
 			}
 
-			console.log(2)
-			console.log('id', id.value);
-			console.log('name', name.value);
-			console.log('description', description.value);
-			console.log('start', start.value);
-			console.log('end', end.value);
-			console.log('image', image.value);
-
 			return {
 				id,
 				name,
@@ -131,8 +113,6 @@
             saveEvent() {
 				
 				if (this.name == '' || this.description == '' || this.start == '' || this.end == '' || this.image == '') return;
-
-                console.log('saving event');
 
 				let data = new FormData();
 				data.append('name', `${this.name}`);
@@ -152,8 +132,6 @@
 				}).then(() => {
 					this.notice = 'Event saved!';
 				})
-
-				console.log('event saved')
             },
 			updateImage(e) {
 				let files = e.target.files;

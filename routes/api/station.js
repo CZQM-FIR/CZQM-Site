@@ -22,7 +22,7 @@ router.get('/:icao', async (req, res) => {
                 return res.status(200).json(station); // Return the station
             } else {
                 let stationData = (await axios.get(`https://avwx.rest/api/station/${icao}?options=&token=${avwx_token}`)).data
-                console.log(`Fetching new airport data for ${icao}`)
+                console.info(`Fetching new airport data for ${icao}`)
 
                 let stationTime = Date.now();
                 let stationICAO = stationData.icao
@@ -45,7 +45,7 @@ router.get('/:icao', async (req, res) => {
             }
         } else {
             let stationData = (await axios.get(`https://avwx.rest/api/station/${icao}?options=&token=${avwx_token}`)).data
-            console.log(`Fetching new airport data for ${icao}`)
+            console.info(`Fetching new airport data for ${icao}`)
 
             let stationTime = Date.now();
             let stationICAO = stationData.icao

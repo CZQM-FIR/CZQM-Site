@@ -22,7 +22,6 @@ router.get('/:fileID', async (req, res) => {
             .set('Content-Type', (await (await filetype).fileTypeFromBuffer(file)).mime)
             .send(file);
         
-            console.log((await (await filetype).fileTypeFromBuffer(file)).mime)
     } catch (err) {
         res
             .status(404)

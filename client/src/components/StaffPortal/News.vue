@@ -50,7 +50,6 @@ export default {
     },
     computed: {
         subpage() {
-            console.log(router.currentRoute.value.query.subage)
             return router.currentRoute.value.query.subage;
         }
     }

@@ -69,7 +69,6 @@ router.post('/', upload.none(), async (req, res) => {
             .json({
                 message: 'Article Created Successfully',
             })
-        console.log('saved')
     }
 })
 module.exports = router
