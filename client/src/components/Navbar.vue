@@ -37,7 +37,9 @@
                             <div class="dropdown-icon">
                                 <i class="fa-solid fa-rectangle-list"></i>
                             </div>
-                            Roster
+                            <router-link to="/roster">
+                                Roster
+                            </router-link>
                         </li>
                         <div v-if="user.loggedIn && user.role.id >= 1">
                             <li class="dropdown-text">
