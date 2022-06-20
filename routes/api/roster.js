@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
     controllers.forEach(c => {
         controllerList.push({
             name: c.personal.name_full,
-            id: c.cid,
+            cid: c.cid,
             rating: c.vatsim.rating.short,
             roster: c.roster,
             role: c.role,
