@@ -35,13 +35,13 @@ Permissions are numbered starting at zero (0) through to five (5). Each permissi
 
 1. Visiting Controller (Access to controller resources and signing up for events)
 
-1. Home Controller (Same permissions as visiting)
+2. Home Controller (Same permissions as visiting)
 
-1. Mentor
+3. Mentor
 
-1. Instructor
+4. Instructor
 
-1. FIR Staff (Full admin access)
+5. FIR Staff (Full admin access)
 
 ## Contributors
 
