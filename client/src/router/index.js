@@ -9,6 +9,7 @@ import NotAuthorised from '../views/NotAuthorised.vue';
 import NotFound from '../views/NotFound.vue';
 import StaffPortal from '../views/StaffPortal.vue';
 import News from '../views/News.vue';
+import Roster from '../views/Roster.vue';
 
 const routes = [
     {
@@ -65,6 +66,11 @@ const routes = [
         path: '/news',
         name: 'News',
         component: News,
+    },
+    {
+        path: '/roster',
+        name: 'Roster',
+        component: Roster,
     },
     // Keep these last just for organisation
     {
