@@ -15,6 +15,7 @@
                     <th>APP</th>
                     <th>CTR</th>
                     <th>Status</th>
+                    <th>Role</th>
                 </tr>
             </thead>
             <tbody v-if="controllers.length > 0">
@@ -24,17 +25,18 @@
                     <td>{{ controller.cid }}</td>
                     <td>{{ controller.rating }}</td>
 
-                    <td :style="certificationStyle(controller.gnd)">GND</td>
-                    <td :style="certificationStyle(controller.twr)">TWR</td>
-                    <td :style="certificationStyle(controller.app)">APP</td>
-                    <td :style="certificationStyle(controller.ctr)">CTR</td>
+                    <td :style="certificationStyle(controller.roster.gnd)">GND</td>
+                    <td :style="certificationStyle(controller.roster.twr)">TWR</td>
+                    <td :style="certificationStyle(controller.roster.app)">APP</td>
+                    <td :style="certificationStyle(controller.roster.ctr)">CTR</td>
 
-                    <td>{{ controller.status }}</td>
+                    <td>{{ controller.roster.status == 1 ? 'Active' : controller.roster.status == 0 ? 'On Leave' : 'Inactive' }}</td>
+                    <td>{{ controller.role.name }}</td>
                 </tr>
             </tbody>
             <tbody v-else>
                 <tr>
-                    <td colspan="8" style="text-align: center">No controllers found</td>
+                    <td colspan="9" style="text-align: center">No controllers found</td>
                 </tr>
             </tbody>
         </table>
@@ -43,10 +45,15 @@
 
 <script>
 import { ref } from 'vue'
+import { get } from 'axios'
 
     export default {
         setup: async () => {
             let controllers = ref([])
+
+            await get('/api/roster').then(response => {
+                controllers.value = response.data
+            })
 
             return {
                 controllers
@@ -76,6 +83,13 @@ import { ref } from 'vue'
 
 <style lang="scss" scoped>
 
+
+.container {
+    height: calc(100vh - var(--nav-size));
+    padding-top: 5rem;
+    justify-content: flex-start;
+}
+
 .roster {
     border-collapse: collapse;
     font-size: 1rem;
@@ -84,7 +98,7 @@ import { ref } from 'vue'
 }
 
 .roster thead tr {
-    background-color: #009879;
+    background-color: var(--nav-colour);
     color: white;
     text-align: left;
     font-weight: bold;
@@ -104,7 +118,7 @@ import { ref } from 'vue'
 }
 
 .roster tbody tr:last-of-type {
-    border-bottom: 2px solid #009879;
+    border-bottom: 2px solid var(--nav-colour);
 }
 
 .container {

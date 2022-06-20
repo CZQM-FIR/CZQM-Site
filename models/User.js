@@ -40,7 +40,7 @@ const userSchema = new mongoose.Schema({
         twr: {type: Number, default: -1},
         app: {type: Number, default: -1},
         ctr: {type: Number, default: -1},
-        status: {type: Boolean, default: true}
+        status: {type: Number, default: 1}
     }
 })
 
