@@ -5,7 +5,12 @@ dist-ssr
 *.local
 .vscode
 
-uploads/*
 
 ngrok.bat
 ngrok.exe
+
+# Client
+packages/*/dist
+
+# Server
+packages/server/uploads/*
