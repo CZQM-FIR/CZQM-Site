@@ -4,6 +4,7 @@
         <div class="cta-row">
             <router-link :to="{ query: { page: 'events' }}" class="cta" >Events</router-link>
             <router-link :to="{ query: { page: 'news' }}" class="cta" >News</router-link>
+            <router-link :to="{ query: { page: 'users' }}" class="cta" >User Management</router-link>
         </div>
     </div>
 </template>
