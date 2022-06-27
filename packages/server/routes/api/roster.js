@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
 
     controllers = controllers.filter(c => c.role.id > 0)
 
-    let controllerList = []
+    const controllerList = []
 
     controllers.forEach(c => {
         controllerList.push({
