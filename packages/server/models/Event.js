@@ -10,17 +10,12 @@ const RequiredNumber = {
     required: true,
 }
 
-const RequiredObject = {
-    type: Object,
-    required: true,
-}
-
 const eventSchema = new mongoose.Schema({
     name: RequiredString,
     description: String,
     start: RequiredNumber,
     end: RequiredNumber,
-    image: RequiredString
+    image: RequiredString,
 })
 
 module.exports = mongoose.model('Event', eventSchema)

@@ -10,11 +10,6 @@ const RequiredNumber = {
     required: true,
 }
 
-const RequiredObject = {
-    type: Object,
-    required: true,
-}
-
 const newsSchema = new mongoose.Schema({
     name: RequiredString,
     date: RequiredNumber,

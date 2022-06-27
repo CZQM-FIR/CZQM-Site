@@ -1,71 +1,73 @@
-const router = require('express').Router();
-const axios = require('axios');
-const User = require('../../models/User');
-const jwt = require('jsonwebtoken');
+const router = require("express").Router();
+const axios = require("axios");
+const jwt = require("jsonwebtoken");
+const User = require("../../models/User");
 
-router.post('/:code', async (req, res) => {
-    const { code } = req.params;
+router.post("/:code", async (req, res) => {
+  const { code } = req.params;
 
-    const result = await axios.post(`https://auth-dev.vatsim.net/oauth/token`, {
-        grant_type: 'authorization_code',
-        client_id: process.env.CLIENT_ID,
-        client_secret: process.env.CLIENT_SECRET,
-        redirect_uri: 'http://localhost:3000/auth',
-        code
+  const result = await axios.post(`https://auth-dev.vatsim.net/oauth/token`, {
+    grant_type: "authorization_code",
+    client_id: process.env.CLIENT_ID,
+    client_secret: process.env.CLIENT_SECRET,
+    redirect_uri: "http://localhost:3000/auth",
+    code,
+  });
+
+  const vatsimUser = await axios.get(`https://auth-dev.vatsim.net/api/user`, {
+    headers: {
+      Authorization: `Bearer ${result.data.access_token}`,
+      Accept: "application/json",
+    },
+  });
+
+  const { cid, personal, vatsim } = vatsimUser.data.data;
+
+  const user = await User.findOneAndUpdate(
+    { cid },
+    {
+      cid,
+      access_token: result.data.access_token,
+      refresh_token: result.data.refresh_token,
+      expire: result.data.expires_in + Date.now(),
+      personal,
+      vatsim,
+    },
+    {
+      new: true,
+      upsert: true,
+    }
+  );
+
+  const token = jwt.sign(
+    {
+      cid,
+      name: personal.name_full,
+    },
+    process.env.CLIENT_SECRET,
+    {
+      expiresIn: result.data.expires_in,
+    }
+  );
+
+  user.jwt = token;
+  user.save();
+
+  res
+    .cookie("jwt", token, {
+      maxAge: Math.round(Date.now() / 1000) + result.data.expires_in,
     })
+    .status(200)
+    .json({
+      message: "Login Successful",
+    });
 
-    const vatsimUser = await axios.get(`https://auth-dev.vatsim.net/api/user`, {
-        headers: {
-            'Authorization': `Bearer ${result.data.access_token}`,
-            'Accept': 'application/json'
-        }
-    })
+  // TODO: Build user management page
+  // list of all users
 
-    const { cid, personal, vatsim, oauth } = vatsimUser.data.data;
-
-    const user = await User.findOneAndUpdate(
-        { cid },
-        {
-            cid,
-            access_token: result.data.access_token,
-            refresh_token: result.data.refresh_token,
-            expire: result.data.expires_in + Date.now(),
-            personal,
-            vatsim,
-        },
-        {
-            new: true,
-            upsert: true,
-        })
-
-    const token = jwt.sign(
-        {
-            cid,
-            name: personal.name_full
-        },
-        process.env.CLIENT_SECRET,
-        {
-            expiresIn: result.data.expires_in,
-
-        }
-    );
-
-    user.jwt = token;
-    user.save()
-
-    res
-        .cookie('jwt', token, { maxAge: Math.round(Date.now() / 1000) + result.data.expires_in })
-        .status(200)
-        .json({
-            message: 'Login Successful',
-        })
-
-    // TODO: Build user management page
-    // list of all users
-
-    // set perms
-    // solos
-    //t
-})
+  // set perms
+  // solos
+  // t
+});
 
 module.exports = router;
