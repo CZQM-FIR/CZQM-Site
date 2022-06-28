@@ -3,59 +3,76 @@ const User = require('../../models/User')
 
 const router = Router()
 
-router.get('/:jwt', async (req, res) => {
-    const user = await User.findOne({ jwt: req.params.jwt })
-
-    if (!user) return res.status(404).clearCookie('jwt')
+/**
+ * Returns the proper role name for the user
+ * @param {User} user A user from the mongo database
+ * @returns The new name of the role
+ */
+const fixRoleName = (user) => {
+    let roleName = ''
 
     switch (user.role.id) {
         case 0:
             if (user.role.name !== 'Guest') {
-                user.role.name = 'Guest'
+                roleName = 'Guest'
                 user.save()
             }
             break
 
         case 1:
             if (user.role.name !== 'Visiting Controller') {
-                user.role.name = 'Visiting Controller'
+                roleName = 'Visiting Controller'
                 user.save()
             }
             break
 
         case 2:
             if (user.role.name !== 'Home Controller') {
-                user.role.name = 'Home Controller'
+                roleName = 'Home Controller'
                 user.save()
             }
             break
 
         case 3:
             if (user.role.name !== 'Mentor') {
-                user.role.name = 'Mentor'
+                roleName = 'Mentor'
                 user.save()
             }
             break
 
         case 4:
             if (user.role.name !== 'Instructor') {
-                user.role.name = 'Instructor'
+                roleName = 'Instructor'
                 user.save()
             }
             break
 
         case 5:
             if (user.role.name !== 'FIR Staff') {
-                user.role.name = 'FIR Staff'
+                roleName = 'FIR Staff'
                 user.save()
             }
             break
 
         default:
-            user.role.id = 0
-            user.role.name = 'Guest'
-            user.save()
+            //     user.role.id = 0
+            //     user.role.name = 'Guest'
+            //     user.save()
             break
+    }
+
+    return roleName
+}
+
+router.get('/:jwt', async (req, res) => {
+    const user = await User.findOne({ jwt: req.params.jwt })
+
+    if (!user) return res.status(404).clearCookie('jwt')
+
+    if (!user.role.id || user.role.id === 0) {
+        user.role.name = 'Guest'
+    } else {
+        user.role.name = fixRoleName(user)
     }
 
     if (!user) {
@@ -71,13 +88,26 @@ router.get('/:jwt', async (req, res) => {
 })
 
 router.all('/', async (req, res) => {
-    try {
-        const message = 'You must provide a JWT'
+    const users = User.find()
 
-        res.status(404).json(message)
-    } catch (error) {
-        res.status(500).json({ message: error.message })
-    }
+    if (!users) return res.status(404)
+
+    // eslint-disable-next-line prefer-const
+    let usersReturn = []
+
+    ;(await users).forEach((user) => {
+        usersReturn.push({
+            cid: user.cid,
+            personal: user.personal,
+            role: user.role,
+            roster: user.roster,
+            vatsim: user.vatsim,
+        })
+    })
+
+    return res.status(200).json({
+        users: usersReturn,
+    })
 })
 
 module.exports = router
