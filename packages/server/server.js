@@ -20,6 +20,7 @@ const fileRoute = require('./routes/api/file')
 const newsRoute = require('./routes/api/news')
 const editNewsRoute = require('./routes/api/editNews')
 const rosterRoute = require('./routes/api/roster')
+const editUserRoute = require('./routes/api/editUser')
 
 // dotenv
 require('dotenv').config()
@@ -49,6 +50,7 @@ app.use('/api/file', fileRoute)
 app.use('/api/news', newsRoute)
 app.use('/api/editnews', editNewsRoute)
 app.use('/api/roster', rosterRoute)
+app.use('/api/edituser', editUserRoute)
 app.use(fileUpload)
 
 app.all('*', () => {})

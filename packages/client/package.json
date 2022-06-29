@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview --port=8080 --host"
+    "preview": "vite preview --port=8080 --host",
+    "dependencies": "npm i"
   },
   "dependencies": {
     "@formkit/vue": "^1.0.0-beta.7-c3de75f",
