@@ -4,5 +4,12 @@
   "devDependencies": {
     "lerna": "^5.1.4",
     "nx": "^14.3.6"
+  },
+  "repository": {
+    "url": "https://github.com/CZQM-FIR/CZQM-Site.git",
+    "type": "git"
+  },
+  "scripts": {
+    "dependencies": "npm i && lerna run dependencies"
   }
 }
