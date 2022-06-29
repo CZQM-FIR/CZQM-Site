@@ -3,8 +3,14 @@
     <table class="roster">
       <thead>
         <tr>
-          <th colspan="10" style="text-align: center">Click to increment</th>
+          <th colspan="10" style="text-align: center">
+            Click to increment
+            <button v-on:click="copyToClipboard(emails.join(', '))">
+              Copy full list of emails
+            </button>
+          </th>
         </tr>
+
         <tr class="table-header">
           <th>Name (Click to copy email)</th>
           <th>CID</th>
@@ -111,9 +117,16 @@ export default {
       'Staff',
     ]);
 
+    let emails = ref([]);
+
+    users.value.forEach((user) => {
+      emails.value.push(user.personal.email);
+    });
+
     return {
       users,
       roles,
+      emails,
     };
   },
   methods: {
