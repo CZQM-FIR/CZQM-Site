@@ -190,7 +190,7 @@ template {
 
 .hero {
   /* width: 100%; */
-  height: calc(100vh - var(--nav-size));
+  min-height: calc(100vh - var(--nav-size));
   background: linear-gradient(var(--overlay-colour), var(--overlay-colour)),
     url('../assets/images/hero-bg.jpg') no-repeat center / cover;
   color: white;
@@ -292,9 +292,5 @@ template {
   font-family: 'Roboto Mono', monospace;
   margin: 0;
   padding: 0;
-}
-
-.slideshow {
-  aspect-ratio: 16 / 9;
 }
 </style>

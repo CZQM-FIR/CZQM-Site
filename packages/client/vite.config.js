@@ -1,5 +1,5 @@
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -9,7 +9,11 @@ export default defineConfig({
       '/api': {
         target: 'http://localhost:3500',
         changeOrigin: true,
-      }
-    }
-  }
-})
+      },
+      '/files': {
+        target: 'http://localhost:3500',
+        changeOrigin: true,
+      },
+    },
+  },
+});

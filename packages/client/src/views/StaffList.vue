@@ -70,7 +70,7 @@ export default {
 }
 
 .container {
-  height: calc(100vh - var(--nav-size));
+  min-height: calc(100vh - var(--nav-size));
   padding-top: 5rem;
   justify-content: flex-start;
   flex-direction: column;

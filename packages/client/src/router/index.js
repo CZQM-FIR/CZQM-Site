@@ -11,6 +11,10 @@ import StaffPortal from '../views/StaffPortal.vue';
 import News from '../views/News.vue';
 import Roster from '../views/Roster.vue';
 import Staff from '../views/StaffList.vue';
+import ControllerResources from '../views/ControllerResources.vue';
+import ContactUs from '../views/ContactUs.vue';
+
+import getUser from '../scripts/getUser';
 
 const routes = [
   {
@@ -32,8 +36,16 @@ const routes = [
     path: '/staff-portal',
     name: 'Staff Portal',
     component: StaffPortal,
-    beforeEnter: (to, from) => {
+    beforeEnter: async (to, from) => {
       if (!getCookie('jwt')) {
+        return { path: '/noauth' };
+      }
+
+      try {
+        const user = await getUser(getCookie('jwt'));
+        console.log(user);
+        if (user.role.id < 5) throw 401;
+      } catch (error) {
         return { path: '/noauth' };
       }
     },
@@ -77,6 +89,21 @@ const routes = [
     path: '/staff',
     name: 'Staff',
     component: Staff,
+  },
+  {
+    path: '/resources',
+    name: 'Controller Resources',
+    component: ControllerResources,
+    // beforeEnter: (to, from) => {
+    //   if (!getCookie('jwt')) {
+    //     return { path: '/noauth' };
+    //   }
+    // },
+  },
+  {
+    path: '/contact',
+    name: 'Contact Us',
+    component: ContactUs,
   },
   // Keep these last just for organisation
   {

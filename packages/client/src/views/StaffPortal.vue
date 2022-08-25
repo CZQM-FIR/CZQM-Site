@@ -13,6 +13,11 @@
           <EditNews v-else-if="page == 'news-edit'" class="grid-item" />
           <DeleteNews v-else-if="page == 'news-delete'" class="grid-item" />
           <UserManagement v-else-if="page == 'users'" class="grid-item" />
+          <div v-else-if="page == 'sector-files'">
+            <SectorFiles sectorFile="0" class="grid-item" />
+            <SectorFiles sectorFile="1" class="grid-item" />
+            <SectorFiles sectorFile="2" class="grid-item" />
+          </div>
           <span v-else class="grid-item"
             >Select a function using the buttons to the left</span
           >
@@ -23,15 +28,16 @@
 </template>
 
 <script>
-import router from "../router";
-import Navigation from "../components/StaffPortal/Navigation.vue";
-import Events from "../components/StaffPortal/Events.vue";
-import EditEvent from "../components/StaffPortal/EditEvent.vue";
-import News from "../components/StaffPortal/News.vue";
-import EditNews from "../components/StaffPortal/EditNews.vue";
-import DeleteEvent from "../components/StaffPortal/DeleteEvent.vue";
-import DeleteNews from "../components/StaffPortal/DeleteNews.vue";
-import UserManagement from "../components/StaffPortal/UserManagement/UserManagement.vue";
+import router from '../router';
+import Navigation from '../components/StaffPortal/Navigation.vue';
+import Events from '../components/StaffPortal/Events.vue';
+import EditEvent from '../components/StaffPortal/EditEvent.vue';
+import News from '../components/StaffPortal/News.vue';
+import EditNews from '../components/StaffPortal/EditNews.vue';
+import DeleteEvent from '../components/StaffPortal/DeleteEvent.vue';
+import DeleteNews from '../components/StaffPortal/DeleteNews.vue';
+import UserManagement from '../components/StaffPortal/UserManagement.vue';
+import SectorFiles from '../components/StaffPortal/SectorFiles.vue';
 
 export default {
   computed: {
@@ -48,13 +54,14 @@ export default {
     DeleteEvent,
     DeleteNews,
     UserManagement,
+    SectorFiles,
   },
 };
 </script>
 
 <style lang="scss" scoped>
 .container {
-  height: calc(100vh - var(--nav-size));
+  min-height: calc(100vh - var(--nav-size));
 }
 
 .grid-container {

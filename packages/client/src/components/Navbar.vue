@@ -1,6 +1,6 @@
 <template>
   <div class="navbar-wrapper container">
-    <nav class="navbar content">
+    <nav class="navbar">
       <ul class="navitems">
         <!-- CZQM Logo Element -->
         <li class="navitem czqm-logo">
@@ -48,15 +48,11 @@
                   <div class="dropdown-icon">
                     <i class="fa-solid fa-file-lines"></i>
                   </div>
-                  Resources
+                  <router-link to="/resources">Resources</router-link>
                 </li>
               </div>
             </ul>
           </div>
-        </li>
-
-        <li class="navitem">
-          <span class="navitem-text">Pilots</span>
         </li>
 
         <li class="navitem">
@@ -114,10 +110,8 @@
 </template>
 
 <script>
-import axios from 'axios';
-import { ref, unref } from 'vue';
+import { ref } from 'vue';
 import getUser from '../scripts/getUser';
-import router from '../router';
 
 export default {
   name: 'Navbar',
@@ -151,19 +145,27 @@ export default {
   z-index: 100;
 }
 
+.navbar {
+  margin: 0;
+  padding: 0;
+  width: var(--width-ideal);
+  max-width: var(--width-max);
+  height: 100%;
+}
+
 .navitems {
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
   align-items: center;
-  height: 100%;
+  height: var(--nav-size);
   gap: 1rem;
 }
 
 .navitem {
   width: auto;
-  height: 100%;
+  height: var(--nav-size);
   display: flex;
   align-items: center;
 }
