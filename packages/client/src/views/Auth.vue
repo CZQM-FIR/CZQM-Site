@@ -26,6 +26,6 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-  min-height: calc(100vh - var(--nav-size));
+  min-height: var(--view-height);
 }
 </style>

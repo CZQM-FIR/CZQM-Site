@@ -11,6 +11,7 @@
   --width-ideal: 70%;
   --width-max: 100rem;
   --footer-min-height: 10rem;
+  --view-height: calc(100vh - var(--nav-size));
 }
 
 /* Global Styles */
@@ -39,7 +40,7 @@ html {
 }
 
 .fit-height {
-  min-height: calc(100vh - var(--nav-size));
+  min-height: var(--view-height);
 }
 
 .container {
@@ -58,7 +59,7 @@ html {
   width: var(--width-ideal);
   max-width: var(--width-max);
   height: 100%;
-  min-height: calc(100vh - var(--nav-size));
+  min-height: var(--view-height);
 }
 
 .cta {

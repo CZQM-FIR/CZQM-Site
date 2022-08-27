@@ -20,17 +20,12 @@
 </template>
 
 <script>
+import { staff } from '../assets/config.json';
+
 export default {
   data: () => {
     return {
-      staffList: [
-        ['Mark Walsh', 'FIR Chief', 'firchief@czqm.ca'],
-        ['Steve Oster', 'Cheif Instructor', 'instructor@czqm.ca'],
-        ['Jagard Strong', 'Deputy Cheif', 'deputycheif@czqm.ca'],
-        ['Jack Koskie', 'Events', 'events@czqm.ca'],
-        ['Dustin Pasch', 'Sector Engineer', 'engineer@czqm.ca'],
-        ['Jack Koskie', 'Webmaster', 'webmaster@czqm.ca'],
-      ],
+      staffList: staff,
     };
   },
 };
@@ -70,7 +65,7 @@ export default {
 }
 
 .container {
-  min-height: calc(100vh - var(--nav-size));
+  min-height: var(--view-height);
   padding-top: 5rem;
   justify-content: flex-start;
   flex-direction: column;

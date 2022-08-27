@@ -163,10 +163,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-template {
-  height: 100%;
-}
-
 .controller {
   display: flex;
   flex-direction: row;
@@ -190,7 +186,7 @@ template {
 
 .hero {
   /* width: 100%; */
-  min-height: calc(100vh - var(--nav-size));
+  min-height: var(--view-height);
   background: linear-gradient(var(--overlay-colour), var(--overlay-colour)),
     url('../assets/images/hero-bg.jpg') no-repeat center / cover;
   color: white;
@@ -227,7 +223,7 @@ template {
   padding-top: var(--nav-size);
   padding-bottom: calc(var(--nav-size) - 1.5rem);
   margin: 0;
-  min-height: calc(100vh - var(--nav-size));
+  min-height: var(--view-height);
 
   &-card {
     font-size: 1rem;
