@@ -56,6 +56,12 @@
         </li>
 
         <li class="navitem">
+          <router-link to="/contact">
+            <span class="navitem-text">Contact Us</span>
+          </router-link>
+        </li>
+
+        <li class="navitem">
           <a href="https://forums.vatcan.ca/">
             <span class="navitem-text">Forums</span>
           </a>

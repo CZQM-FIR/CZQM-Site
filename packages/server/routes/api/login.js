@@ -60,13 +60,6 @@ router.post('/:code', async (req, res) => {
         .json({
             message: 'Login Successful',
         })
-
-    // TODO: Build user management page
-    // list of all users
-
-    // set perms
-    // solos
-    // t
 })
 
 module.exports = router

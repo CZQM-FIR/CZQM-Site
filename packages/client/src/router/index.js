@@ -43,7 +43,6 @@ const routes = [
 
       try {
         const user = await getUser(getCookie('jwt'));
-        console.log(user);
         if (user.role.id < 5) throw 401;
       } catch (error) {
         return { path: '/noauth' };

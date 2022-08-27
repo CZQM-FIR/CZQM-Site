@@ -75,6 +75,11 @@
             <li>
               <a href="/files/docs/branding.pdf" class="footerLink">Branding</a>
             </li>
+            <li>
+              <router-link to="/contact" class="footerLink"
+                >Contact Us</router-link
+              >
+            </li>
           </ul>
         </span>
       </div>

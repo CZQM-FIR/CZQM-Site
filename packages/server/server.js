@@ -21,6 +21,7 @@ const editNewsRoute = require('./routes/api/editNews')
 const rosterRoute = require('./routes/api/roster')
 const editUserRoute = require('./routes/api/editUser')
 const sectorRoute = require('./routes/api/sector')
+const contactRoute = require('./routes/api/contact')
 
 // dotenv
 require('dotenv').config()
@@ -52,6 +53,7 @@ app.use('/api/editnews', editNewsRoute)
 app.use('/api/roster', rosterRoute)
 app.use('/api/edituser', editUserRoute)
 app.use('/api/sector', sectorRoute)
+app.use('/api/contact', contactRoute)
 app.use(fileUpload)
 
 app.all('*', () => {})
