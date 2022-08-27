@@ -127,6 +127,7 @@ export default {
 
 .form-content {
   border: 2px solid black;
+  border-radius: 3%;
   padding: 1rem;
 }
 
