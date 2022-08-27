@@ -126,10 +126,9 @@ export default {
 }
 
 .form-content {
-  border-radius: 3%;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 1rem;
   padding: 1rem;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
-    rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
 
 .form-item {
