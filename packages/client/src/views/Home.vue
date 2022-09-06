@@ -5,13 +5,14 @@
         <div class="hero-text">
           <h1>Canada's Gateway to the East Coast</h1>
           <p>
+            <!-- TODO Replace Lorem ipsum -->
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis
             perferendis rerum natus quia, iure ad debitis. Magnam pariatur
             voluptatibus illo?
           </p>
           <div class="cta-row">
             <a href="#info" class="cta">See More</a>
-            <a href="#" class="cta-secondary">Join Us</a>
+            <router-link to="/join" class="cta-secondary">Join Us</router-link>
           </div>
         </div>
       </div>
@@ -48,6 +49,7 @@
         <div class="info-card">
           <span class="info-header">About</span>
           <span class="info-text">
+            <!-- TODO Replace Lorem ipsum -->
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet
             distinctio optio nam? Molestias voluptatem, animi fugiat nisi iusto
             aperiam deserunt consequuntur exercitationem illum culpa, excepturi
@@ -271,6 +273,10 @@ export default {
     align-self: flex-start;
     margin-top: 1rem;
   }
+}
+
+.cta-row {
+  justify-content: left;
 }
 
 .weather-header {

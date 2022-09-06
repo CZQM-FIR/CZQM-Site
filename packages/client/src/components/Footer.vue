@@ -61,11 +61,7 @@
             <li><a href="https://vatcan.ca" class="footerLink">VATCAN</a></li>
             <li><a href="https://vatsim.net" class="footerLink">VATSIM</a></li>
             <li>
-              <a
-                href="https://vatcan.ca/division/controlling"
-                class="footerLink"
-                >Join Us</a
-              >
+              <router-link to="/join" class="footerLink">Join Us</router-link>
             </li>
             <li>
               <a href="/files/docs/privacy-policy.pdf" class="footerLink"

@@ -13,6 +13,7 @@ import Roster from '../views/Roster.vue';
 import Staff from '../views/StaffList.vue';
 import ControllerResources from '../views/ControllerResources.vue';
 import ContactUs from '../views/ContactUs.vue';
+import JoinUs from '../views/JoinUs.vue';
 
 import getUser from '../scripts/getUser';
 
@@ -103,6 +104,11 @@ const routes = [
     path: '/contact',
     name: 'Contact Us',
     component: ContactUs,
+  },
+  {
+    path: '/join',
+    name: 'Join Us',
+    component: JoinUs,
   },
   // Keep these last just for organisation
   {

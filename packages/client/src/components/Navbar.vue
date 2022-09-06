@@ -43,6 +43,14 @@
                 </div>
                 <router-link to="/roster"> Roster </router-link>
               </li>
+              <div v-if="user.loggedIn == false || user.role.id < 1">
+                <li class="dropdown-text">
+                  <div class="dropdown-icon">
+                    <i class="fa-solid fa-user-plus"></i>
+                  </div>
+                  <router-link to="/join"> Join Us </router-link>
+                </li>
+              </div>
               <div v-if="user.loggedIn && user.role.id >= 1">
                 <li class="dropdown-text">
                   <div class="dropdown-icon">
