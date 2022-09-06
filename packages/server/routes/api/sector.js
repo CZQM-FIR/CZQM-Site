@@ -22,7 +22,7 @@ const upload = multer({ storage })
 const router = Router()
 
 router.post('/', upload.single('file'), async (req, res) => {
-    SectorFile.findOneAndUpdate(
+    await SectorFile.findOneAndUpdate(
         {
             fileID: Number(req.body.fileID),
         },
@@ -35,5 +35,17 @@ router.post('/', upload.single('file'), async (req, res) => {
         }
     )
     res.status(200)
+})
+
+router.get('/', async (req, res) => {
+    const file = await SectorFile.findOne({
+        fileID: 0,
+    })
+
+    if (file) {
+        res.status(200).send(file.filePath)
+    } else {
+        res.status(404).send()
+    }
 })
 module.exports = router
