@@ -115,9 +115,9 @@ export default {
   margin-bottom: 0.5rem;
 }
 
-.image {
+img {
   margin-left: auto;
   margin-right: auto;
-  width: 75%;
+  width: 100%;
 }
 </style>

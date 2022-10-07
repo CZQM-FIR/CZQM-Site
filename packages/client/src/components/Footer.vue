@@ -144,6 +144,21 @@ li {
   list-style: none;
 }
 
+@media only screen and (max-width: 1200px) {
+  .footerColumnSpacer {
+    display: none;
+  }
+
+  .footerContent {
+    grid-template-columns: 3fr 1.5fr 1fr 1fr;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .footerContent{
+    
+  }
+}
 .footerLink {
   color: #c9c1c1;
   text-transform: none;

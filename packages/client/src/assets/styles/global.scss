@@ -14,6 +14,40 @@
   --view-height: calc(100vh - var(--nav-size));
 }
 
+/* Media Queries */
+
+// XL
+// default values
+
+// L
+@media only screen and (max-width: 1200px) {
+  :root {
+    --width-ideal: 80%
+  }
+}
+
+// M
+@media only screen and (max-width: 1050px) {
+  :root {
+    --width-ideal: 90%
+  }
+}
+
+// S
+@media only screen and (max-width: 500px) {
+  
+}
+
+/* 
+  Break Points 
+
+  Large: 1200px
+  Medium: 1050px
+  Small: 500px
+
+*/
+
+
 /* Global Styles */
 body,
 html {

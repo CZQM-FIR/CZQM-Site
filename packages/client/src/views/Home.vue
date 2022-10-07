@@ -233,8 +233,9 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-width: 25rem;
-    width: 30%;
+    // min-width: 25rem;
+    // width: 30%;
+    width: max(20rem, 30%);
     margin-bottom: 1.5rem;
 
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;

@@ -7,12 +7,7 @@
         </div>
         <div class="grid-column">
           <Events class="grid-item" />
-          <div class="grid-item">
-            <h2>
-              <!-- TODO Add News -->
-              <i class="fa-solid fa-newspaper"></i> News
-            </h2>
-          </div>
+          <!-- TODO Add News -->
         </div>
       </div>
     </div>
@@ -38,6 +33,7 @@ export default {
 
 .grid-container {
   display: flex;
+  flex-direction: row;
 
   padding-top: 1rem;
   padding-bottom: 1rem;
@@ -70,5 +66,11 @@ export default {
 
 .grid-item:not(:first-child) {
   margin-top: 1rem;
+}
+
+@media only screen and (max-width: 950px) {
+  .grid-container {
+    flex-direction: column;
+  }
 }
 </style>

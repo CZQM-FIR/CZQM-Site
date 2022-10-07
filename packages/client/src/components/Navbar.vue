@@ -1,9 +1,9 @@
 <template>
-  <div class="navbar-wrapper container">
+  <div class="navbar-wrapper container" :class="{ active: showMobileMenu }" >
     <nav class="navbar">
       <ul class="navitems">
         <!-- CZQM Logo Element -->
-        <li class="navitem czqm-logo">
+        <li class="czqm-logo">
           <router-link to="/">
             <img
               src="../assets/images/CZQM-White.png"
@@ -11,17 +11,22 @@
               class="logo"
             />
           </router-link>
+          <div class="hamburger" :class="{ active: showMobileMenu }" @click="showMobileMenu = !showMobileMenu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"> </span>
+          </div>
         </li>
 
-        <!-- Normal Nav Elements -->
+        <!-- Nav Elements -->
 
-        <li class="navitem">
+        <li class="navitem" @click="showMobileMenu = false">
           <router-link to="/">
             <span class="navitem-text">Home</span>
           </router-link>
         </li>
 
-        <li class="navitem">
+        <li class="navitem" @click="showMobileMenu = false">
           <router-link to="/events">
             <span class="navitem-text">Events</span>
           </router-link>
@@ -35,20 +40,20 @@
                 <div class="dropdown-icon">
                   <i class="fa-solid fa-clipboard-user"></i>
                 </div>
-                <router-link to="/staff"> Staff </router-link>
+                <router-link to="/staff" @click="showMobileMenu = false"> Staff </router-link>
               </li>
               <li class="dropdown-text">
                 <div class="dropdown-icon">
                   <i class="fa-solid fa-rectangle-list"></i>
                 </div>
-                <router-link to="/roster"> Roster </router-link>
+                <router-link to="/roster" @click="showMobileMenu = false"> Roster </router-link>
               </li>
               <div v-if="user.loggedIn == false || user.role.id < 1">
                 <li class="dropdown-text">
                   <div class="dropdown-icon">
                     <i class="fa-solid fa-user-plus"></i>
                   </div>
-                  <router-link to="/join"> Join Us </router-link>
+                  <router-link to="/join" @click="showMobileMenu = false"> Join Us </router-link>
                 </li>
               </div>
               <div v-if="user.loggedIn && user.role.id >= 1">
@@ -56,20 +61,20 @@
                   <div class="dropdown-icon">
                     <i class="fa-solid fa-file-lines"></i>
                   </div>
-                  <router-link to="/resources">Resources</router-link>
+                  <router-link to="/resources" @click="showMobileMenu = false">Resources</router-link>
                 </li>
               </div>
             </ul>
           </div>
         </li>
 
-        <li class="navitem">
+        <li class="navitem" @click="showMobileMenu = false">
           <router-link to="/contact">
             <span class="navitem-text">Contact Us</span>
           </router-link>
         </li>
 
-        <li class="navitem">
+        <li class="navitem" @click="showMobileMenu = false">
           <a href="https://forums.vatcan.ca/">
             <span class="navitem-text">Forums</span>
           </a>
@@ -77,7 +82,7 @@
 
         <!-- Login MUST BE LAST!!! -->
 
-        <li class="navitem">
+        <li class="navitem login">
           <div v-if="user.loggedIn">
             <div class="dropdown">
               <span class="navitem-text"
@@ -92,7 +97,7 @@
                   <div class="dropdown-icon">
                     <i class="fa-solid fa-cloud"></i>
                   </div>
-                  <router-link to="/portal">Portal</router-link>
+                  <router-link to="/portal" @click="showMobileMenu = false">Portal</router-link>
                 </li>
                 <li
                   class="dropdown-text"
@@ -101,24 +106,26 @@
                   <div class="dropdown-icon">
                     <i class="fa-solid fa-bars-progress"></i>
                   </div>
-                  <router-link to="/staff-portal">Staff Portal</router-link>
+                  <router-link to="/staff-portal" @click="showMobileMenu = false">Staff Portal</router-link>
                 </li>
                 <li class="dropdown-text">
                   <div class="dropdown-icon">
                     <i class="fa-solid fa-arrow-right-from-bracket"></i>
                   </div>
-                  <router-link to="/logout">Logout</router-link>
+                  <router-link to="/logout" @click="showMobileMenu = false">Logout</router-link>
                 </li>
               </ul>
             </div>
           </div>
           <div v-else>
-            <a :href="connectEndpoint">
+            <a :href="connectEndpoint" @click="showMobileMenu = false">
               <span class="navitem-text">Login</span>
             </a>
           </div>
         </li>
+        
       </ul>
+
     </nav>
   </div>
 </template>
@@ -143,6 +150,11 @@ export default {
       user,
     };
   },
+  data: () => {
+    return {
+      showMobileMenu: false
+    }
+  }
 };
 </script>
 
@@ -188,7 +200,7 @@ export default {
   text-decoration: none;
 }
 
-.navitem:last-child {
+.login {
   margin-left: auto;
   margin-right: 1rem;
 }
@@ -263,5 +275,89 @@ export default {
 
 .dropdown a {
   color: black;
+}
+
+.hamburger {
+  display: none;
+  cursor: pointer;
+  transition: all ease-in-out 0.25s;
+
+}
+
+.bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  -webkit-transition: all 0.3 ease-in-out;
+  transition: all 0.3 ease-in-out;
+  background-color: white;
+}
+
+.czqm-logo {
+  display: block;
+}
+
+@media only screen and (max-width: 950px) {
+  .navitems {
+    flex-direction: column;
+    // opacity: 0;
+  }
+
+  .navitem-text {
+    font-size: 1.25rem;
+  }
+
+  .login {
+    margin: unset;
+    padding-left: 0;
+  }
+  
+  .hamburger {
+    display: block !important;
+    margin-left: auto;
+  }
+
+  .czqm-logo {
+    opacity: unset !important;
+    display: flex !important;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+  }
+
+  .logo {
+    margin-right: auto;
+  }
+
+  .hamburger {
+    margin-left: auto;
+    padding-left: auto;
+  }
+
+  .hamburger.active .bar:nth-child(2){
+    opacity: 0;
+  }
+
+  .hamburger.active .bar:nth-child(1){
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .hamburger.active .bar:nth-child(3){
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  .navbar-wrapper.active {
+    background-color: var(--nav-colour);
+    height: 100%;
+  }
+
+  .navbar-wrapper > .navbar > .navitems > :not(.czqm-logo) {
+    display: none;
+  }
+
+  .navbar-wrapper.active > .navbar > .navitems > :not(.czqm-logo) {
+    display: block;
+  }
 }
 </style>

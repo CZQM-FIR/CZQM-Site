@@ -103,4 +103,10 @@ export default {
 .grid-item:not(:first-child) {
   margin-top: 1rem;
 }
+
+@media only screen and (max-width: 400px) {
+  .grid-container {
+    flex-direction: column;
+  }
+}
 </style>

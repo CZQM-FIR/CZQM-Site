@@ -20,7 +20,7 @@
           C:\Users\Your Name\Documents\EuroScope\CANscope\CZQM-CZQX directory;
         </li>
         <li>
-          Copy the .ese & .sct2 files to the c:\Users\Your
+          Copy the .ese & .sct2 files to the C:\Users\Your
           Name\Documents\EuroScope\CANscope\CZQM-CZQX directory;
         </li>
       </ol>
