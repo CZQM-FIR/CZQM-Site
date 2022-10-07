@@ -48,7 +48,7 @@
                 </div>
                 <router-link to="/roster" @click="showMobileMenu = false"> Roster </router-link>
               </li>
-              <div v-if="user.loggedIn == false || user.role.id < 1">
+              <div v-if="user.loggedIn == false || user.role.id < 1 || user.role.id >= 5">
                 <li class="dropdown-text">
                   <div class="dropdown-icon">
                     <i class="fa-solid fa-user-plus"></i>
