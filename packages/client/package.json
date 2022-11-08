@@ -31,7 +31,7 @@
     "morgan": "^1.10.0",
     "multer": "^1.3.0",
     "multer-gridfs-storage": "^5.0.0",
-    "primeicons": "^5.0.0",
+    "primeicons": "^6.0.0",
     "primevue": "^3.12.5",
     "vue": "3.2.41",
     "vue-flatpickr-component": "^9.0.6",
