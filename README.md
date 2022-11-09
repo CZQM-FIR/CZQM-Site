@@ -3,7 +3,7 @@
 [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-- Use `npm i` to load all dependancies.
+- Use `npm run dependencies` to load all dependancies.
 
 - Use `npm run dev` to run a hot swapable dev server on `localhost:3000`.
 

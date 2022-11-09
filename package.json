@@ -3,7 +3,7 @@
   "private": true,
   "devDependencies": {
     "lerna": "^5.1.4",
-    "nx": "^14.3.6"
+    "nx": "^15.0.0"
   },
   "repository": {
     "url": "https://github.com/CZQM-FIR/CZQM-Site.git",
