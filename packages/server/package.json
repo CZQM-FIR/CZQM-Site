@@ -29,7 +29,7 @@
         "nodemailer": "^6.7.8",
         "primeicons": "^5.0.0",
         "primevue": "^3.12.5",
-        "vue-flatpickr-component": "^9.0.6"
+        "vue-flatpickr-component": "^11.0.0"
     },
     "devDependencies": {
         "concurrently": "7.5.0",

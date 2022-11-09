@@ -34,7 +34,7 @@
     "primeicons": "^5.0.0",
     "primevue": "^3.12.5",
     "vue": "3.2.43",
-    "vue-flatpickr-component": "^9.0.6",
+    "vue-flatpickr-component": "^11.0.0",
     "vue-router": "4.1.6"
   },
   "devDependencies": {
