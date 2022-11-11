@@ -10,6 +10,6 @@
     "type": "git"
   },
   "scripts": {
-    "download": "lerna exec \"npm i --force\""
+    "download": "npx lerna exec \"npm i --force\""
   }
 }
