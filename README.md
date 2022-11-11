@@ -6,7 +6,7 @@
 
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-- Use `npm run dependencies` to load all dependancies.
+- Use `npm run download` to download all dependancies.
 - Use `lerna run dev` to run a hot swapable dev server on `localhost:3000`.
 - Use `lerna run build` to compile to production files.
 
