@@ -54,13 +54,13 @@
 
 <script>
 import { ref } from 'vue';
-import { get } from 'axios';
+import axios from 'axios';
 
 export default {
   setup: async () => {
     let controllers = ref([]);
 
-    await get('/api/roster').then((response) => {
+    await axios.get('/api/roster').then((response) => {
       controllers.value = response.data;
     });
 
