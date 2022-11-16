@@ -3,9 +3,7 @@
     <table class="roster">
       <thead>
         <p class="key">
-          Key: <span :style="certificationStyle(-1)">Not Authorised</span>
-          <span :style="certificationStyle(0)">Solo</span>
-          <span :style="certificationStyle(1)">Certified</span>
+          Key: <span :style="certificationStyle(-1)">Not Authorised</span> | <span :style="certificationStyle(0)">Solo</span> | <span :style="certificationStyle(1)">Certified</span>
         </p>
 
         <tr class="table-header">
