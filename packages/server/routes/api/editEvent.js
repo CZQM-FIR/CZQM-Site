@@ -1,4 +1,4 @@
-const { default: axios } = require('axios')
+const axios = require('axios')
 const { Router } = require('express')
 const path = require('path')
 const multer = require('multer')
@@ -6,6 +6,7 @@ const User = require('../../models/User')
 
 
 const Event = require('../../models/Event')
+const { sendEmailToAll } = require('../../utils/emailBroadcast')
 
 const storage = multer.diskStorage({
     destination(req, file, cb) {
@@ -78,6 +79,25 @@ router.post('/', upload.single('image'), async (req, res) => {
                     ],
                 }
             )
+            
+            // Send email to all users who have an email address and who are visitors or above
+            const emailableUsers = await User.find({
+                'personal.email': { $ne: null },
+                'role.id': { $gte: 2 }
+            })
+            await sendEmailToAll([emailableUsers.map(userObject => userObject.personal.email)], `New Event: ${req.body.name}`, `
+                <h1>New Event: ${req.body.name}</h1>
+                <p>${req.body.description}</p>
+                <p>Start: ${new Date(req.body.start).toLocaleString()}</p>
+                <p>End: ${new Date(req.body.end).toLocaleString()}</p>
+                <p>Read More: <a href="https://localhost:3000/events?_id=${event._id}">Link</a></p>
+                <img src="cid:${req.file.filename}" alt="${req.body.name} Banner" />
+            `, [{
+                filename: req.file.filename,
+                path: path.join(__dirname, `../../uploads/${req.file.filename}`),
+                cid: req.file.filename
+            }])
+
         } catch (err) {
             console.error(err)
         }
