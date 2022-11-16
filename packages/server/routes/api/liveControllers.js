@@ -20,7 +20,7 @@ router.get("/", async (req, res) => {
       "CYQM",
       "CYFC",
       "CYZX",
-      "LFPV",
+      "LFVP",
       "CYSJ",
     ];
 
