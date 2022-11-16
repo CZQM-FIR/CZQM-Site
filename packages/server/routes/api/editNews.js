@@ -5,6 +5,7 @@ const path = require("path");
 const User = require('../../models/User')
 
 const News = require("../../models/News");
+const { sendEmailToAll } = require("../../utils/emailBroadcast");
 
 const storage = multer.diskStorage({
   destination(req, file, cb) {
@@ -75,6 +76,17 @@ router.post("/", upload.none(), async (req, res) => {
 
         
       );
+
+      // Send email to all users who have an email address and who are visitors or above
+            const emailableUsers = await User.find({
+                'personal.email': { $ne: null },
+                'role.id': { $gte: 2 }
+            })
+            await sendEmailToAll([emailableUsers.map(userObject => userObject.personal.email)], `New Announcement: ${req.body.name}`, `
+                <h1>New Announcement: ${req.body.name}</h1>
+                <p>${req.body.text}</p>
+                <p>Read More: <a href="https://localhost:3000/news?_id=${article._id}">Link</a></p>
+            `,)
     } catch (err) {
       console.error(err);
     }
