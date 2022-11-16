@@ -5,7 +5,7 @@
                 <li>No Events Scheduled</li>
             </div>
             <div v-else>
-                <li v-for="event in events" :key="event">
+                <li v-for="event in events.slice(0, 5)" :key="event">
                     <div class="event">
                         <span class="event-name">{{event.name}}</span>
                         <span class="event-time">{{getEventTime(event)}}</span>
