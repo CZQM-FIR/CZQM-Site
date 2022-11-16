@@ -1,8 +1,9 @@
 const { default: axios } = require('axios')
 const { Router } = require('express')
 const path = require('path')
-
 const multer = require('multer')
+const User = require('../../models/User')
+
 
 const Event = require('../../models/Event')
 
@@ -23,6 +24,13 @@ const upload = multer({ storage })
 const router = Router()
 
 router.post('/', upload.single('image'), async (req, res) => {
+
+    const user = await User.findOne({ jwt: req.cookies.jwt })
+
+    if (!user || user.role.id < 4) {
+        return res.status(401).json({ msg: 'Not authorized' })
+    }
+
     let event
 
     if (req.body._id) {
@@ -50,7 +58,7 @@ router.post('/', upload.single('image'), async (req, res) => {
 
         try {
             await axios.post(
-                'https://discord.com/api/webhooks/982999182711341176/ljflUw58vKKTCaH_IabGY4h0kq835zWfwvcnxN8cF8cfBYOOwoT9O6l-klo8YD3o2-pS?wait=true',
+                `${process.env.DISCORD_WEBHOOK_URI}`,
                 {
                     embeds: [
                         {
@@ -78,5 +86,6 @@ router.post('/', upload.single('image'), async (req, res) => {
             message: 'Event Created Successfully',
         })
     }
+    return true
 })
 module.exports = router

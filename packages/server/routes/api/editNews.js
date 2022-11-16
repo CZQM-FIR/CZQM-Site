@@ -1,8 +1,8 @@
 const { default: axios } = require("axios");
 const { Router } = require("express");
-const path = require("path");
-
 const multer = require("multer");
+const path = require("path");
+const User = require('../../models/User')
 
 const News = require("../../models/News");
 
@@ -23,6 +23,13 @@ const upload = multer({ storage });
 const router = Router();
 
 router.post("/", upload.none(), async (req, res) => {
+
+    const user = await User.findOne({ jwt: req.cookies.jwt })
+
+    if (!user || user.role.id < 4) {
+        return res.status(401).json({ msg: 'Not authorized' })
+    }
+
   let article;
 
   if (req.body._id) {
@@ -74,5 +81,6 @@ router.post("/", upload.none(), async (req, res) => {
       message: "Article Created Successfully",
     });
   }
+  return true
 });
 module.exports = router;
