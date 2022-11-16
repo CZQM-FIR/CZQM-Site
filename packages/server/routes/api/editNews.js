@@ -1,4 +1,4 @@
-const { default: axios } = require("axios");
+const axios = require("axios");
 const { Router } = require("express");
 const multer = require("multer");
 const path = require("path");
@@ -53,7 +53,7 @@ router.post("/", upload.none(), async (req, res) => {
 
     try {
       await axios.post(
-        "https://discord.com/api/webhooks/982999182711341176/ljflUw58vKKTCaH_IabGY4h0kq835zWfwvcnxN8cF8cfBYOOwoT9O6l-klo8YD3o2-pS?wait=true",
+        process.env.DISCORD_WEBHOOK_URI,
         {
           embeds: [
             {
@@ -72,6 +72,8 @@ router.post("/", upload.none(), async (req, res) => {
             },
           ],
         }
+
+        
       );
     } catch (err) {
       console.error(err);
