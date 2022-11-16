@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
         return res.status(401).json({ msg: 'Not authorized' })
     }
 
-    const userParam = JSON.parse(req.query.user)
+    const userParam = req.query.user
     if (!userParam) {
         res.status(400).json({
             message: 'Unknown User',
