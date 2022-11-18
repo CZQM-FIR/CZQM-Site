@@ -15,11 +15,10 @@
       <JoinUsCard
         title="Visitor"
         :text="[
-          // TODO Replace Lorem ipsum
-          `Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo eius molestiae illum maxime nesciunt ducimus unde facilis, voluptatibus itaque porro reprehenderit enim excepturi quod nulla qui accusantium incidunt iste harum.`,
+          `The Moncton Gander FIR is a great place to control as a visitor. We accept visitors from all over the world and are always looking for new people to join our community. If you are interested in controlling with us, please feel free to aply!`,
         ]"
         :button="{
-          text: 'Visit',
+          text: 'Apply to Visit',
           link: 'https://vatcan.ca/my/visit',
         }"
       />
