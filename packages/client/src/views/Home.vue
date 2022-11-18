@@ -5,10 +5,7 @@
         <div class="hero-text">
           <h1>Canada's Gateway to the East Coast</h1>
           <p>
-            <!-- TODO Replace Lorem ipsum -->
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis
-            perferendis rerum natus quia, iure ad debitis. Magnam pariatur
-            voluptatibus illo?
+            Providing realistic ATC services across the maritime provinces on the VATSIM network.
           </p>
           <div class="cta-row">
             <a href="#info" class="cta">See More</a>
@@ -49,13 +46,11 @@
         <div class="info-card">
           <span class="info-header">About</span>
           <span class="info-text">
-            <!-- TODO Replace Lorem ipsum -->
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet
-            distinctio optio nam? Molestias voluptatem, animi fugiat nisi iusto
-            aperiam deserunt consequuntur exercitationem illum culpa, excepturi
-            earum ad explicabo impedit autem ipsam totam tempora quos harum
-            quis? Ipsam voluptatibus maxime exercitationem. Ipsam praesentium
-            suscipit minus rerum saepe tenetur, maxime aliquid quia.
+            The Moncton Flight Information Region (CZQM) is a virtual controlling region on the VATSIM network. The Moncton FIR controls over 700,000sq miles of airspace.
+            <br><br>
+            CZQM currently has seven (7) controlled airports and three (3) Flight service specialist (FSS) operated aerodromes.
+            <br><br>
+            CZQM is governed by the leadership and Code of Conduct (CoC) of VATCAN and VATSIM. The FIR provides regulated training to those who are active members so they can provide realistic Air Traffic services to other VATSIM users.
           </span>
         </div>
         <div class="info-card">
