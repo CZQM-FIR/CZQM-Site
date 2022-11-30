@@ -104,7 +104,7 @@ export default {
 
 .roster thead tr {
   background-color: var(--nav-colour);
-  color: white;
+  color: rgb(165, 12, 12);
   text-align: left;
   font-weight: bold;
 }
