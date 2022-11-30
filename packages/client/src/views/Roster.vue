@@ -119,7 +119,7 @@ export default {
 }
 
 .roster tbody tr:nth-of-type(even) {
-  background-color: #f3f3f3;
+  background-color: #b9b0b0;
 }
 
 .roster tbody tr:last-of-type {
