@@ -13,6 +13,15 @@
         }"
       />
       <JoinUsCard
+        titlle="Join Us"
+        :text="[
+          'Controllers wishing to transfer clikc here']"
+        :button="{
+          text:'Transfer',
+          link: 'https://vatcan.ca/',
+        }"
+      />
+      <JoinUsCard
         title="Visitor"
         :text="[
           `The Moncton Gander FIR is a great place to control as a visitor. We accept visitors from all over the world and are always looking for new people to join our community. If you are interested in controlling with us, please feel free to aply!`,
