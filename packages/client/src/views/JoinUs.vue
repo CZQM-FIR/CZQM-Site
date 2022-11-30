@@ -18,7 +18,7 @@
           'Controllers wishing to transfer clikc here']"
         :button="{
           text:'Transfer',
-          link: 'https://vatcan.ca/',
+          link: 'https://vatcan.ca/my/transfer',
         }"
       />
       <JoinUsCard
