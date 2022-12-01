@@ -13,9 +13,9 @@
         }"
       />
       <JoinUsCard
-        titlle="Join Us"
+        title="Request a Transfer"
         :text="[
-          'Controllers wishing to transfer clikc here']"
+          'Already a controller in another division but want to control in the Atlantic? We are always looking for controllers to join our team. If you are interested in transferring to Moncton/Gander FIR, please fill out a transfer request.']"
         :button="{
           text:'Transfer',
           link: 'https://vatcan.ca/my/transfer',
