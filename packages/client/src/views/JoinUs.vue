@@ -52,15 +52,26 @@ export default { components: { JoinUsCard } };
   height: unset;
 }
 
+
 .card {
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   border-radius: 1rem;
   padding: 1rem;
-
+  
   margin: 1rem 1rem auto 1rem;
   height: unset;
   width: var(--width-ideal);
   max-width: var(--width-max);
+}
+
+@media only screen and (max-width: 1050px) {
+  .content {
+    flex-direction: column;
+  }
+
+  .card {
+    margin: 1rem auto 1rem auto;
+  }
 }
 
 .title {
