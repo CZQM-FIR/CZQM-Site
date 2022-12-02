@@ -28,11 +28,12 @@ Roles are numbered starting at zero (0) through to five (5). Each role level can
 3. Mentor
 4. Instructor
 5. FIR Staff
-6. Cheif Instructor
-7. Events
-8. Sector Engineer
+6. Events
+7. Sector Engineer
+8. Cheif Instructor
 9. Deputy Chief
-10. Admin (Webmaster and FIR Chief)
+10. Webmaster (Admin)
+11. FIR Chief (Admin)
 
 ## Contributors
 
