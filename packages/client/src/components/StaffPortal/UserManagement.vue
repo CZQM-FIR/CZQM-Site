@@ -84,7 +84,10 @@
             </button>
           </td>
           <td>
-            <button v-on:click="user.role.id = increment(user.role.id, 0, 5)">
+            <button v-if="(user.role.id > 5 && staffUser.role.id < 9)" disabled="disabled">
+              {{ roles[user.role.id] }}
+            </button>
+            <button v-else v-on:click="user.role.id = increment(user.role.id, 0, (staffUser.role.id < 9 ? 4 : 10))">
               {{ roles[user.role.id] }}
             </button>
           </td>
@@ -103,6 +106,7 @@
 <script>
 import { ref } from 'vue';
 import axios from 'axios';
+import getUser from '../../scripts/getUser';
 
 export default {
   setup: async () => {
@@ -114,7 +118,12 @@ export default {
       'Home Controller',
       'Mentor',
       'Instructor',
-      'Staff',
+      'EC',
+      'FE',
+      'CI',
+      'DC',
+      'WM',
+      'Chief'
     ]);
 
     let emails = ref([]);
@@ -123,7 +132,12 @@ export default {
       emails.value.push(user.personal.email);
     });
 
+    const userData = await getUser();
+
+    let staffUser = ref(userData);
+
     return {
+      staffUser,
       users,
       roles,
       emails,
