@@ -13,6 +13,15 @@
         }"
       />
       <JoinUsCard
+        title="Request a Transfer"
+        :text="[
+          'Already a controller in another division but want to control in the Atlantic? We are always looking for controllers to join our team. If you are interested in transferring to Moncton/Gander FIR, please fill out a transfer request.']"
+        :button="{
+          text:'Transfer',
+          link: 'https://vatcan.ca/my/transfer',
+        }"
+      />
+      <JoinUsCard
         title="Visitor"
         :text="[
           `The Moncton Gander FIR is a great place to control as a visitor. We accept visitors from all over the world and are always looking for new people to join our community. If you are interested in controlling with us, please feel free to aply!`,
@@ -43,15 +52,26 @@ export default { components: { JoinUsCard } };
   height: unset;
 }
 
+
 .card {
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   border-radius: 1rem;
   padding: 1rem;
-
+  
   margin: 1rem 1rem auto 1rem;
   height: unset;
   width: var(--width-ideal);
   max-width: var(--width-max);
+}
+
+@media only screen and (max-width: 1050px) {
+  .content {
+    flex-direction: column;
+  }
+
+  .card {
+    margin: 1rem auto 1rem auto;
+  }
 }
 
 .title {
