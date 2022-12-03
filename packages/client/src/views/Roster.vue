@@ -3,7 +3,8 @@
     <table class="roster">
       <thead>
         <p class="key">
-          Key: <span :style="certificationStyle(-1)">Not Authorised</span> | <span :style="certificationStyle(0)">Solo</span> | <span :style="certificationStyle(1)">Certified</span>
+          Key: <span :style="certificationStyle(-1)">Not Authorised</span> | <span
+            :style="certificationStyle(0)">Solo</span> | <span :style="certificationStyle(1)">Certified</span>
         </p>
 
         <tr class="table-header">
@@ -15,7 +16,7 @@
           <th>APP</th>
           <th>CTR</th>
           <th>Status</th>
-          <th>Role</th>
+          <th>FIR Role</th>
         </tr>
       </thead>
       <tbody v-if="controllers.length > 0">
@@ -24,18 +25,22 @@
           <td>{{ controller.cid }}</td>
           <td>{{ controller.rating }}</td>
 
-          <td :style="certificationStyle(controller.roster.gnd)">GND</td>
-          <td :style="certificationStyle(controller.roster.twr)">TWR</td>
-          <td :style="certificationStyle(controller.roster.app)">APP</td>
-          <td :style="certificationStyle(controller.roster.ctr)">CTR</td>
+          <td :style="certificationStyle(controller.roster.gnd)"><span v-if="controller.roster.gnd === -1">---</span><span
+              v-else>GND</span></td>
+          <td :style="certificationStyle(controller.roster.twr)"><span v-if="controller.roster.twr === -1">---</span><span
+              v-else>TWR</span></td>
+          <td :style="certificationStyle(controller.roster.app)"><span v-if="controller.roster.app === -1">---</span><span
+              v-else>APP</span></td>
+          <td :style="certificationStyle(controller.roster.ctr)"><span v-if="controller.roster.ctr === -1">---</span><span
+              v-else>CTR</span></td>
 
           <td>
             {{
-              controller.roster.status == 1
-                ? 'Active'
-                : controller.roster.status == 0
-                ? 'On Leave'
-                : 'Inactive'
+                controller.roster.status == 1
+                  ? 'Active'
+                  : controller.roster.status == 0
+                    ? 'On Leave'
+                    : 'Inactive'
             }}
           </td>
           <td>{{ controller.role.name }}</td>
@@ -72,14 +77,15 @@ export default {
 
       switch (status) {
         case -1:
-          style = 'font-weight: bold; background-color: #AC0B0B';
+          style = 'font-weight: bold; background-color: #CCCCC4; text-align: center';
           break;
         case 0:
-          style = 'font-weight: bold; background-color: #ffc000';
+          style = 'font-weight: bold; background-color: #F8F1AE';
           break;
         case 1:
-          style = 'font-weight: bold; background-color: #dff0d8;';
-          break;
+          style = 'font-weight: bold; background-color: #BEE5B0; ';
+          break; 
+        
       }
 
       return style;
