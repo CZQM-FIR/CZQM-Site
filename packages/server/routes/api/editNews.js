@@ -62,7 +62,7 @@ router.post("/", upload.none(), async (req, res) => {
               description: `${req.body.text.substring(
                 0,
                 50
-              )}... [Read More](https://localhost:3000/news?_id=${
+              )}... [Read More](https://134.122.37.1:3000/news?_id=${
                 article._id
               })`,
               timestamp: `${new Date(Date.now()).toISOString()}`,
@@ -85,7 +85,7 @@ router.post("/", upload.none(), async (req, res) => {
             await sendEmailToAll([emailableUsers.map(userObject => userObject.personal.email)], `New Announcement: ${req.body.name}`, `
                 <h1>New Announcement: ${req.body.name}</h1>
                 <p>${req.body.text}</p>
-                <p>Read More: <a href="https://localhost:3000/news?_id=${article._id}">Link</a></p>
+                <p>Read More: <a href="https://134.122.37.1:3000/news?_id=${article._id}">Link</a></p>
             `,)
     } catch (err) {
       console.error(err);
