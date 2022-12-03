@@ -84,7 +84,7 @@
             </button>
           </td>
           <td>
-            <button v-if="(user.role.id > 5 && staffUser.role.id < 9)" disabled="disabled">
+            <button v-if="(user.role.id >= 5 && staffUser.role.id <= 8)" disabled="disabled">
               {{ roles[user.role.id] }}
             </button>
             <button v-else v-on:click="user.role.id = increment(user.role.id, 0, (staffUser.role.id < 9 ? 4 : 10))">
