@@ -2,7 +2,7 @@ require('dotenv').config();
 
 module.exports = {
     mongoUri: process.env.MONGO_URI,
-    PORT: process.env.PORT || 3500,
+    PORT: process.env.PORT || 80,
     transporterConfig: {
         host: 'smtppro.zoho.com',
         port: 465,
