@@ -18,16 +18,21 @@
 - Use NPM only, not Yarn. For consistancy.
 - Any external API requests *should* go through the backend server and should have some form of caching.
 
-## Permissions
+## Roles
 
-Permissions are numbered starting at zero (0) through to five (5). Each permission level can be seen below.
+Roles are numbered starting at zero (0) through to five (5). Each role level can be seen below and are used to assign permissions. Staff have their own permission level and it consists of everything above five (5). Users shall only be given the permissions that they require and no more.
 
 0. Anyone with a VATSIM account (No special access)
-1. Visiting Controller (Access to controller resources and signing up for events)
-2. Home Controller (Same permissions as visiting)
+1. Visiting Controller
+2. Home Controller
 3. Mentor
 4. Instructor
-5. FIR Staff (Full admin access) <!--Only Webmaster and FIR Chief shall have this lvl of acess. Others roles can be claimed as general access-->
+5. Events
+6. Sector Engineer
+7. Chief Instructor
+8. Deputy Chief
+9. Webmaster (Admin)
+10. FIR Chief (Admin)
 
 ## Contributors
 
