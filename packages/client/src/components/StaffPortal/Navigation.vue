@@ -2,16 +2,16 @@
   <div>
     <h1>{{ greeting }} {{ user.personal.name_first }}!</h1>
     <div class="cta-row">
-      <router-link v-if="(user.role.id === 5) || (user.role.id >= 10)" :to="{ query: { page: 'events' } }" class="cta"
+      <router-link v-if="(user.role.id === 5) || (user.role.id >= 9)" :to="{ query: { page: 'events' } }" class="cta"
         >Events</router-link
       >
       <router-link :to="{ query: { page: 'news' } }" class="cta"
         >News</router-link
       >
-      <router-link v-if="(user.role.id === 7) || (user.role.id >= 9)" :to="{ query: { page: 'users' } }" class="cta"
+      <router-link v-if="(user.role.id === 7) || (user.role.id >= 8)" :to="{ query: { page: 'users' } }" class="cta"
         >User Management</router-link
       >
-      <router-link v-if="(user.role.id === 6) || (user.role.id >= 10)" :to="{ query: { page: 'sector-files' } }" class="cta"
+      <router-link v-if="(user.role.id === 6) || (user.role.id >= 9)" :to="{ query: { page: 'sector-files' } }" class="cta"
         >Sector Files</router-link
       >
     </div>
