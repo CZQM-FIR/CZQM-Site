@@ -78,7 +78,7 @@ export default {
           style = 'font-weight: bold; color: #ffc000';
           break;
         case 1:
-          style = 'font-weight: bold; color: #dff0d8;';
+          style = 'font-weight: bold; back-color: #dff0d8;';
           break;
       }
 
