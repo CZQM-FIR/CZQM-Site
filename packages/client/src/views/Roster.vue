@@ -72,13 +72,13 @@ export default {
 
       switch (status) {
         case -1:
-          style = 'font-weight: bold; color: #ff0000';
+          style = 'font-weight: bold; color: #AC0B0B';
           break;
         case 0:
-          style = 'font-weight: bold; color: #ffc000';
+          style = 'font-weight: bold; background-color: #ffc000';
           break;
         case 1:
-          style = 'font-weight: bold; back-color: #dff0d8;';
+          style = 'font-weight: bold; background-color: #dff0d8;';
           break;
       }
 
