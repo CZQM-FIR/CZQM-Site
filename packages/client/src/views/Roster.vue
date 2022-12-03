@@ -78,7 +78,7 @@ export default {
           style = 'font-weight: bold; color: #ffc000';
           break;
         case 1:
-          style = 'font-weight: bold; color: #00ff00;';
+          style = 'font-weight: bold; color: #dff0d8;';
           break;
       }
 
@@ -119,7 +119,7 @@ export default {
 }
 
 .roster tbody tr:nth-of-type(even) {
-  background-color: #b9b0b0;
+  background-color: #ffffff;
 }
 
 .roster tbody tr:last-of-type {
