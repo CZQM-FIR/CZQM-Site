@@ -75,7 +75,7 @@
         </li>
 
         <li class="navitem" @click="showMobileMenu = false">
-          <a href="https://forums.vatcan.ca/">
+          <a href="https://forums.vatcan.ca/forum/176-monctongander-czqm/">
             <span class="navitem-text">Forums</span>
           </a>
         </li>
