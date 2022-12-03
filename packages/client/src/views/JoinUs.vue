@@ -4,7 +4,7 @@
       <JoinUsCard
         title="New Controllers"
         :text="[
-          `Are you looking to join an energetic and friendly controlling environment? Moncton/Gander FIR The Gateway to Canada's East Coast is part of the learning environment of VATCANs National Training Program (NTU) and is a great ATC and pilot community.`,
+          `Are you looking to join an energetic and friendly controlling environment? Moncton/Gander FIR, The Gateway to Canada's East Coast, is an amazing learning environment with some of Canada's best Instructors and Mentors as well as an amazing community.`,
           `At Moncton/Gander FIR, we strive to provide you with the best training as a virtual air traffic controller in order for virtual pilots that fly in airspace, to receive the high level of ATC they have come to expect. Sign up with CZQM/QX FIR today and start your virtual air traffic control career.`,
         ]"
         :button="{

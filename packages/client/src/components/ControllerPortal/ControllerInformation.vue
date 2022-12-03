@@ -40,7 +40,12 @@ export default {
       'Home Controller',
       'Mentor',
       'Instructor',
-      'FIR Staff',
+      'Events',
+      'Sector Engineer',
+      'Chief Instructor',
+      'Deputy Chief',
+      'Webmaster',
+      'FIR Chief'
     ]);
 
     return {

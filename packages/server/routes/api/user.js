@@ -48,12 +48,47 @@ const fixRoleName = (user) => {
             break
 
         case 5:
-            if (user.role.name !== 'FIR Staff') {
-                roleName = 'FIR Staff'
+            if (user.role.name !== 'Events') {
+                roleName = 'Events'
+                user.save()
+            }
+            break
+        
+        case 6:
+            if (user.role.name !== 'Sector Engineer') {
+                roleName = 'Sector Engineer'
                 user.save()
             }
             break
 
+        case 7:
+            if (user.role.name !== 'Chief Instructor') {
+                roleName = 'Chief Instructor'
+                user.save()
+            }
+            break
+        
+        case 8:
+            if (user.role.name !== 'Deputy Chief') {
+                roleName = 'Deputy Chief'
+                user.save()
+            }
+            break
+        
+        case 9:
+            if (user.role.name !== 'Webmaster') {
+                roleName = 'Webmaster'
+                user.save()
+            }
+            break
+        
+        case 10:
+            if (user.role.name !== 'FIR Chief') {
+                roleName = 'FIR Chief'
+                user.save()
+            }
+            break
+        
         default:
             //     user.role.id = 0
             //     user.role.name = 'Guest'

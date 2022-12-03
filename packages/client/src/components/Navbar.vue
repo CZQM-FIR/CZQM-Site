@@ -101,7 +101,7 @@
                 </li>
                 <li
                   class="dropdown-text"
-                  v-if="user.loggedIn && user.role.id == 5"
+                  v-if="user.loggedIn && user.role.id >= 5"
                 >
                   <div class="dropdown-icon">
                     <i class="fa-solid fa-bars-progress"></i>
