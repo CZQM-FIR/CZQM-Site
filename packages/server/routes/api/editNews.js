@@ -1,10 +1,11 @@
-const { default: axios } = require("axios");
+const axios = require("axios");
 const { Router } = require("express");
-const path = require("path");
-
 const multer = require("multer");
+const path = require("path");
+const User = require('../../models/User')
 
 const News = require("../../models/News");
+const { sendEmailToAll } = require("../../utils/emailBroadcast");
 
 const storage = multer.diskStorage({
   destination(req, file, cb) {
@@ -23,6 +24,13 @@ const upload = multer({ storage });
 const router = Router();
 
 router.post("/", upload.none(), async (req, res) => {
+
+    const user = await User.findOne({ jwt: req.cookies.jwt })
+
+    if (!user || user.role.id < 4) {
+        return res.status(401).json({ msg: 'Not authorized' })
+    }
+
   let article;
 
   if (req.body._id) {
@@ -46,7 +54,7 @@ router.post("/", upload.none(), async (req, res) => {
 
     try {
       await axios.post(
-        "https://discord.com/api/webhooks/982999182711341176/ljflUw58vKKTCaH_IabGY4h0kq835zWfwvcnxN8cF8cfBYOOwoT9O6l-klo8YD3o2-pS?wait=true",
+        process.env.DISCORD_WEBHOOK_URI,
         {
           embeds: [
             {
@@ -65,7 +73,20 @@ router.post("/", upload.none(), async (req, res) => {
             },
           ],
         }
+
+        
       );
+
+      // Send email to all users who have an email address and who are visitors or above
+            const emailableUsers = await User.find({
+                'personal.email': { $ne: null },
+                'role.id': { $gte: 2 }
+            })
+            await sendEmailToAll([emailableUsers.map(userObject => userObject.personal.email)], `New Announcement: ${req.body.name}`, `
+                <h1>New Announcement: ${req.body.name}</h1>
+                <p>${req.body.text}</p>
+                <p>Read More: <a href="https://localhost:3000/news?_id=${article._id}">Link</a></p>
+            `,)
     } catch (err) {
       console.error(err);
     }
@@ -74,5 +95,6 @@ router.post("/", upload.none(), async (req, res) => {
       message: "Article Created Successfully",
     });
   }
+  return true
 });
 module.exports = router;

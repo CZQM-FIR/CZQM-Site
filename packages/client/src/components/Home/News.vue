@@ -5,7 +5,7 @@
                 <li>No Articles Posted</li>
             </div>
             <div v-else>
-                <li v-for="article in news" :key="article">
+                <li v-for="article in news.slice(0, 5)" :key="article">
                     <div class="news">
                         <span class="news-name">{{article.name}}</span>
                         <span class="news-time">{{getTime(article)}}</span>

@@ -3,9 +3,7 @@
     <table class="roster">
       <thead>
         <p class="key">
-          Key: <span :style="certificationStyle(-1)">Not Authorised</span>
-          <span :style="certificationStyle(0)">Solo</span>
-          <span :style="certificationStyle(1)">Certified</span>
+          Key: <span :style="certificationStyle(-1)">Not Authorised</span> | <span :style="certificationStyle(0)">Solo</span> | <span :style="certificationStyle(1)">Certified</span>
         </p>
 
         <tr class="table-header">
@@ -106,7 +104,7 @@ export default {
 
 .roster thead tr {
   background-color: var(--nav-colour);
-  color: white;
+  color: rgb(255, 255, 255);
   text-align: left;
   font-weight: bold;
 }
@@ -121,7 +119,7 @@ export default {
 }
 
 .roster tbody tr:nth-of-type(even) {
-  background-color: #f3f3f3;
+  background-color: #b9b0b0;
 }
 
 .roster tbody tr:last-of-type {

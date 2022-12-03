@@ -4,7 +4,14 @@ const User = require('../../models/User')
 const router = Router()
 
 router.get('/', async (req, res) => {
-    const userParam = JSON.parse(req.query.user)
+
+    const user = await User.findOne({ jwt: req.cookies.jwt })
+
+    if (!user || user.role.id < 4) {
+        return res.status(401).json({ msg: 'Not authorized' })
+    }
+
+    const userParam = req.query.user
     if (!userParam) {
         res.status(400).json({
             message: 'Unknown User',
@@ -12,12 +19,12 @@ router.get('/', async (req, res) => {
     }
 
     try {
-        const user = await User.findOne({ cid: userParam.cid })
-        user.personal.name_first = userParam.personal
-        user.role = userParam.role
-        user.roster = userParam.roster
+        const editUser = await User.findOne({ cid: userParam.cid })
+        editUser.personal.name_first = userParam.personal
+        editUser.role = userParam.role
+        editUser.roster = userParam.roster
 
-        await user.save()
+        await editUser.save()
 
         return res.status(200)
     } catch (error) {

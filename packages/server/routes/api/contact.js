@@ -1,8 +1,9 @@
 const { Router } = require('express')
-const { createTransport } = require('nodemailer')
+const path = require('path')
 
 const router = Router()
 const multer = require('multer')
+const { sendEmail } = require('../../utils/emailBroadcast')
 
 const storage = multer.diskStorage({
     destination(req, file, cb) {
@@ -27,36 +28,21 @@ router.post('/', upload.none(), async (req, res) => {
         })
     }
 
-    const transporter = createTransport({
-        host: 'smtppro.zoho.com',
-        port: 465,
-        secure: true,
-        auth: {
-            user: 'jack@koskie.ca',
-            pass: 'WuU5j4hYbLcA',
-        },
-    })
-
     const date = new Date(Date.now())
-    await transporter.sendMail({
-        from: `"Jack Koskie" <jack@koskie.ca>`,
-        to: req.body.staff,
-        subject: `Contact Form Submission: ${req.body.subject}`,
-        html: `
-        <h1>Contact Form Submission</h1>
+    await sendEmail(req.body.staff, `Contact Form Submission: ${req.body.subject}`, `
+    <h1>Contact Form Submission</h1>
     <span><b>From:</b> ${req.body.name} - ${req.body.email}</span><br>
     <span><b>Subject:</b> ${req.body.subject}</span><br>
     <span><b>To:</b> ${req.body.staff}</span><br>
     <span><b>Sent At:</b> ${date.toUTCString()}</span><br><br>
     <span><b>Message:</b></span>
     <p>${req.body.message}</p><br>
-        `,
-        replyTo: req.body.email,
-    })
+    `)
 
     res.status(200).json({
         message: 'Email Sent',
     })
+    return true
 })
 
 module.exports = router

@@ -27,7 +27,7 @@ Permissions are numbered starting at zero (0) through to five (5). Each permissi
 2. Home Controller (Same permissions as visiting)
 3. Mentor
 4. Instructor
-5. FIR Staff (Full admin access)
+5. FIR Staff (Full admin access) <!--Only Webmaster and FIR Chief shall have this lvl of acess. Others roles can be claimed as general access-->
 
 ## Contributors
 

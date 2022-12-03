@@ -1,4 +1,4 @@
-const { default: axios } = require("axios");
+const axios = require("axios");
 const { Router } = require("express");
 
 const router = Router();
@@ -20,7 +20,7 @@ router.get("/", async (req, res) => {
       "CYQM",
       "CYFC",
       "CYZX",
-      "LFPV",
+      "LFVP",
       "CYSJ",
     ];
 
