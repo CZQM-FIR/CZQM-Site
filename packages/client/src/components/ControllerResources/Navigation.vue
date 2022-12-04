@@ -2,8 +2,11 @@
   <div>
     <h1>{{ greeting }} {{ user.personal.name_first }}!</h1>
     <div class="cta-row">
-      <router-link :to="{ query: { page: 'sector' } }" class="cta"
+      <router-link :to="{ query: { page: 'sector' } }" class="cta testing"
         >Sector Files</router-link
+      >
+      <router-link :to="{ query: { page: 'airspace' } }" class="cta"
+        >Airspace Map</router-link
       >
     </div>
   </div>

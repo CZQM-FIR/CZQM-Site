@@ -11,6 +11,7 @@
               <SectorFileInstructions class="grid-item" />
               <SectorFileDownload class="grid-item" />
             </div>
+            <AirspaceMap v-else-if="page == 'airspace'" class="grid-item" />
             <span v-else class="grid-item"
               >Select a page using the buttons to the left</span
             >
@@ -26,6 +27,7 @@ import router from '../router';
 import Navigation from '../components/ControllerResources/Navigation.vue';
 import SectorFileInstructions from '../components/ControllerResources/SectorFileInstructions.vue';
 import SectorFileDownload from '../components/ControllerResources/SectorFileDownload.vue';
+import AirspaceMap from '../components/ControllerResources/AirspaceMap.vue';
 
 export default {
   computed: {
@@ -37,6 +39,7 @@ export default {
     Navigation,
     SectorFileInstructions,
     SectorFileDownload,
+    AirspaceMap,
   },
 };
 </script>
