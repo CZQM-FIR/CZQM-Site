@@ -11,7 +11,7 @@ import axios from 'axios';
 
 export default {
   setup: async () => {
-    await axios.post('/api/logout', { withCredentials: true });
+    await axios.post('/api/logout', {}, { withCredentials: true });
     window.location.href = '/';
   },
 };
