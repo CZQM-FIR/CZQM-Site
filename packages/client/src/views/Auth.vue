@@ -16,7 +16,7 @@ export default {
     let code = urlParams.get('code');
 
     axios
-      .post(`/api/login/${code}`, { withCredentials: true, heraders: {credentials: 'include'} })
+      .post(`/api/login/${code}`, { withCredentials: true })
       .then((res, err) => {
         window.location.href = '/';
       });
