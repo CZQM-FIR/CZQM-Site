@@ -10,7 +10,7 @@ router.post('/:code', async (req, res) => {
         grant_type: 'authorization_code',
         client_id: process.env.CLIENT_ID,
         client_secret: process.env.CLIENT_SECRET,
-        redirect_uri: 'http://dev.czqm.caauth',
+        redirect_uri: 'http://dev.czqm.ca/auth',
         code,
     })
 
