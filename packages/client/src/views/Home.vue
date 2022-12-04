@@ -102,10 +102,10 @@ export default {
     let airports = ref([]);
     airportList.forEach(async (airport) => {
       let station = await axios.get(`/api/station/${airport}`, {
-        withCredentials: true,
+        withCredentials: false,
       });
       let metar = await axios.get(`/api/metar/${airport}`, {
-        withCredentials: true,
+        withCredentials: false,
       });
       station = station.data;
       metar = metar.data;
@@ -119,7 +119,7 @@ export default {
     let controllers = ref([]);
     const getOnlineControllers = async () => {
       let controllersData = await axios.get('/api/liveControllers', {
-        withCredentials: true,
+        withCredentials: false,
       });
       controllersData = controllersData.data;
       controllersData.forEach((controller) => {
