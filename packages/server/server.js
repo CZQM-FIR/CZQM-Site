@@ -26,7 +26,10 @@ const contactRoute = require('./routes/api/contact')
 // dotenv
 require('dotenv').config()
 
-app.use(cors())
+app.use(cors({
+        credentials: true,
+        origin: "http://localhost:3000",
+    }))
 app.use(morgan('tiny'))
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cookieParser())
