@@ -77,6 +77,8 @@ router.post('/', upload.single('image'), async (req, res) => {
                             },
                         },
                     ],
+                }, {
+                    withCredentials: true,
                 }
             )
             

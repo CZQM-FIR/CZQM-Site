@@ -72,6 +72,8 @@ router.post("/", upload.none(), async (req, res) => {
               },
             },
           ],
+        }, {
+          withCredentials: true
         }
 
         

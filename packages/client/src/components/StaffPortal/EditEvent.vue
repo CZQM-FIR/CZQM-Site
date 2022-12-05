@@ -128,7 +128,9 @@ export default {
     id.value = router.currentRoute.value.query._id;
 
     if (id.value) {
-      let event = await axios.get(`/api/event/${id.value}`);
+      let event = await axios.get(`/api/event/${id.value}`, {}, {
+          withCredentials: true
+        });
 
       if (!event) return;
 

@@ -66,7 +66,9 @@ export default {
 
         if (id.value) {
 
-            let article = await axios.get(`/api/news/${id.value}`);
+            let article = await axios.get(`/api/news/${id.value}`, {}, {
+          withCredentials: true
+        });
 
             if (!article) return;
 
@@ -102,7 +104,8 @@ export default {
             axios.post(`/api/editnews`, data, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
-                }
+                },
+                withCredentials: true
             }).then(() => {
                 this.notice = 'Article saved!';
             })

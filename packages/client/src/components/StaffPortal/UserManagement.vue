@@ -110,7 +110,9 @@ import getUser from '../../scripts/getUser';
 
 export default {
   setup: async () => {
-    let users = ref([...(await axios.get('/api/user')).data.users]);
+    let users = ref([...(await axios.get('/api/user', {}, {
+          withCredentials: true
+        })).data.users]);
 
     let roles = ref([
       'Guest',
@@ -175,7 +177,9 @@ export default {
         params: {
           user,
         },
-      });
+      }, {
+          withCredentials: true
+        });
     },
   },
 };
