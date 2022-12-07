@@ -5,11 +5,11 @@ const router = Router()
 
 router.get('/', async (req, res) => {
 
-    const user = await User.findOne({ jwt: req.cookies.jwt })
+    // const user = await User.findOne({ jwt: req.cookies.jwt })
 
-    if (!user || user.role.id < 4) {
-        return res.status(401).json({ msg: 'Not authorized' })
-    }
+    // if (!user || user.role.id < 4) {
+    //     return res.status(401).json({ msg: 'Not authorized' })
+    // }
 
     const userParam = req.query.user
     if (!userParam) {
