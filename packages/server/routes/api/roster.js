@@ -22,17 +22,17 @@ router.get('/', async (req, res) => {
 
     controllerList.sort((a, b) => { 
         const roleOrder = [
-          'Guest',
-          'Visitor',
-          'Home Controller',
-          'Mentor',
-          'Instructor',
-          'Events',
-          'Sector Engineer',
-          'Chief Instructor',
-          'Deputy Chief',
-          'Webmaster',
-          'FIR Chief'
+            'FIR Chief',
+            'Deputy Chief',
+            'Chief Instructor',
+            'Webmaster',
+            'Sector Engineer',
+            'Events',
+            'Instructor',
+            'Mentor',
+            'Home Controller',
+            'Visitor',
+            'Guest',
         ]
 
         const nameA = a.name.split(' ')[1]
