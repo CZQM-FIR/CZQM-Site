@@ -6,7 +6,7 @@ const User = require('../../models/User')
 router.post('/:code', async (req, res) => {
     const { code } = req.params
 
-    const result = await axios.post(`https://auth-dev.vatsim.net/oauth/token`, {
+    const result = await axios.post(`https://auth.vatsim.net/oauth/token`, {
         grant_type: 'authorization_code',
         client_id: process.env.CLIENT_ID,
         client_secret: process.env.CLIENT_SECRET,
@@ -14,7 +14,7 @@ router.post('/:code', async (req, res) => {
         code,
     })
 
-    const vatsimUser = await axios.get(`https://auth-dev.vatsim.net/api/user`, {
+    const vatsimUser = await axios.get(`https://auth.vatsim.net/api/user`, {
         headers: {
             Authorization: `Bearer ${result.data.access_token}`,
             Accept: 'application/json',
