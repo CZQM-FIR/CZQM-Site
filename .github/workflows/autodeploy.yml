@@ -33,14 +33,9 @@ jobs:
           script: |
             cd ~/CZQM-Site
             git pull https://github.com/CZQM-FIR/CZQM-Site.git
-            
-  download:
-    needs: pull
-    runs-on: ubuntu-latest
-    steps: 
       - name: Download Dependencies
         uses: appleboy/ssh-action@master
-        with:
+        with: 
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
@@ -48,9 +43,9 @@ jobs:
           script: |
             cd ~/CZQM-Site
             npm run download
-  
+      
   build:
-    needs: download
+    needs: pull
     runs-on: ubuntu-latest
     steps:
       - name: Building Frontend
@@ -68,7 +63,7 @@ jobs:
             cp -r root/CZQM-Site/packages/client/dist/* var/www/czqm.ca
 
   backend-start:
-    needs: download
+    needs: pull
     runs-on: ubuntu-latest
     steps:
       - name: Restarting Backend
