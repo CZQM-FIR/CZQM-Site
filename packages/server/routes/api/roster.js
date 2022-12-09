@@ -40,11 +40,29 @@ router.get('/', async (req, res) => {
         const roleA = roleOrder.indexOf(a.role)
         const roleB = roleOrder.indexOf(b.role)
 
-        if ((nameA < nameB && roleA < roleB) || (nameA === nameB && roleA < roleB) || (nameA < nameB && roleA === roleB)) {
+        // if ((nameA < nameB && roleA < roleB) || (nameA === nameB && roleA < roleB) || (nameA < nameB && roleA === roleB)) {
+        //     return -1
+        // }
+
+        // if ((nameA > nameB && roleA > roleB) || (nameA === nameB && roleA > roleB) || (nameA > nameB && roleA === roleB)) {
+        //     return 1
+        // }
+
+        if (nameA < nameB) {
+
+            if (roleA > roleB) {
+                return 1
+            }
+
             return -1
         }
 
-        if ((nameA > nameB && roleA > roleB) || (nameA === nameB && roleA > roleB) || (nameA > nameB && roleA === roleB)) {
+        if (nameA > nameB) {
+
+            if (roleA < roleB) {
+                return -1
+            }
+
             return 1
         }
 
