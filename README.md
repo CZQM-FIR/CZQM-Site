@@ -20,7 +20,7 @@
 
 ## Roles
 
-Roles are numbered starting at zero (0) through to five (5). Each role level can be seen below and are used to assign permissions. Staff have their own permission level and it consists of everything above five (5). Users shall only be given the permissions that they require and no more.
+Roles are numbered starting at zero (0) through to ten (10). Each role level can be seen below and are used to assign permissions. Admin have their own permission level and it consists of everything above or equal to eight (8). Users shall only be given the permissions that they require and no more.
 
 0. Anyone with a VATSIM account (No special access)
 1. Visiting Controller
@@ -30,7 +30,7 @@ Roles are numbered starting at zero (0) through to five (5). Each role level can
 5. Events
 6. Sector Engineer
 7. Chief Instructor
-8. Deputy Chief
+8. Deputy Chief (Admin)
 9. Webmaster (Admin)
 10. FIR Chief (Admin)
 
