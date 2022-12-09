@@ -20,6 +20,21 @@ router.get('/', async (req, res) => {
         });
     })
 
+    controllerList.sort((a, b) => { 
+        const nameA = a.personal.name_last
+        const nameB = b.personal.name_last
+
+        if (nameA < nameB) {
+            return -1
+        }
+
+        if (nameA > nameB) {
+            return 1
+        }
+
+        return 0
+    })
+
     res.status(200).send(controllerList)
 });
 
