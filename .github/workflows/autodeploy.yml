@@ -68,8 +68,8 @@ jobs:
             pm2 delete all
             pm2 start "node ." --name server
 
-start:
-  needs: [backend-start, build]
+  start:
+    needs: [backend-start, build]
     runs-on: ubuntu-latest
     steps:
       - name: Starting Apache
