@@ -20,7 +20,9 @@ router.get('/', async (req, res) => {
         });
     })
 
-    controllerList.sort((a, b) => { 
+    
+
+    res.status(200).send(controllerList.sort((a, b) => { 
         const roleOrder = [
             'Guest',
             'Visitor',
@@ -35,41 +37,29 @@ router.get('/', async (req, res) => {
             'FIR Chief',
         ]
 
-        const nameA = a.name.split(' ')[1]
-        const nameB = b.name.split(' ')[1]
-        const roleA = roleOrder.indexOf(a.role)
-        const roleB = roleOrder.indexOf(b.role)
+        const nameA = (a.name.split(' '))[1]
+        const nameB = (b.name.split(' '))[1]
+        const roleA = roleOrder.indexOf(a.role.name)
+        const roleB = roleOrder.indexOf(b.role.name)
 
-        // if ((nameA < nameB && roleA < roleB) || (nameA === nameB && roleA < roleB) || (nameA < nameB && roleA === roleB)) {
-        //     return -1
-        // }
+        if (roleA > roleB) {
+            return -1
+        }
 
-        // if ((nameA > nameB && roleA > roleB) || (nameA === nameB && roleA > roleB) || (nameA > nameB && roleA === roleB)) {
-        //     return 1
-        // }
+        if (roleA < roleB) {
+            return 1
+        }
 
         if (nameA < nameB) {
-
-            if (roleA > roleB) {
-                return 1
-            }
-
             return -1
         }
 
         if (nameA > nameB) {
-
-            if (roleA < roleB) {
-                return -1
-            }
-
             return 1
         }
-
+        
         return 0
-    })
-
-    res.status(200).send(controllerList)
+    }))
 });
 
 router.all('/*', async (req, res) => {
