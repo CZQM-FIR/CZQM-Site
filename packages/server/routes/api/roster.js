@@ -37,10 +37,10 @@ router.get('/', async (req, res) => {
             'FIR Chief',
         ]
 
-        const nameA = a.name.split(' ')[1]
-        const nameB = b.name.split(' ')[1]
-        const roleA = roleOrder.indexOf(a.role)
-        const roleB = roleOrder.indexOf(b.role)
+        const nameA = a.name.split(' ')
+        const nameB = b.name.split(' ')
+        const roleA = roleOrder.indexOf(a.role.name)
+        const roleB = roleOrder.indexOf(b.role.name)
         console.info(nameA, nameB, roleA, roleB)
 
         // if ((nameA < nameB && roleA < roleB) || (nameA === nameB && roleA < roleB) || (nameA < nameB && roleA === roleB)) {
