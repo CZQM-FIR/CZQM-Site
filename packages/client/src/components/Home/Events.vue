@@ -35,8 +35,8 @@
                 const end = new Date(event.end);
 
                 // Format the time/date in DD/MM HHMMz format
-                const startTime = `${start.getDate().toLocaleString('en-US', {minimumIntegerDigits: 2})}/${(start.getMonth()+1).toLocaleString('en-US', {minimumIntegerDigits: 2})} ${start.getHours().toLocaleString('en-US', {minimumIntegerDigits: 2})}${start.getMinutes().toLocaleString('en-US', {minimumIntegerDigits: 2})}z`;
-                const endTime = `${end.getDate().toLocaleString('en-US', {minimumIntegerDigits: 2})}/${(end.getMonth() + 1).toLocaleString('en-US', {minimumIntegerDigits: 2})} ${end.getHours().toLocaleString('en-US', {minimumIntegerDigits: 2})}${end.getMinutes().toLocaleString('en-US', {minimumIntegerDigits: 2})}z`;
+                const startTime = `${start.getDate().toLocaleString('en-US', {minimumIntegerDigits: 2, timeZone: 'UTC' })}/${(start.getMonth()+1).toLocaleString('en-US', {minimumIntegerDigits: 2, timeZone: 'UTC' })} ${start.getHours().toLocaleString('en-US', {minimumIntegerDigits: 2, timeZone: 'UTC' })}${start.getMinutes().toLocaleString('en-US', {minimumIntegerDigits: 2, timeZone: 'UTC' })}z`;
+                const endTime = `${end.getDate().toLocaleString('en-US', {minimumIntegerDigits: 2, timeZone: 'UTC' })}/${(end.getMonth() + 1).toLocaleString('en-US', {minimumIntegerDigits: 2, timeZone: 'UTC' })} ${end.getHours().toLocaleString('en-US', {minimumIntegerDigits: 2, timeZone: 'UTC' })}${end.getMinutes().toLocaleString('en-US', {minimumIntegerDigits: 2, timeZone: 'UTC' })}z`;
 
                 return startTime + ' - ' + endTime;
 

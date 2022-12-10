@@ -34,7 +34,7 @@
                 const time = new Date(article.date);
 
                 // Format the time/date in DD/MM HHMMz format
-                const timeString = `${time.getDate().toLocaleString('en-US', {minimumIntegerDigits: 2})}/${(time.getMonth()+1).toLocaleString('en-US', {minimumIntegerDigits: 2})} ${time.getHours().toLocaleString('en-US', {minimumIntegerDigits: 2})}${time.getMinutes().toLocaleString('en-US', {minimumIntegerDigits: 2})}z`;
+                const timeString = `${time.getDate().toLocaleString('en-US', {minimumIntegerDigits: 2, timeZone: 'UTC' })}/${(time.getMonth()+1).toLocaleString('en-US', {minimumIntegerDigits: 2, timeZone: 'UTC' })} ${time.getHours().toLocaleString('en-US', {minimumIntegerDigits: 2, timeZone: 'UTC' })}${time.getMinutes().toLocaleString('en-US', {minimumIntegerDigits: 2, timeZone: 'UTC' })}z`;
 
                 return timeString;
             }
