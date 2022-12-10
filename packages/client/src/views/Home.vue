@@ -5,7 +5,7 @@
         <div class="hero-text">
           <h1>Canada's Gateway to the East Coast</h1>
           <p>
-            Providing realistic ATC services across the maritime provinces on the VATSIM network. <br>Image copyright NAV CANADA
+            Providing realistic ATC services across the maritime provinces on the VATSIM network.<br><br>Image copyright NAV CANADA
           </p>
           <div class="cta-row">
             <a href="#info" class="cta">See More</a>
