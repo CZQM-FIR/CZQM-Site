@@ -31,10 +31,11 @@
         },
         methods: {
             getTime: (article) => {
-                const time = new Date(article.date);
+                const time = new Date(start.getTime() + start.getTimezoneOffset() * 60000)
+                const timeUTC = new Date(article.date);
 
                 // Format the time/date in DD/MM HHMMz format
-                const timeString = `${time.getDate().toLocaleString('en-US', {minimumIntegerDigits: 2, timeZone: 'UTC' })}/${(time.getMonth()+1).toLocaleString('en-US', {minimumIntegerDigits: 2, timeZone: 'UTC' })} ${time.getHours().toLocaleString('en-US', {minimumIntegerDigits: 2, timeZone: 'UTC' })}${time.getMinutes().toLocaleString('en-US', {minimumIntegerDigits: 2, timeZone: 'UTC' })}z`;
+                const timeString = `${timeUTC.getDate().toLocaleString('en-US', {minimumIntegerDigits: 2, timeZone: 'UTC' })}/${(timeUTC.getMonth()+1).toLocaleString('en-US', {minimumIntegerDigits: 2, timeZone: 'UTC' })} ${timeUTC.getHours().toLocaleString('en-US', {minimumIntegerDigits: 2, timeZone: 'UTC' })}${timeUTC.getMinutes().toLocaleString('en-US', {minimumIntegerDigits: 2, timeZone: 'UTC' })}z`;
 
                 return timeString;
             }
