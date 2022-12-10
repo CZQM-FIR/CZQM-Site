@@ -1,94 +1,94 @@
-name: auto-deploy
-on:
-  push:
-    branches:
-      - master
-  workflow_dispatch:
+# name: auto-deploy
+# on:
+#   push:
+#     branches:
+#       - master
+#   workflow_dispatch:
   
-jobs:
-  stop:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Stopping Apache
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          port: ${{ secrets.PORT }}
-          script: |
-            systemctl stop apache2
+# jobs:
+#   stop:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Stopping Apache
+#         uses: appleboy/ssh-action@master
+#         with:
+#           host: ${{ secrets.HOST }}
+#           username: ${{ secrets.USERNAME }}
+#           password: ${{ secrets.PASSWORD }}
+#           port: ${{ secrets.PORT }}
+#           script: |
+#             systemctl stop apache2
             
-  pull:
-    needs: stop
-    runs-on: ubuntu-latest
-    steps:
-      - name: Pulling New Commits
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          port: ${{ secrets.PORT }}
-          script: |
-            cd ~/CZQM-Site
-            git pull https://github.com/CZQM-FIR/CZQM-Site.git
-      - name: Download Dependencies
-        uses: appleboy/ssh-action@master
-        with: 
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          port: ${{ secrets.PORT }}
-          script: |
-            cd ~/CZQM-Site
-            npm run download
+#   pull:
+#     needs: stop
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Pulling New Commits
+#         uses: appleboy/ssh-action@master
+#         with:
+#           host: ${{ secrets.HOST }}
+#           username: ${{ secrets.USERNAME }}
+#           password: ${{ secrets.PASSWORD }}
+#           port: ${{ secrets.PORT }}
+#           script: |
+#             cd ~/CZQM-Site
+#             git pull https://github.com/CZQM-FIR/CZQM-Site.git
+#       - name: Download Dependencies
+#         uses: appleboy/ssh-action@master
+#         with: 
+#           host: ${{ secrets.HOST }}
+#           username: ${{ secrets.USERNAME }}
+#           password: ${{ secrets.PASSWORD }}
+#           port: ${{ secrets.PORT }}
+#           script: |
+#             cd ~/CZQM-Site
+#             npm run download
       
-  build:
-    needs: pull
-    runs-on: ubuntu-latest
-    steps:
-      - name: Building Frontend
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          port: ${{ secrets.PORT }}
-          script: |
-            cd ~/CZQM-Site
-            lerna run build
-            cd ~/..
-            rm -rf var/www/czqm.ca/*
-            cp -r root/CZQM-Site/packages/client/dist/* var/www/czqm.ca
+#   build:
+#     needs: pull
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Building Frontend
+#         uses: appleboy/ssh-action@master
+#         with:
+#           host: ${{ secrets.HOST }}
+#           username: ${{ secrets.USERNAME }}
+#           password: ${{ secrets.PASSWORD }}
+#           port: ${{ secrets.PORT }}
+#           script: |
+#             cd ~/CZQM-Site
+#             lerna run build
+#             cd ~/..
+#             rm -rf var/www/czqm.ca/*
+#             cp -r root/CZQM-Site/packages/client/dist/* var/www/czqm.ca
 
-  backend-start:
-    needs: pull
-    runs-on: ubuntu-latest
-    steps:
-      - name: Restarting Backend
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          port: ${{ secrets.PORT }}
-          script: |
-            cd ~/CZQM-Site/packages/server
-            pm2 delete all
-            pm2 start "node ." --name server
+#   backend-start:
+#     needs: pull
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Restarting Backend
+#         uses: appleboy/ssh-action@master
+#         with:
+#           host: ${{ secrets.HOST }}
+#           username: ${{ secrets.USERNAME }}
+#           password: ${{ secrets.PASSWORD }}
+#           port: ${{ secrets.PORT }}
+#           script: |
+#             cd ~/CZQM-Site/packages/server
+#             pm2 delete all
+#             pm2 start "node ." --name server
 
-  start:
-    needs: [backend-start, build]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Starting Apache
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          port: ${{ secrets.PORT }}
-          script: |
-            systemctl start apache2
+#   start:
+#     needs: [backend-start, build]
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Starting Apache
+#         uses: appleboy/ssh-action@master
+#         with:
+#           host: ${{ secrets.HOST }}
+#           username: ${{ secrets.USERNAME }}
+#           password: ${{ secrets.PASSWORD }}
+#           port: ${{ secrets.PORT }}
+#           script: |
+#             systemctl start apache2
     
