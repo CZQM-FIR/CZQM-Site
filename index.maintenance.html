@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <link rel="icon" href="/CZQM.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="refresh" content="30">
   <title>CZQM/QX - Maintenance</title>
 
 </head>
@@ -13,19 +14,47 @@
   <div class="main">
     <h1>CZQM / CZQX Web Maintenance</h1>
     <p>
-        We are currently performing automated maintenance on our website. Please check back in a few moments.
+        We are currently performing automated maintenance on our website. You will be automaticaly redirected to the website in a few moments.
     </p>
+    <p>Sorry for the inconvinience</p>
+    <h3 align="center"><blockquote><span id="quote"></span><br>- <span id="author"></span></blockquote></h3>
   </div>
 </body>
 
 <script>
   console.warn('Do not type anything in the console! It can very easily break things');
+
+  const quote = document.getElementById('quote');
+  const author = document.getElementById('author');
+
+  let category = 'happiness'
+
+  const Http = new XMLHttpRequest();
+  const url = `https://api.api-ninjas.com/v1/quotes?category=${category}`;
+  Http.open('GET', url);
+  Http.setRequestHeader("X-Api-Key", "6nfvXtxOAlw/7iPXne14ew==r1R3qvTVVYoOXdcn");
+  Http.send();
+
+  Http.onreadystatechange = (e) => {
+    if (Http.readyState == 4 && Http.status == 200) {
+      const data = JSON.parse(Http.responseText);
+      quote.innerHTML = data[0].quote;
+      author.innerHTML = data[0].author;
+    } else {
+      quote.innerHTML = `<p>Failed to fetch quote</p> <p>${err}</p>`;
+    }
+  }
+
 </script>
 
 <style>
     .main {
         text-align: center;
         margin-top: 10%;
+    }
+
+    h3 {
+      margin-top: 10rem;
     }
 </style>
 
