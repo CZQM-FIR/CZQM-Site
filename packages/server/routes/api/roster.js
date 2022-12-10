@@ -50,11 +50,11 @@ router.get('/', async (req, res) => {
         //     return 1
         // }
 
-        if (roleA < roleB) {
+        if (roleA > roleB) {
             return -1
         }
 
-        if (roleA > roleB) {
+        if (roleA < roleB) {
             return 1
         }
 
