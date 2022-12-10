@@ -15,4 +15,4 @@ packages/*/dist
 
 # Server
 packages/server/uploads/*
-!packages/server/uploads/*.pdf
+!packages/server/uploads/docs/
