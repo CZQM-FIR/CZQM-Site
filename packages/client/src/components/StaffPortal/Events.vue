@@ -39,7 +39,7 @@
             getEventTime: (event) => {
                 const start = new Date(event.start);
                 const end = new Date(event.end);
-                const startUTC = new Date(start.getTime() + startgetTimezoneOffset() * 60000)
+                const startUTC = new Date(start.getTime() + start.getTimezoneOffset() * 60000)
                 const endUTC = new Date(end.getTime() + end.getTimezoneOffset() * 60000)
 
 
