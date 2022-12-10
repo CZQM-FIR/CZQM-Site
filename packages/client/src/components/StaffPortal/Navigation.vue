@@ -5,7 +5,7 @@
       <router-link v-if="(user.role.id === 5) || (user.role.id >= 8)" :to="{ query: { page: 'events' } }" class="cta"
         >Events</router-link
       >
-      <router-link :to="{ query: { page: 'news' } }" class="cta"
+      <router-link v-if="user.role.id >= 5" :to="{ query: { page: 'news' } }" class="cta"
         >News</router-link
       >
       <router-link v-if="(user.role.id === 7) || (user.role.id >= 8)" :to="{ query: { page: 'users' } }" class="cta"
