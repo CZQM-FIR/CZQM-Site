@@ -18,7 +18,7 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             rm -rf var/www/czqm.ca/*
-            cp ~/CZQM-Site/index.maintenance.html var/www/czqm.ca/index.html
+            cp ~/CZQM-Site/index.maintenance.html ~/../var/www/czqm.ca/index.html
             
   pull:
     runs-on: ubuntu-latest
