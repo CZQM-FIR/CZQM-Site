@@ -14,6 +14,9 @@
       <router-link v-if="(user.role.id === 6) || (user.role.id >= 8)" :to="{ query: { page: 'sector-files' } }" class="cta"
         >Sector Files</router-link
       >
+      <a v-if="user.role.id >= 3" href="https://trello.com/invite/b/oDjaz39q/ATTIdf015a6319284dcd8225adf08e82f6639C637235/czqm-controller-board" class="cta"
+        >Trello</a
+      >
     </div>
   </div>
 </template>
