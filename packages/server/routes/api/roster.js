@@ -31,8 +31,8 @@ router.get('/', async (req, res) => {
             'Instructor',
             'Events',
             'Sector Engineer',
-            'Chief Instructor',
             'Webmaster',
+            'Chief Instructor',
             'Deputy Chief',
             'FIR Chief',
         ]
