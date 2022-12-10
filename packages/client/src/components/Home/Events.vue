@@ -34,9 +34,13 @@
                 const start = new Date(event.start);
                 const end = new Date(event.end);
 
+                console.log(start, end)
+
                 // Format the time/date in DD/MM HHMMz format
                 const startTime = `${start.getDate().toLocaleString('en-US', {minimumIntegerDigits: 2, timeZone: 'UTC' })}/${(start.getMonth()+1).toLocaleString('en-US', {minimumIntegerDigits: 2, timeZone: 'UTC' })} ${start.getHours().toLocaleString('en-US', {minimumIntegerDigits: 2, timeZone: 'UTC' })}${start.getMinutes().toLocaleString('en-US', {minimumIntegerDigits: 2, timeZone: 'UTC' })}z`;
                 const endTime = `${end.getDate().toLocaleString('en-US', {minimumIntegerDigits: 2, timeZone: 'UTC' })}/${(end.getMonth() + 1).toLocaleString('en-US', {minimumIntegerDigits: 2, timeZone: 'UTC' })} ${end.getHours().toLocaleString('en-US', {minimumIntegerDigits: 2, timeZone: 'UTC' })}${end.getMinutes().toLocaleString('en-US', {minimumIntegerDigits: 2, timeZone: 'UTC' })}z`;
+
+                console.log(startTime + ' - ' + endTime)
 
                 return startTime + ' - ' + endTime;
 
