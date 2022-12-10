@@ -37,8 +37,10 @@ const sendEmail = async (email, subject, message, attachments = []) => {
  * @param {array} attachments Array of attachments in attachment format
  */
 const sendEmailToAll = async (emails, subject, message, attachments = []) => {
-    const promises = emails.map(email => sendEmail(email, subject, message, attachments))
-    await Promise.all(promises)
+    emails.forEach(email => {
+        sendEmail(email, subject, message, attachments)
+        console.info(`Sent email to ${email}`)
+    })
 }
 
 module.exports = {
