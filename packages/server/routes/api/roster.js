@@ -37,8 +37,8 @@ router.get('/', async (req, res) => {
             'FIR Chief',
         ]
 
-        const nameA = a.name.split(' ')
-        const nameB = b.name.split(' ')
+        const nameA = (a.name.split(' '))[1]
+        const nameB = (b.name.split(' '))[1]
         const roleA = roleOrder.indexOf(a.role.name)
         const roleB = roleOrder.indexOf(b.role.name)
         console.info(nameA, nameB, roleA, roleB)
