@@ -82,7 +82,7 @@ router.post("/", upload.none(), async (req, res) => {
       // Send email to all users who have an email address and who are visitors or above
             const emailableUsers = await User.find({
                 'personal.email': { $ne: null },
-                'role.id': { $gte: 2 }
+                'role.id': { $gte: 1 }
             })
             await sendEmailToAll([emailableUsers.map(userObject => userObject.personal.email)], `New Announcement: ${req.body.name}`, `
                 <h1>New Announcement: ${req.body.name}</h1>
