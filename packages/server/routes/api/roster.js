@@ -20,7 +20,9 @@ router.get('/', async (req, res) => {
         });
     })
 
-    controllerList.sort((a, b) => { 
+    
+
+    res.status(200).send(controllerList.sort((a, b) => { 
         const roleOrder = [
             'Guest',
             'Visitor',
@@ -83,9 +85,7 @@ router.get('/', async (req, res) => {
 
         //     return 1
         // }
-    })
-
-    res.status(200).send(controllerList)
+    }))
 });
 
 router.all('/*', async (req, res) => {
