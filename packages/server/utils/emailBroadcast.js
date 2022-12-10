@@ -22,7 +22,7 @@ const sendEmail = async (email, subject, message, attachments = []) => {
 
     await transporter.sendMail({
         from: `"CZQM Web Services" <${transporterConfig.auth.user}>`,
-        to: email,
+        bcc: email,
         subject,
         html: message,
         attachments
