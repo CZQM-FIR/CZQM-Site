@@ -9,7 +9,7 @@ jobs:
   stop:
     runs-on: ubuntu-latest
     steps:
-      - name: Stopping Apache
+      - name: Switch out main site for maintenance page
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
@@ -17,10 +17,10 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           script: |
-            systemctl stop apache2
+            rm -rf var/www/czqm.ca/*
+            cp ~/CZQM-Site/index.maintenance.html var/www/czqm.ca/index.html
             
   pull:
-    needs: stop
     runs-on: ubuntu-latest
     steps:
       - name: Pulling New Commits
@@ -59,7 +59,7 @@ jobs:
             cd ~/CZQM-Site
             lerna run build
             cd ~/..
-            rm -rf var/www/czqm.ca/*
+            
             cp -r root/CZQM-Site/packages/client/dist/* var/www/czqm.ca
 
   backend-start:
@@ -77,18 +77,4 @@ jobs:
             cd ~/CZQM-Site/packages/server
             pm2 delete all
             pm2 start "node ." --name server
-
-  start:
-    needs: [backend-start, build]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Starting Apache
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          port: ${{ secrets.PORT }}
-          script: |
-            systemctl start apache2
     
