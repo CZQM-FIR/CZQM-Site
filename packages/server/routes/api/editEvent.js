@@ -67,7 +67,7 @@ router.post('/', upload.single('image'), async (req, res) => {
                             description: `${req.body.description.substring(
                                 0,
                                 50
-                            )}... [Read More](https://134.122.37.1:3000/events?_id=${
+                            )}... [Read More](https://dev.czqm.ca/events?_id=${
                                 event._id
                             })`,
                             timestamp: `${new Date(Date.now()).toISOString()}`,
@@ -92,7 +92,7 @@ router.post('/', upload.single('image'), async (req, res) => {
                 <p>${req.body.description}</p>
                 <p>Start: ${new Date(req.body.start).toLocaleString()}</p>
                 <p>End: ${new Date(req.body.end).toLocaleString()}</p>
-                <p>Read More: <a href="https://134.122.37.1:3000/events?_id=${event._id}">Link</a></p>
+                <p>Read More: <a href="https://dev.czqm.ca/events?_id=${event._id}">Link</a></p>
                 <img src="cid:${req.file.filename}" alt="${req.body.name} Banner" />
             `, [{
                 filename: req.file.filename,
