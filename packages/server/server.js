@@ -28,7 +28,7 @@ require('dotenv').config()
 
 app.use(cors({
         credentials: true,
-        origin: "http://czqm.ca",
+        origin: "https://czqm.ca",
     }))
 app.use(morgan('tiny'))
 app.use(bodyParser.urlencoded({ extended: true }))

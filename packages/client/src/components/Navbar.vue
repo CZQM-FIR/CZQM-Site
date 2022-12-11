@@ -138,7 +138,7 @@ export default {
   name: 'Navbar',
   computed: {
     connectEndpoint() {
-      return `https://auth.vatsim.net/oauth/authorize?client_id=1191&redirect_uri=http://czqm.ca/auth&response_type=code&scope=full_name+email+vatsim_details+country`;
+      return `https://auth.vatsim.net/oauth/authorize?client_id=1191&redirect_uri=https://czqm.ca/auth&response_type=code&scope=full_name+email+vatsim_details+country`;
     },
   },
   setup: async () => {
