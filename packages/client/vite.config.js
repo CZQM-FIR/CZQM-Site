@@ -25,8 +25,8 @@ export default defineConfig({
       plugins: [
         replace({
           delimiters: ['(?<!\\.)(?<!3500)\\/', ''],
-            'api': 'http://czqm.ca:3500/api',
-            'files': 'http://czqm.ca:3500/files',
+            'api': 'https://czqm.ca/api',
+            'files': 'https://czqm.ca/files',
         })
       ]
     }
