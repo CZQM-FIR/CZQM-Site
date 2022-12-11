@@ -46,6 +46,7 @@ export default {
       };
 
       const time = new Date(article.date);
+      const timeUTC = new Date(time.getTime() + time.getTimezoneOffset() * 60000)
 
       const days = [
         'Sunday',
@@ -58,13 +59,13 @@ export default {
       ];
 
       // Format the time/date in DD/MM HHMMz format
-      const timeString = `${days[time.getDay()]}, ${time
+      const timeString = `${days[timeUTC.getDay()]}, ${timeUTC
         .getDate()
         .toLocaleString('en-US', { minimumIntegerDigits: 2 })} ${toMonthName(
-        time.getMonth() + 1
-      )} ${time
+        timeUTC.getMonth() + 1
+      )} ${timeUTC
         .getHours()
-        .toLocaleString('en-US', { minimumIntegerDigits: 2 })}${time
+        .toLocaleString('en-US', { minimumIntegerDigits: 2 })}${timeUTC
         .getMinutes()
         .toLocaleString('en-US', { minimumIntegerDigits: 2 })}z`;
 

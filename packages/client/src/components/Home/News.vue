@@ -31,8 +31,8 @@
         },
         methods: {
             getTime: (article) => {
-                const time = new Date(start.getTime() + start.getTimezoneOffset() * 60000)
-                const timeUTC = new Date(article.date);
+                const time = new Date(article.date);
+                const timeUTC = new Date(time.getTime() + time.getTimezoneOffset() * 60000)
 
                 // Format the time/date in DD/MM HHMMz format
                 const timeString = `${timeUTC.getDate().toLocaleString('en-US', {minimumIntegerDigits: 2, timeZone: 'UTC' })}/${(timeUTC.getMonth()+1).toLocaleString('en-US', {minimumIntegerDigits: 2, timeZone: 'UTC' })} ${timeUTC.getHours().toLocaleString('en-US', {minimumIntegerDigits: 2, timeZone: 'UTC' })}${timeUTC.getMinutes().toLocaleString('en-US', {minimumIntegerDigits: 2, timeZone: 'UTC' })}z`;
