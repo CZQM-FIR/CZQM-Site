@@ -8,8 +8,8 @@ module.exports = {
         port: 465,
         secure: true,
         auth: {
-            user: 'jack@koskie.ca',
-            pass: 'WuU5j4hYbLcA',
+            user: 'webmaster@czqm.ca',
+            pass: 'G4KBp5prVs2b',
         },
     }
 }
