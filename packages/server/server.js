@@ -1,5 +1,8 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const http = require('http');
+const https = require('https');
+const fs = require('fs');
 
 const app = express()
 const cors = require('cors')
@@ -66,3 +69,14 @@ app.all('/api', (req, res) => {
 })
 
 app.listen(PORT, () => console.info(`Listening on port ${PORT}`))
+
+const credentials = {
+    key: fs.readFileSync('/etc/letsencrypt/live/czqm.ca/privkey.pem', 'utf8'),
+    cert: fs.readFileSync('/etc/letsencrypt/live/czqm.ca/cert.pem', 'utf8'),
+}
+
+const httpServer = http.createServer(app);
+const httpsServer = https.createServer(credentials, app);
+
+httpServer.listen(8080);
+httpsServer.listen(8443);
