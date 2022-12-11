@@ -35,18 +35,11 @@
                 const startUTC = new Date(start.getTime() + start.getTimezoneOffset() * 60000)
                 const endUTC = new Date(end.getTime() + end.getTimezoneOffset() * 60000)
 
+                const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+                ];
 
-                console.log(startUTC, endUTC)
-
-                // Format the time/date in DD/MM HHMMz format
-                const startTime = `${startUTC.getDate().toLocaleString('en-US', {minimumIntegerDigits: 2, timeZone: 'UTC' })}/${(startUTC.getMonth()+1).toLocaleString('en-US', {minimumIntegerDigits: 2, timeZone: 'UTC' })} ${startUTC.getHours().toLocaleString('en-US', {minimumIntegerDigits: 2, timeZone: 'UTC' })}${startUTC.getMinutes().toLocaleString('en-US', {minimumIntegerDigits: 2, timeZone: 'UTC' })}z`;
-                const endTime = `${endUTC.getDate().toLocaleString('en-US', {minimumIntegerDigits: 2, timeZone: 'UTC' })}/${(endUTC.getMonth() + 1).toLocaleString('en-US', {minimumIntegerDigits: 2, timeZone: 'UTC' })} ${endUTC.getHours().toLocaleString('en-US', {minimumIntegerDigits: 2, timeZone: 'UTC' })}${endUTC.getMinutes().toLocaleString('en-US', {minimumIntegerDigits: 2, timeZone: 'UTC' })}z`;
-
-                console.log(startTime + ' - ' + endTime)
-
-                return startTime + ' - ' + endTime;
-
-                
+                return `${monthNames[startUTC.getMonth()]}. ${startUTC.getDate()}`
             }
         }
     }
@@ -59,12 +52,18 @@
         gap: .5rem;
     }
 
+    .event-name:hover {
+        text-decoration: underline;
+    }
+
     .event-learn-more {
         margin-left: auto;
     }
 
     .event-time {
-        color: grey
+        color: grey;
+        text-align: right;
+        margin-left: auto;
     }
     ul.event-list {
         list-style: none;

@@ -34,9 +34,11 @@
                 const timeUTC = new Date(time.getTime() + time.getTimezoneOffset() * 60000)
 
                 // Format the time/date in DD/MM HHMMz format
-                const timeString = `${timeUTC.getDate().toLocaleString('en-US', {minimumIntegerDigits: 2, timeZone: 'UTC' })}/${(timeUTC.getMonth()+1).toLocaleString('en-US', {minimumIntegerDigits: 2, timeZone: 'UTC' })} ${timeUTC.getHours().toLocaleString('en-US', {minimumIntegerDigits: 2, timeZone: 'UTC' })}${timeUTC.getMinutes().toLocaleString('en-US', {minimumIntegerDigits: 2, timeZone: 'UTC' })}z`;
+                const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+                ];
 
-                return timeString;
+                return `${monthNames[timeUTC.getMonth()]}. ${timeUTC.getDate()}`
             }
         }
     }
@@ -49,12 +51,18 @@
         gap: .5rem;
     }
 
+    .news-name:hover {
+        text-decoration: underline;
+    }
+
     .news-learn-more {
         margin-left: auto;
     }
 
     .news-time {
-        color: grey
+        color: grey;
+        text-align: right;
+        margin-left: auto;
     }
     ul.news-list {
         list-style: none;
