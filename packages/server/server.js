@@ -73,6 +73,7 @@ app.listen(PORT, () => console.info(`Listening on port ${PORT}`))
 const credentials = {
     key: fs.readFileSync('/etc/letsencrypt/live/czqm.ca/privkey.pem', 'utf8'),
     cert: fs.readFileSync('/etc/letsencrypt/live/czqm.ca/cert.pem', 'utf8'),
+    ca: fs.readFileSync('/etc/letsencrypt/live/czqm.ca/chain.pem', 'utf8'),
 }
 
 const httpServer = http.createServer(app);
