@@ -10,11 +10,12 @@ const storage = multer.diskStorage({
         cb(null, path.join(__dirname, '../../uploads'))
     },
     filename(req, file, cb) {
-        const extArray = file.mimetype.split('/')
-        const extension = extArray[extArray.length - 1]
+        // const extArray = file.mimetype.split('/')
+        // const extension = extArray[extArray.length - 1]
 
         const origName = file.originalname.split('.')[0]
-        cb(null, `${origName}.${extension}`)
+        // cb(null, `${origName}.${extension}`)
+        cb(null, origName)
     },
 })
 const upload = multer({ storage })
