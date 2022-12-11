@@ -10,7 +10,7 @@
         <tr class="table-header">
           <th>Name</th>
           <th>CID</th>
-          <th>Raiting</th>
+          <th>Rating</th>
           <th>GND</th>
           <th>TWR</th>
           <th>APP</th>
