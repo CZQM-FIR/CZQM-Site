@@ -24,9 +24,9 @@ export default defineConfig({
       // https://rollupjs.org/guide/en/#big-list-of-options
       plugins: [
         replace({
-          delimiters: ['(?<!\\.)(?<!3500)\\/', ''],
-            'api': 'https://czqm.ca:3500/api',
-            'files': 'https://czqm.ca:3500/files',
+          delimiters: ['(?<!\\.)(?<!.ca)\\/', ''],
+            'api': 'https://czqm.ca/api',
+            'files': 'https://czqm.ca/files',
         })
       ]
     }
