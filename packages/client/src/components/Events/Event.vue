@@ -44,6 +44,9 @@ export default {
   methods: {
     getEventStartTime: (event) => {
       const start = new Date(event.start);
+      const startUTC = new Date(start.getTime() + start.getTimezoneOffset() * 60000)
+
+      
       const days = [
         'Sunday',
         'Monday',
@@ -55,13 +58,13 @@ export default {
       ];
 
       // Format the time/date in DDDDD DD/MM HHMMz format
-      const startTime = `${days[start.getDay()]}, ${start
+      const startTime = `${days[startUTC.getDay()]}, ${startUTC
         .getDate()
         .toLocaleString('en-US', { minimumIntegerDigits: 2 })}/${(
-        start.getMonth() + 1
-      ).toLocaleString('en-US', { minimumIntegerDigits: 2 })} ${start
+        startUTC.getMonth() + 1
+      ).toLocaleString('en-US', { minimumIntegerDigits: 2 })} ${startUTC
         .getHours()
-        .toLocaleString('en-US', { minimumIntegerDigits: 2 })}${start
+        .toLocaleString('en-US', { minimumIntegerDigits: 2 })}${startUTC
         .getMinutes()
         .toLocaleString('en-US', { minimumIntegerDigits: 2 })}z`;
 
@@ -69,6 +72,8 @@ export default {
     },
     getEventEndTime: (event) => {
       const end = new Date(event.end);
+      const endUTC = new Date(end.getTime() + end.getTimezoneOffset() * 60000)
+
       const days = [
         'Sunday',
         'Monday',
@@ -80,13 +85,13 @@ export default {
       ];
 
       // Format the time/date in DDDDD DD/MM HHMMz format
-      const endTime = `${days[end.getDay()]}, ${end
+      const endTime = `${days[endUTC.getDay()]}, ${endUTC
         .getDate()
         .toLocaleString('en-US', { minimumIntegerDigits: 2 })}/${(
-        end.getMonth() + 1
-      ).toLocaleString('en-US', { minimumIntegerDigits: 2 })} ${end
+        endUTC.getMonth() + 1
+      ).toLocaleString('en-US', { minimumIntegerDigits: 2 })} ${endUTC
         .getHours()
-        .toLocaleString('en-US', { minimumIntegerDigits: 2 })}${end
+        .toLocaleString('en-US', { minimumIntegerDigits: 2 })}${endUTC
         .getMinutes()
         .toLocaleString('en-US', { minimumIntegerDigits: 2 })}z`;
 
