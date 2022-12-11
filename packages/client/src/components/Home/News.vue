@@ -7,9 +7,8 @@
             <div v-else>
                 <li v-for="article in news.slice(0, 5)" :key="article">
                     <div class="news">
-                        <span class="news-name">{{article.name}}</span>
+                        <span class="news-name"><router-link :to="{ path: '/news', query: { _id: article._id}}">{{article.name}}</router-link></span>
                         <span class="news-time">{{getTime(article)}}</span>
-                        <span class="news-learn-more"><router-link :to="{ path: '/news', query: { _id: article._id}}">Read More <i class="fa-solid fa-chevron-right"></i></router-link></span>
                     </div>
                 </li>
             </div>

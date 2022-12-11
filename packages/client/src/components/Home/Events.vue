@@ -7,9 +7,8 @@
             <div v-else>
                 <li v-for="event in events.slice(0, 5)" :key="event">
                     <div class="event">
-                        <span class="event-name">{{event.name}}</span>
+                        <span class="event-name"><router-link :to="{ path: '/events', query: { _id: event._id}}">{{event.name}}</router-link></span>
                         <span class="event-time">{{getEventTime(event)}}</span>
-                        <span class="event-learn-more"><router-link :to="{ path: '/events', query: { _id: event._id}}">Learn More <i class="fa-solid fa-chevron-right"></i></router-link></span>
                     </div>
                 </li>
             </div>
