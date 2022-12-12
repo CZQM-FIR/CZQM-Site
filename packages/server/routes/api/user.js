@@ -48,7 +48,7 @@ router.all('/', async (req, res) => {
     if (!users) return res.status(404)
 
     // eslint-disable-next-line prefer-const
-    let usersReturn = []
+    let usersReturn = [];
 
     (await users).forEach((user) => {
     
