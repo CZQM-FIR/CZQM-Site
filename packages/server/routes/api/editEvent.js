@@ -100,8 +100,8 @@ router.post('/', upload.single('image'), async (req, res) => {
                 cid: req.file.filename
             }])
 
-        } catch (err) {
-            console.error(err)
+        } catch (error) {
+            console.error(`[ERROR] ${error}`)
         }
 
         res.status(200).json({

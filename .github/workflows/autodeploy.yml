@@ -76,5 +76,5 @@ jobs:
           script: |
             cd ~/CZQM-Site/packages/server
             pm2 delete all
-            pm2 start "node ." --name server
+            pm2 start "NODE_ENV=production node ." --name server
     

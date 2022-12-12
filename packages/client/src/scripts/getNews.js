@@ -8,7 +8,7 @@ import axios from 'axios'
 const getNews = async (newsID = '') => {
 
     let newsData = await axios.get(`/api/news/${newsID}`).catch((error) => {
-        console.error(error)
+        console.error(`[ERROR] ${error}`)
     });
 
     newsData = newsData ? newsData.data : [];
