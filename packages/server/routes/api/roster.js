@@ -25,7 +25,7 @@ router.get('/', async (req, res) => {
     res.status(200).send(controllerList.sort((a, b) => { 
         const roleOrder = [
             'Guest',
-            'Visitor',
+            'Visiting Controller',
             'Home Controller',
             'Mentor',
             'Instructor',
