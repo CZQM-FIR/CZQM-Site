@@ -62,7 +62,20 @@ router.all('/', async (req, res) => {
     })
 
     return res.status(200).json({
-        users: usersReturn,
+        users:  usersReturn.sort((a, b) => { 
+        const nameA = (a.name.split(' '))[1]
+        const nameB = (b.name.split(' '))[1]
+
+        if (nameA < nameB) {
+            return -1
+        }
+
+        if (nameA > nameB) {
+            return 1
+        }
+        
+        return 0
+    }),
     })
 })
 
