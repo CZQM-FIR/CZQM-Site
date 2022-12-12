@@ -23,32 +23,8 @@ router.get('/', async (req, res) => {
     
 
     res.status(200).send(controllerList.sort((a, b) => { 
-        const roleOrder = [
-            'Guest',
-            'Visiting Controller',
-            'Home Controller',
-            'Mentor',
-            'Instructor',
-            'Events',
-            'Sector Engineer',
-            'Webmaster',
-            'Chief Instructor',
-            'Deputy Chief',
-            'FIR Chief',
-        ]
-
         const nameA = (a.name.split(' '))[1]
         const nameB = (b.name.split(' '))[1]
-        const roleA = roleOrder.indexOf(a.role.name)
-        const roleB = roleOrder.indexOf(b.role.name)
-
-        if (roleA > roleB) {
-            return -1
-        }
-
-        if (roleA < roleB) {
-            return 1
-        }
 
         if (nameA < nameB) {
             return -1
