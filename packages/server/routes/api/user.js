@@ -52,9 +52,6 @@ router.all('/', async (req, res) => {
 
     (await users).forEach((user) => {
     
-        user.role.name = roles[user.role.id]  // eslint-disable-line no-param-reassign
-        user.save()
-
         usersReturn.push({
             cid: user.cid,
             personal: user.personal,
