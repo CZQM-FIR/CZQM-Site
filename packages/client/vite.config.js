@@ -18,17 +18,4 @@ export default defineConfig({
       },
     },
   },
-
-  build: {
-    rollupOptions: {
-      // https://rollupjs.org/guide/en/#big-list-of-options
-      plugins: [
-        replace({
-          delimiters: ['(?<!\\.)(?<!.ca)\\/', ''],
-            'api': 'https://czqm.ca/api',
-            'files': 'https://czqm.ca/files',
-        })
-      ]
-    }
-  }
 });
