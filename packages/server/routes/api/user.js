@@ -3,6 +3,20 @@ const User = require('../../models/User')
 
 const router = Router()
 
+const roles = [
+    'Guest',
+    'Visiting Controller',
+    'Home Controller',
+    'Mentor',
+    'Instructor',
+    'Events',
+    'Sector Engineer',
+    'Webmaster',
+    'Chief Instructor',
+    'Deputy Chief',
+    'FIR Chief',
+]
+
 /**
  * Returns the proper role name for the user
  * @param {User} user A user from the mongo database
@@ -107,12 +121,14 @@ router.get('/:jwt', async (req, res) => {
     if (!user.role.id || user.role.id === 0) {
         user.role.name = 'Guest'
     } else {
-        user.role.name = fixRoleName(user)
+        user.role.name = roles[user.role.id]
     }
 
     if (!user) {
         return res.status(404).send('User not found')
     }
+
+    user.save()
 
     return res.status(200).json({
         personal: user.personal,
@@ -130,7 +146,11 @@ router.all('/', async (req, res) => {
     // eslint-disable-next-line prefer-const
     let usersReturn = []
 
-    ;(await users).forEach((user) => {
+    (await users).forEach((user) => {
+    
+        user.role.name = roles[user.role.id]  // eslint-disable-line no-param-reassign
+        user.save()
+        
         usersReturn.push({
             cid: user.cid,
             personal: user.personal,
