@@ -29,6 +29,12 @@ const contactRoute = require('./routes/api/contact')
 // dotenv
 require('dotenv').config()
 
+if (process.env.NODE_ENV === 'production') { 
+    console.info('[INFO] Production Mode')
+} else {
+    console.warn('[WARN] Development Mode')
+}
+
 app.use(cors({
         credentials: true,
         origin: "https://czqm.ca",
@@ -42,8 +48,8 @@ mongoose
         useNewUrlParser: true,
         useUnifiedTopology: true,
     })
-    .then(() => console.info('MongoDB Database Connected'))
-    .catch((err) => console.error(err))
+    .then(() => console.info('[INFO] MongoDB Database Connected'))
+    .catch((error) => console.error(`[ERROR] ${error}`))
 
 app.use('/api/metar', metarRoute)
 app.use('/api/station', stationRoute)
@@ -68,16 +74,22 @@ app.all('/api', (req, res) => {
     res.status(204).send()
 })
 
-app.listen(PORT, () => console.info(`Listening on port ${PORT}`))
+app.listen(PORT, () => console.info(`[INFO] Listening on port ${PORT}`))
 
-const credentials = {
-    key: fs.readFileSync('/etc/letsencrypt/live/czqm.ca/privkey.pem', 'utf8'),
-    cert: fs.readFileSync('/etc/letsencrypt/live/czqm.ca/cert.pem', 'utf8'),
-    ca: fs.readFileSync('/etc/letsencrypt/live/czqm.ca/chain.pem', 'utf8'),
+if (process.env.NODE_ENV === 'production') {
+
+    const credentials = {
+        key: fs.readFileSync('/etc/letsencrypt/live/czqm.ca/privkey.pem', 'utf8'),
+        cert: fs.readFileSync('/etc/letsencrypt/live/czqm.ca/cert.pem', 'utf8'),
+        ca: fs.readFileSync('/etc/letsencrypt/live/czqm.ca/chain.pem', 'utf8'),
+    }
+    
+    const httpsServer = https.createServer(credentials, app);
+    httpsServer.listen(8443);
+} else {
+    console.warn('[WARN] HTTPS Server not started. (Not in production)')
 }
 
-const httpServer = http.createServer(app);
-const httpsServer = https.createServer(credentials, app);
 
+const httpServer = http.createServer(app);
 httpServer.listen(8080);
-httpsServer.listen(8443);
