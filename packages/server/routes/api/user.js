@@ -11,9 +11,9 @@ const roles = [
     'Instructor',
     'Events',
     'Sector Engineer',
-    'Webmaster',
     'Chief Instructor',
     'Deputy Chief',
+    'Webmaster',
     'FIR Chief',
 ]
 
