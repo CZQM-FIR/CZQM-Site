@@ -3,6 +3,20 @@ const User = require('../../models/User');
 
 const router = Router();
 
+const roles = [
+    'Guest',
+    'Visiting Controller',
+    'Home Controller',
+    'Mentor',
+    'Instructor',
+    'Events',
+    'Sector Engineer',
+    'Webmaster',
+    'Chief Instructor',
+    'Deputy Chief',
+    'FIR Chief',
+]
+
 router.get('/', async (req, res) => {
     let controllers = await User.find()
 
@@ -11,6 +25,10 @@ router.get('/', async (req, res) => {
     const controllerList = []
 
     controllers.forEach(c => {
+
+        c.role.name = roles[c.role.id]  // eslint-disable-line no-param-reassign
+        c.save()
+        
         controllerList.push({
             name: c.personal.name_full,
             cid: c.cid,
