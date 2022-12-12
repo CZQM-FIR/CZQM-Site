@@ -12,7 +12,7 @@
         </tr>
 
         <tr class="table-header">
-          <th>Name (Click to copy email)</th>
+          <th>Name (Click to copy email) <button @click="showGuests = !showGuests"><span v-if="showGuests">Hide Guests</span><span v-else>Show Guests</span></button></th>
           <th>CID</th>
           <th>Raiting</th>
           <th>GND</th>
@@ -110,9 +110,14 @@ import getUser from '../../scripts/getUser';
 
 export default {
   setup: async () => {
+    let showGuests = ref(false);
     let users = ref([...(await axios.get('/api/user', {}, {
           withCredentials: true
         })).data.users]);
+
+    if (!showGuests.value) {
+      users.value = users.value.filter((user) => user.role.id > 0);
+    }
 
     let roles = ref([
       'Guest',
@@ -143,6 +148,7 @@ export default {
       users,
       roles,
       emails,
+      showGuests,
     };
   },
   methods: {
