@@ -7,12 +7,12 @@
             Click to increment
             <button v-on:click="copyToClipboard(emails.join(', '))">
               Copy full list of emails
-            </button>
+            </button> <button @click="toggleGuests()"><span v-if="showGuests">Hide Guests</span><span v-else>Show Guests</span></button>
           </th>
         </tr>
 
         <tr class="table-header">
-          <th>Name (Click to copy email) <button @click="showGuests = !showGuests"><span v-if="showGuests">Hide Guests</span><span v-else>Show Guests</span></button></th>
+          <th>Name (Click to copy email)</th>
           <th>CID</th>
           <th>Raiting</th>
           <th>GND</th>
@@ -111,13 +111,12 @@ import getUser from '../../scripts/getUser';
 export default {
   setup: async () => {
     let showGuests = ref(false);
-    let users = ref([...(await axios.get('/api/user', {}, {
+    let usersUnfiltered = ref([...(await axios.get('/api/user', {}, {
           withCredentials: true
         })).data.users]);
 
-    if (!showGuests.value) {
-      users.value = users.value.filter((user) => user.role.id > 0);
-    }
+    let usersFiltered = ref(usersUnfiltered.value.filter((user) => {return user.role.id > 0}))
+    let users = ref([...usersFiltered.value])
 
     let roles = ref([
       'Guest',
@@ -135,7 +134,7 @@ export default {
 
     let emails = ref([]);
 
-    users.value.forEach((user) => {
+    usersUnfiltered.value.forEach((user) => {
       emails.value.push(user.personal.email);
     });
 
@@ -145,10 +144,12 @@ export default {
 
     return {
       staffUser,
-      users,
+      usersUnfiltered,
       roles,
       emails,
       showGuests,
+      users,
+      usersFiltered
     };
   },
   methods: {
@@ -187,6 +188,14 @@ export default {
           withCredentials: true
         });
     },
+    toggleGuests() {
+      this.showGuests = !this.showGuests;
+      if (this.showGuests) {
+        this.users = this.usersUnfiltered;
+      } else {
+        this.users = this.usersFiltered;
+      }
+    }
   },
 };
 </script>
