@@ -17,102 +17,6 @@ const roles = [
     'FIR Chief',
 ]
 
-/**
- * Returns the proper role name for the user
- * @param {User} user A user from the mongo database
- * @returns The new name of the role
- */
-const fixRoleName = (user) => {
-    let roleName = ''
-
-    switch (user.role.id) {
-        case 0:
-            if (user.role.name !== 'Guest') {
-                roleName = 'Guest'
-                user.save()
-            }
-            break
-
-        case 1:
-            if (user.role.name !== 'Visiting Controller') {
-                roleName = 'Visiting Controller'
-                user.save()
-            }
-            break
-
-        case 2:
-            if (user.role.name !== 'Home Controller') {
-                roleName = 'Home Controller'
-                user.save()
-            }
-            break
-
-        case 3:
-            if (user.role.name !== 'Mentor') {
-                roleName = 'Mentor'
-                user.save()
-            }
-            break
-
-        case 4:
-            if (user.role.name !== 'Instructor') {
-                roleName = 'Instructor'
-                user.save()
-            }
-            break
-
-        case 5:
-            if (user.role.name !== 'Events') {
-                roleName = 'Events'
-                user.save()
-            }
-            break
-        
-        case 6:
-            if (user.role.name !== 'Sector Engineer') {
-                roleName = 'Sector Engineer'
-                user.save()
-            }
-            break
-
-        case 7:
-            if (user.role.name !== 'Chief Instructor') {
-                roleName = 'Chief Instructor'
-                user.save()
-            }
-            break
-        
-        case 8:
-            if (user.role.name !== 'Deputy Chief') {
-                roleName = 'Deputy Chief'
-                user.save()
-            }
-            break
-        
-        case 9:
-            if (user.role.name !== 'Webmaster') {
-                roleName = 'Webmaster'
-                user.save()
-            }
-            break
-        
-        case 10:
-            if (user.role.name !== 'FIR Chief') {
-                roleName = 'FIR Chief'
-                user.save()
-            }
-            break
-        
-        default:
-            //     user.role.id = 0
-            //     user.role.name = 'Guest'
-            //     user.save()
-            break
-    }
-
-    return roleName
-}
-
 router.get('/:jwt', async (req, res) => {
     const user = await User.findOne({ jwt: req.params.jwt })
 
@@ -150,7 +54,7 @@ router.all('/', async (req, res) => {
     
         user.role.name = roles[user.role.id]  // eslint-disable-line no-param-reassign
         user.save()
-        
+
         usersReturn.push({
             cid: user.cid,
             personal: user.personal,
