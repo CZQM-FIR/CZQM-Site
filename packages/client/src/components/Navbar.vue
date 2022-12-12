@@ -34,8 +34,8 @@
 
         <li class="navitem">
           <div class="dropdown">
-            <span class="navitem-text">Controllers</span>
-            <ul class="dropdown-content">
+            <span class="navitem-text" v-on:click="showDropdownControllers = !showDropdownControllers">Controllers</span>
+            <ul :class="{'dropdown-content': true, 'dropdown-hover': showDropdownControllers && showMobileMenu}">
               <li class="dropdown-text">
                 <div class="dropdown-icon">
                   <i class="fa-solid fa-clipboard-user"></i>
@@ -84,7 +84,7 @@
 
         <li class="navitem login">
           <div v-if="user.loggedIn">
-            <div class="dropdown">
+            <div class="dropdown" v-on:click="showDropdownLogin = !showDropdownLogin">
               <span class="navitem-text"
                 >{{ user.personal.name_full }} (<span class="navitem-number">{{
                   user.cid
@@ -92,7 +92,7 @@
                 >)</span
               >
 
-              <ul class="dropdown-content">
+              <ul :class="{'dropdown-content': true, 'dropdown-hover': showDropdownLogin && showMobileMenu}">
                 <li class="dropdown-text">
                   <div class="dropdown-icon">
                     <i class="fa-solid fa-cloud"></i>
@@ -152,7 +152,9 @@ export default {
   },
   data: () => {
     return {
-      showMobileMenu: false
+      showMobileMenu: false,
+      showDropdownControllers: false,
+      showDropdownLogin: false
     }
   }
 };
@@ -267,7 +269,8 @@ export default {
   text-transform: capitalize;
 }
 
-.dropdown:hover .dropdown-content {
+.dropdown:hover .dropdown-content,
+.dropdown-hover {
   /* opacity: 1; */
   visibility: visible;
   transition: 1s ease;
