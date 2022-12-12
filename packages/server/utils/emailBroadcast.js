@@ -39,7 +39,7 @@ const sendEmail = async (email, subject, message, attachments = []) => {
 const sendEmailToAll = async (emails, subject, message, attachments = []) => {
     emails.forEach(email => {
         sendEmail(email, subject, message, attachments)
-        console.info(`Sent email to ${email}`)
+        if (process.env.NODE_ENV === 'development') console.info(`[DEBUG] Email sent to ${email}`)
     })
 }
 

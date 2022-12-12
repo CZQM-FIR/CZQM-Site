@@ -89,8 +89,8 @@ router.post("/", upload.none(), async (req, res) => {
                 <p>${req.body.text}</p>
                 <p>Read More: <a href="https://czqm.ca/news?_id=${article._id}">Link</a></p>
             `,)
-    } catch (err) {
-      console.error(err);
+    } catch (error) {
+      console.error(`[ERROR] ${error}`)
     }
 
     res.status(200).json({

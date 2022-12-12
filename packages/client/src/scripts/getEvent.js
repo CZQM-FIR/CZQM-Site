@@ -8,7 +8,7 @@ import axios from 'axios'
 const getEvent = async (eventID = '') => {
 
     let eventData = await axios.get(`/api/event/${eventID}`).catch((error) => {
-        console.error(error)
+        console.error(`[ERROR] ${error}`)
     });
 
     eventData = eventData ? eventData.data : [];
