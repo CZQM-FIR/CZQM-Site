@@ -10,7 +10,21 @@ router.get('/', async (req, res) => {
         if (newsData.length < 1)
             return res.status(404).json({ message: 'No articles found' })
 
-        return res.status(200).json(newsData)
+        return res.status(200).json(newsData.sort((a, b) => {
+            const dateA = a.date
+            const dateB = b.date
+            
+            if (dateA < dateB) {
+                return 1
+            }
+                
+            if (dateA > dateB) {
+                return -1
+            }
+                
+            return 0
+            
+            }))
     } catch (err) {
         return res.status(500).json({ message: err.message })
     }
