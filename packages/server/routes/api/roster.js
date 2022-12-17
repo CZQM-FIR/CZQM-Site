@@ -1,40 +1,24 @@
 const { Router } = require("express");
 const User = require('../../models/User');
+const getRoleName = require('../../utils/getRoleName')
 
 const router = Router();
-
-const roles = [
-    'Guest',
-    'Visiting Controller',
-    'Home Controller',
-    'Mentor',
-    'Instructor',
-    'Events',
-    'Sector Engineer',
-    'Chief Instructor',
-    'Deputy Chief',
-    'Webmaster',
-    'FIR Chief',
-]
 
 router.get('/', async (req, res) => {
     let controllers = await User.find()
 
-    controllers = controllers.filter(c => c.role.id > 0)
+    controllers = controllers.filter(c => c.flags.some((flag) => ['controller', 'visitor'].includes(flag)))
 
     const controllerList = []
 
     controllers.forEach(c => {
-
-        c.role.name = roles[c.role.id]  // eslint-disable-line no-param-reassign
-        c.save()
         
         controllerList.push({
             name: c.personal.name_full,
             cid: c.cid,
             rating: c.vatsim.rating.short,
             roster: c.roster,
-            role: c.role,
+            role: getRoleName(c.flags),
         });
     })
 

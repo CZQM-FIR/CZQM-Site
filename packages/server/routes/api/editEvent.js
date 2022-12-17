@@ -85,7 +85,7 @@ router.post('/', upload.single('image'), async (req, res) => {
             // Send email to all users who have an email address and who are visitors or above
             const emailableUsers = await User.find({
                 'personal.email': { $ne: null },
-                'role.id': { $gte: 1 }
+                'flags': { $and: [{$in: ['controller', 'visitor']}, {$not: {$in: ['no-email']}}] }
             })
             await sendEmailToAll([emailableUsers.map(userObject => userObject.personal.email)], `New Event: ${req.body.name}`, `
                 <h1>New Event: ${req.body.name}</h1>
