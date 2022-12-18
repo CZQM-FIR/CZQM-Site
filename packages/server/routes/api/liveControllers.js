@@ -37,9 +37,9 @@ router.get("/", async (req, res) => {
       c.frequency = String(Number(c.frequency).toFixed(3));
     });
 
-    res.status(200).json(data).send()
+    res.status(200).json(data)
   } catch (error) {
-    res.status(500).json({ message: error.message }).send()
+    res.status(500).json({ message: error.message })
   }
 });
 

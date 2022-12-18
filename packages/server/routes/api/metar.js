@@ -44,7 +44,7 @@ router.get("/:icao", async (req, res) => {
         .json({ message: "ICAO code not found or no METAR" });
     }
 
-    return res.status(200).json(metar.data).send()
+    return res.status(200).json(metar.data)
   } catch (error) {
     return res.status(500).json({ message: error.message })
   }
@@ -54,9 +54,9 @@ router.all("/", async (req, res) => {
   try {
     const message = "You must provide an ICAO code";
 
-    res.status(404).json(message).send()
+    res.status(404).json(message)
   } catch (error) {
-    res.status(500).json({ message: error.message }).send()
+    res.status(500).json({ message: error.message })
   }
 });
 
