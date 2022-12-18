@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
         const newsData = await News.find()
 
         if (newsData.length < 1)
-            return res.status(404).json({ message: 'No articles found' })
+            return res.status(404).json({ message: 'No articles found' }).send()
 
         return res.status(200).json(newsData.sort((a, b) => {
             const dateA = a.date
@@ -24,9 +24,9 @@ router.get('/', async (req, res) => {
                 
             return 0
             
-            }))
+            })).send()
     } catch (err) {
-        return res.status(500).json({ message: err.message })
+        return res.status(500).json({ message: err.message }).send()
     }
 })
 
@@ -35,20 +35,20 @@ router.get('/:newsID', async (req, res) => {
         const newsData = await News.findOne({ _id: req.params.newsID })
 
         if (!newsData)
-            return res.status(404).json({ message: 'No article found' })
+            return res.status(404).json({ message: 'No article found' }).send()
 
-        return res.status(200).json(newsData)
+        return res.status(200).json(newsData).send()
     } catch (err) {
-        return res.status(500).json({ message: err.message })
+        return res.status(500).json({ message: err.message }).send()
     }
 })
 
 router.delete('/:newsID', async (req, res) => {
     try {
         await News.deleteOne({ _id: req.params.newsID })
-        res.status(200).json({ message: 'Article deleted' })
+        res.status(200).json({ message: 'Article deleted' }).send()
     } catch (err) {
-        res.status(500).json({ message: err.message })
+        res.status(500).json({ message: err.message }).send()
     }
 })
 

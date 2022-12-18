@@ -26,11 +26,11 @@ const router = Router()
 
 router.post('/', upload.single('image'), async (req, res) => {
 
-    // const user = await User.findOne({ jwt: req.cookies.jwt })
+    const user = await User.findOne({ jwt: req.cookies.jwt })
 
-    // if (!user || user.role.id < 4) {
-    //     return res.status(401).json({ msg: 'Not authorized' })
-    // }
+    if (!user || user.role.id < 4) {
+        return res.status(401).json({ msg: 'Not authorized' }).send()
+    }
 
     let event
 
@@ -46,7 +46,7 @@ router.post('/', upload.single('image'), async (req, res) => {
         event.save()
         res.status(200).json({
             message: 'Event Edited Successfully',
-        })
+        }).send()
     } else {
         event = await new Event({
             name: req.body.name,
@@ -106,7 +106,7 @@ router.post('/', upload.single('image'), async (req, res) => {
 
         res.status(200).json({
             message: 'Event Created Successfully',
-        })
+        }).send()
     }
     return true
 })

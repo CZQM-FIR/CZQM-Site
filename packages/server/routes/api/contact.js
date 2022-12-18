@@ -25,7 +25,7 @@ router.post('/', upload.none(), async (req, res) => {
     if (!email.test(req.body.email) || !email.test(req.body.staff)) {
         return res.status(400).json({
             message: 'Incorrectly formatted email',
-        })
+        }).send()
     }
 
     const date = new Date(Date.now())
@@ -41,7 +41,7 @@ router.post('/', upload.none(), async (req, res) => {
 
     res.status(200).json({
         message: 'Email Sent',
-    })
+    }).send()
     return true
 })
 

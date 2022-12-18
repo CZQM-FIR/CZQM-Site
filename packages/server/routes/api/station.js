@@ -28,7 +28,7 @@ router.get('/:icao', async (req, res) => {
 
             if (station.time + 86400000 > Date.now()) {
                 // If the station is less than a day old
-                return res.status(200).json(station) // Return the station
+                return res.status(200).json(station).send() // Return the station
             }
             const stationData = (
                 await axios.get(
@@ -55,7 +55,7 @@ router.get('/:icao', async (req, res) => {
                 (s) => s.icao.toLowerCase() === icao.toLowerCase()
             )[0]
 
-            return res.status(200).json(newStation)
+            return res.status(200).json(newStation).send()
         }
         const stationData = (
             await axios.get(
@@ -77,9 +77,9 @@ router.get('/:icao', async (req, res) => {
             icao: stationICAO,
             name: stationName,
             time: stationTime,
-        })
+        }).send()
     } catch (error) {
-        return res.status(500).json({ message: error.message })
+        return res.status(500).json({ message: error.message }).send()
     }
 })
 
@@ -87,9 +87,9 @@ router.all('/', async (req, res) => {
     try {
         const message = 'You must provide an ICAO code'
 
-        res.status(404).json(message)
+        res.status(404).json(message).send()
     } catch (error) {
-        res.status(500).json({ message: error.message })
+        res.status(500).json({ message: error.message }).send()
     }
 })
 
