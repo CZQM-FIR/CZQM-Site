@@ -43,7 +43,7 @@
                     : 'Inactive'
             }}
           </td>
-          <td>{{ controller.role.name }}</td>
+          <td>{{ controller.role }}</td>
         </tr>
       </tbody>
       <tbody v-else>
