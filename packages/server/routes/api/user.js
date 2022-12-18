@@ -3,31 +3,10 @@ const User = require('../../models/User')
 
 const router = Router()
 
-const roles = [
-    'Guest',
-    'Visiting Controller',
-    'Home Controller',
-    'Mentor',
-    'Instructor',
-    'Events',
-    'Sector Engineer',
-    'Chief Instructor',
-    'Deputy Chief',
-    'Webmaster',
-    'FIR Chief',
-]
-
 router.get('/:jwt', async (req, res) => {
     const user = await User.findOne({ jwt: req.params.jwt })
 
-    if (!user) return res.status(404).clearCookie('jwt')
-
-    if (!user.role.id || user.role.id === 0) {
-        user.role.name = 'Guest'
-    } else {
-        user.role.name = roles[user.role.id]
-    }
-
+    if (!user) return res.status(404).clearCookie('jwt').send()
     if (!user) {
         return res.status(404).send('User not found')
     }
@@ -39,13 +18,13 @@ router.get('/:jwt', async (req, res) => {
         vatsim: user.vatsim,
         cid: user.cid,
         role: user.role,
-    })
+    }).send()
 })
 
 router.all('/', async (req, res) => {
     const users = User.find()
 
-    if (!users) return res.status(404)
+    if (!users) return res.status(404).send()
 
     // eslint-disable-next-line prefer-const
     let usersReturn = [];
@@ -76,7 +55,7 @@ router.all('/', async (req, res) => {
         
         return 0
     }),
-    })
+    }).send()
 })
 
 module.exports = router
