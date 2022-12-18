@@ -72,6 +72,9 @@ export default {
       let style = '';
 
       switch (status) {
+        case -2:
+          style = 'font-weight: bold; background-color: #FF5733;';
+          break;
         case -1:
           style = 'font-weight: bold; background-color: #CCCCC4; text-align: center';
           break;

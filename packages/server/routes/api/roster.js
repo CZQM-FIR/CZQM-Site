@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const User = require('../../models/User');
 const getRoleName = require('../../utils/getRoleName')
+const getRosterStatus = require('../../utils/getRosterStatus')
 
 const router = Router();
 
@@ -17,7 +18,8 @@ router.get('/', async (req, res) => {
             name: c.personal.name_full,
             cid: c.cid,
             rating: c.vatsim.rating.short,
-            roster: c.roster,
+            flags: c.flags,
+            roster: getRosterStatus(c.flags),
             role: getRoleName(c.flags),
         });
     })
