@@ -270,6 +270,23 @@ const processFlag = (incommingFlag, flags) => {
                         flags = flags.filter(f => f !== 'controller');
                         flags.push('visitor');
                     }
+                break;
+        
+                case 'inactive':
+                    if (flags.includes('inactive')) {
+                        flags = flags.filter(f => f !== 'inactive');
+                    } else {
+                        flags = flags.filter(f => f !== 'leave');
+                        flags.push('inactive');
+                    }
+                    break;
+                case 'leave':
+                    if (flags.includes('leave')) {
+                        flags = flags.filter(f => f !== 'leave');
+                    } else {
+                        flags = flags.filter(f => f !== 'inactive');
+                        flags.push('leave');
+                    }
                     break;
 
             

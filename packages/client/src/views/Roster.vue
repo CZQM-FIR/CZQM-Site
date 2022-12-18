@@ -36,11 +36,7 @@
 
           <td>
             {{
-                controller.roster.status == 1
-                  ? 'Active'
-                  : controller.roster.status == 0
-                    ? 'On Leave'
-                    : 'Inactive'
+                controller.flags.some((flag) => flag === 'inactive') ? 'Inactive' : (controller.flags.some((flag) => flag === 'leave') ? 'On Leave' : 'Active')
             }}
           </td>
           <td>{{ controller.role }}</td>

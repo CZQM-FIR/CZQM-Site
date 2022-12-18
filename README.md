@@ -65,6 +65,8 @@ These flags may be assigned to users to change permissions, display role and mor
 * **controller** - Home Controller
 * **visitor** - Visiting Controller
 * **no-email** - Skip user when sending email broadcasts
+* **inactive** - Marks inactive users
+* **leave** - Manks users on leave
 
 ## Contributors
 
