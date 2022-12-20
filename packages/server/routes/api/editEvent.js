@@ -59,7 +59,7 @@ router.post('/', upload.single('image'), async (req, res) => {
 
         try {
             await axios.post(
-                `${process.env.DISCORD_WEBHOOK_URI}`,
+                `${process.env.EVENTS_DISCORD_WEBHOOK_URI}`,
                 {
                     embeds: [
                         {
