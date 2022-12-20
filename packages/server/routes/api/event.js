@@ -12,15 +12,15 @@ router.get('/', async (req, res) => {
         
         // Delete an event if it is a certain amount of days old
         eventData.forEach(async (event) => {
-            if ((event.end - Date.now()) > (86400000 * 7 /* Amount of days */)) {
+            if ((event.end - Date.now()) < (86400000 * 7 /* Amount of days */)) {
                 await Event.deleteOne({ _id: event._id })
             }
         })
         
         // Filter out events that have already ended
-        eventData.filter(event => event.end > Date.now())
+        const eventDataFiltered = eventData.filter(event => event.end > Date.now())
 
-        return res.status(200).json(eventData.sort((a, b) => {
+        return res.status(200).json(eventDataFiltered.sort((a, b) => {
             const dateA = a.start
             const dateB = b.start
 
