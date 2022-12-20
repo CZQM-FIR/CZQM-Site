@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
         })
         
         // Filter out events that have already ended
-        eventData.filter(event => event.end < Date.now())
+        eventData.filter(event => event.end > Date.now())
 
         return res.status(200).json(eventData.sort((a, b) => {
             const dateA = a.start
