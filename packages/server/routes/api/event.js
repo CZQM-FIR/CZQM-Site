@@ -9,6 +9,9 @@ router.get('/', async (req, res) => {
 
         if (eventData.length < 1)
             return res.status(404).json({ message: 'No events found' })
+        
+        // Filter out events that have already ended
+        eventData.filter(event => event.end < Date.now())
 
         return res.status(200).json(eventData.sort((a, b) => {
             const dateA = a.start
