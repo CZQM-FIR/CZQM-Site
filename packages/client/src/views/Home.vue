@@ -132,7 +132,7 @@ export default {
           minimumIntegerDigits: 2,
           useGrouping: false,
         });
-        let elapsedHours = Math.round(elapsed / msPerH);
+        let elapsedHours = Math.floor(elapsed / msPerH);
         let time = `${elapsedHours}:${elapsedMinutes}`;
         // let time = Date.parse(controller.logon_time)
         controllers.value.push({
