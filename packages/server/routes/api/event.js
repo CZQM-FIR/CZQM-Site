@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
         
         // Delete an event if it is a certain amount of days old
         eventData.forEach(async (event) => {
-            if ((event.end - Date.now()) < (86400000 * 7 /* Amount of days */)) {
+            if ((Date.now() - event.end) > (86400000 * 7 /* Amount of days */)) {
                 await Event.deleteOne({ _id: event._id })
             }
         })
