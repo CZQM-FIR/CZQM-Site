@@ -90,10 +90,10 @@ router.post('/', upload.single('image'), async (req, res) => {
             await sendEmailToAll([emailableUsers.map(userObject => userObject.personal.email)], `New Event: ${req.body.name}`, `
                 <h1>New Event: ${req.body.name}</h1>
                 <p>${req.body.description}</p>
-                <p>Start: ${new Date(req.body.start).toLocaleString()}</p>
-                <p>End: ${new Date(req.body.end).toLocaleString()}</p>
+                <p>Start: ${new Date(req.body.start).toLocaleString(undefined, {hour12: false, timeStyle: 'short', dateStyle: 'full'})}z</p>
+                <p>End: ${new Date(req.body.end).toLocaleString(undefined, {hour12: false, timeStyle: 'short', dateStyle: 'full'})}z</p>
                 <p>Read More: <a href="https://czqm.ca/events?_id=${event._id}">Link</a></p>
-                <img src="cid:${req.file.filename}" alt="${req.body.name} Banner" />
+                <img src="cid:${req.file.filename}" alt="${req.body.name} Banner" style="max-width: 80%/>
             `, [{
                 filename: req.file.filename,
                 path: path.join(__dirname, `../../uploads/${req.file.filename}`),
