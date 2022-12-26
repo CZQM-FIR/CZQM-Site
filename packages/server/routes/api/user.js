@@ -55,7 +55,7 @@ router.all('/', async (req, res) => {
         
         return 0
     }),
-    }).send()
+    })
 })
 
 module.exports = router
