@@ -38,16 +38,16 @@ const routes = [
     name: 'Staff Portal',
     component: StaffPortal,
     beforeEnter: async (to, from) => {
-      if (!getCookie('jwt')) {
-        return { path: '/noauth' };
-      }
+    //   if (!getCookie('jwt')) {
+    //     return { path: '/noauth' };
+    //   }
 
-      try {
-        const user = await getUser(getCookie('jwt'));
-        if (user.flags.some((flag) => flag.startsWith('staff'))) throw 401;
-      } catch (error) {
-        return { path: '/noauth' };
-      }
+    //   try {
+    //     const user = await getUser(getCookie('jwt'));
+    //     if (user.flags.some((flag) => flag.startsWith('staff'))) throw 401;
+    //   } catch (error) {
+    //     return { path: '/noauth' };
+    //   }
     },
   },
   {

@@ -1,7 +1,7 @@
 const getRosterStatus = (flags) => { 
     const rosterStatus = {}
 
-    switch (flags.some((flag) => flag.startsWith('roster-gnd'))) {
+    switch (flags.find((flag) => flag.startsWith('roster-gnd'))) {
         case 'roster-gnd-sup':
             rosterStatus.gnd = -2
             break;
@@ -14,7 +14,7 @@ const getRosterStatus = (flags) => {
             break;
     }
 
-    switch (flags.some((flag) => flag.startsWith('roster-twr'))) {
+    switch (flags.find((flag) => flag.startsWith('roster-twr'))) {
         case 'roster-twr-sup':
             rosterStatus.twr = -2
             break;
@@ -30,7 +30,7 @@ const getRosterStatus = (flags) => {
             break;
     }
 
-    switch (flags.some((flag) => flag.startsWith('roster-app'))) {
+    switch (flags.find((flag) => flag.startsWith('roster-app'))) {
         case 'roster-app-sup':
             rosterStatus.app = -2
             break;
@@ -46,7 +46,7 @@ const getRosterStatus = (flags) => {
             break;
     }
 
-    switch (flags.some((flag) => flag.startsWith('roster-ctr'))) {
+    switch (flags.find((flag) => flag.startsWith('roster-ctr'))) {
         case 'roster-ctr-sup':
             rosterStatus.ctr = -2
             break;
@@ -62,11 +62,12 @@ const getRosterStatus = (flags) => {
             break;
     }
 
-    if (flags.some((flag) => flag === 'fss')) {
+    if (flags.find((flag) => flag === 'fss')) {
         rosterStatus.fss = 1
     } else {
         rosterStatus.fss = -1
     }
+
 
     return rosterStatus
 

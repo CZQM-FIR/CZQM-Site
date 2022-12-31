@@ -146,6 +146,8 @@ export default {
 
     let user = ref(userData);
 
+    console.log(user.value)
+
     return {
       user,
     };

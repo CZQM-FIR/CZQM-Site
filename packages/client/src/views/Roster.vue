@@ -3,7 +3,7 @@
     <table class="roster">
       <thead>
         <p class="key">
-          Key: <span :style="certificationStyle(-1)">Not Authorised</span> | <span
+          Key: <span :style="certificationStyle(-1)">Not Authorised</span> | <span :style="certificationStyle(-2)">Under Supervision</span> | <span
             :style="certificationStyle(0)">Solo</span> | <span :style="certificationStyle(1)">Certified</span>
         </p>
 
@@ -73,7 +73,7 @@ export default {
 
       switch (status) {
         case -2:
-          style = 'font-weight: bold; background-color: #FF5733;';
+          style = 'font-weight: bold; background-color: #FF6961;';
           break;
         case -1:
           style = 'font-weight: bold; background-color: #CCCCC4; text-align: center';

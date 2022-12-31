@@ -18,6 +18,7 @@
             <SectorFiles sectorFile="1" class="grid-item" />
             <SectorFiles sectorFile="2" class="grid-item" />
           </div>
+          <UserEdit v-else-if="page == 'users-edit'" class="grid-item" />
           <span v-else class="grid-item"
             >Select a function using the buttons to the left</span
           >
@@ -38,6 +39,7 @@ import DeleteEvent from '../components/StaffPortal/DeleteEvent.vue';
 import DeleteNews from '../components/StaffPortal/DeleteNews.vue';
 import UserManagement from '../components/StaffPortal/UserManagement.vue';
 import SectorFiles from '../components/StaffPortal/SectorFiles.vue';
+import UserEdit from '../components/StaffPortal/UserEdit.vue'
 
 export default {
   computed: {
@@ -55,6 +57,7 @@ export default {
     DeleteNews,
     UserManagement,
     SectorFiles,
+    UserEdit,
   },
 };
 </script>

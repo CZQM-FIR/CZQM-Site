@@ -6,7 +6,7 @@ const router = Router()
 router.get('/:jwt', async (req, res) => {
     const user = await User.findOne({ jwt: req.params.jwt })
 
-    if (!user) return res.status(404).clearCookie('jwt').send()
+    if (!user) return res.status(404).clearCookie('jwt')
     if (!user) {
         return res.status(404).send('User not found')
     }
@@ -18,13 +18,14 @@ router.get('/:jwt', async (req, res) => {
         vatsim: user.vatsim,
         cid: user.cid,
         role: user.role,
-    }).send()
+        flags: user.flags,
+    })
 })
 
 router.all('/', async (req, res) => {
     const users = User.find()
 
-    if (!users) return res.status(404).send()
+    if (!users) return res.status(404)
 
     // eslint-disable-next-line prefer-const
     let usersReturn = [];
@@ -37,6 +38,7 @@ router.all('/', async (req, res) => {
             role: user.role,
             roster: user.roster,
             vatsim: user.vatsim,
+            flags: user.flags,
         })
     })
 

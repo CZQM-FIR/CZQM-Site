@@ -8,7 +8,7 @@
             Providing realistic ATC services across the maritime provinces on the VATSIM network.<br><br>Image copyright NAV CANADA
           </p>
           <div class="cta-row">
-            <a href="#info" class="cta">See More</a>
+            <a href="#info" class="cta">See More <i class="fa-solid fa-chevron-down"></i></a>
             <router-link to="/join" class="cta-secondary">Join Us</router-link>
           </div>
         </div>

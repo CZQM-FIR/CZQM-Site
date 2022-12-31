@@ -15,13 +15,7 @@
           <th>Name (Click to copy email)</th>
           <th>CID</th>
           <th>Raiting</th>
-          <th>GND</th>
-          <th>TWR</th>
-          <th>APP</th>
-          <th>CTR</th>
-          <th>Status</th>
-          <th>Role</th>
-          <th>Refresh page to reset</th>
+          <th>Edit User</th>
         </tr>
       </thead>
       <tbody v-if="users.length > 0">
@@ -32,66 +26,12 @@
             </button>
           </td>
           <td>{{ user.cid }}</td>
-          <!-- <td>{{ user.vatsim.rating.short }}</td> -->
           <td>{{ user.vatsim.rating.short }}</td>
-
           <td>
-            <button
-              v-on:click="user.roster.gnd = increment(user.roster.gnd, -1, 1)"
-              :style="certificationStyle(user.roster.gnd)"
-            >
-              GND
-            </button>
+            <router-link :to="{ query: { page: 'users-edit', _id: user.cid}}">
+              <button><i class="fas fa-edit"></i></button>
+            </router-link>
           </td>
-          <td>
-            <button
-              v-on:click="user.roster.twr = increment(user.roster.twr, -1, 1)"
-              :style="certificationStyle(user.roster.twr)"
-            >
-              TWR
-            </button>
-          </td>
-          <td>
-            <button
-              v-on:click="user.roster.app = increment(user.roster.app, -1, 1)"
-              :style="certificationStyle(user.roster.app)"
-            >
-              APP
-            </button>
-          </td>
-          <td>
-            <button
-              v-on:click="user.roster.ctr = increment(user.roster.ctr, -1, 1)"
-              :style="certificationStyle(user.roster.ctr)"
-            >
-              CTR
-            </button>
-          </td>
-
-          <td>
-            <button
-              v-on:click="
-                user.roster.status = increment(user.roster.status, -1, 1)
-              "
-            >
-              {{
-                user.roster.status == 1
-                  ? 'Active'
-                  : user.roster.status == 0
-                  ? 'On Leave'
-                  : 'Inactive'
-              }}
-            </button>
-          </td>
-          <td>
-            <button v-if="(user.role.id >= 5 && staffUser.role.id <= 7)" disabled="disabled">
-              {{ roles[user.role.id] }}
-            </button>
-            <button v-else v-on:click="user.role.id = increment(user.role.id, 0, (staffUser.role.id < 9 ? 4 : 10))">
-              {{ roles[user.role.id] }}
-            </button>
-          </td>
-          <th><button v-on:click="saveUser(user)">Apply Changes</button></th>
         </tr>
       </tbody>
       <tbody v-else>
@@ -115,7 +55,8 @@ export default {
           withCredentials: true
         })).data.users]);
 
-    let usersFiltered = ref(usersUnfiltered.value.filter((user) => {return user.role.id > 0}))
+    // let usersFiltered = ref(usersUnfiltered.value.filter((user) => {return !user.flags.some((flag) => flag === 'guest')}))
+    let usersFiltered = usersUnfiltered
     let users = ref([...usersFiltered.value])
 
     let roles = ref([
@@ -153,40 +94,8 @@ export default {
     };
   },
   methods: {
-    certificationStyle(status) {
-      let style = '';
-
-      switch (status) {
-        case -1:
-          style = 'font-weight: bold; color: #ff0000';
-          break;
-        case 0:
-          style = 'font-weight: bold; color: #ffc000';
-          break;
-        case 1:
-          style = 'font-weight: bold; color: #00ff00;';
-          break;
-        default:
-          console.log('default');
-          break;
-      }
-
-      return style;
-    },
     copyToClipboard(text) {
       navigator.clipboard.writeText(String(text));
-    },
-    increment(current, min, max) {
-      return current + 1 > max ? min : current + 1;
-    },
-    saveUser(user) {
-      axios.get('/api/edituser', {
-        params: {
-          user,
-        },
-      }, {
-          withCredentials: true
-        });
     },
     toggleGuests() {
       this.showGuests = !this.showGuests;
