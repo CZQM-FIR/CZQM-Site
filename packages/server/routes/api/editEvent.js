@@ -93,12 +93,8 @@ router.post('/', upload.single('image'), async (req, res) => {
                 <p>Start: ${new Date(req.body.start).toLocaleString()}</p>
                 <p>End: ${new Date(req.body.end).toLocaleString()}</p>
                 <p>Read More: <a href="https://czqm.ca/events?_id=${event._id}">Link</a></p>
-                <img src="cid:${req.file.filename}" alt="${req.body.name} Banner" />
-            `, [{
-                filename: req.file.filename,
-                path: path.join(__dirname, `../../uploads/${req.file.filename}`),
-                cid: req.file.filename
-            }])
+                <img src="https://www.czqm.ca/files/${req.file.filename}" alt="${req.body.name} Banner" />
+            `)
 
         } catch (error) {
             console.error(`[ERROR] ${error}`)

@@ -6,7 +6,7 @@ const router = Router()
 router.get('/:jwt', async (req, res) => {
     const user = await User.findOne({ jwt: req.params.jwt })
 
-    if (!user) return res.status(404).clearCookie('jwt')
+    if (!user) return res.status(404).clearCookie('jwt', {path: '/'})
     if (!user) {
         return res.status(404).send('User not found')
     }

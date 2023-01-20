@@ -55,8 +55,8 @@ export default {
           withCredentials: true
         })).data.users]);
 
-    // let usersFiltered = ref(usersUnfiltered.value.filter((user) => {return !user.flags.some((flag) => flag === 'guest')}))
-    let usersFiltered = usersUnfiltered
+    let usersFiltered = ref(usersUnfiltered.value.filter((user) => {return user.flags.some((flag) => flag === 'controller' || 'visitor')}))
+    // let usersFiltered = usersUnfiltered
     let users = ref([...usersFiltered.value])
 
     let roles = ref([

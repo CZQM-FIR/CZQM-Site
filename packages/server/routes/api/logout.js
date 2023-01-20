@@ -13,7 +13,7 @@ router.post('/', async (req, res) => {
     user.jwt.remove(req.cookies.jwt)
     await user.save()
 
-    return res.clearCookie('jwt').status(200).json({ msg: 'Logged out' }).send()
+    return res.clearCookie('jwt', {path: '/'}).status(200).json({ msg: 'Logged out' }).send()
 })
 
 module.exports = router

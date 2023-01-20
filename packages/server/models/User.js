@@ -17,9 +17,9 @@ const RequiredObject = {
 
 const userSchema = new mongoose.Schema({
     cid: RequiredString,
-    access_token: RequiredString,
-    refresh_token: RequiredString,
-    expire: RequiredNumber,
+    access_token: String,
+    refresh_token: String,
+    expire: String,
     jwt: [
         {
             type: String,

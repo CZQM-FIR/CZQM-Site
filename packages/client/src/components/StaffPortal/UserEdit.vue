@@ -19,7 +19,7 @@
         </ul>
 
         <h2>User Flags:</h2>
-        <p>This is a list of the users flags. These are used to customise how the user apears and their permissions. To toggle a flag, find it in the dropdown and select submit. Any contradictory flags will be dealt with. Many of these are dealt with automaticaly. Please only change ones that need changing</p>
+        <p>This is a list of the users flags. These are used to customise how the user apears and their permissions. To toggle a flag, find it in the dropdown and select submit. Any contradictory flags will be dealt with. Many of these are dealt with automaticaly. Please only change ones that need changing<br><br>To remove a user, add the delete flag. Users will be removed at the top of every hour.</p>
 
         <ul>
             <li v-for="flag in flags" :key="flag">
@@ -34,7 +34,7 @@
                     {{ flag }}
                 </option>
             </datalist>
-            <button @click="submitFlag(flag, user)">Submit</button>
+            <button @click="submitFlag(flag, user, flagList)">Submit</button>
         </div>
 
     </div>
@@ -44,6 +44,7 @@
 import { ref } from 'vue'
 import router from '../../router';
 import axios from 'axios';
+import getUser from '../../scripts/getUser';
 
 export default {
     setup: async () => {
@@ -75,12 +76,12 @@ export default {
             'roster-app-cert',
             'roster-ctr-cert',
             'fss',
-            'admin',
             'controller',
             'visitor',
             'no-email',
             'inactive',
             'leave',
+            'delete'
         ])
 
         cid.value = router.currentRoute.value.query._id;
@@ -108,6 +109,9 @@ export default {
         rating.value = user.vatsim.rating.short
         flags.value = user.flags
 
+    const loggedInUser = await getUser()
+    if (loggedInUser.flags.includes('admin')) flagList.value.push('admin')
+
         return {
             cid,
             name,
@@ -120,8 +124,10 @@ export default {
         }        
     },
     methods: {
-        submitFlag: async (flag, user) => {
-            if (!flag) return
+        submitFlag: async (flag, user, flagList) => {
+        if (!flag) return
+            console.log(flagList)
+            if (!flagList.includes(flag)) return
             await axios.get(`/api/edituser/`, {
                 params: {
                     user,

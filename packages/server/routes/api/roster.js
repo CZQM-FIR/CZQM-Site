@@ -16,6 +16,8 @@ router.get('/', async (req, res) => {
         
         controllerList.push({
             name: c.personal.name_full,
+            name_first: c.personal.name_first,
+            name_last: c.personal.name_last,
             cid: c.cid,
             rating: c.vatsim.rating.short,
             flags: c.flags,
@@ -27,8 +29,8 @@ router.get('/', async (req, res) => {
     
 
     res.status(200).send(controllerList.sort((a, b) => { 
-        const nameA = (a.name.split(' '))[1]
-        const nameB = (b.name.split(' '))[1]
+        const nameA = a.name_last
+        const nameB = b.name_last
 
         if (nameA < nameB) {
             return -1

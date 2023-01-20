@@ -55,6 +55,7 @@ router.post('/:code', async (req, res) => {
 
     res.cookie('jwt', token, {
         maxAge: Math.round(Date.now() / 1000) + result.data.expires_in,
+        path: '/',
     })
         .status(200)
         .json({
