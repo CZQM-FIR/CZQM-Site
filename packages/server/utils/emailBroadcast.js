@@ -1,4 +1,8 @@
 const { createTransport } = require('nodemailer')
+const md = require('markdown-it')({
+    html: true,
+    breaks: true,
+})
 const { transporterConfig } = require('../config')
 
 /* 
@@ -24,7 +28,7 @@ const sendEmail = async (email, subject, message, attachments = [], replyTo = ''
         from: `"CZQM Web Services" <${transporterConfig.auth.user}>`,
         bcc: email,
         subject,
-        html: message,
+        html: md.render(message),
         attachments,
         replyTo
     })
