@@ -2,6 +2,9 @@ const { createTransport } = require('nodemailer')
 const md = require('markdown-it')({
     html: true,
     breaks: true,
+    linkify: true,
+    highlight: true,
+    typographer: true,
 })
 const { transporterConfig } = require('../config')
 
