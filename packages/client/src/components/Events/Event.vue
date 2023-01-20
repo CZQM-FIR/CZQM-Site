@@ -35,7 +35,7 @@ export default {
   setup: async () => {
     const _id = router.currentRoute.value.query._id;
 
-    let event = ref(await getEvent(_id));
+    let event = ref(await getEvent(true, _id));
 
     return {
       event,

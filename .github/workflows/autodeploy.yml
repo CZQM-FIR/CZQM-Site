@@ -75,6 +75,6 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             cd ~/CZQM-Site/packages/server
-            pm2 delete all
+            pm2 delete server
             pm2 start "NODE_ENV=production node ." --name server
     

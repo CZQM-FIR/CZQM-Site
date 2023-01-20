@@ -54,7 +54,7 @@ router.post("/", upload.none(), async (req, res) => {
 
     try {
       await axios.post(
-        process.env.DISCORD_WEBHOOK_URI,
+        process.env.NEWS_DISCORD_WEBHOOK_URI,
         {
           embeds: [
             {

@@ -59,7 +59,7 @@ router.post('/', upload.single('image'), async (req, res) => {
 
         try {
             await axios.post(
-                `${process.env.DISCORD_WEBHOOK_URI}`,
+                `${process.env.EVENTS_DISCORD_WEBHOOK_URI}`,
                 {
                     embeds: [
                         {
@@ -90,11 +90,10 @@ router.post('/', upload.single('image'), async (req, res) => {
             await sendEmailToAll([emailableUsers.map(userObject => userObject.personal.email)], `New Event: ${req.body.name}`, `
                 <h1>New Event: ${req.body.name}</h1>
                 <p>${req.body.description}</p>
-                <p>Start: ${new Date(req.body.start).toLocaleString()}</p>
-                <p>End: ${new Date(req.body.end).toLocaleString()}</p>
+                <p>Start: ${new Date(req.body.start).toLocaleString(undefined, {hour12: false, timeStyle: 'short', dateStyle: 'full'})}z</p>
+                <p>End: ${new Date(req.body.end).toLocaleString(undefined, {hour12: false, timeStyle: 'short', dateStyle: 'full'})}z</p>
                 <p>Read More: <a href="https://czqm.ca/events?_id=${event._id}">Link</a></p>
                 <img src="https://www.czqm.ca/files/${req.file.filename}" alt="${req.body.name} Banner" />
-            `)
 
         } catch (error) {
             console.error(`[ERROR] ${error}`)
