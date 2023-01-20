@@ -12,8 +12,8 @@
         <li>
           <i>Date: {{ getTime(article) }}</i>
         </li>
-        <br />
-        <li>{{ article.text }}</li>
+        <hr>
+        <li><md-block>{{ article.text }}</md-block></li>
       </ul>
     </div>
   </div>

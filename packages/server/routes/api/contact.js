@@ -25,7 +25,7 @@ router.post('/', upload.none(), async (req, res) => {
     if (!email.test(req.body.email) || !email.test(req.body.staff)) {
         return res.status(400).json({
             message: 'Incorrectly formatted email',
-        })
+        }).send()
     }
 
     const date = new Date(Date.now())
@@ -37,11 +37,11 @@ router.post('/', upload.none(), async (req, res) => {
     <span><b>Sent At:</b> ${date.toUTCString()}</span><br><br>
     <span><b>Message:</b></span>
     <p>${req.body.message}</p><br>
-    `)
+    `, [], `${req.body.name} <${req.body.email}>`)
 
     res.status(200).json({
         message: 'Email Sent',
-    })
+    }).send()
     return true
 })
 

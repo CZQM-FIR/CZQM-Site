@@ -35,6 +35,10 @@ if (process.env.NODE_ENV === 'production') {
     console.warn('[WARN] Development Mode')
 }
 
+const registerCron = require('./utils/cron')
+
+registerCron()
+
 app.use(cors({
         credentials: true,
         origin: "https://czqm.ca",
