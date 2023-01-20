@@ -93,7 +93,7 @@ router.post('/', upload.single('image'), async (req, res) => {
                 <p>Start: ${new Date(req.body.start).toLocaleString(undefined, {hour12: false, timeStyle: 'short', dateStyle: 'full'})}z</p>
                 <p>End: ${new Date(req.body.end).toLocaleString(undefined, {hour12: false, timeStyle: 'short', dateStyle: 'full'})}z</p>
                 <p>Read More: <a href="https://czqm.ca/events?_id=${event._id}">Link</a></p>
-                <img src="https://www.czqm.ca/files/${req.file.filename}" alt="${req.body.name} Banner" />
+                <img src="https://www.czqm.ca/files/${req.file.filename}" alt="${req.body.name} Banner" />`)
 
         } catch (error) {
             console.error(`[ERROR] ${error}`)
