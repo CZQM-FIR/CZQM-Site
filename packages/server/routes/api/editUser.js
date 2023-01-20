@@ -24,7 +24,7 @@ router.get('/', async (req, res) => {
     try {
         const editUser = await User.findOne({ cid: userParam.cid })
         editUser.personal = userParam.personal || editUser.personal
-        editUser.role = userParam.role || editUser.role        
+        // editUser.role = userParam.role || editUser.role        
         editUser.flags = processFlag(flagParam, editUser.flags)
 
         await editUser.save()

@@ -27,9 +27,9 @@ router.post("/", upload.none(), async (req, res) => {
 
     const user = await User.findOne({ jwt: req.cookies.jwt })
 
-    if (!user || user.role.id < 4) {
-        return res.status(401).json({ msg: 'Not authorized' }).send()
-    }
+    // if (!user || user.role.id < 4) {
+    //     return res.status(401).json({ msg: 'Not authorized' }).send()
+    // }
 
   let article;
 

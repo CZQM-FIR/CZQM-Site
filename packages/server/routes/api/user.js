@@ -17,7 +17,7 @@ router.get('/:jwt', async (req, res) => {
         personal: user.personal,
         vatsim: user.vatsim,
         cid: user.cid,
-        role: user.role,
+        // role: user.role,
         flags: user.flags,
     })
 })
@@ -35,7 +35,7 @@ router.all('/', async (req, res) => {
         usersReturn.push({
             cid: user.cid,
             personal: user.personal,
-            role: user.role,
+            // role: user.role,
             roster: user.roster,
             vatsim: user.vatsim,
             flags: user.flags,
