@@ -18,7 +18,7 @@ const getRosterStatus = (flags) => {
         case 'roster-twr-sup':
             rosterStatus.twr = -2
             break;
-        case 'roster-tower-solo':
+        case 'roster-twr-solo':
             rosterStatus.twr = 0
             break;
         case 'roster-twr-cert':
