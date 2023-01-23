@@ -1,4 +1,11 @@
 const { createTransport } = require('nodemailer')
+const md = require('markdown-it')({
+    html: true,
+    breaks: true,
+    linkify: true,
+    highlight: true,
+    typographer: true,
+})
 const { transporterConfig } = require('../config')
 
 /* 
@@ -17,15 +24,16 @@ const { transporterConfig } = require('../config')
  * @param {string} message Message to send in html format
  * @param {array} attachments Array of attachments in attachment format *Optional
  */
-const sendEmail = async (email, subject, message, attachments = []) => {
+const sendEmail = async (email, subject, message, attachments = [], replyTo = '') => {
     const transporter = createTransport(transporterConfig)
 
     await transporter.sendMail({
         from: `"CZQM Web Services" <${transporterConfig.auth.user}>`,
         bcc: email,
         subject,
-        html: message,
-        attachments
+        html: md.render(message),
+        attachments,
+        replyTo
     })
 }
 
@@ -36,9 +44,9 @@ const sendEmail = async (email, subject, message, attachments = []) => {
  * @param {string} message Message to send in html format
  * @param {array} attachments Array of attachments in attachment format
  */
-const sendEmailToAll = async (emails, subject, message, attachments = []) => {
-    emails.forEach(email => {
-        sendEmail(email, subject, message, attachments)
+const sendEmailToAll = async (emails, subject, message, attachments = [], replyTo = '') => {
+    emails.forEach(async (email) => {
+        await sendEmail(email, subject, message, attachments, replyTo)
         if (process.env.NODE_ENV === 'development') console.info(`[DEBUG] Email sent to ${email}`)
     })
 }

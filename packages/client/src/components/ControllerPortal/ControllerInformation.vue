@@ -7,8 +7,7 @@
         {{ user.vatsim.rating.long }} ({{ user.vatsim.rating.short }})
       </li>
       <br />
-      <li v-if="user.role.id > roles.length">Role: Unknown</li>
-      <li v-else>Role: {{ roles[user.role.id] }}</li>
+      <li>Role: {{ role }}</li>
     </ul>
     <ul class="info-list">
       <li>
@@ -21,6 +20,7 @@
 
 <script>
 import getUser from '../../scripts/getUser';
+import getRoleName from '../../scripts/getRoleName';
 import { ref } from 'vue';
 
 export default {
@@ -34,24 +34,12 @@ export default {
       `Good ${hour < 12 ? 'Morning' : hour < 18 ? 'Afternoon' : 'Evening'}`
     );
 
-    let roles = ref([
-      'Guest',
-      'Visitor',
-      'Home Controller',
-      'Mentor',
-      'Instructor',
-      'Events',
-      'Sector Engineer',
-      'Chief Instructor',
-      'Deputy Chief',
-      'Webmaster',
-      'FIR Chief'
-    ]);
+    let role = ref(getRoleName(user.value.flags));
 
     return {
       greeting,
       user,
-      roles,
+      role,
     };
   },
 };

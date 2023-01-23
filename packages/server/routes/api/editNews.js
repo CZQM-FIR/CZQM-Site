@@ -25,10 +25,10 @@ const router = Router();
 
 router.post("/", upload.none(), async (req, res) => {
 
-    // const user = await User.findOne({ jwt: req.cookies.jwt })
+    const user = await User.findOne({ jwt: req.cookies.jwt })
 
     // if (!user || user.role.id < 4) {
-    //     return res.status(401).json({ msg: 'Not authorized' })
+    //     return res.status(401).json({ msg: 'Not authorized' }).send()
     // }
 
   let article;
@@ -43,7 +43,7 @@ router.post("/", upload.none(), async (req, res) => {
     await article.save();
     res.status(200).json({
       message: "Article Edited Successfully",
-    });
+    }).send();
   } else {
     article = await new News({
       name: req.body.name,
@@ -54,7 +54,7 @@ router.post("/", upload.none(), async (req, res) => {
 
     try {
       await axios.post(
-        process.env.DISCORD_WEBHOOK_URI,
+        process.env.NEWS_DISCORD_WEBHOOK_URI,
         {
           embeds: [
             {
@@ -81,8 +81,8 @@ router.post("/", upload.none(), async (req, res) => {
 
       // Send email to all users who have an email address and who are visitors or above
             const emailableUsers = await User.find({
-                'personal.email': { $ne: null },
-                'role.id': { $gte: 1 }
+              'personal.email': { $ne: null },
+              'flags': { $and: [{ $in: ['controller', 'visitor'] }, { $not: { $in: ['no-email'] } }] }
             })
             await sendEmailToAll([emailableUsers.map(userObject => userObject.personal.email)], `New Announcement: ${req.body.name}`, `
                 <h1>New Announcement: ${req.body.name}</h1>
@@ -95,7 +95,7 @@ router.post("/", upload.none(), async (req, res) => {
 
     res.status(200).json({
       message: "Article Created Successfully",
-    });
+    }).send();
   }
   return true
 });

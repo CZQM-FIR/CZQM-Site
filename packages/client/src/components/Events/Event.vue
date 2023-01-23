@@ -9,8 +9,8 @@
     <div v-else>
       <h2><i class="fa-solid fa-calendar-day"></i> {{ event.name }}</h2>
       <ul class="event-info-list">
-        <li>{{ event.description }}</li>
-        <br />
+        <li><md-block>{{ event.description }}</md-block></li>
+        <hr>
         <li>
           <i>Start: {{ getEventStartTime(event) }}</i>
         </li>
@@ -35,7 +35,7 @@ export default {
   setup: async () => {
     const _id = router.currentRoute.value.query._id;
 
-    let event = ref(await getEvent(_id));
+    let event = ref(await getEvent(true, _id));
 
     return {
       event,

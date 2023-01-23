@@ -29,7 +29,7 @@
 
     export default {
         setup: async () => {
-            let events = ref(await getEvent());
+            let events = ref(await getEvent(true));
 
             return {
                 events

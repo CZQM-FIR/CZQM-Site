@@ -23,14 +23,14 @@
             />
           </div>
           <div class="form-item">
-            <label for="staff">Staff Member:</label>
+            <label for="staff">Category:</label>
             <select name="staff" id="staff" v-model="staff" required>
               <option
-                v-for="staff in staffList"
-                :key="staff.id"
-                :value="staff[2]"
+                v-for="recipient in recipients"
+                :key="recipient.id"
+                :value="recipient['email']"
               >
-                {{ staff[1] }} - {{ staff[0] }}
+                {{ recipient['name'] }}
               </option>
             </select>
           </div>
@@ -64,14 +64,34 @@
 </template>
 
 <script>
-import { staff } from '../assets/config.json';
 import axios from 'axios';
 
 export default {
   setup: () => {},
   data: () => {
     return {
-      staffList: staff,
+      recipients: [
+        {
+          name: 'Staff',
+          email: 'admin@czqm.ca'
+        },
+        {
+          name: 'Events',
+          email: 'eventsrequest@czqm.ca'
+        },
+        {
+          name: 'Training',
+          email: 'training@czqm.ca'
+        },
+        {
+          name: 'Feedback',
+          email: 'feedback@czqm.ca'
+        },
+        {
+          name: 'Other',
+          email: 'admin@czqm.ca'
+        }
+      ],
       name: '',
       email: '',
       staff: '',

@@ -2,19 +2,19 @@
   <div>
     <h1>{{ greeting }} {{ user.personal.name_first }}!</h1>
     <div class="cta-row">
-      <router-link v-if="(user.role.id === 5) || (user.role.id >= 8)" :to="{ query: { page: 'events' } }" class="cta"
+      <router-link v-if="user.flags.some((flag) => ['events', 'admin'].includes(flag))" :to="{ query: { page: 'events' } }" class="cta"
         >Events</router-link
       >
-      <router-link v-if="user.role.id >= 5" :to="{ query: { page: 'news' } }" class="cta"
+      <router-link v-if="user.flags.some((flag) => ['staff'].includes(flag))" :to="{ query: { page: 'news' } }" class="cta"
         >News</router-link
       >
-      <router-link v-if="(user.role.id === 7) || (user.role.id >= 8)" :to="{ query: { page: 'users' } }" class="cta"
+      <router-link v-if="user.flags.some((flag) => ['chief-instructor', 'web', 'chief', 'deputy', 'admin'].includes(flag))" :to="{ query: { page: 'users' } }" class="cta"
         >User Management</router-link
       >
-      <router-link v-if="(user.role.id === 6) || (user.role.id >= 8)" :to="{ query: { page: 'sector-files' } }" class="cta"
+      <router-link v-if="user.flags.some((flag) => ['sector', 'admin'].includes(flag))" :to="{ query: { page: 'sector-files' } }" class="cta"
         >Sector Files</router-link
       >
-      <a v-if="user.role.id >= 3" target="_blank" href="https://trello.com/b/oDjaz39q/czqm-controller-board" class="cta"
+      <a v-if="user.flags.some((flag) => ['staff-training', 'admin'].includes(flag))" target="_blank" href="https://trello.com/b/oDjaz39q/czqm-controller-board" class="cta"
         >Trello</a
       >
     </div>

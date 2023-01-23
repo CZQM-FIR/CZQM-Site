@@ -3,31 +3,10 @@ const User = require('../../models/User')
 
 const router = Router()
 
-const roles = [
-    'Guest',
-    'Visiting Controller',
-    'Home Controller',
-    'Mentor',
-    'Instructor',
-    'Events',
-    'Sector Engineer',
-    'Chief Instructor',
-    'Deputy Chief',
-    'Webmaster',
-    'FIR Chief',
-]
-
 router.get('/:jwt', async (req, res) => {
     const user = await User.findOne({ jwt: req.params.jwt })
 
-    if (!user) return res.status(404).clearCookie('jwt')
-
-    if (!user.role.id || user.role.id === 0) {
-        user.role.name = 'Guest'
-    } else {
-        user.role.name = roles[user.role.id]
-    }
-
+    if (!user) return res.status(404).clearCookie('jwt', {path: '/'})
     if (!user) {
         return res.status(404).send('User not found')
     }
@@ -38,7 +17,8 @@ router.get('/:jwt', async (req, res) => {
         personal: user.personal,
         vatsim: user.vatsim,
         cid: user.cid,
-        role: user.role,
+        // role: user.role,
+        flags: user.flags,
     })
 })
 
@@ -55,9 +35,10 @@ router.all('/', async (req, res) => {
         usersReturn.push({
             cid: user.cid,
             personal: user.personal,
-            role: user.role,
+            // role: user.role,
             roster: user.roster,
             vatsim: user.vatsim,
+            flags: user.flags,
         })
     })
 

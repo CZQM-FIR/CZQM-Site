@@ -48,7 +48,7 @@
                 </div>
                 <router-link to="/roster" @click="showMobileMenu = false"> Roster </router-link>
               </li>
-              <div v-if="!user.loggedIn || user.role.id < 1 || user.role.id >= 5">
+              <div v-if="user.loggedIn == false || user.flags.some((flag) => flag === 'guest' || flag === 'staff')">
                 <li class="dropdown-text">
                   <div class="dropdown-icon">
                     <i class="fa-solid fa-user-plus"></i>
@@ -56,7 +56,7 @@
                   <router-link to="/join" @click="showMobileMenu = false"> Join Us </router-link>
                 </li>
               </div>
-              <div v-if="user.loggedIn && user.role.id >= 1">
+              <div v-if="user.loggedIn && !user.flags.some((flag) => flag === 'guest')">
                 <li class="dropdown-text">
                   <div class="dropdown-icon">
                     <i class="fa-solid fa-file-lines"></i>
@@ -101,7 +101,7 @@
                 </li>
                 <li
                   class="dropdown-text"
-                  v-if="user.loggedIn && user.role.id >= 3"
+                  v-if="user.loggedIn && user.flags.some((flag) => flag.startsWith('staff'))"
                 >
                   <div class="dropdown-icon">
                     <i class="fa-solid fa-bars-progress"></i>
@@ -145,6 +145,8 @@ export default {
     const userData = await getUser();
 
     let user = ref(userData);
+
+    console.log(user.value)
 
     return {
       user,
