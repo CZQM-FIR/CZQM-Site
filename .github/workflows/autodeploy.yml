@@ -32,6 +32,7 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             cd ~/CZQM-Site
+            git restore ./packages/client/package-lock.json
             git pull https://github.com/CZQM-FIR/CZQM-Site.git
       - name: Download Dependencies
         uses: appleboy/ssh-action@master
