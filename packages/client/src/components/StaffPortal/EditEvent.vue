@@ -168,7 +168,7 @@ export default {
       let data = new FormData();
       data.append('name', `${this.name}`);
       data.append('description', this.description);
-      data.append('start', this.start);
+      data.append('start', `${this.start}Z`);
       data.append('end', this.end);
       data.append('image', this.image, this.image.name);
 
