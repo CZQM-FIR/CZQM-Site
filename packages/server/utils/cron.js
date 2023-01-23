@@ -2,8 +2,26 @@
 const cron = require('node-cron')
 const axios = require('axios')
 const User = require('../models/User')
+const Event = require('../models/Event')
 
-async function regsiterCron() {
+const getNextMonday = () => {
+  const now = new Date()
+  const today = new Date(now)
+  today.setMilliseconds(0)
+  today.setSeconds(0)
+  today.setMinutes(0)
+  today.setHours(0)
+
+  const nextMonday = new Date(today)
+
+  do {
+    nextMonday.setDate(nextMonday.getDate() + 1) // Adding 1 day
+  } while (nextMonday.getDay() !== 1)
+
+  return nextMonday
+}
+
+const regsiterCron = async () => {
     cron.schedule('* * * * *', async () => {
         console.info('[INFO] Checking VATCAN')
         const roster = (await axios.get('https://vatcan.ca/api/v2/facility/roster', {
@@ -115,6 +133,31 @@ async function regsiterCron() {
             user.personal.name_full = `${user.personal.name_first} ${user.personal.name_last}`
             await user.save()
         })
+    })
+
+    cron.schedule('0 8 * * *', async () => {
+        console.info('[INFO] Checking Moncton Monday')
+        const events = await Event.find({
+            name: 'Moncton Monday',
+            end: { $gt: Date.now() },
+        })
+        if (events.length === 0) {
+            console.info('[INFO] Adding Moncton Monday')
+            const nextMonday = getNextMonday()
+            const nextTuesday = new Date(nextMonday).setUTCDate(nextMonday.getUTCDate() + 1)
+            const start = new Date(nextMonday).setUTCHours(23)
+            const end = new Date(nextTuesday).setUTCHours(3)
+
+            Event.create({
+                name: 'Moncton Monday',
+                image: 'MonctonMonday23.png',
+                description: `Come out to Moncton Mondays where we have coverage of the Moncton and Gander FIR
+                Pilots new to VATSIM are welcome!
+                23h00z - 03h00z every Monday night!`,
+                start,
+                end,
+            })
+        }
     })
 }
 
