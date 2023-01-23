@@ -26,10 +26,10 @@ const router = Router()
 
 router.post('/', upload.single('image'), async (req, res) => {
 
-    // const user = await User.findOne({ jwt: req.cookies.jwt })
+    const user = await User.findOne({ jwt: req.cookies.jwt })
 
     // if (!user || user.role.id < 4) {
-    //     return res.status(401).json({ msg: 'Not authorized' })
+    //     return res.status(401).json({ msg: 'Not authorized' }).send()
     // }
 
     let event
@@ -46,7 +46,7 @@ router.post('/', upload.single('image'), async (req, res) => {
         event.save()
         res.status(200).json({
             message: 'Event Edited Successfully',
-        })
+        }).send()
     } else {
         event = await new Event({
             name: req.body.name,
@@ -85,7 +85,7 @@ router.post('/', upload.single('image'), async (req, res) => {
             // Send email to all users who have an email address and who are visitors or above
             const emailableUsers = await User.find({
                 'personal.email': { $ne: null },
-                'role.id': { $gte: 1 }
+                'flags': { $and: [{$in: ['controller', 'visitor']}, {$not: {$in: ['no-email']}}] }
             })
             await sendEmailToAll([emailableUsers.map(userObject => userObject.personal.email)], `New Event: ${req.body.name}`, `
                 <h1>New Event: ${req.body.name}</h1>
@@ -93,12 +93,7 @@ router.post('/', upload.single('image'), async (req, res) => {
                 <p>Start: ${new Date(req.body.start).toLocaleString(undefined, {hour12: false, timeStyle: 'short', dateStyle: 'full'})}z</p>
                 <p>End: ${new Date(req.body.end).toLocaleString(undefined, {hour12: false, timeStyle: 'short', dateStyle: 'full'})}z</p>
                 <p>Read More: <a href="https://czqm.ca/events?_id=${event._id}">Link</a></p>
-                <img src="cid:${req.file.filename}" alt="${req.body.name} Banner" style="max-width: 80%/>
-            `, [{
-                filename: req.file.filename,
-                path: path.join(__dirname, `../../uploads/${req.file.filename}`),
-                cid: req.file.filename
-            }])
+                <img src="https://www.czqm.ca/files/${req.file.filename}" alt="${req.body.name} Banner" />`)
 
         } catch (error) {
             console.error(`[ERROR] ${error}`)
@@ -106,7 +101,7 @@ router.post('/', upload.single('image'), async (req, res) => {
 
         res.status(200).json({
             message: 'Event Created Successfully',
-        })
+        }).send()
     }
     return true
 })

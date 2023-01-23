@@ -34,6 +34,40 @@ Roles are numbered starting at zero (0) through to ten (10). Each role level can
 9. Webmaster (Admin)
 10. FIR Chief (Admin)
 
+## Flags
+
+These flags may be assigned to users to change permissions, display role and more. All flags must be in all lowercase.
+
+* **staff** - Access to staff portal, all FIR staff (Automated)
+* **staff-instructing** - Access to any instructing resources and pages (Automated)
+* **instructor** - Display role as instructor
+* **mentor** - Display role as instructor
+* **chief** - DIsplay role as chief
+* **deputy** - Display role as deputy chief
+* **chief-instructor** - Display role as chief instructor
+* **web** - Display role as webmaster
+* **events** - Display role as event coordinator
+* **sector** - Display role as sector engineer
+* **roster** - *Not a valid flag, see sub flags*
+  * **-gnd** - Ground roster state
+  * **-twr** - Tower roster state
+  * **-app** - Approach roster state
+  * **-ctr** - Center roster state
+  * *Note: all (except fss) roster subflags must have one of the following suffixes*
+
+    * **-sup** - Under Supervision
+    * **-solo** - Solo Certified
+    * **-cert** - Fully certified
+  * Note: Gnd can only accept -sup and -cert
+  * Note: remove the flag entirely to be not certified
+* **fss** - User certified for fss
+* **admin** - Full admin perms
+* **controller** - Home Controller
+* **visitor** - Visiting Controller
+* **no-email** - Skip user when sending email broadcasts
+* **inactive** - Marks inactive users
+* **leave** - Manks users on leave
+
 ## Contributors
 
 Thank you to those who helped build this site: ([emoji key](https://allcontributors.org/docs/en/emoji-key)):

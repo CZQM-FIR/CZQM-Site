@@ -17,9 +17,9 @@ const RequiredObject = {
 
 const userSchema = new mongoose.Schema({
     cid: RequiredString,
-    access_token: RequiredString,
-    refresh_token: RequiredString,
-    expire: RequiredNumber,
+    access_token: String,
+    refresh_token: String,
+    expire: String,
     jwt: [
         {
             type: String,
@@ -27,23 +27,26 @@ const userSchema = new mongoose.Schema({
     ],
     personal: RequiredObject,
     vatsim: RequiredObject,
-    role: {
-        id: {
-            type: Number,
-            default: 0,
-        },
-        name: {
-            type: String,
-            default: 'Guest',
-        },
-    },
-    roster: {
-        gnd: { type: Number, default: -1 },
-        twr: { type: Number, default: -1 },
-        app: { type: Number, default: -1 },
-        ctr: { type: Number, default: -1 },
-        status: { type: Number, default: 1 },
-    },
+    flags: [
+        String
+    ]
+    // role: {
+    //     id: {
+    //         type: Number,
+    //         default: 0,
+    //     },
+    //     name: {
+    //         type: String,
+    //         default: 'Guest',
+    //     },
+    // },
+    // roster: {
+    //     gnd: { type: Number, default: -1 },
+    //     twr: { type: Number, default: -1 },
+    //     app: { type: Number, default: -1 },
+    //     ctr: { type: Number, default: -1 },
+    //     status: { type: Number, default: 1 },
+    // },
 })
 
 module.exports = mongoose.model('User', userSchema)

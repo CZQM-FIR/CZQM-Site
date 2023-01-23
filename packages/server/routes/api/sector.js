@@ -36,7 +36,7 @@ router.post('/', upload.single('file'), async (req, res) => {
             upsert: true,
         }
     )
-    res.status(200)
+    res.status(200).send()
 })
 
 router.get('/', async (req, res) => {
