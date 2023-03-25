@@ -14,6 +14,7 @@ import Staff from '../views/StaffList.vue';
 import ControllerResources from '../views/ControllerResources.vue';
 import ContactUs from '../views/ContactUs.vue';
 import JoinUs from '../views/JoinUs.vue';
+import Preferences from '../views/Preferences.vue';
 
 import getUser from '../scripts/getUser';
 
@@ -69,6 +70,16 @@ const routes = [
     path: '/logout',
     name: 'Logout',
     component: Logout,
+    beforeEnter: (to, from) => {
+      if (!getCookie('jwt')) {
+        return { path: '/' };
+      }
+    },
+  },
+  {
+    path: '/preferences',
+    name: 'User Preferences',
+    component: Preferences,
     beforeEnter: (to, from) => {
       if (!getCookie('jwt')) {
         return { path: '/' };

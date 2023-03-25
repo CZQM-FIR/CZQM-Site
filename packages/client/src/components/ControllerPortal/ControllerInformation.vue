@@ -12,6 +12,10 @@
     <ul class="info-list">
       <li>
         <i class="fa-solid fa-chevron-right"></i>
+        <router-link to="/preferences">Preferences</router-link>
+      </li>
+      <li>
+        <i class="fa-solid fa-chevron-right"></i>
         <router-link to="/logout">Logout</router-link>
       </li>
     </ul>
