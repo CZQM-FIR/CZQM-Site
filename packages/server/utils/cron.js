@@ -145,18 +145,15 @@ const regsiterCron = async () => {
             console.info('[INFO] Adding Moncton Monday')
             const nextMonday = getNextMonday()
             const nextTuesday = new Date(nextMonday).setUTCDate(nextMonday.getUTCDate() + 1)
-
-            const daylightSavings = 1 // 1 = march -> november, 0 = november -> march
-
-            const start = new Date(nextMonday).setUTCHours(23 - daylightSavings)
-            const end = new Date(nextTuesday).setUTCHours(3 - daylightSavings)
+            const start = new Date(nextMonday).setUTCHours(23)
+            const end = new Date(nextTuesday).setUTCHours(3)
 
             Event.create({
                 name: 'Moncton Monday',
-                image: `MonctonMonday2${3 - daylightSavings}.png`,
+                image: 'MonctonMonday23.png',
                 description: `Come out to Moncton Mondays where we have coverage of the Moncton and Gander FIR
                 Pilots new to VATSIM are welcome!
-                2${3 - daylightSavings}h00z - 0${3 - daylightSavings}h00z every Monday night!`,
+                23h00z - 03h00z every Monday night!`,
                 start,
                 end,
             })
