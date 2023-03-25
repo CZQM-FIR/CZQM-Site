@@ -1,10 +1,10 @@
 {
   "staff": [
-    ["Jagard Strong", "FIR Chief", "firchief@czqm.ca"],
-    ["Vacant", "Deputy Chief", "deputychief@czqm.ca"],
+    ["Mark Walsh", "FIR Chief", "firchief@czqm.ca"],
+    ["Jagard Strong", "Deputy Chief", "deputychief@czqm.ca"],
     ["Steve Oster", "Chief Instructor", "instructor@czqm.ca"],
-    ["Jack Koskie", "Webmaster", "webmaster@czqm.ca"],
     ["Liam McKeown", "Events", "events@czqm.ca"],
-    ["Vacant", "Sector Engineer", "engineer@czqm.ca"]
+    ["Dustin Pasch", "Sector Engineer", "engineer@czqm.ca"],
+    ["Jack Koskie", "Webmaster", "webmaster@czqm.ca"]
   ]
 }
