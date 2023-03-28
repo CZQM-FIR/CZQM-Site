@@ -42,7 +42,7 @@ router.post('/', upload.none(), async (req, res) => {
             <li class="list-group-item">Sent At: ${date.toUTCString()}</li>
             <li class="list-group-item">Message: <br>${req.body.message}</li>
         </ul>
-    </div>`, [], `${req.body.name} <${req.body.email}>`)
+    </div>`, `${req.body.name} <${req.body.email}>`)
 
     res.status(200).json({
         message: 'Email Sent',

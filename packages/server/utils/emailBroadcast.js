@@ -17,7 +17,7 @@ const { transporterConfig } = require('../config')
  * @param {string} message Message to send in html format
  * @param {array} attachments Array of attachments in attachment format *Optional
  */
-const sendEmail = async (email, subject, message, attachments = [], replyTo = '') => {
+const sendEmail = async (email, subject, message, replyTo = '', attachments = undefined) => {
     const transporter = createTransport(transporterConfig)
 
     await transporter.sendMail({
@@ -25,8 +25,8 @@ const sendEmail = async (email, subject, message, attachments = [], replyTo = ''
         bcc: email,
         subject,
         html: message,
-        attachments,
-        replyTo
+        replyTo,
+        attachments 
     })
 }
 
@@ -39,7 +39,7 @@ const sendEmail = async (email, subject, message, attachments = [], replyTo = ''
  */
 const sendEmailToAll = async (emails, subject, message, attachments = [], replyTo = '') => {
     emails.forEach(async (email) => {
-        await sendEmail(email, subject, message, attachments, replyTo)
+        await sendEmail(email, subject, message, replyTo, attachments)
         if (process.env.NODE_ENV === 'development') console.info(`[DEBUG] Email sent to ${email}`)
     })
 }
