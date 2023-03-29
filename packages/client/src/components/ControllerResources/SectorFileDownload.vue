@@ -10,7 +10,7 @@
     <div class="cta-row">
       <a :href="fileURL" class="cta">Sector File</a>
       <a href="files/docs/automatic-update.pdf" class="cta">Automatic Update</a>
-      <a href="files/VATCAN_CZQM_Sector_Provider.txt" class="cta">Sector Provider</a>
+      <a download href="files/VATCAN_CZQM_Sector_Provider.txt" class="cta">Sector Provider</a>
     </div>
   </div>
 </template>
