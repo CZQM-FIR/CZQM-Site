@@ -1,34 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CZQM/QX</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" href="/CZQM.ico" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CZQM/QX</title>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-309PNLHSHS"></script>
-
-  <!-- md-block -->
-  <script type="module" src="https://md-block.verou.me/md-block.js"></script>
-  
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    
-    gtag('config', 'G-309PNLHSHS');
+    setInterval(() => {
+      console.log(
+        "Do not type anything in the console! It can very easily break things"
+      );
+    }, 3_000);
   </script>
-</head>
-
-<body>
-  <div id="app"></div>
-  <script type="module" src="/src/main.js"></script>
-</body>
-
-<script>
-  console.warn('Do not type anything in the console! It can very easily break things');
-</script>
-
 </html>

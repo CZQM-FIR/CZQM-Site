@@ -1,0 +1,41 @@
+<template>
+  <div class="row">
+    <div class="col-8">
+      <h3>Pilot Resources</h3>
+      <textarea
+        v-model="input"
+        style="width: 100%; min-height: 15rem"
+      ></textarea>
+
+      <br />
+      <button class="btn btn-primary" v-on:click="save()">Save</button>
+
+      <h4 class="mt-4">Preview:</h4>
+      <div v-if="input" v-html="pseudoToHTML(input)"></div>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import axios from "axios";
+import { onMounted, ref } from "vue";
+import pseudoToHTML from "../../../scripts/pseudoToHTML";
+
+const input = ref("");
+
+const save = async () => {
+  await axios.post("/api/resources", null, {
+    params: {
+      type: "pilot",
+      value: input.value,
+    },
+  });
+};
+
+onMounted(async () => {
+  const res = await axios.get("/api/resources?type=pilot");
+  input.value = res.data.data.value;
+});
+</script>
+
+<style lang="scss" scoped></style>
