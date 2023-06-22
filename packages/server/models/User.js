@@ -29,24 +29,8 @@ const userSchema = new mongoose.Schema({
     vatsim: RequiredObject,
     flags: [
         String
-    ]
-    // role: {
-    //     id: {
-    //         type: Number,
-    //         default: 0,
-    //     },
-    //     name: {
-    //         type: String,
-    //         default: 'Guest',
-    //     },
-    // },
-    // roster: {
-    //     gnd: { type: Number, default: -1 },
-    //     twr: { type: Number, default: -1 },
-    //     app: { type: Number, default: -1 },
-    //     ctr: { type: Number, default: -1 },
-    //     status: { type: Number, default: 1 },
-    // },
+    ],
+    bio: String,
 })
 
 module.exports = mongoose.model('User', userSchema)

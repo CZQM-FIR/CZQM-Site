@@ -22,6 +22,8 @@ router.get("/", async (req, res) => {
       "CYZX",
       "LFVP",
       "CYSJ",
+      "CYDF",
+      "CYYG",
     ];
 
     callsigns.forEach((callsign) => {

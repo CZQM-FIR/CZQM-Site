@@ -88,6 +88,10 @@ export default {
           email: 'feedback@czqm.ca'
         },
         {
+          name: 'Website',
+          email: 'webmaster@czqm.ca'
+        },
+        {
           name: 'Other',
           email: 'admin@czqm.ca'
         }

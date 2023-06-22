@@ -4,7 +4,6 @@ const path = require('path')
 const multer = require('multer')
 const User = require('../../models/User')
 
-
 const Event = require('../../models/Event')
 const { sendEmailToAll } = require('../../utils/emailBroadcast')
 
@@ -42,10 +41,11 @@ router.post('/', upload.single('image'), async (req, res) => {
         event.description = req.body.description
         event.start = new Date(req.body.start).getTime()
         event.end = new Date(req.body.end).getTime()
-        event.image = req.file.filename
+        event.image = req.file?.filename ? req.file.filename : event.image
         event.save()
         res.status(200).json({
             message: 'Event Edited Successfully',
+            _id: event._id,
         }).send()
     } else {
         event = await new Event({
@@ -88,11 +88,14 @@ router.post('/', upload.single('image'), async (req, res) => {
                 'flags': { $and: [{$in: ['controller', 'visitor']}, {$not: {$in: ['no-email']}}] }
             })
             await sendEmailToAll([emailableUsers.map(userObject => userObject.personal.email)], `New Event: ${req.body.name}`, `
-                <h1>New Event: ${req.body.name}</h1>
-                <p>${req.body.description}</p>
-                <p>Start: ${new Date(req.body.start).toLocaleString(undefined, {hour12: false, timeStyle: 'short', dateStyle: 'full'})}z</p>
-                <p>End: ${new Date(req.body.end).toLocaleString(undefined, {hour12: false, timeStyle: 'short', dateStyle: 'full'})}z</p>
-                <p>Read More: <a href="https://czqm.ca/events?_id=${event._id}">Link</a></p>
+                There was a new event posted! Here are the details:
+                Name: ${req.body.name}
+                Start: ${new Date(req.body.start).toLocaleString(undefined, { hour12: false, timeStyle: 'short', dateStyle: 'full' })}z
+                End: ${new Date(req.body.end).toLocaleString(undefined, { hour12: false, timeStyle: 'short', dateStyle: 'full' })}z
+                Description: ${req.body.description}
+
+                You can find the full details availible here: https://czqm.ca/events?_id=${event._id}
+
                 <img src="https://www.czqm.ca/files/${req.file.filename}" alt="${req.body.name} Banner" />`)
 
         } catch (error) {
@@ -101,6 +104,7 @@ router.post('/', upload.single('image'), async (req, res) => {
 
         res.status(200).json({
             message: 'Event Created Successfully',
+            _id: event._id,
         }).send()
     }
     return true

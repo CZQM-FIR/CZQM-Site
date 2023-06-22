@@ -14,6 +14,7 @@ const newsSchema = new mongoose.Schema({
     name: RequiredString,
     date: RequiredNumber,
     text: RequiredString,
+    image: String,
 })
 
 module.exports = mongoose.model('News', newsSchema)

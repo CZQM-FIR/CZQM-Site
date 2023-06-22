@@ -25,6 +25,8 @@ const rosterRoute = require('./routes/api/roster')
 const editUserRoute = require('./routes/api/editUser')
 const sectorRoute = require('./routes/api/sector')
 const contactRoute = require('./routes/api/contact')
+const resourcesRoute = require('./routes/api/resources')
+const uploadFileRoute = require('./routes/api/uploadFile')
 
 // dotenv
 require('dotenv').config()
@@ -70,6 +72,8 @@ app.use('/api/roster', rosterRoute)
 app.use('/api/edituser', editUserRoute)
 app.use('/api/sector', sectorRoute)
 app.use('/api/contact', contactRoute)
+app.use('/api/resources', resourcesRoute)
+app.use('/api/fileupload', uploadFileRoute)
 app.use(fileUpload)
 
 app.all('*', () => {})

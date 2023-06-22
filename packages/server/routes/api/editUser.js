@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
     //     return res.status(401).json({ msg: 'Not authorized' }).send()
     // }
 
-    const userParam = req.query.user
+    const userParam = JSON.parse(req.query.user)
     const flagParam = req.query.flag
 
     if (!userParam) {
@@ -23,15 +23,18 @@ router.get('/', async (req, res) => {
 
     try {
         const editUser = await User.findOne({ cid: userParam.cid })
-        editUser.personal = userParam.personal || editUser.personal
-        // editUser.role = userParam.role || editUser.role        
-        editUser.flags = processFlag(flagParam, editUser.flags)
+        editUser.bio = userParam.bio || editUser.bio
+        if (flagParam) {
+            editUser.flags = processFlag(flagParam, editUser.flags)
+        }
 
         await editUser.save()
 
         return res.status(200).send()
     } catch (error) {
-        return res.status(500).send(error)
+        return res.status(500).json({
+            error
+        })
     }
 })
 

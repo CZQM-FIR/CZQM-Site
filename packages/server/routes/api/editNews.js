@@ -23,9 +23,9 @@ const upload = multer({ storage });
 
 const router = Router();
 
-router.post("/", upload.none(), async (req, res) => {
+router.post("/", upload.single('image'), async (req, res) => {
 
-    const user = await User.findOne({ jwt: req.cookies.jwt })
+    // const user = await User.findOne({ jwt: req.cookies.jwt })
 
     // if (!user || user.role.id < 4) {
     //     return res.status(401).json({ msg: 'Not authorized' }).send()
@@ -39,7 +39,14 @@ router.post("/", upload.none(), async (req, res) => {
     });
     article.name = req.body.name;
     article.text = req.body.text;
-    article.date = new Date(req.body.date).getTime();
+    article.date = req.body.date;
+
+    if (req.file?.filename) {
+      article.image = req.file.filename;
+    } else if (!article.image) {
+      article.image = '';
+    }
+
     await article.save();
     res.status(200).json({
       message: "Article Edited Successfully",
@@ -49,6 +56,7 @@ router.post("/", upload.none(), async (req, res) => {
       name: req.body.name,
       text: req.body.text,
       date: new Date(req.body.date).getTime(),
+      image: req.file?.filename ? req.file.filename : '',
     });
     await article.save();
 
@@ -80,15 +88,13 @@ router.post("/", upload.none(), async (req, res) => {
       );
 
       // Send email to all users who have an email address and who are visitors or above
+            // Send email to all users who have an email address and who are visitors or above
             const emailableUsers = await User.find({
-              'personal.email': { $ne: null },
-              'flags': { $and: [{ $in: ['controller', 'visitor'] }, { $not: { $in: ['no-email'] } }] }
+                'personal.email': { $ne: null },
+                'flags': { $and: [{$in: ['controller', 'visitor']}, {$not: {$in: ['no-email']}}] }
             })
-            await sendEmailToAll([emailableUsers.map(userObject => userObject.personal.email)], `New Announcement: ${req.body.name}`, `
-                <h1>New Announcement: ${req.body.name}</h1>
-                <p>${req.body.text}</p>
-                <p>Read More: <a href="https://czqm.ca/news?_id=${article._id}">Link</a></p>
-            `,)
+            await sendEmailToAll([emailableUsers.map(userObject => userObject.personal.email)], `New Event: ${req.body.name}`, `
+                There was a new news article posted posted! You can view it here: https://czqm.ca/news?_id=${article._id}`)
     } catch (error) {
       console.error(`[ERROR] ${error}`)
     }

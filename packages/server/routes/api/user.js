@@ -3,23 +3,45 @@ const User = require('../../models/User')
 
 const router = Router()
 
-router.get('/:jwt', async (req, res) => {
-    const user = await User.findOne({ jwt: req.params.jwt })
+const letters = /^[A-Za-z]+$/
 
-    if (!user) return res.status(404).clearCookie('jwt', {path: '/'})
-    if (!user) {
-        return res.status(404).send('User not found')
-    }
+router.get('/:id', async (req, res) => {
+    if (letters.test(req.params.id[0])) {
+        const user = await User.findOne({ jwt: req.params.id })
 
-    user.save()
+        if (!user) return res.status(404).clearCookie('jwt', {path: '/'})
+        if (!user) {
+            return res.status(404).send('User not found')
+        }
 
-    return res.status(200).json({
-        personal: user.personal,
-        vatsim: user.vatsim,
-        cid: user.cid,
-        // role: user.role,
-        flags: user.flags,
-    })
+        user.save()
+
+        return res.status(200).json({
+            personal: user.personal,
+            vatsim: user.vatsim,
+            cid: user.cid,
+            // role: user.role,
+            flags: user.flags,
+            bio: user.bio,
+        })
+    } 
+        const user = await User.findOne({ cid: req.params.id })
+
+        return res.status(200).json({
+            cid: user.cid,
+            personal: {
+                name_first: user.personal.name_first,
+                name_last: user.personal.name_last,
+                name_full: user.personal.name_full,
+            },
+            roster: user.roster,
+            vatsim: user.vatsim,
+            flags: user.flags,
+            bio: user.bio,
+        })
+     
+    
+
 })
 
 router.all('/', async (req, res) => {
@@ -34,11 +56,15 @@ router.all('/', async (req, res) => {
     
         usersReturn.push({
             cid: user.cid,
-            personal: user.personal,
-            // role: user.role,
+            personal: {
+                name_first: user.personal.name_first,
+                name_last: user.personal.name_last,
+                name_full: user.personal.name_full,
+            },
             roster: user.roster,
             vatsim: user.vatsim,
             flags: user.flags,
+            bio: user.bio,
         })
     })
 

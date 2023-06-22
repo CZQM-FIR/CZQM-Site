@@ -3,6 +3,7 @@ const cron = require('node-cron')
 const axios = require('axios')
 const User = require('../models/User')
 const Event = require('../models/Event')
+const logHours = require('./logHours')
 
 const getNextMonday = () => {
   const now = new Date()
@@ -22,8 +23,8 @@ const getNextMonday = () => {
 }
 
 const regsiterCron = async () => {
-    cron.schedule('* * * * *', async () => {
-        console.info('[INFO] Checking VATCAN')
+    cron.schedule('0 * * * *', async () => {
+        // console.info('[INFO] Checking VATCAN')
         const roster = (await axios.get('https://vatcan.ca/api/v2/facility/roster', {
             headers: {
                 'Authorization': `Token ${process.env.VATCAN_API_TOKEN}`
@@ -112,31 +113,19 @@ const regsiterCron = async () => {
         // })
     })
 
-    cron.schedule('0 * * * *', async () => { 
-        console.info('[INFO] Running Delete User Check')
+    cron.schedule('*/5 * * * *', async () => { 
+        // console.info('[INFO] Running Delete User Check')
         const users = await User.find()
 
         users.forEach(async user => { 
             if (user.flags.includes('delete')) {
-                await user.remove()
+                await User.deleteOne({ cid: user.cid })
             }
         })
     })
 
-    cron.schedule('* * * * *', async () => {
-        console.info('[INFO] Checking Name Capitalisation')
-        const users = await User.find()
-
-        users.forEach(async user => { 
-            user.personal.name_first = user.personal.name_first.charAt(0).toUpperCase() + user.personal.name_first.slice(1)
-            user.personal.name_last = user.personal.name_last.charAt(0).toUpperCase() + user.personal.name_last.slice(1)
-            user.personal.name_full = `${user.personal.name_first} ${user.personal.name_last}`
-            await user.save()
-        })
-    })
-
     cron.schedule('0 8 * * *', async () => {
-        console.info('[INFO] Checking Moncton Monday')
+        // console.info('[INFO] Checking Moncton Monday')
         const events = await Event.find({
             name: 'Moncton Monday',
             end: { $gt: Date.now() },
@@ -161,6 +150,10 @@ const regsiterCron = async () => {
                 end,
             })
         }
+    })
+
+    cron.schedule('*/30 * * * * *', () => {
+        logHours()
     })
 }
 
