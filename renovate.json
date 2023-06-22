@@ -13,7 +13,7 @@
       "automerge": true
     },
     {
-      "baseBranches": ['beta']
+      "baseBranches": ["beta"]
     }
   ]
 }
