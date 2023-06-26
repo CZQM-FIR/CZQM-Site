@@ -18,7 +18,9 @@ const callsigns = [
 ];
 
 const logHours = async () => {
-    const {controllers, ratings} = (await axios.get('https://data.vatsim.net/v3/vatsim-data.json')).data
+    const { controllers, ratings } = (await axios.get('https://data.vatsim.net/v3/vatsim-data.json')).data
+    
+    if (!controllers) return console.error('[ERROR] No controllers found in VATSIM data feed')
 
     controllers.forEach(async controller => { 
         try {
@@ -48,6 +50,8 @@ const logHours = async () => {
         }
 
     })
+
+    return [...await Session.find()]
 
 }
 
