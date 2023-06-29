@@ -13,6 +13,7 @@
     "download": "npm i && npx lerna exec \"npm ci\""
   },
   "dependencies": {
+    "@lerna/child-process": "^7.1.1",
     "marked": "^4.2.12"
   }
 }
