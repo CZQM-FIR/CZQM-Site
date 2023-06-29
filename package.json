@@ -10,7 +10,7 @@
     "type": "git"
   },
   "scripts": {
-    "download": "npm i && npx lerna exec \"npm i\""
+    "download": "npm i && npx lerna exec \"npm ci\""
   },
   "dependencies": {
     "marked": "^4.2.12"
