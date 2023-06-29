@@ -66,7 +66,7 @@ router.post('/', upload.single('image'), async (req, res) => {
                       description: `${req.body.description.substring(
                                 0,
                                 50
-                            )}... [Read More](https://czqm.ca/events?_id=${
+                            )}... [Read More](https://czqm.ca/events/${
                                 event._id
                             })`,
                       timestamp: `${new Date(Date.now()).toISOString()}`,

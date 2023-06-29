@@ -69,7 +69,7 @@ router.post('/', upload.single('image'), async (req, res) => {
               description: `${req.body.text.substring(
                 0,
                 50
-              )}... [Read More](https://czqm.ca/news?_id=${
+              )}... [Read More](https://czqm.ca/news/${
                 article._id
               })`,
               timestamp: `${new Date(Date.now()).toISOString()}`,
@@ -92,7 +92,7 @@ router.post('/', upload.single('image'), async (req, res) => {
         flags: { $and: [{ $in: ['controller', 'visitor'] }, { $not: { $in: ['no-email'] } }] }
       })
       await sendEmailToAll([emailableUsers.map(userObject => userObject.personal.email)], `New Event: ${req.body.name}`, `
-                There was a new news article posted posted! You can view it here: https://czqm.ca/news?_id=${article._id}`)
+                There was a new news article posted posted! You can view it here: https://czqm.ca/news/${article._id}`)
     } catch (error) {
       console.error(`[ERROR] ${error}`)
     }
