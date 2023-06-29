@@ -4,7 +4,7 @@ on:
     branches:
       - master
   workflow_dispatch:
-  
+
 jobs:
   stop:
     runs-on: ubuntu-latest
@@ -19,7 +19,7 @@ jobs:
           script: |
             rm -rf var/www/czqm.ca/*
             cp ~/CZQM-Site/index.maintenance.html ~/../var/www/czqm.ca/index.html
-            
+
   pull:
     runs-on: ubuntu-latest
     steps:
@@ -36,7 +36,7 @@ jobs:
             git pull https://github.com/CZQM-FIR/CZQM-Site.git
       - name: Download Dependencies
         uses: appleboy/ssh-action@master
-        with: 
+        with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
@@ -44,7 +44,7 @@ jobs:
           script: |
             cd ~/CZQM-Site
             npm run download
-      
+
   build:
     needs: pull
     runs-on: ubuntu-latest
@@ -57,10 +57,9 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           script: |
-            cd ~/CZQM-Site
-            lerna run build
+            cd ~/CZQM-Site/packages/client
+            npm run build
             cd ~/..
-            
             cp -r root/CZQM-Site/packages/client/dist/* var/www/czqm.ca
 
   backend-start:
@@ -78,4 +77,3 @@ jobs:
             cd ~/CZQM-Site/packages/server
             pm2 delete server
             pm2 start "NODE_ENV=production node ." --name server
-    
