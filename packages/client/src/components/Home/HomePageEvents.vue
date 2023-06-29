@@ -29,8 +29,6 @@ const getTime = (event) => {
 
   return `${monthNames[timeUTC.getMonth()]}. ${timeUTC.getDate()}`;
 };
-
-console.log(events);
 </script>
 
 <template>

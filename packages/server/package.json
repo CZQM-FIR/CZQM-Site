@@ -4,7 +4,7 @@
     "main": "server.js",
     "scripts": {
         "dev": "nodemon server.js",
-        "lint": "eslint ./**.js --fix"
+        "lint": "eslint . --fix"
     },
     "dependencies": {
         "@formkit/vue": "^1.0.0-beta.7-c3de75f",
@@ -36,11 +36,11 @@
     },
     "devDependencies": {
         "concurrently": "7.6.0",
-        "eslint": "^8.18.0",
-        "eslint-config-airbnb-base": "^15.0.0",
-        "eslint-config-prettier": "^8.5.0",
-        "eslint-plugin-import": "^2.26.0",
-        "nodemon": "2.0.22",
-        "prettier": "^2.7.1"
+        "eslint": "^8.43.0",
+        "eslint-config-standard": "^17.1.0",
+        "eslint-plugin-import": "^2.27.5",
+        "eslint-plugin-n": "^16.0.1",
+        "eslint-plugin-promise": "^6.1.1",
+        "nodemon": "2.0.22"
     }
 }

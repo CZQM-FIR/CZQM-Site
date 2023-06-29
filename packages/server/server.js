@@ -1,8 +1,8 @@
 const express = require('express')
 const mongoose = require('mongoose')
-const http = require('http');
-const https = require('https');
-const fs = require('fs');
+const http = require('http')
+const https = require('https')
+const fs = require('fs')
 
 const app = express()
 const cors = require('cors')
@@ -27,14 +27,15 @@ const sectorRoute = require('./routes/api/sector')
 const contactRoute = require('./routes/api/contact')
 const resourcesRoute = require('./routes/api/resources')
 const uploadFileRoute = require('./routes/api/uploadFile')
+const statsRoute = require('./routes/api/stats')
 
 // dotenv
 require('dotenv').config()
 
-if (process.env.NODE_ENV === 'production') { 
-    console.info('[INFO] Production Mode')
+if (process.env.NODE_ENV === 'production') {
+  console.info('[INFO] Production Mode')
 } else {
-    console.warn('[WARN] Development Mode')
+  console.warn('[WARN] Development Mode')
 }
 
 const registerCron = require('./utils/cron')
@@ -42,20 +43,20 @@ const registerCron = require('./utils/cron')
 registerCron()
 
 app.use(cors({
-        credentials: true,
-        origin: "https://czqm.ca",
-    }))
+  credentials: true,
+  origin: 'https://czqm.ca'
+}))
 app.use(morgan('tiny'))
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cookieParser())
 
 mongoose
-    .connect(mongoUri, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-    })
-    .then(() => console.info('[INFO] MongoDB Database Connected'))
-    .catch((error) => console.error(`[ERROR] ${error}`))
+  .connect(mongoUri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  })
+  .then(() => console.info('[INFO] MongoDB Database Connected'))
+  .catch((error) => console.error(`[ERROR] ${error}`))
 
 app.use('/api/metar', metarRoute)
 app.use('/api/station', stationRoute)
@@ -73,31 +74,30 @@ app.use('/api/edituser', editUserRoute)
 app.use('/api/sector', sectorRoute)
 app.use('/api/contact', contactRoute)
 app.use('/api/resources', resourcesRoute)
+app.use('/api/stats', statsRoute)
 app.use('/api/fileupload', uploadFileRoute)
 app.use(fileUpload)
 
 app.all('*', () => {})
 
 app.all('/api', (req, res) => {
-    res.status(204).send()
+  res.status(204).send()
 })
 
 app.listen(PORT, () => console.info(`[INFO] Listening on port ${PORT}`))
 
 if (process.env.NODE_ENV === 'production') {
+  const credentials = {
+    key: fs.readFileSync('/etc/letsencrypt/live/czqm.ca/privkey.pem', 'utf8'),
+    cert: fs.readFileSync('/etc/letsencrypt/live/czqm.ca/cert.pem', 'utf8'),
+    ca: fs.readFileSync('/etc/letsencrypt/live/czqm.ca/chain.pem', 'utf8')
+  }
 
-    const credentials = {
-        key: fs.readFileSync('/etc/letsencrypt/live/czqm.ca/privkey.pem', 'utf8'),
-        cert: fs.readFileSync('/etc/letsencrypt/live/czqm.ca/cert.pem', 'utf8'),
-        ca: fs.readFileSync('/etc/letsencrypt/live/czqm.ca/chain.pem', 'utf8'),
-    }
-    
-    const httpsServer = https.createServer(credentials, app);
-    httpsServer.listen(8443);
+  const httpsServer = https.createServer(credentials, app)
+  httpsServer.listen(8443)
 } else {
-    console.warn('[WARN] HTTPS Server not started. (Not in production)')
+  console.warn('[WARN] HTTPS Server not started. (Not in production)')
 }
 
-
-const httpServer = http.createServer(app);
-httpServer.listen(8080);
+const httpServer = http.createServer(app)
+httpServer.listen(8080)

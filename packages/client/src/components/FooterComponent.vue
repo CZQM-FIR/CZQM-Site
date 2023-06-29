@@ -32,44 +32,70 @@
           <h5>Connect With Us</h5>
           <ul class="list-group links">
             <li>
-              <a href="https://twitter.com/czqm_fir" class="link-light"
+              <a
+                target="_blank"
+                href="https://twitter.com/czqm_fir"
+                class="link-light"
                 >Twitter</a
               >
             </li>
             <li>
-              <a href="https://www.facebook.com/CZQMFIR/" class="link-light"
+              <a
+                target="_blank"
+                href="https://www.facebook.com/CZQMFIR/"
+                class="link-light"
                 >FaceBook</a
               >
             </li>
             <li>
               <a
+                target="_blank"
                 href="https://www.youtube.com/channel/UCS5H_U3h6edXWashMjQpuAg"
                 class="link-light"
                 >Youtube</a
               >
             </li>
             <li>
-              <a href="https://forums.vatcan.ca/" class="link-light">Forums</a>
+              <a
+                target="_blank"
+                href="https://forums.vatcan.ca/"
+                class="link-light"
+                >Forums</a
+              >
             </li>
           </ul>
         </div>
         <div class="col col-sm-2">
           <h5>Quick Links</h5>
           <ul class="list-group links">
-            <li><a href="https://vatcan.ca" class="link-light">VATCAN</a></li>
             <li>
-              <a href="https://vatsim.net" class="link-light">VATSIM</a>
+              <a target="_blank" href="https://vatcan.ca" class="link-light"
+                >VATCAN</a
+              >
+            </li>
+            <li>
+              <a target="_blank" href="https://vatsim.net" class="link-light"
+                >VATSIM</a
+              >
             </li>
             <li>
               <router-link to="/join" class="link-light">Join Us</router-link>
             </li>
             <li>
-              <a href="/files/docs/privacy-policy.pdf" class="link-light"
+              <a
+                target="_blank"
+                href="/files/docs/privacy-policy.pdf"
+                class="link-light"
                 >Privacy Policy</a
               >
             </li>
             <li>
-              <a href="/files/docs/branding.pdf" class="link-light">Branding</a>
+              <a
+                target="_blank"
+                href="/files/docs/branding.pdf"
+                class="link-light"
+                >Branding</a
+              >
             </li>
             <li>
               <router-link to="/contact" class="link-light"

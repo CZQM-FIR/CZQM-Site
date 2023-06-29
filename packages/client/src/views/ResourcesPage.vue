@@ -2,6 +2,7 @@
   <div class="container">
     <h2 class="mt-5">{{ resource }} Resources</h2>
     <div v-if="resourceValue" v-html="pseudoToHTML(resourceValue)"></div>
+    <span class="mb-3" />
   </div>
 </template>
 

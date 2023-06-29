@@ -3,23 +3,22 @@ const path = require('path')
 const multer = require('multer')
 
 const storage = multer.diskStorage({
-    destination(req, file, cb) {
-        cb(null, path.join(__dirname, '../../uploads'))
-    },
-    filename(req, file, cb) {
-        const split = file.originalname.split('.')
+  destination (req, file, cb) {
+    cb(null, path.join(__dirname, '../../uploads'))
+  },
+  filename (req, file, cb) {
+    const split = file.originalname.split('.')
 
-        cb(null, req.body.forceName === 'true' ? file.originalname : `${split[0]}-${Date.now()}.${split[1]}`)
-    },
+    cb(null, req.body.forceName === 'true' ? file.originalname : `${split[0]}-${Date.now()}.${split[1]}`)
+  }
 })
 const upload = multer({ storage })
 
 const router = Router()
 
 router.post('/', upload.single('file'), async (req, res) => {
+  res.status(200).json({ data: req.file.filename }).send()
 
-    res.status(200).json({data: req.file.filename}).send()
-    
-    return true
+  return true
 })
 module.exports = router

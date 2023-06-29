@@ -10,7 +10,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
     <NavbarComponent />
   </Suspense>
   <RouterView style="min-height: calc(100vh - 120px)" />
-  <FooterComponent class="mt-5" />
+  <FooterComponent class="" />
 </template>
 
 <style scoped></style>

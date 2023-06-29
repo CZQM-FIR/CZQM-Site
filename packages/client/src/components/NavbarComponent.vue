@@ -119,6 +119,9 @@ user.value = await getUser();
               <li>
                 <a href="/pilot-resources" class="dropdown-item">Resources</a>
               </li>
+              <li>
+                <router-link to="/charts" class="dropdown-item">Charts</router-link>
+              </li>
             </ul>
           </div>
           <!-- <router-link to="/" class="nav-link">Pilots</router-link> -->

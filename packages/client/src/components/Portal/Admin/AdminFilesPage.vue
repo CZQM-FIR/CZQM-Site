@@ -72,7 +72,6 @@ const submit = () => {
   let data = new FormData();
   data.append("name", `${name.value}`);
   data.append("forceName", forceName.value);
-  console.log(upload.value);
 
   if (upload.value.name) {
     data.append("file", upload.value, upload.value.name);

@@ -1,10 +1,8 @@
 import axios from "axios";
 import getCookie from "./getCookie";
 
-const getUser = async (cid = null) => {
-  if (cid !== null) {
-    console.log(cid);
-
+const getUser = async (cid = "") => {
+  if (cid) {
     const userData = await axios.get(`/api/user/${cid}`);
 
     return userData.data;

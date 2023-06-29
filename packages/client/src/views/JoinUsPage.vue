@@ -21,6 +21,7 @@
               virtual air traffic control career.
             </p>
             <a
+              target="_blank"
               href="https://vatcan.ca/division/controlling"
               class="btn btn-primary"
               >Learn More</a
@@ -39,7 +40,10 @@
               team. If you are interested in transferring to Moncton/Gander FIR,
               please fill out a transfer request.
             </p>
-            <a href="https://vatcan.ca/my/transfer" class="btn btn-primary"
+            <a
+              target="_blank"
+              href="https://vatcan.ca/my/transfer"
+              class="btn btn-primary"
               >Transfer</a
             >
           </div>
@@ -56,7 +60,10 @@
               for new people to join our community. If you are interested in
               controlling with us, please feel free to aply!
             </p>
-            <a href="https://vatcan.ca/my/visit" class="btn btn-primary"
+            <a
+              target="_blank"
+              href="https://vatcan.ca/my/visit"
+              class="btn btn-primary"
               >Apply to Visit</a
             >
           </div>

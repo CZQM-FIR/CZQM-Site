@@ -16,14 +16,11 @@
 
         <span> - </span>
 
-        <span
-          v-if="controller.name !== controller.cid"
-          data-bs-toggle="tooltip"
-          :title="controller.cid"
-          >{{ controller.name }}</span
+        <router-link
+          :to="`/controller/${controller.cid}`"
+          class="text-black text-underline"
+          >{{ controller.name || controller.cid }}</router-link
         >
-
-        <span v-else>{{ controller.cid }}</span>
 
         <span> ({{ controller.time }})</span>
       </li>
@@ -37,7 +34,9 @@ import { Tooltip } from "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { ref } from "vue";
 import axios from "axios";
 
-onMounted(() => {
+onMounted(async () => {
+  await getOnlineControllers();
+
   setTimeout(() => {
     const tooltips = document.querySelectorAll('[data-bs-toggle="tooltip"]');
     tooltips.forEach((tooltip) => {
@@ -47,6 +46,9 @@ onMounted(() => {
 });
 
 let controllers = ref([]);
+controllers.value.sort((a, b) => {
+  return b.name - a.name;
+});
 const getOnlineControllers = async () => {
   let controllersData = await axios.get("/api/liveControllers", {
     withCredentials: false,
@@ -76,7 +78,6 @@ const getOnlineControllers = async () => {
     });
   });
 };
-getOnlineControllers();
 </script>
 
 <style scoped></style>

@@ -18,9 +18,18 @@
 
   <script>
     setInterval(() => {
-      console.log(
+      console.info(
         "Do not type anything in the console! It can very easily break things"
       );
-    }, 3_000);
+    }, 10_000);
   </script>
+
+  <style>
+    .text-underline-hover:hover {
+      text-decoration: underline;
+    }
+    .text-underline-hover {
+      text-decoration: none;
+    }
+  </style>
 </html>

@@ -52,12 +52,12 @@ onMounted(async () => {
           <th scope="row" colspan="2">No Solo Certifications</th>
         </tr>
         <tr v-else v-for="user in users" :key="user.id">
-          <td
-            scope="row"
-            data-bs-toggle="tooltip"
-            :title="`${user.cid} (${user.rating})`"
-          >
-            {{ user.name }}
+          <td scope="row">
+            <router-link
+              :to="`/controller/${user.cid}`"
+              class="text-black text-underline-hover"
+              >{{ user.name }}</router-link
+            >
           </td>
           <td>{{ findSoloPos(user.roster) }}</td>
         </tr>

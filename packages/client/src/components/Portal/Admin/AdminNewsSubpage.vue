@@ -102,8 +102,7 @@ const updateImage = (e) => {
 
 const submit = () => {
   if (deleteArticle.value) {
-    axios.delete(`/api/news/${articleID.value}`).then((res) => {
-      console.log(res);
+    axios.delete(`/api/news/${articleID.value}`).then(() => {
       router.push("/portal/admin/news");
     });
     return;
@@ -132,8 +131,7 @@ const submit = () => {
         "Content-Type": "multipart/form-data",
       },
     })
-    .then((res) => {
-      console.log(res);
+    .then(() => {
       router.push("/portal/admin/news");
     });
 };

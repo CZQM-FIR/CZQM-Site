@@ -30,6 +30,8 @@ import AdminFilesPage from "../components/Portal/Admin/AdminFilesPage.vue";
 import CBTPage from "../components/Portal/Admin/AdminCBTPage.vue";
 import AdminInstructorResources from "../components/Portal/Admin/AdminInstructorResources.vue";
 import StaffPage from "../views/StaffPage.vue";
+import ChartsPage from "../views/ChartsPage.vue";
+import ControllerPage from "../views/ControllerPage.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -49,9 +51,17 @@ const router = createRouter({
       name: "Pilot",
     },
     {
+      path: "/controller/:cid",
+      component: ControllerPage,
+    },
+    {
       path: "/cbt",
       component: Resources,
       name: "CBT",
+    },
+    {
+      path: "/charts",
+      component: ChartsPage,
     },
     {
       path: "/staff",

@@ -29,11 +29,12 @@ onMounted(async () => {
 
 <template>
   <div class="container mt-4">
-    <h2 class="card-title">
-      {{ getGreeting() }} {{ user.personal.name_first }}!
+    <h2>
+      <i class="bi bi-list d-md-none pe-3 text-black"></i>{{ getGreeting() }}
+      {{ user.personal.name_first }}!
     </h2>
     <div class="mt-3 row">
-      <div class="col-2 list-group">
+      <div class="col col-md-3 col-lg-2 list-group">
         <PortalPageLink
           to="/portal"
           name="Profile"

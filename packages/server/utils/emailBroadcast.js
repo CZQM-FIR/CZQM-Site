@@ -47,18 +47,18 @@ const emailHTML = (message) => `
 </body>
 </html>`
 
-const sendEmail = async (to, subject, message, replyTo = '', from = `"CZQM Web Services" <${transporterConfig.auth.user}>`,) => {
-    try {
-        await transporter.sendMail({
-            from,
-            to,
-            subject,
-            replyTo,
-            html: emailHTML(message)
-        })
-    } catch (error) {
-        console.error(error)
-    }
+const sendEmail = async (to, subject, message, replyTo = '', from = `"CZQM Web Services" <${transporterConfig.auth.user}>`) => {
+  try {
+    await transporter.sendMail({
+      from,
+      to,
+      subject,
+      replyTo,
+      html: emailHTML(message)
+    })
+  } catch (error) {
+    console.error(error)
+  }
 }
 
 /**
@@ -69,13 +69,13 @@ const sendEmail = async (to, subject, message, replyTo = '', from = `"CZQM Web S
  * @param {array} attachments Array of attachments in attachment format
  */
 const sendEmailToAll = async (emails, subject, message, replyTo = '') => {
-    emails.forEach(async (email) => {
-        await sendEmail(email, subject, message, replyTo,)
-        if (process.env.NODE_ENV !== 'production') console.info(`[DEBUG] Email sent to ${email}`)
-    })
+  emails.forEach(async (email) => {
+    await sendEmail(email, subject, message, replyTo)
+    if (process.env.NODE_ENV !== 'production') console.info(`[DEBUG] Email sent to ${email}`)
+  })
 }
 
 module.exports = {
-    sendEmail,
-    sendEmailToAll,
+  sendEmail,
+  sendEmailToAll
 }

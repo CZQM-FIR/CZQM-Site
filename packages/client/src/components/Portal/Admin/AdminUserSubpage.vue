@@ -35,6 +35,9 @@
         </button>
       </div>
     </div>
+    <div class="col">
+      <StatsComponent :cid="routeCID" />
+    </div>
   </div>
 </template>
 
@@ -42,12 +45,33 @@
 import axios from "axios";
 import { ref, onMounted } from "vue";
 import router from "../../../router";
+import StatsComponent from "../../ControllerStatsComponent.vue";
 
 const routeCID = ref(router.currentRoute.value.params.cid);
 
 const user = ref({
-  personal: {},
+  cid: "",
+  personal: {
+    name_first: "",
+    name_last: "",
+    name_full: "",
+    email: "",
+  },
+  vatsim: {
+    rating: {
+      short: "",
+      long: "",
+    },
+    pilotrating: {
+      short: "",
+      long: "",
+    },
+  },
+  bio: "",
+  flags: [],
 });
+
+const flag = ref("");
 
 let flagList = ref([
   "staff",
@@ -82,7 +106,6 @@ let flagList = ref([
 
 const submitFlag = async (flag, user, flagList) => {
   if (!flag) return;
-  console.log(flagList);
   if (!flagList.includes(flag)) return;
   await axios.get(
     `/api/edituser/`,

@@ -13,7 +13,7 @@ const pseudoToHTML = (pseudoCode) => {
     const linkText = linkSplit.splice(0, linkSplit.length - 1).join(" ");
     const linkUrl = linkSplit.splice(-1).join(" ");
     html += `
-      <div class="card mt-2" style="max-width: 45rem">
+      <div class="card my-2" style="max-width: 45rem">
         <div class="card-body">
           <h5 class="card-title">${title}</h5>
           <p class="card-text">${description}</p>

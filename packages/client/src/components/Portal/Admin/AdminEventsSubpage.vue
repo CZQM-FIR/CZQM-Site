@@ -133,15 +133,13 @@ const updateImage = (e) => {
 
 const submit = () => {
   if (deleteEvent.value) {
-    axios.delete(`/api/event/${eventID.value}`).then((res) => {
-      console.log(res);
+    axios.delete(`/api/event/${eventID.value}`).then(() => {
       router.push("/portal/admin/events");
     });
     return;
   }
 
   if (!name.value || !start.value || !end.value || !description.value) return;
-  console.log(image.value);
 
   let data = new FormData();
   data.append("name", `${name.value}`);
@@ -153,8 +151,6 @@ const submit = () => {
     data.append("image", image.value, image.value.name);
   }
 
-  console.log(data);
-
   if (eventID.value && eventID.value !== "new") {
     data.append("_id", eventID.value);
   }
@@ -165,8 +161,7 @@ const submit = () => {
         "Content-Type": "multipart/form-data",
       },
     })
-    .then((res) => {
-      console.log(res);
+    .then(() => {
       router.push("/portal/admin/events");
     });
 };

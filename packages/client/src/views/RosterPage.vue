@@ -24,8 +24,20 @@
       </thead>
       <tbody>
         <tr v-for="user in users" :key="user.id">
-          <td>{{ user.name }}</td>
-          <td>{{ user.cid }}</td>
+          <td>
+            <router-link
+              :to="`/controller/${user.cid}`"
+              class="text-black text-underline-hover"
+              >{{ user.name }}</router-link
+            >
+          </td>
+          <td>
+            <router-link
+              :to="`/controller/${user.cid}`"
+              class="text-black text-underline-hover"
+              >{{ user.cid }}</router-link
+            >
+          </td>
           <td>{{ user.rating }}</td>
           <td :style="certificationStyle(user.roster.gnd)">
             <span v-if="user.roster.gnd === -1">---</span

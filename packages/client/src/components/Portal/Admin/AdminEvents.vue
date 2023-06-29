@@ -40,8 +40,6 @@ const getEventTime = (event) => {
   );
   const endUTC = new Date(end.getTime() + end.getTimezoneOffset() * 60000);
 
-  console.log(startUTC, endUTC);
-
   // Format the time/date in DD/MM HHMMz format
   const startTime = `${startUTC
     .getDate()
@@ -69,8 +67,6 @@ const getEventTime = (event) => {
   })}${endUTC
     .getMinutes()
     .toLocaleString("en-US", { minimumIntegerDigits: 2, timeZone: "UTC" })}z`;
-
-  console.log(startTime + " - " + endTime);
 
   return startTime + " - " + endTime;
 };
