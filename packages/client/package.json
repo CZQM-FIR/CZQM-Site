@@ -35,7 +35,7 @@
     "primevue": "^3.12.5",
     "vue": "3.2.47",
     "vue-flatpickr-component": "^11.0.0",
-    "vue-router": "4.1.6"
+    "vue-router": "4.2.2"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "4.2.3",
