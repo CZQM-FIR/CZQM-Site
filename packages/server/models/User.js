@@ -1,52 +1,31 @@
 const mongoose = require('mongoose')
 
 const RequiredString = {
-    type: String,
-    required: true,
-}
-
-const RequiredNumber = {
-    type: Number,
-    required: true,
+  type: String,
+  required: true
 }
 
 const RequiredObject = {
-    type: Object,
-    required: true,
+  type: Object,
+  required: true
 }
 
 const userSchema = new mongoose.Schema({
-    cid: RequiredString,
-    access_token: String,
-    refresh_token: String,
-    expire: String,
-    jwt: [
-        {
-            type: String,
-        },
-    ],
-    personal: RequiredObject,
-    vatsim: RequiredObject,
-    flags: [
-        String
-    ]
-    // role: {
-    //     id: {
-    //         type: Number,
-    //         default: 0,
-    //     },
-    //     name: {
-    //         type: String,
-    //         default: 'Guest',
-    //     },
-    // },
-    // roster: {
-    //     gnd: { type: Number, default: -1 },
-    //     twr: { type: Number, default: -1 },
-    //     app: { type: Number, default: -1 },
-    //     ctr: { type: Number, default: -1 },
-    //     status: { type: Number, default: 1 },
-    // },
+  cid: RequiredString,
+  access_token: String,
+  refresh_token: String,
+  expire: String,
+  jwt: [
+    {
+      type: String
+    }
+  ],
+  personal: RequiredObject,
+  vatsim: RequiredObject,
+  flags: [
+    String
+  ],
+  bio: String
 })
 
 module.exports = mongoose.model('User', userSchema)
