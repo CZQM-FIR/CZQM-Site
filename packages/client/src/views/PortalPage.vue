@@ -50,15 +50,15 @@ onMounted(async () => {
 
         <!-- spacer -->
         <div
-          v-if="user.flags.some((flag) => flag === 'staff' || flag === 'admin')"
+          v-if="user.flags.some((flag) => ['admin', 'staff'].includes(flag))"
           class="disabled"
           style="height: 5px !important"
         ></div>
 
         <PortalPageLink
           v-if="
-            user.flags.some(
-              (flag) => flag === 'admin' || flag === 'chief-instructor'
+            user.flags.some((flag) =>
+              ['admin', 'chief', 'deputy', 'chief-instructor'].includes(flag)
             )
           "
           to="/portal/admin/users"
@@ -66,9 +66,7 @@ onMounted(async () => {
           icon="bi bi-person-lines-fill"
         />
         <PortalPageLink
-          v-if="
-            user.flags.some((flag) => flag === 'events' || flag === 'admin')
-          "
+          v-if="user.flags.some((flag) => ['admin', 'events'].includes(flag))"
           to="/portal/admin/events"
           name="Events"
           icon="bi bi-calendar-event"
