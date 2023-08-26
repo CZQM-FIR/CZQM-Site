@@ -56,7 +56,11 @@ onMounted(async () => {
         ></div>
 
         <PortalPageLink
-          v-if="user.flags.some((flag) => flag === 'admin')"
+          v-if="
+            user.flags.some(
+              (flag) => flag === 'admin' || flag === 'chief-instructor'
+            )
+          "
           to="/portal/admin/users"
           name="User Management"
           icon="bi bi-person-lines-fill"
