@@ -10,24 +10,26 @@
       <ul class="list-group">
         <li class="list-group-item" v-for="user in users" :key="user.id">
           <div class="row">
-            <div class="col-11">
+            <div class="col-10">
               <b>{{ user.personal.name_full }}</b> - {{ user.cid }} ({{
                 user.vatsim.rating.short
               }})
             </div>
             <div class="col">
-              <div v-if="inactiveThisQuarter.includes(user.cid)">
-                <i class="bi bi-flag-fill" style="color: orange"></i>
+              <div style="text-align: right">
+                <span v-if="inactiveThisQuarter.includes(user.cid)">
+                  <i class="bi bi-flag-fill" style="color: orange"></i>
+                </span>
+                <span v-if="inactiveLastQuarter.includes(user.cid)">
+                  <i class="bi bi-flag-fill" style="color: red"></i>
+                </span>
+                <router-link
+                  class="text-body"
+                  :to="`/portal/admin/users/${user.cid}`"
+                >
+                  <i class="bi bi-pencil-square"></i
+                ></router-link>
               </div>
-              <div v-if="inactiveLastQuarter.includes(user.cid)">
-                <i class="bi bi-flag-fill" style="color: red"></i>
-              </div>
-              <router-link
-                class="text-body"
-                :to="`/portal/admin/users/${user.cid}`"
-              >
-                <i class="bi bi-pencil-square"></i
-              ></router-link>
             </div>
           </div>
         </li>
@@ -49,18 +51,20 @@
               }})
             </div>
             <div class="col">
-              <div v-if="inactiveThisQuarter.includes(user.cid)">
-                <i class="bi bi-flag-fill" style="color: orange"></i>
+              <div style="text-align: right">
+                <span v-if="inactiveThisQuarter.includes(user.cid)">
+                  <i class="bi bi-flag-fill" style="color: orange"></i>
+                </span>
+                <span v-if="inactiveLastQuarter.includes(user.cid)">
+                  <i class="bi bi-flag-fill" style="color: red"></i>
+                </span>
+                <router-link
+                  class="text-body"
+                  :to="`/portal/admin/users/${user.cid}`"
+                >
+                  <i class="bi bi-pencil-square"></i
+                ></router-link>
               </div>
-              <div v-if="inactiveLastQuarter.includes(user.cid)">
-                <i class="bi bi-flag-fill" style="color: red"></i>
-              </div>
-              <router-link
-                class="text-body"
-                :to="`/portal/admin/users/${user.cid}`"
-              >
-                <i class="bi bi-pencil-square"></i
-              ></router-link>
             </div>
           </div>
         </li>
