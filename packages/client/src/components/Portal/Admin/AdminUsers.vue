@@ -49,10 +49,17 @@
               }})
             </div>
             <div class="col">
+              <div v-if="inactiveThisQuarter.includes(user.cid)">
+                <i class="bi bi-flag-fill" style="color: orange"></i>
+              </div>
+              <div v-if="inactiveLastQuarter.includes(user.cid)">
+                <i class="bi bi-flag-fill" style="color: red"></i>
+              </div>
               <router-link
                 class="text-body"
                 :to="`/portal/admin/users/${user.cid}`"
-                ><i class="bi bi-pencil-square"></i
+              >
+                <i class="bi bi-pencil-square"></i
               ></router-link>
             </div>
           </div>
