@@ -1,9 +1,13 @@
 import axios from "axios";
 
 const getSessions = async (filter = "") => {
-  const { sessions } = (await axios.get(`/api/stats/${filter}`)).data;
+  const data = await axios.get(`/api/stats/${filter}`).catch(() => {});
 
-  return sessions;
+  if (!data || !data.data.sessions) {
+    return [];
+  }
+
+  return data.data.sessions;
 };
 
 export default getSessions;
