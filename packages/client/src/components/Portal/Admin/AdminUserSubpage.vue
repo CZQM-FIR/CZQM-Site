@@ -1,42 +1,44 @@
 <template>
-  <h3>Edit User</h3>
-  <div class="row">
-    <div class="col-6">
-      <ul class="list-unstyled">
-        <li>Name: {{ user.personal.name_full }}</li>
-        <li>CID: {{ user.cid }}</li>
-        <li>Email: {{ user.personal.email }}</li>
-      </ul>
+  <div>
+    <h3>Edit User</h3>
+    <div class="row">
+      <div class="col-6">
+        <ul class="list-unstyled">
+          <li>Name: {{ user.personal.name_full }}</li>
+          <li>CID: {{ user.cid }}</li>
+          <li>Email: {{ user.personal.email }}</li>
+        </ul>
 
-      <h5>Flags:</h5>
-      <ul>
-        <li v-for="flag in user.flags" :key="flag.id">
-          {{ flag }}
-        </li>
-      </ul>
-      <div>
-        <input
-          list="flags"
-          name="flag"
-          id="flag"
-          v-model="flag"
-          style="max-width: 7rem"
-        />
-        <datalist id="flags">
-          <option v-for="flag in flagList" :key="flag.id" :value="flag">
+        <h5>Flags:</h5>
+        <ul>
+          <li v-for="flag in user.flags" :key="flag.id">
             {{ flag }}
-          </option>
-        </datalist>
-        <button
-          class="btn btn-outline-dark ms-2"
-          @click="submitFlag(flag, user, flagList)"
-        >
-          Submit
-        </button>
+          </li>
+        </ul>
+        <div>
+          <input
+            list="flags"
+            name="flag"
+            id="flag"
+            v-model="flag"
+            style="max-width: 7rem"
+          />
+          <datalist id="flags">
+            <option v-for="flag in flagList" :key="flag.id" :value="flag">
+              {{ flag }}
+            </option>
+          </datalist>
+          <button
+            class="btn btn-outline-dark ms-2"
+            @click="submitFlag(flag, user, flagList)"
+          >
+            Submit
+          </button>
+        </div>
       </div>
-    </div>
-    <div class="col">
-      <StatsComponent :cid="routeCID" />
+      <div class="col">
+        <StatsComponent :cid="routeCID" />
+      </div>
     </div>
   </div>
 </template>
