@@ -14,6 +14,10 @@
         <p>{{ quarter.toFixed(1) }}h</p>
       </div>
       <div>
+        <h6>Last Quarter</h6>
+        <p>{{ lastQuarter.toFixed(1) }}h</p>
+      </div>
+      <div>
         <h6>Year</h6>
         <p>{{ year.toFixed(1) }}h</p>
       </div>
@@ -91,6 +95,7 @@ let sessions = ref([]);
 let positions = ref([]);
 let month = ref(0);
 let quarter = ref(0);
+let lastQuarter = ref(0);
 let year = ref(0);
 let total = ref(0);
 const now = new Date(Date.now());
@@ -110,20 +115,33 @@ const main = async () => {
     [6, 7, 8],
     [9, 10, 11],
   ];
-  const currentQuarter = quarterMonths.findIndex((quarter) =>
+  const currentQuarterNumber = quarterMonths.findIndex((quarter) =>
     quarter.includes(now.getMonth())
   );
+  const lastQuarterNumber =
+    quarterMonths.findIndex((quarter) => quarter.includes(now.getMonth())) === 0
+      ? 3
+      : quarterMonths.findIndex((quarter) => quarter.includes(now.getMonth())) -
+        1;
   for (let i = 0; i < sessions.value.length; i++) {
     const session = sessions.value[i];
     if (session.duration) {
       total.value += session.duration / 3_600_000;
       if (
-        quarterMonths[currentQuarter].includes(
+        quarterMonths[currentQuarterNumber].includes(
           new Date(Number(session.logonTime)).getMonth()
         ) &&
         new Date(Number(session.logonTime)).getFullYear() === now.getFullYear()
       ) {
         quarter.value += session.duration / 3_600_000;
+      }
+      if (
+        quarterMonths[lastQuarterNumber].includes(
+          new Date(Number(session.logonTime)).getMonth()
+        ) &&
+        new Date(Number(session.logonTime)).getFullYear() === now.getFullYear()
+      ) {
+        lastQuarter.value += session.duration / 3_600_000;
       }
       if (
         now.getMonth() === new Date(Number(session.logonTime)).getMonth() &&
