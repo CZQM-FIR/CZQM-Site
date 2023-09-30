@@ -149,7 +149,7 @@ let userInactive = async (cid, thisQuarter = false) => {
       }
     }
   }
-  if (quarter < 6) {
+  if (quarter < 3) {
     inactive = true;
   }
 
