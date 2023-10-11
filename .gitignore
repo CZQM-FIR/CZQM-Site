@@ -1,18 +1,24 @@
-node_modules
-.DS_Store
+# Nuxt dev/build outputs
+.output
+.data
+.nuxt
+.nitro
+.cache
 dist
-dist-ssr
-*.local
-.vscode
+
+# Node dependencies
+node_modules
+
+# Logs
+logs
 *.log
 
+# Misc
+.DS_Store
+.fleet
+.idea
 
-ngrok.bat
-ngrok.exe
-
-# Client
-packages/*/dist
-
-# Server
-packages/server/uploads/*
-!packages/server/uploads/docs/
+# Local env files
+.env
+.env.*
+!.env.example

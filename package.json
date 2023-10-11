@@ -1,19 +1,18 @@
 {
-  "name": "root",
+  "name": "nuxt-app",
   "private": true,
-  "devDependencies": {
-    "lerna": "^6.0.0",
-    "nx": "^15.0.0"
-  },
-  "repository": {
-    "url": "https://github.com/CZQM-FIR/CZQM-Site.git",
-    "type": "git"
-  },
+  "type": "module",
   "scripts": {
-    "download": "npm i && npx lerna exec \"npm i\""
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
   },
-  "dependencies": {
-    "@lerna/child-process": "^7.1.1",
-    "marked": "^4.2.12"
+  "devDependencies": {
+    "@nuxt/devtools": "latest",
+    "nuxt": "^3.7.4",
+    "vue": "^3.3.4",
+    "vue-router": "^4.2.5"
   }
 }
