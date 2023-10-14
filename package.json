@@ -1,5 +1,5 @@
 {
-  "name": "nuxt-app",
+  "name": "czqm-site",
   "private": true,
   "type": "module",
   "scripts": {
@@ -11,8 +11,13 @@
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
+    "@sidebase/nuxt-auth": "^0.6.0-beta.7",
     "nuxt": "^3.7.4",
     "vue": "^3.3.4",
     "vue-router": "^4.2.5"
+  },
+  "dependencies": {
+    "mongoose": "^7.6.2",
+    "next-auth": "^4.21.1"
   }
 }
