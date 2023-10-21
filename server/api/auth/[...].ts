@@ -1,7 +1,7 @@
 // @ts-nocheck
 
 import { NuxtAuthHandler } from '#auth';
-import {User} from '~/models/User'
+import {User} from '@/models/User'
 
 const { vatsim } = useRuntimeConfig();
 
