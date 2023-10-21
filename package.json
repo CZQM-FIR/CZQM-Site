@@ -18,8 +18,10 @@
   },
   "dependencies": {
     "@aws-sdk/credential-providers": "^3.428.0",
+    "@mongodb-js/zstd": "^1.2.0",
     "mongodb": "^6.1.0",
     "mongoose": "^7.6.2",
-    "next-auth": "^4.21.1"
+    "next-auth": "^4.21.1",
+    "nuxt-mongoose": "^1.0.2"
   }
 }
