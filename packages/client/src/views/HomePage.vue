@@ -18,8 +18,9 @@
           <div
             class="d-flex justify-content-center justify-content-md-start mt-3"
           >
-            <!-- <a href="#info" class="btn btn-outline-light">See More</a> -->
-            <a href="#" class="btn btn-outline-light">Join Us</a>
+            <router-link to="/join" class="btn btn-outline-light"
+              >Join Us</router-link
+            >
           </div>
         </h1>
       </div>
@@ -57,9 +58,7 @@
               controller. From amazing
               <router-link class="text-light" to="/events">events</router-link>
               to a great community, we have it all! Checkout our
-              <router-link class="text-light" to="/join-us"
-                >join us</router-link
-              >
+              <router-link class="text-light" to="/join">join us</router-link>
               page to learn more about how you can get started controlling or
               visiting in our airspace.
             </p>
@@ -165,7 +164,7 @@ onMounted(async () => {
   for await (const session of sessions.value) {
     if (
       new Date(Number(session.logonTime)).getMonth() !==
-      new Date(Date.now()).getMonth()
+      new Date("10-15-2023").getMonth()
     ) {
       continue;
     }
