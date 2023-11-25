@@ -5,6 +5,15 @@ const User = require('../models/User')
 const Event = require('../models/Event')
 const logHours = require('./logHours')
 
+const stdTimezoneOffset = function () {
+  const jan = new Date(this.getFullYear(), 0, 1)
+  const jul = new Date(this.getFullYear(), 6, 1)
+  return Math.max(jan.getTimezoneOffset(), jul.getTimezoneOffset())
+}
+
+const isDstObserved = function (myDate) {
+  return new Date(myDate).getTimezoneOffset() < stdTimezoneOffset()
+}
 const getNextMonday = () => {
   const now = new Date()
   const today = new Date(now)
@@ -25,14 +34,16 @@ const getNextMonday = () => {
 const regsiterCron = async () => {
   cron.schedule('0 * * * *', async () => {
     // console.info('[INFO] Checking VATCAN')
-    const roster = (await axios.get('https://vatcan.ca/api/v2/facility/roster', {
-      headers: {
-        Authorization: `Token ${process.env.VATCAN_API_TOKEN}`
-      }
-    })).data.data
+    const roster = (
+      await axios.get('https://vatcan.ca/api/v2/facility/roster', {
+        headers: {
+          Authorization: `Token ${process.env.VATCAN_API_TOKEN}`
+        }
+      })
+    ).data.data
     const { controllers, visitors } = roster
 
-    controllers.forEach(async controller => {
+    controllers.forEach(async (controller) => {
       const { cid } = controller
       const user = await User.findOne({ cid })
       if (!user) {
@@ -60,7 +71,7 @@ const regsiterCron = async () => {
       }
     })
 
-    visitors.forEach(async visitor => {
+    visitors.forEach(async (visitor) => {
       const { cid } = visitor
       const user = await User.findOne({ cid })
       if (!user) {
@@ -115,7 +126,7 @@ const regsiterCron = async () => {
     // console.info('[INFO] Running Delete User Check')
     const users = await User.find()
 
-    users.forEach(async user => {
+    users.forEach(async (user) => {
       if (user.flags.includes('delete')) {
         await User.deleteOne({ cid: user.cid })
       }
@@ -131,9 +142,11 @@ const regsiterCron = async () => {
     if (events.length === 0) {
       console.info('[INFO] Adding Moncton Monday')
       const nextMonday = getNextMonday()
-      const nextTuesday = new Date(nextMonday).setUTCDate(nextMonday.getUTCDate() + 1)
+      const nextTuesday = new Date(nextMonday).setUTCDate(
+        nextMonday.getUTCDate() + 1
+      )
 
-      const daylightSavings = 1 // 1 = march -> november, 0 = november -> march
+      const daylightSavings = isDstObserved(nextMonday) ? 1 : 0
 
       const start = new Date(nextMonday).setUTCHours(23 - daylightSavings)
       const end = new Date(nextTuesday).setUTCHours(3 - daylightSavings)
@@ -143,7 +156,9 @@ const regsiterCron = async () => {
         image: `MonctonMonday2${3 - daylightSavings}.png`,
         description: `Come out to Moncton Mondays where we have coverage of the Moncton and Gander FIR
                 Pilots new to VATSIM are welcome!
-                2${3 - daylightSavings}h00z - 0${3 - daylightSavings}h00z every Monday night!`,
+                2${3 - daylightSavings}h00z - 0${
+          3 - daylightSavings
+        }h00z every Monday night!`,
         start,
         end
       })
