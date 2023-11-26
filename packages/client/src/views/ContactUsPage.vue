@@ -92,7 +92,7 @@ let message = ref("");
 let recipients = [
   {
     name: "Staff",
-    email: "admin@czqm.ca",
+    email: "administration@czqm.ca",
   },
   {
     name: "Events",
