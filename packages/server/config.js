@@ -4,12 +4,12 @@ module.exports = {
   mongoUri: process.env.MONGO_URI,
   PORT: process.env.PORT || 3500,
   transporterConfig: {
-    host: 'smtppro.zoho.com',
+    host: 'smtp.migadu.com',
     port: 465,
     secure: true,
     auth: {
-      user: 'webmaster@czqm.ca',
-      pass: 'G4KBp5prVs2b'
+      user: 'noreply@czqm.ca',
+      pass: 'noreply'
     }
   }
 }
