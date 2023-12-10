@@ -6,14 +6,16 @@ const Event = require('../models/Event')
 const logHours = require('./logHours')
 
 const stdTimezoneOffset = function () {
-  const jan = new Date(this.getFullYear(), 0, 1)
-  const jul = new Date(this.getFullYear(), 6, 1)
+  const now = new Date(Date.now())
+  const jan = new Date(now.getFullYear(), 0, 1)
+  const jul = new Date(now.getFullYear(), 6, 1)
   return Math.max(jan.getTimezoneOffset(), jul.getTimezoneOffset())
 }
 
 const isDstObserved = function (myDate) {
   return new Date(myDate).getTimezoneOffset() < stdTimezoneOffset()
 }
+
 const getNextMonday = () => {
   const now = new Date()
   const today = new Date(now)
@@ -133,8 +135,8 @@ const regsiterCron = async () => {
     })
   })
 
-  cron.schedule('0 8 * * *', async () => {
-    // console.info('[INFO] Checking Moncton Monday')
+  cron.schedule('0 * * * *', async () => {
+    // console.info('[INFO] Checking Moncton Monday');
     const events = await Event.find({
       name: 'Moncton Monday',
       end: { $gt: Date.now() }

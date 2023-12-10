@@ -40,12 +40,12 @@ if (process.env.NODE_ENV === 'production') {
 
 const registerCron = require('./utils/cron')
 
-registerCron()
-
-app.use(cors({
-  credentials: true,
-  origin: 'https://czqm.ca'
-}))
+app.use(
+  cors({
+    credentials: true,
+    origin: 'https://czqm.ca'
+  })
+)
 app.use(morgan('tiny'))
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cookieParser())
@@ -57,6 +57,8 @@ mongoose
   })
   .then(() => console.info('[INFO] MongoDB Database Connected'))
   .catch((error) => console.error(`[ERROR] ${error}`))
+
+registerCron()
 
 app.use('/api/metar', metarRoute)
 app.use('/api/station', stationRoute)
