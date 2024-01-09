@@ -139,13 +139,26 @@ let userInactive = async (cid, thisQuarter = false) => {
   for (let i = 0; i < userSessions.length; i++) {
     const session = userSessions[i];
     if (session.duration) {
-      if (
-        quarterMonths[quarterID].includes(
-          new Date(Number(session.logonTime)).getMonth()
-        ) &&
-        new Date(Number(session.logonTime)).getFullYear() === now.getFullYear()
-      ) {
-        quarter += session.duration / 3_600_000;
+      if (!thisQuarter && quarterID == 3) {
+        if (
+          quarterMonths[quarterID].includes(
+            new Date(Number(session.logonTime)).getMonth()
+          ) &&
+          new Date(Number(session.logonTime)).getFullYear() ===
+            now.getFullYear() - 1
+        ) {
+          quarter += session.duration / 3_600_000;
+        }
+      } else {
+        if (
+          quarterMonths[quarterID].includes(
+            new Date(Number(session.logonTime)).getMonth()
+          ) &&
+          new Date(Number(session.logonTime)).getFullYear() ===
+            now.getFullYear()
+        ) {
+          quarter += session.duration / 3_600_000;
+        }
       }
     }
   }
