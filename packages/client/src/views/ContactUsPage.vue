@@ -1,6 +1,12 @@
 <template>
   <div class="container mt-4">
     <h3>Contact Us</h3>
+    <p>
+      Hey, thanks for wanting to reach out to us! Please be aware that this is
+      not the real CZQM FIR but rather the
+      <a href="https://vatsim.net">VATSIM</a> CZQM FIR. We do not represent any
+      real world aviation organizations including NAVCANADA.
+    </p>
     <div class="card mt-1">
       <div class="card-body">
         <form v-if="sent == false" @submit.prevent>
