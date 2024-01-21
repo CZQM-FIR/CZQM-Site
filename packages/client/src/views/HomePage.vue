@@ -9,7 +9,7 @@
           <div class="row">
             <div class="col-12 col-md-10 lead text-center text-md-start">
               Providing realistic ATC services across the maritime provinces on
-              the VATSIM newtwork.
+              the VATSIM network.
             </div>
           </div>
           <div class="mt-3 text-center text-md-start">
