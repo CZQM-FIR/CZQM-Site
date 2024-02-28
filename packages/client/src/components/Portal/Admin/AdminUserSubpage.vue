@@ -6,7 +6,8 @@
         <ul class="list-unstyled">
           <li>Name: {{ user.personal.name_full }}</li>
           <li>CID: {{ user.cid }}</li>
-          <li>Email: {{ user.personal.email }}</li>
+          <!-- <li>Email: {{ user.personal.email }}</li> -->
+          <li>Email: <i>Temporarily Not Available</i></li>
         </ul>
 
         <h5>Flags:</h5>
