@@ -17,7 +17,6 @@
           <th class="text-center">TWR</th>
           <th class="text-center">APP</th>
           <th class="text-center">CTR</th>
-          <th class="text-center">FSS</th>
           <th>Status</th>
           <th>FIR Role</th>
         </tr>
@@ -55,10 +54,6 @@
             <span v-if="user.roster.ctr === -1">---</span
             ><span v-else>CTR</span>
           </td>
-          <td :style="certificationStyle(user.roster.fss)">
-            <span v-if="user.roster.fss === -1">---</span
-            ><span v-else>FSS</span>
-          </td>
           <td>
             <i
               v-if="user.flags.some((flag) => flag === 'inactive')"
@@ -95,7 +90,6 @@
           <th class="text-center">TWR</th>
           <th class="text-center">APP</th>
           <th class="text-center">CTR</th>
-          <th class="text-center">FSS</th>
           <th>Status</th>
           <th>FIR Role</th>
         </tr>
@@ -120,10 +114,6 @@
           <td :style="certificationStyle(user.roster.ctr)">
             <span v-if="user.roster.ctr === -1">---</span
             ><span v-else>CTR</span>
-          </td>
-          <td :style="certificationStyle(user.roster.fss)">
-            <span v-if="user.roster.fss === -1">---</span
-            ><span v-else>FSS</span>
           </td>
           <td>
             <i
