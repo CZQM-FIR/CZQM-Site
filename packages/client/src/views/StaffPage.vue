@@ -6,7 +6,7 @@
       <hr />
       <div v-for="user in staffList" class="mb-4" :key="user.id">
         <h4>{{ user.personal.name_full }}</h4>
-        <h5 class="text-muted">{{ getRoleName(user.flags) }}</h5>
+        <h5 class="text-muted">{{ getRoleName(user.flags, "staff") }}</h5>
         <p v-if="user.bio" style="max-width: 60rem">{{ user.bio }}</p>
         <p v-else>This user has no bio :(</p>
       </div>
@@ -17,7 +17,9 @@
       <div class="d-flex flex-wrap gap-5" style="max-width: 60rem">
         <div v-for="user in instructorList" class="mb-4" :key="user.id">
           <h5>{{ user.personal.name_full }}</h5>
-          <h6 class="text-muted">{{ getRoleName(user.flags) }}</h6>
+          <h6 class="text-muted">
+            {{ getRoleName(user.flags, "instructor") }}
+          </h6>
         </div>
       </div>
     </div>
@@ -50,7 +52,7 @@ onMounted(async () => {
   // Get all staff in order of seniority
   for (const position of staffPositions) {
     const user = users.find((user) => user.flags.includes(position));
-    if (!user) continue;
+    if (!user || staffList.value.includes(user)) continue;
     staffList.value.push(user);
   }
 
