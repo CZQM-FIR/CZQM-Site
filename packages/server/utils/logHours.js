@@ -19,7 +19,7 @@ const callsigns = [
 ]
 
 const unauth = (callsign, flags) => {
-  switch (callsign.substring(5)) {
+  switch (callsign.split('_').slice(-1)) {
     case 'CTR':
       if (
         !flags.includes('roster-ctr-cert') &&
@@ -74,6 +74,10 @@ const unauth = (callsign, flags) => {
         return true
       }
       break
+    case 'OBS':
+    case 'SUP':
+    default:
+      return false
   }
   return false
 }
