@@ -18,12 +18,13 @@ router.get('/', async (req, res) => {
       'CYZX',
       'CYYT',
       'CYQM',
+      'CYQX',
       'CYFC',
       'CYZX',
       'LFVP',
       'CYSJ',
       'CYDF',
-      'CYYG'
+      'CYYG',
     ]
 
     callsigns.forEach((callsign) => {
