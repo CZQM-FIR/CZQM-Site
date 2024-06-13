@@ -12,7 +12,9 @@ ngrok.exe
 
 # Client
 packages/*/dist
+packages/client/.env
 
 # Server
 packages/server/uploads/*
 !packages/server/uploads/docs/
+packages/server/.env
