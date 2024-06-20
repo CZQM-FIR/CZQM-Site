@@ -1,0 +1,28 @@
+version: "3.8"
+services:
+  czqmserver:
+    image: ghcr.io/czqm-fir/czqm-site/server
+    restart: always
+    ports: 
+      - "3000:3000"
+    environment:
+      - MONGO_URI=mongodb+srv://admin:Kt1eyKQb7NLfpCMM@cluster0.notl1.mongodb.net/main?retryWrites=true&w=majority
+      - VATSIM_ENDPOINT=https://auth.vatsim.net
+      - CLIENT_ID=1191
+      - CLIENT_SECRET=MTZ0wtKYulRCiNIk73sZWthZN3jFKXWboLY9ylK7
+      - REDIRECT_URI=https://czqm.ca/authNEWS_DISCORD_WEBHOOK_URI=https://discord.com/api/webhooks/1054578099947327558/4XHHVn_TJJdDM_GyAc0dkTSXBF0eeHBYTNArG2ljFfjy8cLP1R1P4DTfijpftUX_Ye5E
+      - EVENTS_DISCORD_WEBHOOK_URI=https://discord.com/api/webhooks/1054578469155127308/sPamNiWrTFUBaAdOXIvBgSs60aCKTuJmANKpPT2QHhzxWGndGWlxh9aowD_DJ3fR8xrt
+      - ONLINE_DISCORD_WEBHOOK_URI=https://discord.com/api/webhooks/1120778659184267324/k68dHC3__UVcbp4siMorJjXDGY8YsP2PmBMIQ4nyBdqhK3oIuKg1ozpvNHDT9fcNL9vs
+      - UNAUTHORIZED_DISCORD_WEBHOOK_URI=https://discord.com/api/webhooks/1212594231831433267/0pp8E41GIyw_NtZg2UJcn1_M-BIXGWt8roDu00t-44YkZie4sRxPKsPd_hd29HSn7HVU
+      - AVWX_TOKEN=MkzJZ67U9lJorvexGqfWjOmBLFE22UCMmqgBkRl60A8
+      - VATCAN_API_TOKEN=BXACs9NNKiuMtJjp67utkqM54ZD3pCne3rHRS6dQkOZChHb3nw
+  czqmclient:
+    image: ghcr.io/czqm-fir/czqm-site/client
+    restart: always
+    ports: 
+      - "3000:3000"
+  nginx:
+    image: ghcr.io/czqm-fir/czqm-site/nginx
+    restart: always
+    ports:
+      - "80:80"
