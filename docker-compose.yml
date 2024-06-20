@@ -4,7 +4,7 @@ services:
     image: ghcr.io/czqm-fir/czqm-site/server
     restart: always
     ports: 
-      - "3000:3000"
+      - "3500:3500"
     environment:
       - MONGO_URI=mongodb+srv://admin:Kt1eyKQb7NLfpCMM@cluster0.notl1.mongodb.net/main?retryWrites=true&w=majority
       - VATSIM_ENDPOINT=https://auth.vatsim.net
