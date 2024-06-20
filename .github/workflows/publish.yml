@@ -39,7 +39,7 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: ghcr.io/${{ github.repository }}/server
-          tags: type=sha
+          tags: type=match,pattern=v(.*),group=1
       - name: Login to GHCR
         uses: docker/login-action@v3
         with:
@@ -62,7 +62,7 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: ghcr.io/${{ github.repository }}/nginx
-          tags: type=sha
+          tags: type=match,pattern=v(.*),group=1
       - name: Login to GHCR
         uses: docker/login-action@v3
         with:
