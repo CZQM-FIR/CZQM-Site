@@ -20,15 +20,5 @@ services:
     image: ghcr.io/czqm-fir/czqm-site/client
     restart: always
     ports: 
-      - "3000:3000"
-  nginx:
-    image: ghcr.io/czqm-fir/czqm-site/nginx
-    restart: always
-    ports:
+      - "443:443"
       - "80:80"
-    volumes:
-      - ./certbot/www/:/var/www/certbot/:rw
-  certbot:
-    image: certbot/certbot:latest
-    volumes:
-      - ./certbot/www/:/var/www/certbot/:rw

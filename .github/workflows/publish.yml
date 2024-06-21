@@ -52,26 +52,3 @@ jobs:
           context: ./packages/server
           push: true
           tags: ${{ steps.meta.outputs.tags }}
-  publish-nginx:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Docker meta
-        id: meta
-        uses: docker/metadata-action@v5
-        with:
-          images: ghcr.io/${{ github.repository }}/nginx
-          tags: type=match,pattern=v(.*),group=1
-      - name: Login to GHCR
-        uses: docker/login-action@v3
-        with:
-          registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Build container
-        uses: docker/build-push-action@v5
-        with:
-          context: ./packages/nginx
-          push: true
-          tags: ${{ steps.meta.outputs.tags }}
