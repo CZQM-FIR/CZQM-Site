@@ -8,7 +8,7 @@ services:
     volumes:
       - "/uploads:/uploads"
     environment:
-      - MONGO_URI=mongodb+srv://admin:Kt1eyKQb7NLfpCMM@cluster0.notl1.mongodb.net/main?retryWrites=true&w=majority
+      - MONGO_URI=mongodb://root:root@mongodb
       - VATSIM_ENDPOINT=https://auth.vatsim.net
       - CLIENT_ID=1191
       - CLIENT_SECRET=MTZ0wtKYulRCiNIk73sZWthZN3jFKXWboLY9ylK7
@@ -18,6 +18,15 @@ services:
       - UNAUTHORIZED_DISCORD_WEBHOOK_URI=https://discord.com/api/webhooks/1212594231831433267/0pp8E41GIyw_NtZg2UJcn1_M-BIXGWt8roDu00t-44YkZie4sRxPKsPd_hd29HSn7HVU
       - AVWX_TOKEN=MkzJZ67U9lJorvexGqfWjOmBLFE22UCMmqgBkRl60A8
       - VATCAN_API_TOKEN=BXACs9NNKiuMtJjp67utkqM54ZD3pCne3rHRS6dQkOZChHb3nw
+  mongodb:
+    image: mongodb/mongodb-community-server:6.0-ubi8
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=root
+    volumes:
+      - type: bind
+        source: ./data/czqm_db
+        target: /data/db
   # czqmclient:
   #   image: ghcr.io/czqm-fir/czqm-site/client
   #   restart: always
