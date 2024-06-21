@@ -1,9 +1,17 @@
-FROM node:22
+FROM node:22 as build
 
 COPY . .
 
 RUN npm install
 RUN npx vite build
 
-CMD ["npx", "--yes", "serve", "dist"]
-EXPOSE 3000
+FROM nginx:1.27 as serve
+COPY --from=build /dist /usr/share/nginx/html
+
+RUN echo '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' | base64 --decode | tee /etc/nginx/nginxconfig.io-czqm.ca.tar.gz > /dev/null
+
+RUN cd /etc/nginx && tar -xzvf nginxconfig.io-czqm.ca.tar.gz | xargs chmod 0644
+RUN openssl dhparam -out /etc/nginx/dhparam.pem 2048 && mkdir -p /var/www/_letsencrypt && chown nginx /var/www/_letsencrypt
+
+RUN sed -i -r 's/(listen .*443)/\1; #/g; s/(ssl_(certificate|certificate_key|trusted_certificate) )/#;#\1/g; s/(server \{)/\1\n    ssl off;/g' /etc/nginx/sites-available/czqm.ca.conf && sudo nginx -t && sudo systemctl reload nginx
+RUN certbot certonly --webroot -d czqm.ca -d www.czqm.ca --email webmaster@czqm.ca -w /var/www/_letsencrypt -n --agree-tos --force-renewal && sed -i -r -z 's/#?; ?#//g; s/(server \{)\n    ssl off;/\1/g' /etc/nginx/sites-available/czqm.ca.conf && sudo nginx -t && sudo systemctl reload nginx && echo -e '#!/bin/bash\nnginx -t && systemctl reload nginx' | sudo tee /etc/letsencrypt/renewal-hooks/post/nginx-reload.sh && sudo chmod a+x /etc/letsencrypt/renewal-hooks/post/nginx-reload.sh && sudo nginx -t && sudo systemctl reload nginx
