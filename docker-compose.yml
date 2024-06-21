@@ -18,11 +18,11 @@ services:
       - UNAUTHORIZED_DISCORD_WEBHOOK_URI=https://discord.com/api/webhooks/1212594231831433267/0pp8E41GIyw_NtZg2UJcn1_M-BIXGWt8roDu00t-44YkZie4sRxPKsPd_hd29HSn7HVU
       - AVWX_TOKEN=MkzJZ67U9lJorvexGqfWjOmBLFE22UCMmqgBkRl60A8
       - VATCAN_API_TOKEN=BXACs9NNKiuMtJjp67utkqM54ZD3pCne3rHRS6dQkOZChHb3nw
-  czqmclient:
-    image: ghcr.io/czqm-fir/czqm-site/client
-    restart: always
-    volumes: 
-      - '/etc/nginx:/etc/nginx'
-    ports: 
-      - "443:443"
-      - "80:80"
+  # czqmclient:
+  #   image: ghcr.io/czqm-fir/czqm-site/client
+  #   restart: always
+  #   volumes: 
+  #     - '/etc/nginx:/etc/nginx'
+  #   ports: 
+  #     - "443:443"
+  #     - "80:80"
