@@ -21,7 +21,8 @@ services:
   czqmclient:
     image: ghcr.io/czqm-fir/czqm-site/client
     restart: always
-    volumes: '/etc/nginx:/etc/nginx'
+    volumes: 
+      - '/etc/nginx:/etc/nginx'
     ports: 
       - "443:443"
       - "80:80"
