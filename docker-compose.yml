@@ -25,7 +25,7 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=root
     volumes:
       - type: bind
-        source: ./data/czqm_db
+        source: /data/czqm_db
         target: /data/db
   # czqmclient:
   #   image: ghcr.io/czqm-fir/czqm-site/client
