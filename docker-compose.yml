@@ -5,6 +5,8 @@ services:
     restart: always
     ports: 
       - "3500:3500"
+    volumes:
+      - "/uploads:/uploads"
     environment:
       - MONGO_URI=mongodb+srv://admin:Kt1eyKQb7NLfpCMM@cluster0.notl1.mongodb.net/main?retryWrites=true&w=majority
       - VATSIM_ENDPOINT=https://auth.vatsim.net
@@ -19,6 +21,7 @@ services:
   czqmclient:
     image: ghcr.io/czqm-fir/czqm-site/client
     restart: always
+    volumes: '/etc/nginx:/etc/nginx'
     ports: 
       - "443:443"
       - "80:80"
