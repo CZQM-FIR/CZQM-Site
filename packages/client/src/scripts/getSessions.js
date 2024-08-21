@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const getSessions = async (filter = "") => {
-  const data = await axios.get(`/api/stats/${filter}`).catch(() => {});
+  const data = await axios.get(`${import.meta.env.VITE_API_ROUTE}/api/stats/${filter}`).catch(() => {});
 
   if (!data || !data.data.sessions) {
     return [];

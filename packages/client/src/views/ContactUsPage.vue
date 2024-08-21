@@ -143,7 +143,7 @@ const submit = () => {
   data.append("message", message.value);
 
   axios
-    .post(`/api/contact`, data, {
+    .post(`${import.meta.env.VITE_API_ROUTE}/api/contact`, data, {
       headers: {
         "Content-Type": "multipart/form-data",
       },

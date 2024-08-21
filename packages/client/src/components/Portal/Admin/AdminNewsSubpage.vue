@@ -77,7 +77,7 @@ onMounted(async () => {
   if (articleID.value === "new") return;
 
   let event = await axios.get(
-    `/api/news/${articleID.value}`,
+    `${process.env.API_ROUTE}/api/news/${articleID.value}`,
     {},
     {
       withCredentials: true,
@@ -102,7 +102,7 @@ const updateImage = (e) => {
 
 const submit = () => {
   if (deleteArticle.value) {
-    axios.delete(`/api/news/${articleID.value}`).then(() => {
+    axios.delete(`${import.meta.env.VITE_API_ROUTE}/api/news/${articleID.value}`).then(() => {
       router.push("/portal/admin/news");
     });
     return;
@@ -126,7 +126,7 @@ const submit = () => {
   }
 
   axios
-    .post(`/api/editnews`, data, {
+    .post(`${process.env.API_ROUTE}/api/editnews`, data, {
       headers: {
         "Content-Type": "multipart/form-data",
       },

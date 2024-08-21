@@ -93,7 +93,7 @@ let roleName = ref("");
 let bioStatus = ref(0);
 
 const saveBio = async () => {
-  await axios.get(`/api/edituser?user=${JSON.stringify(user.value)}`);
+  await axios.get(`${import.meta.env.VITE_API_ROUTE}/api/edituser?user=${JSON.stringify(user.value)}`);
   bioStatus.value = 1;
 };
 

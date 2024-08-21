@@ -17,7 +17,7 @@ const resourceValue = ref("");
 onMounted(async () => {
   document.title = `CZQM/QX | ${resource} Resources`;
 
-  const res = await axios.get(`/api/resources?type=${resource.toLowerCase()}`);
+  const res = await axios.get(`${process.env.API_ROUTE}/api/resources?type=${resource.toLowerCase()}`);
 
   resourceValue.value = res.data.data.value;
 });

@@ -78,7 +78,7 @@ const submit = () => {
   }
 
   axios
-    .post(`/api/fileupload`, data, {
+    .post(`${process.env.API_ROUTE}/api/fileupload`, data, {
       headers: {
         "Content-Type": "multipart/form-data",
       },

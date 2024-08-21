@@ -153,12 +153,12 @@ let visitors = ref([]);
 onMounted(async () => {
   document.title = "CZQM/QX | Roster";
   users.value.push(
-    ...(await axios.get("/api/roster/")).data.filter((user) =>
+    ...(await axios.get(`${process.env.API_ROUTE}/api/roster/`)).data.filter((user) =>
       user.flags.includes("controller")
     )
   );
   visitors.value.push(
-    ...(await axios.get("/api/roster/")).data.filter((user) =>
+    ...(await axios.get(`${import.meta.env.VITE_API_ROUTE}/api/roster/`)).data.filter((user) =>
       user.flags.includes("visitor")
     )
   );

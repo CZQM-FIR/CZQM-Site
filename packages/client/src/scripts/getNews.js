@@ -6,7 +6,7 @@ import axios from "axios";
  * @returns {object} eventData
  */
 const getNews = async (newsID = "") => {
-  let newsData = await axios.get(`/api/news/${newsID}`).catch((error) => {
+  let newsData = await axios.get(`${import.meta.env.VITE_API_ROUTE}/api/news/${newsID}`).catch((error) => {
     console.error(`[ERROR] ${error}`);
   });
 
