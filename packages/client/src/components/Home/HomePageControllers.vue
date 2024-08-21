@@ -50,7 +50,7 @@ controllers.value.sort((a, b) => {
   return b.name - a.name;
 });
 const getOnlineControllers = async () => {
-  let controllersData = await axios.get(`${import.meta.env.VITE_API_ROUTE}/api/liveControllers", {
+  let controllersData = await axios.get(`${import.meta.env.VITE_API_ROUTE}/api/liveControllers`, {
     withCredentials: false,
   });
   controllersData = controllersData.data;
