@@ -40,12 +40,7 @@ if (process.env.NODE_ENV === 'production') {
 
 const registerCron = require('./utils/cron')
 
-app.use(
-  cors({
-    credentials: true,
-    origin: 'https://czqm.ca'
-  })
-)
+app.use(cors({}))
 app.use(morgan('tiny'))
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cookieParser())
@@ -80,7 +75,7 @@ app.use('/api/stats', statsRoute)
 app.use('/api/fileupload', uploadFileRoute)
 app.use(fileUpload)
 
-app.all('*', () => {})
+app.all('*', () => { })
 
 app.all('/api', (req, res) => {
   res.status(204).send()
