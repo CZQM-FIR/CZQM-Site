@@ -40,7 +40,7 @@ if (process.env.NODE_ENV === 'production') {
 
 const registerCron = require('./utils/cron')
 
-app.use(cors({ credentials: true, origin: 'https://czqm.ca' }))
+app.use(cors({}))
 app.use(morgan('tiny'))
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cookieParser())
