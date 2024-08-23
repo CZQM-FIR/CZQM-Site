@@ -111,7 +111,7 @@ const submitFlag = async (flag, user, flagList) => {
   if (!flag) return;
   if (!flagList.includes(flag)) return;
   await axios.get(
-    `${process.env.VITE_API_ROUTE}/api/edituser/`,
+    `${import.meta.env.VITE_API_ROUTE}/api/edituser/`,
     {
       params: {
         user: JSON.stringify(user),

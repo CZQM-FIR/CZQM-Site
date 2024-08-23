@@ -126,7 +126,7 @@ const submit = () => {
   }
 
   axios
-    .post(`${process.env.API_ROUTE}/api/editnews`, data, {
+    .post(`${import.meta.env.API_ROUTE}/api/editnews`, data, {
       headers: {
         "Content-Type": "multipart/form-data",
       },

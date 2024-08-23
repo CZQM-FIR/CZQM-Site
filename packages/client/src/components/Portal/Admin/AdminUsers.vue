@@ -92,7 +92,7 @@ onMounted(async () => {
     });
 
   visitors.value = await axios
-    .get(`${process.env.API_ROUTE}/api/user`, {}, { withCredentials: true })
+    .get(`${import.meta.env.API_ROUTE}/api/user`, {}, { withCredentials: true })
     .then((res) => {
       return res.data.users.filter((user) => user.flags.includes("visitor"));
     });
