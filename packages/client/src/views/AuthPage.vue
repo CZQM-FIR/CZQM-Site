@@ -16,7 +16,7 @@ let redirect = urlParams.get("redirect");
 if (!code) {
   window.location.href = getVATSIMConnect();
 } else {
-  axios.post(`${import.meta.env.VITE_API_ROUTE}/api/login/${code}`, {}, {}).then(() => {
+  axios.post(`${import.meta.env.VITE_API_ROUTE}/api/login/${code}`, {}, {withCredentials: true}).then(() => {
     window.location.href = redirect ? redirect : "/";
   });
 }
