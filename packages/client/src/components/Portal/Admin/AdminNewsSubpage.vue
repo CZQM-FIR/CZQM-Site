@@ -77,7 +77,7 @@ onMounted(async () => {
   if (articleID.value === "new") return;
 
   let event = await axios.get(
-    `${process.env.API_ROUTE}/api/news/${articleID.value}`,
+    `${process.env.VITE_API_ROUTE}/api/news/${articleID.value}`,
     {},
     {
       withCredentials: true,

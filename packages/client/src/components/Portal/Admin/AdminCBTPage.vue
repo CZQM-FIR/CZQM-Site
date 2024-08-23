@@ -33,7 +33,7 @@ const save = async () => {
 };
 
 onMounted(async () => {
-  const res = await axios.get(`${process.env.API_ROUTE}/api/resources?type=cbt`);
+  const res = await axios.get(`${process.env.VITE_API_ROUTE}/api/resources?type=cbt`);
   input.value = res.data.data.value;
 });
 </script>

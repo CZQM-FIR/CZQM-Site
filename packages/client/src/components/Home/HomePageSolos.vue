@@ -22,7 +22,7 @@ const findSoloPos = (roster) => {
 };
 
 onMounted(async () => {
-  let userList = (await axios.get(`${process.env.API_ROUTE}/api/roster/`)).data;
+  let userList = (await axios.get(`${process.env.VITE_API_ROUTE}/api/roster/`)).data;
 
   userList.forEach((user) => {
     if (user.roster.ctr === 0) {

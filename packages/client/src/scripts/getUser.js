@@ -13,7 +13,7 @@ const getUser = async (cid = "") => {
       return user;
     }
 
-    const userData = await axios.get(`${process.env.API_ROUTE}/api/user/${getCookie("jwt")}`);
+    const userData = await axios.get(`${process.env.VITE_API_ROUTE}/api/user/${getCookie("jwt")}`);
 
     user = {
       loggedIn: true,

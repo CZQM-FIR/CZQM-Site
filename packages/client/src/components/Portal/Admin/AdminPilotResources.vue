@@ -24,7 +24,7 @@ import pseudoToHTML from "../../../scripts/pseudoToHTML";
 const input = ref("");
 
 const save = async () => {
-  await axios.post(`${process.env.API_ROUTE}/api/resources`, null, {
+  await axios.post(`${process.env.VITE_API_ROUTE}/api/resources`, null, {
     params: {
       type: "pilot",
       value: input.value,
