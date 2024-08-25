@@ -84,7 +84,7 @@
             <li>
               <a
                 target="_blank"
-                href="/files/docs/privacy-policy.pdf"
+                href="https://api.czqm.ca/files/docs/privacy-policy.pdf"
                 class="link-light"
                 >Privacy Policy</a
               >
@@ -92,7 +92,7 @@
             <li>
               <a
                 target="_blank"
-                href="/files/docs/branding.pdf"
+                href="https://api.czqm.ca/files/docs/branding.pdf"
                 class="link-light"
                 >Branding</a
               >

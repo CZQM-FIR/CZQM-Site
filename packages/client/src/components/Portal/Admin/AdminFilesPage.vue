@@ -8,7 +8,7 @@
           will force the system to overwrite any existing files with the same
           name. If left unchecked, the system will append a timestamp to keep
           the file names unique. Files will be accessible at
-          https://czqm.ca/files/[filename].
+          https://api.czqm.ca/files/[filename].
         </p>
 
         <p>
@@ -85,7 +85,7 @@ const submit = () => {
     })
     .then((res) => {
       if (res.status === 200) {
-        status.value = `Success! https://czqm.ca/files/${res.data.data}`;
+        status.value = `Success! https://api.czqm.ca/files/${res.data.data}`;
       } else {
         status.value = "Error Uploading File";
       }
