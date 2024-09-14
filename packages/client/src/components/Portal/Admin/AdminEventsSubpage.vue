@@ -133,7 +133,7 @@ const updateImage = (e) => {
 
 const submit = () => {
   if (deleteEvent.value) {
-    axios.delete(`${import.meta.env.API_ROUTE}/api/event/${eventID.value}`).then(() => {
+    axios.delete(`${import.meta.env.VITE_API_ROUTE}/api/event/${eventID.value}`).then(() => {
       router.push("/portal/admin/events");
     });
     return;
