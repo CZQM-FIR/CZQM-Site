@@ -48,17 +48,18 @@ const emailHTML = (message) => `
 </html>`
 
 const sendEmail = async (to, subject, message, replyTo = '', from = `"CZQM Web Services" <${transporterConfig.auth.user}>`) => {
-  try {
-    await transporter.sendMail({
-      from,
-      to,
-      subject,
-      replyTo,
-      html: emailHTML(message)
-    })
-  } catch (error) {
-    console.error(error)
-  }
+  // try {
+  //   await transporter.sendMail({
+  //     from,
+  //     to,
+  //     subject,
+  //     replyTo,
+  //     html: emailHTML(message)
+  //   })
+  // } catch (error) {
+  //   console.error(error)
+  // }
+  console.log(`Attempting to send email to ${to} but email is dissabled`)
 }
 
 /**
