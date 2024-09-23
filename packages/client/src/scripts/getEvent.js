@@ -7,7 +7,7 @@ import axios from "axios";
  */
 const getEvent = async (includeOld = false, eventID = "") => {
   let eventData = await axios
-    .get(`/api/event/${eventID}${includeOld ? "?old=true" : ""}`)
+    .get(`${import.meta.env.VITE_API_ROUTE}/api/event/${eventID}${includeOld ? "?old=true" : ""}`)
     .catch((error) => {
       console.error(`[ERROR] ${error}`);
     });

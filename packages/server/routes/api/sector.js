@@ -6,10 +6,10 @@ const multer = require('multer')
 const SectorFile = require('../../models/SectorFile')
 
 const storage = multer.diskStorage({
-  destination (req, file, cb) {
+  destination(req, file, cb) {
     cb(null, path.join(__dirname, '../../uploads'))
   },
-  filename (req, file, cb) {
+  filename(req, file, cb) {
     // const extArray = file.mimetype.split('/')
     // const extension = extArray[extArray.length - 1]
 
@@ -30,7 +30,7 @@ router.post('/', upload.single('file'), async (req, res) => {
     },
     {
       fileID: Number(req.body.fileID),
-      filePath: `/files/${req.file.filename}`
+      filePath: `https://api.czqm.ca/files/${req.file.filename}`
     },
     {
       upsert: true

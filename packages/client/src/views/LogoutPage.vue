@@ -12,7 +12,7 @@ onMounted(() => {
   document.title = "CZQM/QX | Logging Out...";
 });
 
-await axios.post("/api/logout", {}, { withCredentials: true });
+await axios.post(`${import.meta.env.VITE_API_ROUTE}/api/logout`, {}, { withCredentials: true });
 window.location.href = "/";
 </script>
 

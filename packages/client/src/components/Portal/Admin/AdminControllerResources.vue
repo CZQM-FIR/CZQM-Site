@@ -24,7 +24,7 @@ import pseudoToHTML from "../../../scripts/pseudoToHTML";
 const input = ref("");
 
 const save = async () => {
-  await axios.post("/api/resources", null, {
+  await axios.post(`${import.meta.env.VITE_API_ROUTE}/api/resources`, null, {
     params: {
       type: "controller",
       value: input.value,
@@ -33,7 +33,7 @@ const save = async () => {
 };
 
 onMounted(async () => {
-  const res = await axios.get("/api/resources?type=controller");
+  const res = await axios.get(`${import.meta.env.VITE_API_ROUTE}/api/resources?type=controller`);
   input.value = res.data.data.value;
 });
 </script>

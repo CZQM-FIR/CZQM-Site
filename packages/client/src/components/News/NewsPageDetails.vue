@@ -52,7 +52,7 @@ const getTime = (article) => {
       </div>
       <img
         v-if="article.image"
-        :src="`/files/${article.image}`"
+        :src="`https://api.czqm.ca/files/${article.image}`"
         :alt="`${article.name} Banner`"
         class="card-image-bottom"
       />

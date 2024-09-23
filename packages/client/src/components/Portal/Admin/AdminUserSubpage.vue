@@ -111,7 +111,7 @@ const submitFlag = async (flag, user, flagList) => {
   if (!flag) return;
   if (!flagList.includes(flag)) return;
   await axios.get(
-    `/api/edituser/`,
+    `${import.meta.env.VITE_API_ROUTE}/api/edituser/`,
     {
       params: {
         user: JSON.stringify(user),
@@ -127,7 +127,7 @@ const submitFlag = async (flag, user, flagList) => {
 
 onMounted(async () => {
   user.value = await axios.get(
-    `/api/user/`,
+    `${import.meta.env.VITE_API_ROUTE}/api/user/`,
     {},
     {
       withCredentials: true,

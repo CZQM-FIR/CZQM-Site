@@ -86,17 +86,17 @@ const sessions = ref([]);
 
 onMounted(async () => {
   users.value = await axios
-    .get("/api/user", {}, { withCredentials: true })
+    .get(`${import.meta.env.VITE_API_ROUTE}/api/user`, {}, { withCredentials: true })
     .then((res) => {
       return res.data.users.filter((user) => user.flags.includes("controller"));
     });
 
   visitors.value = await axios
-    .get("/api/user", {}, { withCredentials: true })
+    .get(`${import.meta.env.VITE_API_ROUTE}/api/user`, {}, { withCredentials: true })
     .then((res) => {
       return res.data.users.filter((user) => user.flags.includes("visitor"));
     });
-  sessions.value = (await axios.get(`/api/stats/`)).data.sessions;
+  sessions.value = (await axios.get(`${import.meta.env.VITE_API_ROUTE}/api/stats/`)).data.sessions;
 
   users.value.forEach(async (user) => {
     if ((await userInactive(user.cid)) == true) {

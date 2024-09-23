@@ -14,7 +14,7 @@ const emailHTML = (message) => `
 <body class="bg-primary">
   <div class="py-5">
       <img
-        src="https://czqm.ca/files/branding/white/czqm-white.png"
+        src="https://api.czqm.ca/files/branding/white/czqm-white.png"
         alt="CZQM Logo"
         style="
           max-width: 10rem;
@@ -38,7 +38,7 @@ const emailHTML = (message) => `
         <hr />
         <p class="text-muted text-center" style="font-size: small">
           This email was sent automaticaly by CZQM Web Services in accordance
-          with our <a class="text-muted" href="https://czqm.ca/files/docs/privacy-policy.pdf">privacy policy</a>.
+          with our <a class="text-muted" href="https://api.czqm.ca/files/docs/privacy-policy.pdf">privacy policy</a>.
         </p>
         </p>
       </div>
