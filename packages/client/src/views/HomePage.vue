@@ -164,7 +164,9 @@ onMounted(async () => {
   for await (const session of sessions.value) {
     if (
       new Date(Number(session.logonTime)).getMonth() !==
-      new Date(Date.now()).getMonth()
+      new Date(Date.now()).getMonth() ||
+      new Date(Number(session.logonTime)).getFullYear() !==
+      new Date(Date.now()).getFullYear()
     ) {
       continue;
     }
