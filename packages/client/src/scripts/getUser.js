@@ -3,7 +3,7 @@ import getCookie from "./getCookie";
 
 const getUser = async (cid = "") => {
   if (cid) {
-    const userData = await axios.get(`/api/user/${cid}`);
+    const userData = await axios.get(`${import.meta.env.VITE_API_ROUTE}/api/user/${cid}`);
 
     return userData.data;
   } else {
@@ -13,7 +13,7 @@ const getUser = async (cid = "") => {
       return user;
     }
 
-    const userData = await axios.get(`/api/user/${getCookie("jwt")}`);
+    const userData = await axios.get(`${import.meta.env.VITE_API_ROUTE}/api/user/${getCookie("jwt")}`);
 
     user = {
       loggedIn: true,

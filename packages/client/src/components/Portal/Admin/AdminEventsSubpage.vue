@@ -103,7 +103,7 @@ onMounted(async () => {
   if (eventID.value === "new") return;
 
   let event = await axios.get(
-    `/api/event/${eventID.value}`,
+    `${import.meta.env.VITE_API_ROUTE}/api/event/${eventID.value}`,
     {},
     {
       withCredentials: true,
@@ -133,7 +133,7 @@ const updateImage = (e) => {
 
 const submit = () => {
   if (deleteEvent.value) {
-    axios.delete(`/api/event/${eventID.value}`).then(() => {
+    axios.delete(`${import.meta.env.VITE_API_ROUTE}/api/event/${eventID.value}`).then(() => {
       router.push("/portal/admin/events");
     });
     return;
@@ -156,7 +156,7 @@ const submit = () => {
   }
 
   axios
-    .post(`/api/editevent`, data, {
+    .post(`${import.meta.env.VITE_API_ROUTE}/api/editevent`, data, {
       headers: {
         "Content-Type": "multipart/form-data",
       },

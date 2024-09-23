@@ -6,8 +6,8 @@ const airportList = ["CYHZ", "CYQM", "CYQX", "CYYT"];
 
 onMounted(async () => {
   airportList.forEach(async (airport) => {
-    let station = (await axios.get(`/api/station/${airport}/`)).data;
-    let metar = (await axios.get(`/api/metar/${airport}/`)).data;
+    let station = (await axios.get(`${import.meta.env.VITE_API_ROUTE}/api/station/${airport}/`)).data;
+    let metar = (await axios.get(`${import.meta.env.VITE_API_ROUTE}/api/metar/${airport}/`)).data;
     airports.value.push({
       icao: airport,
       name: station.name,

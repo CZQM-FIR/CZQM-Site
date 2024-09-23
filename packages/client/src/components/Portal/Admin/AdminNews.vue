@@ -55,7 +55,7 @@ const getArticleTime = (article) => {
 
 onMounted(async () => {
   news.value = await axios
-    .get("/api/news", {}, { withCredentials: true })
+    .get(`${import.meta.env.VITE_API_ROUTE}/api/news`, {}, { withCredentials: true })
     .then((res) => {
       return res.data;
     });

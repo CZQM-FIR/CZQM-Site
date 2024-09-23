@@ -68,7 +68,7 @@ const getTime = (event) => {
         </div>
       </div>
       <img
-        :src="`/files/${event.image}`"
+        :src="`https://api.czqm.ca/files/${event.image}`"
         :alt="`${event.name} Banner`"
         class="card-image-bottom"
       />

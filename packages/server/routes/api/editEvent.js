@@ -8,10 +8,10 @@ const Event = require('../../models/Event')
 const { sendEmailToAll } = require('../../utils/emailBroadcast')
 
 const storage = multer.diskStorage({
-  destination (req, file, cb) {
+  destination(req, file, cb) {
     cb(null, path.join(__dirname, '../../uploads'))
   },
-  filename (req, file, cb) {
+  filename(req, file, cb) {
     const extArray = file.mimetype.split('/')
     const extension = extArray[extArray.length - 1]
 
@@ -58,27 +58,26 @@ router.post('/', upload.single('image'), async (req, res) => {
 
     try {
       await axios.post(
-                `${process.env.EVENTS_DISCORD_WEBHOOK_URI}`,
-                {
-                  embeds: [
-                    {
-                      title: `New Event: ${req.body.name}`,
-                      description: `${req.body.description.substring(
-                                0,
-                                50
-                            )}... [Read More](https://czqm.ca/events/${
-                                event._id
-                            })`,
-                      timestamp: `${new Date(Date.now()).toISOString()}`,
-                      author: {
-                        name: 'CZQM FIR Event Feed',
-                        url: 'https://czqm.ca/events'
-                      }
-                    }
-                  ]
-                }, {
-                  withCredentials: true
-                }
+        `${process.env.EVENTS_DISCORD_WEBHOOK_URI}`,
+        {
+          embeds: [
+            {
+              title: `New Event: ${req.body.name}`,
+              description: `${req.body.description.substring(
+                0,
+                50
+              )}... [Read More](https://czqm.ca/events/${event._id
+                })`,
+              timestamp: `${new Date(Date.now()).toISOString()}`,
+              author: {
+                name: 'CZQM FIR Event Feed',
+                url: 'https://czqm.ca/events'
+              }
+            }
+          ]
+        }, {
+        withCredentials: true
+      }
       )
 
       // Send email to all users who have an email address and who are visitors or above
@@ -95,7 +94,7 @@ router.post('/', upload.single('image'), async (req, res) => {
 
                 You can find the full details availible here: https://czqm.ca/events?_id=${event._id}
 
-                <img src="https://www.czqm.ca/files/${req.file.filename}" alt="${req.body.name} Banner" />`)
+                <img src="https://api.czqm.ca/files/${req.file.filename}" alt="${req.body.name} Banner" />`)
     } catch (error) {
       console.error(`[ERROR] ${error}`)
     }

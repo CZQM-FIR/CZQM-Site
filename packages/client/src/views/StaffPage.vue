@@ -36,7 +36,7 @@ const instructorList = ref([]);
 onMounted(async () => {
   document.title = `CZQM/QX | Staff`;
 
-  const users = (await axios.get(`/api/user`)).data.users;
+  const users = (await axios.get(`${import.meta.env.VITE_API_ROUTE}/api/user`)).data.users;
 
   const staffPositions = [
     "chief",

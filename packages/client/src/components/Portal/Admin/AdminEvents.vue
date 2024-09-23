@@ -73,7 +73,7 @@ const getEventTime = (event) => {
 
 onMounted(async () => {
   events.value = await axios
-    .get("/api/event", {}, { withCredentials: true })
+    .get(`${import.meta.env.VITE_API_ROUTE}/api/event`, {}, { withCredentials: true })
     .then((res) => {
       return res.data;
     });
