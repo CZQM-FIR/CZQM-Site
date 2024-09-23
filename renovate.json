@@ -16,5 +16,6 @@
       "matchBaseBranches": ["master", "beta"],
       "baseBranches": ["beta"]
     }
-  ]
+  ],
+  "enabled": false
 }
